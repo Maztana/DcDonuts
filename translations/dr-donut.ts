@@ -19,7 +19,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Hello Sailors</source>
+        <source>MELANIE</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -35,4 +35,3 @@
     </message>
 </context>
 </TS>
-
