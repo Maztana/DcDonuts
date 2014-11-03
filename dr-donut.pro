@@ -24,7 +24,8 @@ OTHER_FILES += qml/dr-donut.qml \
     rpm/dr-donut.spec \
     rpm/dr-donut.yaml \
     translations/*.ts \
-    dr-donut.desktop
+    dr-donut.desktop \
+    qml/Accueil/Accueil.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line
