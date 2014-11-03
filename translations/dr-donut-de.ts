@@ -20,7 +20,11 @@
     </message>
     <message>
         <source>Hello Sailors</source>
-        <translation>Hallo Matrosen</translation>
+        <translation type="obsolete">Hallo Matrosen</translation>
+    </message>
+    <message>
+        <source>MELANIE</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -35,4 +39,3 @@
     </message>
 </context>
 </TS>
-
