@@ -2,6 +2,21 @@
 <!DOCTYPE TS>
 <TS version="2.0">
 <context>
+    <name>Accueil</name>
+    <message>
+        <source>Profils</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Jouer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>../pages/JeuPage.qml</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CoverPage</name>
     <message>
         <source>My Cover</source>
