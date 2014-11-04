@@ -1,10 +1,9 @@
 [Desktop Entry]
 Type=Application
 X-Nemo-Application-Type=silica-qt5
-Icon=dr-donut
+Icon=DoctorDonut_terminator
 Exec=dr-donut
 Name=dr-donut
 # translation example:
-# your app name in German locale (de)
-Name[de]=dr-donut
+Name[fr]=dr-donut
 

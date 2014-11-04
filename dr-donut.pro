@@ -26,7 +26,6 @@ OTHER_FILES += qml/dr-donut.qml \
     translations/*.ts \
     dr-donut.desktop \
     qml/Accueil/Accueil.qml \
-    images/bla.txt \
     images/DoctorDonut_terminator.png
 
 # to disable building translations every time, comment out the
