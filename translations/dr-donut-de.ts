@@ -5,14 +5,14 @@
     <name>CoverPage</name>
     <message>
         <source>My Cover</source>
-        <translation>Mein Cover</translation>
+        <translation type="obsolete">Mein Cover</translation>
     </message>
 </context>
 <context>
     <name>FirstPage</name>
     <message>
         <source>Show Page 2</source>
-        <translation>Zur Seite 2</translation>
+        <translation type="obsolete">Zur Seite 2</translation>
     </message>
     <message>
         <source>UI Template</source>
@@ -24,6 +24,10 @@
     </message>
     <message>
         <source>MELANIE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Jouer</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
