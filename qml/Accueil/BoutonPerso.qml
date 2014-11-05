@@ -5,29 +5,33 @@ Item
     property alias text : textBouton.text
     property string link
 
-    Rectangle
-    {
-        id:fond
-        color: "#F6C577"
-        width:textBouton.width
-        height:textBouton.height + 20
-        anchors.verticalCenter: parent.verticalCenter
-        MouseArea{
-            anchors{
-                fill:parent
+    FontLoader{ id: fontPerso; source: "../font/PWYummyDonuts.ttf" }
+
+        Image
+        {
+            id:fond
+            source:"../images/BoutonArrondi.png"
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
+            width:textBouton.width + 50
+            height:textBouton.height + 45
+
+            Text
+            {
+                id:textBouton
+                font.pixelSize: 48
+                font.family:fontPerso.name
+                wrapMode: Text.WordWrap
+                y: fond.height/2 - height/2 + 5
+                anchors.horizontalCenter: parent.horizontalCenter
+                color:"black"
             }
 
-            onClicked: pageStack.push(Qt.resolvedUrl(link))
+            MouseArea{
+                anchors {
+                    fill:parent
+                }
+                onClicked: pageStack.push(Qt.resolvedUrl(link))
+            }
         }
-    }
-
-    Text
-    {
-        id:textBouton
-        font.pixelSize: 32
-        wrapMode: Text.WordWrap
-        anchors.verticalCenter: parent.verticalCenter
-        color:"black"
-    }
-
 }
