@@ -3,42 +3,60 @@ import Sailfish.Silica 1.0
 
 Page{
 
-    IconButton {
-        id: logoProfil
-        width: 50
-        height: 100
-        smooth: true
+    SilicaFlickable{
+        anchors.fill:parent
 
-        anchors{
-            right: parent.right
-            margins: Theme.paddingLarge
+        IconButton {
+            id: logoProfil
+            smooth: true
+            y:30
+
+            anchors{
+                right: parent.right
+                margins: Theme.paddingLarge
+            }
+
+            icon{
+                width:80
+                height:80
+                anchors.top:parent.top
+                source: "../images/profils.png"
+            }
+
+            Label{
+                text: qsTr("Profils")
+                anchors.top: parent.icon.bottom
+                anchors.horizontalCenter: parent.horizontalCenter
+                font.pixelSize: 30
+            }
         }
 
-        icon{
-            width:50
-            height:50
-            anchors.top:parent.top
-            source: "../images/profils.png"
+        BoutonPerso
+        {
+            text: qsTr("Jouer")
+
+            anchors{
+                bottom:boutonOptions.top
+                horizontalCenter: parent.horizontalCenter
+                margins:130
+            }
+
+            link: qsTr("../pages/JeuPage.qml")
         }
 
-        Label{
-            text: qsTr("Profils")
-            anchors.top: parent.icon.bottom
-            anchors.horizontalCenter: parent.horizontalCenter
-            font.pixelSize: 22
+        BoutonPerso
+        {
+            id:boutonOptions
+            text: qsTr("Options")
+
+            anchors{
+                bottom:parent.bottom
+                horizontalCenter: parent.horizontalCenter
+                margins:160
+            }
+
+            link: qsTr("../pages/JeuPage.qml")
         }
+
     }
-
-    BoutonPerso
-    {
-        text: qsTr("Jouer")
-
-        anchors{
-            verticalCenter: parent.verticalCenter
-            horizontalCenter: parent.horizontalCenter
-        }
-
-        link: qsTr("../pages/JeuPage.qml")
-    }
-
 }
