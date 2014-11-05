@@ -33,6 +33,8 @@ import Sailfish.Silica 1.0
 
 CoverBackground {
 
+    FontLoader{ id: fontPerso; source: "../font/PWYummyDonuts.ttf" }
+
     /*----Fond ----*/
     Rectangle{
         anchors.fill: parent
@@ -42,10 +44,22 @@ CoverBackground {
     /*--------------*/
 
     Image{
+        id: imgDrDonut
         source:"icon.png"
         width:sourceSize.width/3
         height:sourceSize.height/3
         anchors.centerIn: parent
+    }
+
+    Label{
+        anchors.margins: 20
+        text: "DR DONUT"
+        anchors.top: imgDrDonut.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        font.pixelSize: 38
+        font.family:fontPerso.name
+        wrapMode: Text.WordWrap
+
     }
 }
 
