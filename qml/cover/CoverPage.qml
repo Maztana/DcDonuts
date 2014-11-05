@@ -32,6 +32,15 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 CoverBackground {
+
+    /*----Fond ----*/
+    Rectangle{
+        anchors.fill: parent
+        color: 'lightblue'
+        opacity: 0.6
+    }
+    /*--------------*/
+
     Image{
         source:"icon.png"
         width:sourceSize.width/3

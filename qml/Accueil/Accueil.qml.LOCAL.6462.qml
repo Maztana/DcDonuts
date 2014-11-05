@@ -3,13 +3,6 @@ import Sailfish.Silica 1.0
 
 Page{
 
-    /*----Fond ----*/
-    Rectangle{
-        anchors.fill: parent
-        color: 'lightblue'
-        opacity: 0.6
-    }
-
     SilicaFlickable{
         anchors.fill:parent
 

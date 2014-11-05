@@ -38,6 +38,8 @@ Page{
             }
         }
 
+
+
         BoutonPerso
         {
             text: qsTr("Jouer")
