@@ -32,7 +32,8 @@ OTHER_FILES += qml/dr-donut.qml \
     qml/templatesReponses/Reponse4Propositions.qml \
     qml/templatesReponses/Reponse3Propositions.qml \
     qml/templatesReponses/Reponse2Propositions.qml \
-    qml/templatesReponses/ReponseSaisie.qml
+    qml/templatesReponses/ReponseSaisie.qml \
+    qml/Accueil/Titre.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line

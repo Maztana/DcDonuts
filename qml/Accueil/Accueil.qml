@@ -3,6 +3,8 @@ import Sailfish.Silica 1.0
 
 Page{
 
+    FontLoader{ id: fontPerso; source: "../font/PWYummyDonuts.ttf" }
+
     /*----Fond ----*/
     Rectangle{
         anchors.fill: parent
@@ -11,7 +13,22 @@ Page{
     }
 
     SilicaFlickable{
+
         anchors.fill:parent
+
+        PullDownMenu{
+            MenuItem{
+                text: qsTr("A propos")
+            }
+        }
+
+        Text{
+            id: nomProfil
+            text: qsTr("JOUEUR X")
+            font.pixelSize: 28
+            anchors.top: parent.top
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
 
         IconButton {
             id: logoProfil
@@ -30,12 +47,17 @@ Page{
                 source: "../images/profils.png"
             }
 
-            Label{
+            Text{
                 text: qsTr("Profils")
                 anchors.top: parent.icon.bottom
                 anchors.horizontalCenter: parent.horizontalCenter
                 font.pixelSize: 30
             }
+        }
+
+        Titre{
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
         }
 
         BoutonPerso
@@ -61,8 +83,6 @@ Page{
                 horizontalCenter: parent.horizontalCenter
                 margins:160
             }
-
-            link: qsTr("../pages/JeuPage.qml")
         }
 
     }

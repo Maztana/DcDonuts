@@ -19,6 +19,14 @@
         <source>Options</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>A propos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>JOUEUR X</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -59,6 +67,21 @@
     <message>
         <source>Item</source>
         <translation>Element</translation>
+    </message>
+</context>
+<context>
+    <name>Titre</name>
+    <message>
+        <source>D</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>octor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>onut</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
