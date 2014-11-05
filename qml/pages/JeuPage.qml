@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../templatesReponses"
 
 
 Page {
@@ -98,67 +99,11 @@ Page {
         /*-------------------------------------------------*/
 
         /*------------------- Réponses --------------------*/
-        Row{
-            anchors.bottom: ligne2.top
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.margins: 10
-            spacing: 10
-            Rectangle{
-                id:reponse1
 
-                width: 200
-                height:100
+        Reponse2Propositions{
 
-                color: 'blue'
-
-                MouseArea{
-                    anchors.fill: parent
-                    onClicked: console.log(reponse1.x)
-                }
-
-            }
-
-            Rectangle{
-                id:reponse2
-                width: 200
-                height:100
-
-                MouseArea{
-                    anchors.fill: parent
-                    onClicked: console.log(reponse2.x)
-                }
-            }
-        }
-
-        Row{
-            id: ligne2
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: parent.bottom
-            anchors.margins: 100
-            spacing: 10
-
-            Rectangle{
-                id:reponse3
-
-                width: 200
-                height:100
-
-                MouseArea{
-                    anchors.fill: parent
-                    onClicked: console.log("uyfliyflufl")
-                }
-            }
-            Rectangle{
-                id:reponse4
-
-                width: 200
-                height:100
-
-                MouseArea{
-                    anchors.fill: parent
-                    onClicked: console.log("uyfliyflufl")
-                }
-            }
         }
 
         /*-------------------------------------------------*/

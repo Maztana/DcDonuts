@@ -40,4 +40,5 @@ Page{
 
         link: qsTr("../pages/JeuPage.qml")
     }
+
 }
