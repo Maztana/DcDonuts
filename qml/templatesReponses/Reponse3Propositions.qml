@@ -4,6 +4,10 @@ import Sailfish.Silica 1.0
 
 Item{
 
+    property alias textReponse1 : labelRep1.text
+    property alias textReponse2 : labelRep2.text
+    property alias textReponse3 : labelRep3.text
+
     anchors.horizontalCenter: parent.horizontalCenter
     width: ligne1.width
 
@@ -22,9 +26,18 @@ Item{
             width: 200
             height:100
 
+            Label{
+                id: labelRep1
+                anchors.centerIn: parent
+
+                font.bold: true
+                font.pixelSize: 60
+                color: "black"
+            }
+
             MouseArea{
                 anchors.fill: parent
-                onClicked: console.log("reponse 1")
+                onClicked: console.log(labelRep1.text)
             }
 
         }
@@ -34,9 +47,18 @@ Item{
             width: 200
             height:100
 
+            Label{
+                id: labelRep2
+                anchors.centerIn: parent
+
+                font.bold: true
+                font.pixelSize: 60
+                color: "black"
+            }
+
             MouseArea{
                 anchors.fill: parent
-                onClicked: console.log("reponse 2")
+                onClicked: console.log(labelRep2.text)
             }
         }
     }
@@ -54,9 +76,18 @@ Item{
             width: 200
             height:100
 
+            Label{
+                id: labelRep3
+                anchors.centerIn: parent
+
+                font.bold: true
+                font.pixelSize: 60
+                color: "black"
+            }
+
             MouseArea{
                 anchors.fill: parent
-                onClicked: console.log("reponse 3")
+                onClicked: console.log(labelRep3.text)
             }
         }
 

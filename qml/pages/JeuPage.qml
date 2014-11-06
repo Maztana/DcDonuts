@@ -121,6 +121,7 @@ Page {
 
         Column{
             id: panelReponse
+
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: drDonut.bottom
             width: parent.width
@@ -132,14 +133,13 @@ Page {
 
             /*Reponse4Propositions{
 
+                textReponse1: qsTr("1")
+                textReponse2: qsTr("2")
+                textReponse3: qsTr("3")
+                textReponse4: qsTr("4")
+
             }*/
         }
-
-
-
-
-
-
 
 
         /*-------------------------------------------------*/

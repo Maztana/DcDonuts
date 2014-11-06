@@ -17,6 +17,6 @@ Item{
 
         EnterKey.enabled: text.length > 0
         EnterKey.text : "OK"
-        EnterKey.onClicked: parent.focus = true
+        EnterKey.onClicked: console.log(text)
     }
 }
