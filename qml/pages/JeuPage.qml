@@ -126,19 +126,19 @@ Page {
             anchors.top: drDonut.bottom
             width: parent.width
 
-            ReponseSaisie
+            /*ReponseSaisie
             {
 
-            }
+            }*/
 
-            /*Reponse4Propositions{
+            Reponse4Propositions{
 
                 textReponse1: qsTr("1")
                 textReponse2: qsTr("2")
                 textReponse3: qsTr("3")
                 textReponse4: qsTr("4")
 
-            }*/
+            }
         }
 
 
