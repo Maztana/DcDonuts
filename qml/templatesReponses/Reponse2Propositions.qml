@@ -3,12 +3,13 @@ import Sailfish.Silica 1.0
 
 
 Item{
+    anchors.horizontalCenter: parent.horizontalCenter
+    width: ligne.width
+    anchors.top: parent.top
+    anchors.margins: 90
 
     Row{
         id: ligne
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.bottom: parent.bottom
-        anchors.margins: 110
         spacing: 20
 
         Rectangle{
