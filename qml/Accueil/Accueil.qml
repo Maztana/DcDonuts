@@ -25,15 +25,20 @@ Page{
         Text{
             id: nomProfil
             text: qsTr("JOUEUR X")
+            font.bold: true
             font.pixelSize: 28
-            anchors.top: parent.top
-            anchors.horizontalCenter: parent.horizontalCenter
+            x:50
+            anchors{
+                top: parent.top
+                margins: 50
+            }
         }
 
         IconButton {
             id: logoProfil
             smooth: true
             y:30
+            opacity: 0.3
 
             anchors{
                 right: parent.right
@@ -55,15 +60,30 @@ Page{
             }
         }
 
+
+
         Titre{
-            anchors.verticalCenter: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
+            anchors.bottom: iconDrDonut.top
+            anchors.margins: 30
+        }
+
+        Image{
+            id: iconDrDonut
+            source:"../images/drDonut.png"
+            width: sourceSize.width/2
+            height: sourceSize.height/2
+            anchors{
+                horizontalCenter: parent.horizontalCenter
+                margins:100
+                bottom: boutonJouer.top
+            }
         }
 
         BoutonPerso
         {
+            id:boutonJouer
             text: qsTr("Jouer")
-
             anchors{
                 bottom:boutonOptions.top
                 horizontalCenter: parent.horizontalCenter
@@ -83,6 +103,9 @@ Page{
                 horizontalCenter: parent.horizontalCenter
                 margins:160
             }
+
+            enable:false
+            link: qsTr("../pages/JeuPage.qml")
         }
 
     }

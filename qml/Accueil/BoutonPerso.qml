@@ -3,6 +3,8 @@ import QtQuick 2.0
 Item
 {
     property alias text : textBouton.text
+
+    property bool enable : true
     property string link
 
     FontLoader{ id: fontPerso; source: "../font/PWYummyDonuts.ttf" }
@@ -16,6 +18,8 @@ Item
             width:textBouton.width + 50
             height:textBouton.height + 45
 
+            opacity: enable ? 1 : 0.5
+
             Text
             {
                 id:textBouton
@@ -28,10 +32,16 @@ Item
             }
 
             MouseArea{
-                anchors {
-                    fill:parent
+                anchors.fill:{
+                    if(enable)
+                    {
+                        parent
+                    }
                 }
+
                 onClicked: pageStack.push(Qt.resolvedUrl(link))
             }
         }
 }
+
+
