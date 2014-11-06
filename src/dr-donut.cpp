@@ -33,6 +33,7 @@
 #endif
 
 #include <sailfishapp.h>
+#include "mainapplication.h"
 
 
 int main(int argc, char *argv[])
@@ -45,6 +46,9 @@ int main(int argc, char *argv[])
     //   - SailfishApp::pathTo(QString) to get a QUrl to a resource file
     //
     // To display the view, call "show()" (will show fullscreen on device).
+
+
+    MainApplication application;
 
     return SailfishApp::main(argc, argv);
 }

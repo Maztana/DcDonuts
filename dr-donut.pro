@@ -14,12 +14,18 @@ TARGET = dr-donut
 
 CONFIG += sailfishapp
 
-SOURCES += src/dr-donut.cpp
+SOURCES += src/dr-donut.cpp \
+    src/mainapplication.cpp \
+    src/profil.cpp \
+    src/typedejeu.cpp \
+    src/questionnaireeducatif.cpp \
+    src/calcul.cpp \
+    src/partie.cpp \
+    src/niveau.cpp \
+    src/question.cpp
 
 OTHER_FILES += qml/dr-donut.qml \
     qml/cover/CoverPage.qml \
-    qml/pages/FirstPage.qml \
-    qml/pages/SecondPage.qml \
     rpm/dr-donut.changes.in \
     rpm/dr-donut.spec \
     rpm/dr-donut.yaml \
@@ -39,4 +45,14 @@ OTHER_FILES += qml/dr-donut.qml \
 # following CONFIG line
 CONFIG += sailfishapp_i18n
 TRANSLATIONS += translations/dr-donut-de.ts
+
+HEADERS += \
+    src/mainapplication.h \
+    src/profil.h \
+    src/typedejeu.h \
+    src/questionnaireeducatif.h \
+    src/calcul.h \
+    src/partie.h \
+    src/niveau.h \
+    src/question.h
 
