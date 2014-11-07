@@ -2,6 +2,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 Page{
+    id: pageAccueil
 
     FontLoader{ id: fontPerso; source: "../font/PWYummyDonuts.ttf" }
 
@@ -19,6 +20,11 @@ Page{
         PullDownMenu{
             MenuItem{
                 text: qsTr("A propos")
+            }
+
+            MenuItem{
+                text: qsTr("Mode de jeu")
+                onClicked: pageStack.push(Qt.resolvedUrl("../pages/ChoixModeDeJeuPage.qml"))
             }
         }
 

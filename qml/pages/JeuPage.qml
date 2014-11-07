@@ -6,7 +6,7 @@ import "../templatesReponses"
 
 
 Page {
-    id: page
+    id: pageJeu
 
 
     /*----Fond ----*/
@@ -25,6 +25,7 @@ Page {
 
         PageHeader {
             title: "Joueur X"
+
             /*extraContent: Label {
                 text: "Joueur X"
                 color: "black"
@@ -34,7 +35,7 @@ Page {
 
         Label {
             id: niveau
-            text: "Niveau : Facile"
+            text: qsTr("Niveau : Facile")
             anchors.horizontalCenter: parent.horizontalCenter
             y:100
             font.family: Theme.fontFamilyHeading
