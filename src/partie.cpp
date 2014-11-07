@@ -6,7 +6,26 @@ Partie::Partie(Profil *profilJeu):
     profilActif = profilJeu;
 }
 
+Partie::~Partie()
+{
+    delete(typeJeuActif);
+    delete(niveauDeLaPartie);
+}
+
 void Partie::lancerJeu()
 {
-    typeJeuActif->lancerJeu(niveauDeLaPartie);
+    if(typeJeuActif != 0 && niveauDeLaPartie != 0)
+    {
+        typeJeuActif->lancerJeu(niveauDeLaPartie);
+    }
+}
+
+void Partie::setTypeJeu(TypeDeJeu *typeJeu)
+{
+    typeJeuActif = typeJeu;
+}
+
+void Partie::setNiveauDeLaPartie(Niveau *niveauPartie)
+{
+    niveauDeLaPartie = niveauPartie;
 }

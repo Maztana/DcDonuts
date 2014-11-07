@@ -50,6 +50,11 @@ int main(int argc, char *argv[])
 
     MainApplication application;
 
+    //test
+    //application.lancerPartie();
+    //application.getPartie()->lancerJeu();
+
+    //
     return SailfishApp::main(argc, argv);
 }
 

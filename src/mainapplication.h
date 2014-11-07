@@ -13,6 +13,11 @@ class MainApplication : public QObject
 
 public:
     explicit MainApplication(QObject *parent = 0);
+    ~MainApplication();
+
+    //test
+    inline Partie* getPartie(){return partieEnCours;}
+    //
 
 signals:
 
@@ -20,7 +25,6 @@ public slots:
     void lancerPartie();
     void creerProfils(QString nom, QDate* date);
     void changerProfilActif(Profil *newProfilActif);
-    void changerLangue();
 
 };
 
