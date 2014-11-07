@@ -22,7 +22,11 @@ SOURCES += src/dr-donut.cpp \
     src/calcul.cpp \
     src/partie.cpp \
     src/niveau.cpp \
-    src/question.cpp
+    src/question.cpp \
+    src/addition.cpp \
+    src/soustraction.cpp \
+    src/multiplication.cpp \
+    src/division.cpp
 
 OTHER_FILES += qml/dr-donut.qml \
     qml/cover/CoverPage.qml \
@@ -55,5 +59,9 @@ HEADERS += \
     src/calcul.h \
     src/partie.h \
     src/niveau.h \
-    src/question.h
+    src/question.h \
+    src/addition.h \
+    src/soustraction.h \
+    src/multiplication.h \
+    src/division.h
 

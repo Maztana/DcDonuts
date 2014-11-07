@@ -14,12 +14,13 @@ private:
     Niveau *niveauDeLaPartie;
 
 public:
-    Partie(Profil *profil);
+    explicit Partie(Profil *profil);
+    ~Partie();
 
 
 private:
     void setTypeJeu(TypeDeJeu *typeJeu);
-    void setNiveauDeLaPartie(Niveau *niveauDeLaPartie);
+    void setNiveauDeLaPartie(Niveau *niveauPartie);
 
 signals:
 

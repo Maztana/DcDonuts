@@ -13,6 +13,7 @@ class Profil : public QObject
 
 public:
     explicit Profil(QString nom, QDate *dateDeNaissance);
+    ~Profil();
 
     QString getNom();
     QDate* getDateDeNaissance();

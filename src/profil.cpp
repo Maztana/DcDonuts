@@ -5,6 +5,11 @@ Profil::Profil(QString nom, QDate *dateDeNaissance) :
 {
 }
 
+Profil::~Profil()
+{
+    delete(dateDeNaissance);
+}
+
 QString Profil::getNom()
 {
     return nom;

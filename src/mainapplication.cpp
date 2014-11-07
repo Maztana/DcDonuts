@@ -3,8 +3,17 @@
 MainApplication::MainApplication(QObject *parent) :
     QObject(parent)
 {
-    creerProfils("Bamboula",  new QDate(1993, 10, 30));
+    creerProfils("Joueur G",  new QDate(1993, 10, 30));
     changerProfilActif(profils.first());
+}
+
+MainApplication::~MainApplication()
+{
+    qDeleteAll(profils);
+    if(partieEnCours != 0)
+    {
+        delete(partieEnCours);
+    }
 }
 
 void MainApplication::lancerPartie()
@@ -12,9 +21,13 @@ void MainApplication::lancerPartie()
     if(profilActif != 0)
     {
         // OUVRIR QML CHOIX TYPE JEU
+
+        //test
+        partieEnCours = new Partie(profilActif);
     }
     else {
-        // NE RIEN FAIRE
+        // ERREUR BESOIN DE SELECTION JOUEUR
+        // OUVRIR SELECTION JOUEUR
     }
 }
 
@@ -27,9 +40,4 @@ void MainApplication::creerProfils(QString nom, QDate *date)
 void MainApplication::changerProfilActif(Profil *newProfilActif)
 {
     profilActif = newProfilActif;
-}
-
-void MainApplication::changerLangue()
-{
-    //PAS D'IMPLEMENTATION
 }
