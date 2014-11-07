@@ -8,17 +8,25 @@ class QuestionnaireEducatif : public TypeDeJeu
 {
     Q_OBJECT
 
-    QList<Question> questionsDonnees;
+    QList<Question*> questionsDonnees;
+    Question* questionCourante;
 
 public:
     explicit QuestionnaireEducatif();
+    ~QuestionnaireEducatif();
 
     virtual Question* getQuestion() = 0;
 
+protected:
+    virtual void defNiveau() = 0;
+    static QString MODE_JEU;
+
 signals:
+    void envoiQuestion(Question*);
 
 public slots:
     void lancerJeu(Niveau *niveauDuJeu);
+    void lancerQuestion();
 
 };
 

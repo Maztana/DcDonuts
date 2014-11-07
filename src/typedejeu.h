@@ -10,12 +10,14 @@ class TypeDeJeu : public QObject
 
 public:
     explicit TypeDeJeu();
+    ~TypeDeJeu();
 
 protected:
     Niveau *niveauDuJeu;
 
 protected:
     void setNiveau(Niveau *newNiveau);
+    virtual void defNiveau() = 0;
 
 signals:
 
