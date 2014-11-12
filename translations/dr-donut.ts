@@ -23,6 +23,14 @@
         <source>A propos</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>JOUEUR X</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mode de jeu</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChoixModeDeJeuPage</name>
