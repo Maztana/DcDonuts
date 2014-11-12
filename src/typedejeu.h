@@ -12,10 +12,12 @@ public:
     explicit TypeDeJeu();
     ~TypeDeJeu();
 
+public:
+    const Niveau& getNiveau();
+
 protected:
     Niveau *niveauDuJeu;
 
-protected:
     void setNiveau(Niveau *newNiveau);
     virtual void defNiveau() = 0;
 

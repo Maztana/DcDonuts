@@ -14,3 +14,13 @@ Calcul::~Calcul()
 {
 
 }
+
+int Calcul::getNbMax()
+{
+    return NB_MAX;
+}
+
+int Calcul::getNbMin()
+{
+    return NB_MIN;
+}

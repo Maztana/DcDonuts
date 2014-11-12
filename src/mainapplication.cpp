@@ -20,10 +20,9 @@ void MainApplication::lancerPartie()
 {
     if(profilActif != 0)
     {
-        // OUVRIR QML CHOIX TYPE JEU
-
-        //test
         partieEnCours = new Partie(profilActif);
+
+        // OUVRIR QML CHOIX TYPE JEU
     }
     else {
         // ERREUR BESOIN DE SELECTION JOUEUR

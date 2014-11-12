@@ -16,6 +16,11 @@ QuestionnaireEducatif::~QuestionnaireEducatif()
     }
 }
 
+const QString& QuestionnaireEducatif::getModeJeu()
+{
+    return MODE_JEU;
+}
+
 void QuestionnaireEducatif::lancerJeu(Niveau *niveauDuJeu)
 {
     setNiveau(niveauDuJeu);
