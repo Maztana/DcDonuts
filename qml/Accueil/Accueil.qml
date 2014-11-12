@@ -2,6 +2,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 Page{
+    id: pageAccueil
 
     FontLoader{ id: fontPerso; source: "../font/PWYummyDonuts.ttf" }
 
@@ -19,6 +20,11 @@ Page{
         PullDownMenu{
             MenuItem{
                 text: qsTr("A propos")
+            }
+
+            MenuItem{
+                text: qsTr("Mode de jeu")
+                onClicked: pageStack.push(Qt.resolvedUrl("../pages/ChoixModeDeJeuPage.qml"))
             }
         }
 
@@ -108,5 +114,20 @@ Page{
             link: qsTr("../pages/JeuPage.qml")
         }
 
+    }
+
+    Rectangle {
+        width: animation.width; height: animation.height + 8
+
+        AnimatedImage { id: animation; source: "../images/animatedimageitem.gif"}
+
+        Rectangle {
+            property int frames: animation.frameCount
+
+            width: 4; height: 8
+            x: (animation.width - width) * animation.currentFrame / frames
+            y: animation.height
+            color: "red"
+        }
     }
 }

@@ -7,6 +7,9 @@ Item
     property bool enable : true
     property string link
 
+    width: fond.width
+    height: fond.height
+
     FontLoader{ id: fontPerso; source: "../font/PWYummyDonuts.ttf" }
 
         Image
