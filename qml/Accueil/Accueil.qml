@@ -10,7 +10,7 @@ Page{
     Rectangle{
         anchors.fill: parent
         color: 'lightblue'
-        opacity: 0.9
+        opacity: 0.6
     }
 
     SilicaFlickable{
@@ -21,11 +21,12 @@ Page{
             MenuItem{
                 text: qsTr("A propos")
             }
-
+            /*
             MenuItem{
                 text: qsTr("Mode de jeu")
                 onClicked: pageStack.push(Qt.resolvedUrl("../pages/ChoixModeDeJeuPage.qml"))
             }
+            */
         }
 
         Text{
@@ -81,7 +82,7 @@ Page{
             height: sourceSize.height/2
             anchors{
                 horizontalCenter: parent.horizontalCenter
-                margins:100
+                margins:60
                 bottom: boutonJouer.top
             }
         }
@@ -93,7 +94,7 @@ Page{
             anchors{
                 bottom:boutonOptions.top
                 horizontalCenter: parent.horizontalCenter
-                margins:130
+                margins:60
             }
 
             link: qsTr("../pages/JeuPage.qml")
@@ -107,7 +108,7 @@ Page{
             anchors{
                 bottom:parent.bottom
                 horizontalCenter: parent.horizontalCenter
-                margins:160
+                margins:130
             }
 
             enable:false
