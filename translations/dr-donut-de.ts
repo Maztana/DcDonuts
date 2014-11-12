@@ -68,13 +68,10 @@
 <context>
     <name>JeuPage</name>
     <message>
-<<<<<<< HEAD
         <source>Niveau : Facile</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-=======
->>>>>>> 187341fa7cde9e425dba53970e955cb7a8b3d475
         <source>1</source>
         <translation type="unfinished"></translation>
     </message>

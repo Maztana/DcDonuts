@@ -81,7 +81,7 @@ Page{
             height: sourceSize.height/2
             anchors{
                 horizontalCenter: parent.horizontalCenter
-                margins:100
+                margins:60
                 bottom: boutonJouer.top
             }
         }
@@ -93,7 +93,7 @@ Page{
             anchors{
                 bottom:boutonOptions.top
                 horizontalCenter: parent.horizontalCenter
-                margins:130
+                margins:60
             }
 
             link: qsTr("../pages/JeuPage.qml")
@@ -107,7 +107,7 @@ Page{
             anchors{
                 bottom:parent.bottom
                 horizontalCenter: parent.horizontalCenter
-                margins:160
+                margins:130
             }
 
             enable:false
