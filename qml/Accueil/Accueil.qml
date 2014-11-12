@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import dr.donut 1.0
 
 Page{
     id: pageAccueil
@@ -13,6 +14,14 @@ Page{
         opacity: 0.6
     }
 
+    MainApplication {
+        id: main_application
+/*        onRunPartieChanged: {
+            console.log("ca marche jusqu'a l'appel")
+            //main_application.lancerPartie()
+        }*/
+    }
+
     SilicaFlickable{
 
         anchors.fill:parent
@@ -21,16 +30,17 @@ Page{
             MenuItem{
                 text: qsTr("A propos")
             }
-
+            /*
             MenuItem{
                 text: qsTr("Mode de jeu")
                 onClicked: pageStack.push(Qt.resolvedUrl("../pages/ChoixModeDeJeuPage.qml"))
             }
+            */
         }
 
         Text{
             id: nomProfil
-            text: qsTr("JOUEUR X")
+            text: main_application.nameProfil
             font.bold: true
             font.pixelSize: 28
             x:50
@@ -96,7 +106,7 @@ Page{
                 margins:60
             }
 
-            link: qsTr("../pages/JeuPage.qml")
+            link: "../pages/JeuPage.qml"
         }
 
         BoutonPerso
@@ -111,9 +121,8 @@ Page{
             }
 
             enable:false
-            link: qsTr("../pages/JeuPage.qml")
+            link: "../pages/JeuPage.qml"
         }
-
     }
 
     Rectangle {

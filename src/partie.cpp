@@ -1,9 +1,10 @@
 #include "partie.h"
 
-Partie::Partie(Profil *profilJeu):
+Partie::Partie():
     QObject(0)
 {
-    profilActif = profilJeu;
+    // Implémentation incorecte du niveau
+    setNiveauDeLaPartie(new Niveau());
 }
 
 Partie::~Partie()
@@ -18,6 +19,21 @@ void Partie::lancerJeu()
     {
         typeJeuActif->lancerJeu(niveauDeLaPartie);
     }
+}
+
+void Partie::setProfilPartie(Profil *profilJeu)
+{
+    profilActif = profilJeu;
+}
+
+const Profil* Partie::getProfilActif()const
+{
+    return profilActif;
+}
+
+const Niveau* Partie::getNiveauDeLaPartie()const
+{
+    return niveauDeLaPartie;
 }
 
 void Partie::setTypeJeu(TypeDeJeu *typeJeu)

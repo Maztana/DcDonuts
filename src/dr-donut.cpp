@@ -32,12 +32,27 @@
 #include <QtQuick>
 #endif
 
+#include <QGuiApplication>
+#include <QQuickView>
+#include <QtQml>
+
 #include <sailfishapp.h>
 #include "mainapplication.h"
 
 
 int main(int argc, char *argv[])
 {
+
+    QGuiApplication *q_application = SailfishApp::application( argc, argv);
+    QQuickView *q_view = SailfishApp::createView();
+
+    qmlRegisterType<MainApplication>( "dr.donut", 1,0, "MainApplication");
+
+    q_view->setSource(SailfishApp::pathTo( "qml/dr-donut.qml"));
+    q_view->showFullScreen();
+
+    return q_application->exec();
+
     // SailfishApp::main() will display "qml/template.qml", if you need more
     // control over initialization, you can use:
     //
@@ -47,14 +62,6 @@ int main(int argc, char *argv[])
     //
     // To display the view, call "show()" (will show fullscreen on device).
 
-
-    MainApplication application;
-
-    //test
-    //application.lancerPartie();
-    //application.getPartie()->lancerJeu();
-
-    //
-    return SailfishApp::main(argc, argv);
+    // return SailfishApp::main(argc, argv);
 }
 

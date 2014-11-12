@@ -23,14 +23,6 @@
         <source>A propos</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>JOUEUR X</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mode de jeu</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>ChoixModeDeJeuPage</name>
@@ -46,10 +38,6 @@
 <context>
     <name>JeuPage</name>
     <message>
-        <source>Niveau : Facile</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -63,6 +51,10 @@
     </message>
     <message>
         <source>4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Niveau : </source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -15,8 +15,8 @@ public:
     explicit Profil(QString nom, QDate *dateDeNaissance);
     ~Profil();
 
-    QString getNom();
-    QDate* getDateDeNaissance();
+    const QString getNom()const;
+    const QDate* getDateDeNaissance()const;
 
 signals:
 

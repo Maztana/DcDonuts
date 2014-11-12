@@ -10,6 +10,11 @@ TypeDeJeu::~TypeDeJeu()
     delete(niveauDuJeu);
 }
 
+const Niveau& TypeDeJeu::getNiveau()
+{
+    return *niveauDuJeu;
+}
+
 void TypeDeJeu::setNiveau(Niveau *newNiveau)
 {
     niveauDuJeu = newNiveau;

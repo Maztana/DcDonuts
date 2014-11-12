@@ -7,8 +7,12 @@ class Niveau : public QObject
 {
     Q_OBJECT
 
+    QString name;
+
 public:
     explicit Niveau();
+
+    const QString& getName()const;
 
 signals:
 

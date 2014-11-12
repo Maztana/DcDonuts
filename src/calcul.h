@@ -11,6 +11,8 @@ public:
     ~Calcul();
 
     virtual Question* getQuestion() = 0;
+    int getNbMax();
+    int getNbMin();
 
 protected:
     static int NB_MIN;

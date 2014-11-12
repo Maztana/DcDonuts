@@ -5,6 +5,7 @@ import "../Accueil"
 Page {
     SilicaFlickable {
         anchors.fill: parent
+
         contentHeight: column.height
 
         VerticalScrollDecorator {}
@@ -19,14 +20,18 @@ Page {
             }
 
             Row {
-                id: iconButtons
+              id: iconButtons
+                spacing: Theme.paddingLarge
                 anchors.horizontalCenter: parent.horizontalCenter
+                anchors.top : parent.top
+                anchors.margins: 180
 
-                BoutonPerso{
+               BoutonPerso{
 
                     text:qsTr("Calcul")
 
                 }
+
 
               /* IconButton {
                     icon.source: "image://theme/icon-l-clear"

@@ -16,6 +16,7 @@ public:
     ~QuestionnaireEducatif();
 
     virtual Question* getQuestion() = 0;
+    const QString& getModeJeu();
 
 protected:
     virtual void defNiveau() = 0;
