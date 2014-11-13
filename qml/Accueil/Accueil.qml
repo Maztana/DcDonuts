@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../Components"
 
 Page{
     id: pageAccueil
@@ -21,12 +22,6 @@ Page{
             MenuItem{
                 text: qsTr("A propos")
             }
-            /*
-            MenuItem{
-                text: qsTr("Mode de jeu")
-                onClicked: pageStack.push(Qt.resolvedUrl("../pages/ChoixModeDeJeuPage.qml"))
-            }
-            */
         }
 
         Text{
@@ -67,8 +62,6 @@ Page{
             }
         }
 
-
-
         Titre{
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: iconDrDonut.top
@@ -97,7 +90,7 @@ Page{
                 margins:60
             }
 
-            link: qsTr("../pages/JeuPage.qml")
+            link: "../pages/ChoixModeDeJeuPage.qml"
         }
 
         BoutonPerso
@@ -108,11 +101,11 @@ Page{
             anchors{
                 bottom:parent.bottom
                 horizontalCenter: parent.horizontalCenter
-                margins:130
+                margins:115
             }
 
             enable:false
-            link: qsTr("../pages/JeuPage.qml")
+            link: "../pages/JeuPage.qml"
         }
 
     }
@@ -120,7 +113,7 @@ Page{
     Rectangle {
         width: animation.width; height: animation.height + 8
 
-        AnimatedImage { id: animation; source: "../images/animatedimageitem.gif"}
+        AnimatedImage { id: animation; source: "../images/donuts.gif" }
 
         Rectangle {
             property int frames: animation.frameCount

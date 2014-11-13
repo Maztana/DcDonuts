@@ -39,7 +39,6 @@ Page {
             anchors.horizontalCenter: parent.horizontalCenter
             y:100
             font.family: Theme.fontFamilyHeading
-
         }
 
         /* --------------------- Question --------------------- */
@@ -54,6 +53,8 @@ Page {
                 top: niveau.bottom
                 margins:20
             }
+
+            Component.onCompleted: question.text = "bla"
 
             Text {
                 id: question
@@ -144,7 +145,6 @@ Page {
 
 
         /*-------------------------------------------------*/
-
     }
 
 

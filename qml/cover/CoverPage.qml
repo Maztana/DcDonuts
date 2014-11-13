@@ -45,7 +45,7 @@ CoverBackground {
 
     Image{
         id: imgDrDonut
-        source:"icon.png"
+        source:"../images/drDonut.png"
         width:sourceSize.width/3
         height:sourceSize.height/3
         anchors.centerIn: parent

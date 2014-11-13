@@ -27,6 +27,6 @@ Question* Division::getQuestion()
 
 void Division::defNiveau()
 {
-    NB_MIN = 1;
+    NB_MIN = 0;
     NB_MAX = 9;
 }
