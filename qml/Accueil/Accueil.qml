@@ -34,12 +34,6 @@ Page{
                 text: qsTr("A propos")
                 onClicked: console.log("le click marche")
             }
-            /*
-            MenuItem{
-                text: qsTr("Mode de jeu")
-                onClicked: pageStack.push(Qt.resolvedUrl("../pages/ChoixModeDeJeuPage.qml"))
-            }
-            */
         }
 
         Text{

@@ -6,6 +6,7 @@ Item
 
     property bool enable : true
     property string link
+    property bool value
 
     width: fond.width
     height: fond.height
@@ -42,7 +43,11 @@ Item
                 }
             }
 
-            onClicked: pageStack.push(Qt.resolvedUrl(link))
+            onClicked:{
+                pageStack.push(Qt.resolvedUrl(link))
+                //value = true
+                //console.log("ca marche apres le changement de valeur")
+            }
             onPressed: {
                 fond.opacity = 0.8
             }

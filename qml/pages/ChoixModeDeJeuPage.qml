@@ -39,15 +39,16 @@ Page {
                         id: btCalcul
                         text:qsTr("Calcul")
                         link: "../pages/JeuPage.qml"
+                        z:100
                     }
 
 
                     Row
                     {
                         id: rowCalculOperations
-                        anchors.top: btCalcul.bottom
+                        y: btCalcul.y + btCalcul.height-5
                         width: parent.width
-                        height: 50
+                        height: 55
 
                         BoutonSigne{
                             width: parent.width/4
@@ -84,7 +85,7 @@ Page {
 
                 BoutonPerso{
                     text:qsTr("Denombrement")
-                    enable:true
+                    enable:false
                     link: "../pages/JeuPage.qml"
                 }
             }
@@ -95,7 +96,7 @@ Page {
 
                 BoutonPerso{
                     text:qsTr("Couleur")
-                    enable:true
+                    enable:false
                     link: "../pages/JeuPage.qml"
                 }
             }
@@ -106,7 +107,7 @@ Page {
 
                 BoutonPerso{
                     text:qsTr("Mele")
-                    enable:true
+                    enable:false
                     link: "../pages/JeuPage.qml"
                 }
             }
