@@ -3,7 +3,8 @@ import QtQuick 2.0
 
 Page{
     Rectangle{
-        anchors.fill: parent
+        width: Screen.width
+        height: Screen.height
         color: 'lightblue'
         opacity: 0.9
     }

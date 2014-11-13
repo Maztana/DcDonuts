@@ -68,3 +68,6 @@ HEADERS += \
     src/multiplication.h \
     src/division.h
 
+RESOURCES += \
+    resources.qrc
+
