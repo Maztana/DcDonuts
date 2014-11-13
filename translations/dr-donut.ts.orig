@@ -23,36 +23,16 @@
         <source>A propos</source>
         <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>ChoixDifficulteePage</name>
+<<<<<<< HEAD
     <message>
-        <source>Facile</source>
+        <source>JOUEUR X</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Moyen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Difficile</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Automatique</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Difficult��e</source>
-        <translation type="unfinished"></translation>
-    </message>
+=======
+>>>>>>> 2431019d1d94cd7d3cbcd172223b139a4927018c
 </context>
 <context>
     <name>ChoixModeDeJeuPage</name>
-    <message>
-        <source>Mode de Jeu</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Calcul</source>
         <translation type="unfinished"></translation>
@@ -67,6 +47,10 @@
     </message>
     <message>
         <source>Mele</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mode de Jeu</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

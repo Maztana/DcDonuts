@@ -2,19 +2,11 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import dr.donut 1.0
 import "../templatesReponses"
+import "../Components"
 
 
-Page {
+PageCustom {
     id: pageJeu
-
-
-    /*----Fond ----*/
-    Rectangle{
-        anchors.fill: parent
-        color: 'lightblue'
-        opacity: 0.9
-    }
-    /*--------------*/
 
     MainApplication {
         id: main

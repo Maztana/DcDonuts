@@ -45,7 +45,9 @@ OTHER_FILES += qml/dr-donut.qml \
     qml/Accueil/Titre.qml \
     qml/pages/ChoixModeDeJeuPage.qml \
     qml/Components/BoutonPerso.qml \
-    qml/Components/BoutonSigne.qml
+    qml/Components/BoutonSigne.qml \
+    qml/Components/PageCustom.qml \
+    qml/pages/ChoixDifficulteePage.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line

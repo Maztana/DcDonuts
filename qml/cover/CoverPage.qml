@@ -30,6 +30,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../Components"
 
 CoverBackground {
 
@@ -41,6 +42,7 @@ CoverBackground {
         color: 'lightblue'
         opacity: 0.6
     }
+
     /*--------------*/
 
     Image{
@@ -53,13 +55,11 @@ CoverBackground {
 
     Label{
         anchors.margins: 20
-        text: "DR DONUT"
+        text: "dr donut"
         anchors.top: imgDrDonut.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         font.pixelSize: 38
         font.family:fontPerso.name
-        wrapMode: Text.WordWrap
-
     }
 }
 

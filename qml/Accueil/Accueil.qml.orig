@@ -1,12 +1,22 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import dr.donut 1.0
+<<<<<<< HEAD
 import "../Components"
+=======
+import dr.donut 1.0
+>>>>>>> 2431019d1d94cd7d3cbcd172223b139a4927018c
 
-PageCustom{
+Page{
     id: pageAccueil
 
     FontLoader{ id: fontPerso; source: "../font/PWYummyDonuts.ttf" }
+
+    /*----Fond ----*/
+    Rectangle{
+        anchors.fill: parent
+        color: 'lightblue'
+        opacity: 0.6
+    }
 
     MainApplication {
         id: main_application
@@ -67,8 +77,6 @@ PageCustom{
             }
         }
 
-
-
         Titre{
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: iconDrDonut.top
@@ -97,8 +105,12 @@ PageCustom{
                 margins:60
             }
 
-            value : main_application.runPartie
+<<<<<<< HEAD
             link: "../pages/ChoixModeDeJeuPage.qml"
+=======
+            value : main_application.runPartie
+            link: "../pages/JeuPage.qml"
+>>>>>>> 2431019d1d94cd7d3cbcd172223b139a4927018c
         }
 
         BoutonPerso
@@ -109,20 +121,31 @@ PageCustom{
             anchors{
                 bottom:parent.bottom
                 horizontalCenter: parent.horizontalCenter
-                margins:130
+                margins:115
             }
 
             enable:false
             link: "../pages/JeuPage.qml"
+<<<<<<< HEAD
+=======
             value: main_application.runPartie
+>>>>>>> 2431019d1d94cd7d3cbcd172223b139a4927018c
         }
 
     }
 
     Rectangle {
-        width: animation.width
-        height: animation.height
+        width: animation.width; height: animation.height + 8
 
-        AnimatedImage { id: animation; source: "../images/animatedimageitem.gif"}
+        AnimatedImage { id: animation; source: "../images/donuts.gif" }
+
+        Rectangle {
+            property int frames: animation.frameCount
+
+            width: 4; height: 8
+            x: (animation.width - width) * animation.currentFrame / frames
+            y: animation.height
+            color: "red"
+        }
     }
 }
