@@ -1,5 +1,6 @@
 #include "questionnaireeducatif.h"
 #include <QTextStream>
+#include "mainapplication.h"
 
 QString QuestionnaireEducatif::MODE_JEU = "";
 
@@ -7,6 +8,8 @@ QString QuestionnaireEducatif::MODE_JEU = "";
 QuestionnaireEducatif::QuestionnaireEducatif(Niveau* niveauDuJeu):
     TypeDeJeu(niveauDuJeu)
 {
+    connect(this, SIGNAL(finishTraitResponse()), this, SLOT(lancerQuestion()));
+    connect(this, SIGNAL(newQuestion()), MainApplication::q_application, SLOT(updateQuestion()));
 }
 
 QuestionnaireEducatif::~QuestionnaireEducatif()
@@ -51,10 +54,7 @@ void QuestionnaireEducatif::lancerQuestion()
     questionCourante = this->getQuestion();
     questionsDonnees.append(questionCourante);
 
-    //EMIT
-    //envoiQuestion(questionCourante);
-    // Envoi de la question vers l'interface //
-    // TODO
+    emit newQuestion();
 }
 
 void QuestionnaireEducatif::traitResponse(QString response)
@@ -84,5 +84,5 @@ void QuestionnaireEducatif::traitResponse(QString response)
     //add stat question
 
     QTextStream(stdout) << "changement question" << endl;
-    lancerQuestion();
+    emit finishTraitResponse();
 }

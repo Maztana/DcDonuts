@@ -5,11 +5,13 @@
 #include <QTextStream>
 
 QQuickView* MainApplication::q_view = NULL;
+QGuiApplication* MainApplication::q_application = NULL;
 
-MainApplication::MainApplication(QQuickView *q_view) :
+MainApplication::MainApplication(QGuiApplication *q_application, QQuickView *q_view) :
     QObject(0)
 {
     this->q_view = q_view;
+    this->q_application = q_application;
     //QObject::connect(this, SIGNAL(play()), this, SLOT(lancerPartie()));
 
     //Profil par defaut

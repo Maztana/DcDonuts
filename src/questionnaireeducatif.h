@@ -33,7 +33,8 @@ protected:
     static QString MODE_JEU;
 
 signals:
-    void envoiQuestion(Question*);
+    void finishTraitResponse();
+    void newQuestion();
 
 public slots:
     void lancerJeu();

@@ -116,6 +116,7 @@ PageCustom {
             }*/
 
             Reponse4Propositions{
+                id: responses
 
                 textReponse1: questionnaireEducatif.result
                 textReponse2: questionnaireEducatif.proposition
@@ -129,7 +130,13 @@ PageCustom {
         /*-------------------------------------------------*/
     }
 
-
+    function updateQuestion() {
+        question.text = questionnaireEducatif.question + " ?";
+        responses.textReponse1 = questionnaireEducatif.result;
+        responses.textReponse2 = questionnaireEducatif.proposition;
+        responses.textReponse3 = questionnaireEducatif.proposition;
+        responses.textReponse4 = questionnaireEducatif.proposition;
+    }
 
 }
 
