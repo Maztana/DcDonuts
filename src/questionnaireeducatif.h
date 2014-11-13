@@ -8,7 +8,7 @@ class QuestionnaireEducatif : public TypeDeJeu
 {
     Q_OBJECT
 
-    Q_PROPERTY(QString question READ getQuestion)
+    Q_PROPERTY(QString question READ getLibelleQuestion)
     Q_PROPERTY(QString result READ getResultQuestion)
     Q_PROPERTY(QString proposition READ getPropositionQuestion)
 
@@ -38,7 +38,7 @@ signals:
 public slots:
     void lancerJeu();
     void lancerQuestion();
-    void verifyResponse(QString response);
+    void traitResponse(QString response);
 
 };
 

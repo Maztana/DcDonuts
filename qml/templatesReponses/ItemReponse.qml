@@ -21,7 +21,7 @@ Item {
         anchors.fill: parent
         onClicked: {
             console.log(labelRep.text)
-            questionnaireEducatif.verifyResponse(labelRep.text)
+            questionnaireEducatif.traitResponse(labelRep.text)
         }
     }
 }

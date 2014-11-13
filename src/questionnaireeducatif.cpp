@@ -57,8 +57,32 @@ void QuestionnaireEducatif::lancerQuestion()
     // TODO
 }
 
-void QuestionnaireEducatif::verifyResponse(QString response)
+void QuestionnaireEducatif::traitResponse(QString response)
 {
     //TODO
-    QTextStream(stdout) << "l'appel marche" << endl;
+    int result = questionCourante->getResult();
+
+    if(response.toInt() == result)
+    {
+        //Réponse correcte
+        QTextStream(stdout) << "reponse juste " << result << endl;
+
+        //mise en vert de la réponse
+        //add point au profil
+    }
+    else
+    {
+        //Réponse fausse
+
+        //mise en rouge de la réponse choisi
+        QTextStream(stdout) << "reponse fausse " << response << endl;
+
+        //mise en vert de la réponse vrai
+        QTextStream(stdout) << "reponse vrai " << result << endl;
+    }
+
+    //add stat question
+
+    QTextStream(stdout) << "changement question" << endl;
+    lancerQuestion();
 }
