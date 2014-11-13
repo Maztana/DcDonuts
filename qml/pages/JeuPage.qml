@@ -1,8 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import dr.donut 1.0
 import "../templatesReponses"
-
-
 
 
 Page {
@@ -17,6 +16,10 @@ Page {
     }
     /*--------------*/
 
+    MainApplication {
+        id: main
+    }
+
 
     SilicaFlickable {
         anchors.fill: parent
@@ -24,18 +27,12 @@ Page {
         VerticalScrollDecorator {}
 
         PageHeader {
-            title: "Joueur X"
-
-            /*extraContent: Label {
-                text: "Joueur X"
-                color: "black"
-            }*/
-
+            title: main.nameProfil
         }
 
         Label {
             id: niveau
-            text: qsTr("Niveau : Facile")
+            text: qsTr("Niveau : ") + main.niveau
             anchors.horizontalCenter: parent.horizontalCenter
             y:100
             font.family: Theme.fontFamilyHeading

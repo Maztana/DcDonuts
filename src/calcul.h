@@ -7,7 +7,7 @@ class Calcul : public QuestionnaireEducatif
 {
     Q_OBJECT
 public:
-    explicit Calcul();
+    explicit Calcul(Niveau* niveauDuJeu);
     ~Calcul();
 
     virtual Question* getQuestion() = 0;

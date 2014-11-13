@@ -10,12 +10,12 @@ Profil::~Profil()
     delete(dateDeNaissance);
 }
 
-QString Profil::getNom()
+const QString Profil::getNom() const
 {
     return nom;
 }
 
-QDate* Profil::getDateDeNaissance()
+const QDate* Profil::getDateDeNaissance()const
 {
     return dateDeNaissance;
 }

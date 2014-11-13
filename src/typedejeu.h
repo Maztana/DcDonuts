@@ -9,7 +9,7 @@ class TypeDeJeu : public QObject
     Q_OBJECT
 
 public:
-    explicit TypeDeJeu();
+    explicit TypeDeJeu(Niveau* niveauDuJeu);
     ~TypeDeJeu();
 
 public:

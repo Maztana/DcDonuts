@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import dr.donut 1.0
 import "../Components"
 
 Page{
@@ -14,6 +15,16 @@ Page{
         opacity: 0.6
     }
 
+    MainApplication {
+        id: main_application
+        /*
+        onRunPartieChanged: {
+            console.log("ca marche jusqu'a l'appel")
+            //main_application.lancerPartie()
+        }
+        */
+    }
+
     SilicaFlickable{
 
         anchors.fill:parent
@@ -21,12 +32,19 @@ Page{
         PullDownMenu{
             MenuItem{
                 text: qsTr("A propos")
+                onClicked: console.log("le click marche")
             }
+            /*
+            MenuItem{
+                text: qsTr("Mode de jeu")
+                onClicked: pageStack.push(Qt.resolvedUrl("../pages/ChoixModeDeJeuPage.qml"))
+            }
+            */
         }
 
         Text{
             id: nomProfil
-            text: qsTr("JOUEUR X")
+            text: main_application.nameProfil
             font.bold: true
             font.pixelSize: 28
             x:50
@@ -62,6 +80,8 @@ Page{
             }
         }
 
+
+
         Titre{
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: iconDrDonut.top
@@ -90,6 +110,7 @@ Page{
                 margins:60
             }
 
+            value : main_application.runPartie
             link: "../pages/ChoixModeDeJeuPage.qml"
         }
 
@@ -101,11 +122,12 @@ Page{
             anchors{
                 bottom:parent.bottom
                 horizontalCenter: parent.horizontalCenter
-                margins:115
+                margins:130
             }
 
             enable:false
             link: "../pages/JeuPage.qml"
+            value: main_application.runPartie
         }
 
     }
@@ -113,7 +135,7 @@ Page{
     Rectangle {
         width: animation.width; height: animation.height + 8
 
-        AnimatedImage { id: animation; source: "../images/donuts.gif" }
+        AnimatedImage { id: animation; source: "../images/animatedimageitem.gif"}
 
         Rectangle {
             property int frames: animation.frameCount

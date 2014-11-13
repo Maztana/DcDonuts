@@ -1,6 +1,7 @@
 #include "multiplication.h"
 
-Multiplication::Multiplication()
+Multiplication::Multiplication(Niveau* niveauDuJeu):
+    Calcul(niveauDuJeu)
 {
     MODE_JEU = "MULTIPLICATION";
 }

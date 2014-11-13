@@ -27,10 +27,18 @@
         <source>JOUEUR X</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Mode de jeu</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChoixModeDeJeuPage</name>
     <message>
+        <source>Mode de Jeu</source>
+        <translation type="unfinished"></translation>
+    </message>
+	<message>
         <source>Calcul</source>
         <translation type="unfinished"></translation>
     </message>

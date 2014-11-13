@@ -14,9 +14,13 @@ private:
     Niveau *niveauDeLaPartie;
 
 public:
-    explicit Partie(Profil *profil);
+    explicit Partie();
     ~Partie();
 
+    void setProfilPartie(Profil *profilJeu);
+
+    const Profil* getProfilActif()const;
+    const Niveau* getNiveauDeLaPartie()const;
 
 private:
     void setTypeJeu(TypeDeJeu *typeJeu);
