@@ -5,6 +5,12 @@ import "../Components"
 PageCustom{
     id: pageAccueil
 
+    AnimatedImage {
+        id: animation
+        anchors.fill:parent
+        source: "qrc:///qml/images/donuts.gif"
+    }
+
     FontLoader{ id: fontPerso; source: "../font/PWYummyDonuts.ttf" }
 
     SilicaFlickable{
@@ -103,12 +109,5 @@ PageCustom{
             link: "../pages/JeuPage.qml"
         }
 
-    }
-
-    Rectangle {
-        width: animation.width
-        height: animation.height
-
-        AnimatedImage { id: animation; source: "../images/animatedimageitem.gif"}
     }
 }
