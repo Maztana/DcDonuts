@@ -1,6 +1,5 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import dr.donut 1.0
 import "../templatesReponses"
 
 
@@ -16,10 +15,6 @@ Page {
     }
     /*--------------*/
 
-    MainApplication {
-        id: main
-    }
-
 
     SilicaFlickable {
         anchors.fill: parent
@@ -27,12 +22,12 @@ Page {
         VerticalScrollDecorator {}
 
         PageHeader {
-            title: main.nameProfil
+            title: application.nameProfil
         }
 
         Label {
             id: niveau
-            text: qsTr("Niveau : ") + main.niveau
+            text: qsTr("Niveau : ") + partie.niveau
             anchors.horizontalCenter: parent.horizontalCenter
             y:100
             font.family: Theme.fontFamilyHeading
@@ -54,7 +49,7 @@ Page {
 
             Text {
                 id: question
-                text: "1 + 2 = ?"
+                text: questionnaireEducatif.question + " ?"
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter : parent.verticalCenter
                 font.pointSize: 40
@@ -131,10 +126,10 @@ Page {
 
             Reponse4Propositions{
 
-                textReponse1: qsTr("1")
-                textReponse2: qsTr("2")
-                textReponse3: qsTr("3")
-                textReponse4: qsTr("4")
+                textReponse1: questionnaireEducatif.result
+                textReponse2: questionnaireEducatif.proposition
+                textReponse3: questionnaireEducatif.proposition
+                textReponse4: questionnaireEducatif.proposition
 
             }
         }

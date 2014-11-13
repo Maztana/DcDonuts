@@ -2,39 +2,32 @@
 #define MAINAPPLICATION_H
 
 #include "partie.h"
+#include <QQuickView>
 
 class MainApplication : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(Partie partie READ partie)
-    Q_PROPERTY(QString nameProfil READ nameProfil)
-    Q_PROPERTY(QString niveau READ nameNiveau)
+    //Q_PROPERTY(Partie partie READ getPartie)
+    Q_PROPERTY(QString nameProfil READ getNameProfil)
 
-    Q_PROPERTY(bool runPartie READ runPartie WRITE setRunPartie NOTIFY runPartieChanged)
+
 
     QList<Profil*> profils;
     Profil *profilActif;
     Partie *partieEnCours;
-    bool isPartieRunning;
 
 public:
-    explicit MainApplication();
+    explicit MainApplication(QQuickView *q_view);
     ~MainApplication();
 
-    const Partie* partie() const;
-    const QString nameProfil() const;
-    const QString nameNiveau() const;
+    static QQuickView *q_view;
 
-    bool runPartie();
-    void setRunPartie(bool isRunPartie);
+    //inline const Partie* getPartie()const{return partieEnCours;}
+    inline const QString getNameProfil()const{return profilActif->getNom();}
 
-    //test
-    inline Partie* getPartie(){return partieEnCours;}
-    //
 
 signals:
-    void runPartieChanged();
 
 public slots:
     void lancerPartie();

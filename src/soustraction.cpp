@@ -4,6 +4,7 @@ Soustraction::Soustraction(Niveau* niveauDuJeu):
     Calcul(niveauDuJeu)
 {
     MODE_JEU = "SOUSTRACTION";
+    defNiveau();
 }
 
 Soustraction::~Soustraction()

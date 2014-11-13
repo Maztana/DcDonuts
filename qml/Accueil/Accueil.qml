@@ -1,6 +1,5 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import dr.donut 1.0
 
 Page{
     id: pageAccueil
@@ -12,16 +11,6 @@ Page{
         anchors.fill: parent
         color: 'lightblue'
         opacity: 0.6
-    }
-
-    MainApplication {
-        id: main_application
-        /*
-        onRunPartieChanged: {
-            console.log("ca marche jusqu'a l'appel")
-            //main_application.lancerPartie()
-        }
-        */
     }
 
     SilicaFlickable{
@@ -43,7 +32,7 @@ Page{
 
         Text{
             id: nomProfil
-            text: main_application.nameProfil
+            text: application.nameProfil
             font.bold: true
             font.pixelSize: 28
             x:50
@@ -109,7 +98,6 @@ Page{
                 margins:60
             }
 
-            value : main_application.runPartie
             link: "../pages/JeuPage.qml"
         }
 
@@ -117,7 +105,6 @@ Page{
         {
             id:boutonOptions
             text: qsTr("Options")
-
             anchors{
                 bottom:parent.bottom
                 horizontalCenter: parent.horizontalCenter
@@ -126,7 +113,6 @@ Page{
 
             enable:false
             link: "../pages/JeuPage.qml"
-            value: main_application.runPartie
         }
 
     }

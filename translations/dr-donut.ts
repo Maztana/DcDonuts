@@ -25,6 +25,13 @@
     </message>
 </context>
 <context>
+    <name>BoutonPerso</name>
+    <message>
+        <source>Jouer</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ChoixModeDeJeuPage</name>
     <message>
         <source>Mode de Jeu</source>
@@ -37,22 +44,6 @@
 </context>
 <context>
     <name>JeuPage</name>
-    <message>
-        <source>1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>4</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Niveau : </source>
         <translation type="unfinished"></translation>

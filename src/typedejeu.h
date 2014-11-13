@@ -12,19 +12,18 @@ public:
     explicit TypeDeJeu(Niveau* niveauDuJeu);
     ~TypeDeJeu();
 
-public:
     const Niveau& getNiveau();
+    virtual inline bool isQuestionnaire()const{return false;}
 
 protected:
     Niveau *niveauDuJeu;
 
     void setNiveau(Niveau *newNiveau);
-    virtual void defNiveau() = 0;
 
 signals:
 
 public slots:
-    virtual void lancerJeu(Niveau *niveauDuJeu) = 0;
+    virtual void lancerJeu() = 0;
 
 };
 

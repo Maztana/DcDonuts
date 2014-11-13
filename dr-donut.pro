@@ -44,7 +44,8 @@ OTHER_FILES += qml/dr-donut.qml \
     qml/templatesReponses/Reponse2Propositions.qml \
     qml/templatesReponses/ReponseSaisie.qml \
     qml/Accueil/Titre.qml \
-    qml/pages/ChoixModeDeJeuPage.qml
+    qml/pages/ChoixModeDeJeuPage.qml \
+    qml/templatesReponses/ItemReponse.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line

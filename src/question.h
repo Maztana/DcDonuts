@@ -16,9 +16,10 @@ class Question : public QObject
 public:
     explicit Question(QString mode, int operande1, int operande2);
 
-    int getResult();
-    int getProposition();
-    QString toString();
+    int getResult()const;
+    int getProposition()const;
+    const QString toString()const;
+
 signals:
 
 public slots:

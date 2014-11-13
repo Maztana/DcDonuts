@@ -6,7 +6,7 @@ Item
 
     property bool enable : true
     property string link
-    property bool value
+    property string action
 
     width: fond.width
     height: fond.height
@@ -44,8 +44,10 @@ Item
                 }
 
                 onClicked: {
-                    //value = true
-                    //console.log("ca marche apres le changement de valeur")
+                    if(text == qsTr("Jouer"))
+                    {
+                        application.lancerPartie();
+                    }
                     pageStack.push(Qt.resolvedUrl(link))
                 }
             }

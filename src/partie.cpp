@@ -1,14 +1,29 @@
 #include "partie.h"
+#include "mainapplication.h"
+#include <QtQml>
 
 //test
 #include "addition.h"
 
-Partie::Partie():
+Partie::Partie(Profil *profilJeu):
     QObject(0)
 {
+    setProfilPartie(profilJeu);
+
     //Implémentation en dur pour test
     setNiveauDeLaPartie(new Niveau());
     setTypeJeu(new Addition(niveauDeLaPartie));
+
+    if(typeJeuActif->isQuestionnaire())
+    {
+        MainApplication::q_view->rootContext()->setContextProperty("questionnaireEducatif", (QuestionnaireEducatif*)typeJeuActif);
+    }
+    else
+    {
+        // A VOIR
+    }
+
+    lancerJeu();
 }
 
 Partie::~Partie()
@@ -21,23 +36,13 @@ void Partie::lancerJeu()
 {
     if(typeJeuActif != 0 && niveauDeLaPartie != 0)
     {
-        typeJeuActif->lancerJeu(niveauDeLaPartie);
+        typeJeuActif->lancerJeu();
     }
 }
 
 void Partie::setProfilPartie(Profil *profilJeu)
 {
     profilActif = profilJeu;
-}
-
-const Profil* Partie::getProfilActif()const
-{
-    return profilActif;
-}
-
-const Niveau* Partie::getNiveauDeLaPartie()const
-{
-    return niveauDeLaPartie;
 }
 
 void Partie::setTypeJeu(TypeDeJeu *typeJeu)
