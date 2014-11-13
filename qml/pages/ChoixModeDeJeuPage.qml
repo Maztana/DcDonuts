@@ -32,7 +32,7 @@ PageCustom {
                     BoutonPerso{
                         id: btCalcul
                         text:qsTr("Calcul")
-                        link: "../pages/ChoixDifficulteePage.qml"
+                        link: "../pages/JeuPage.qml"
                         z:100
                     }
 
@@ -63,6 +63,7 @@ PageCustom {
                         }
 
                         BoutonSigne{
+                            enabled: false
                             width: parent.width/4
                             signe: "-"
                             yText: -42
@@ -72,6 +73,7 @@ PageCustom {
                         }
 
                         BoutonSigne{
+                            enabled: false
                             width: parent.width/4
                             signe: "x"
                             taillePolice: 40
@@ -82,6 +84,7 @@ PageCustom {
                         }
 
                         BoutonSigne{
+                            enabled: false
                             width: parent.width/4
                             signe: "÷"
                             yText: -11

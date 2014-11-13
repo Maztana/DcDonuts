@@ -44,9 +44,11 @@ Item
             }
 
             onClicked:{
+                if(text === qsTr("Calcul"))
+                {
+                    application.lancerPartie();
+                }
                 pageStack.push(Qt.resolvedUrl(link))
-                //value = true
-                //console.log("ca marche apres le changement de valeur")
             }
             onPressed: {
                 fond.opacity = 0.8

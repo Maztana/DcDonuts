@@ -4,8 +4,8 @@ import Sailfish.Silica 1.0
 
 
 Item{
-    property alias textReponse1 : labelRep1.text
-    property alias textReponse2 : labelRep2.text
+    property alias textReponse1 : rep1.rep
+    property alias textReponse2 : rep2.rep
 
     anchors.horizontalCenter: parent.horizontalCenter
     width: ligne.width
@@ -22,18 +22,8 @@ Item{
             width: 200
             height:220
 
-            Label{
-                id: labelRep1
-                anchors.centerIn: parent
-
-                font.bold: true
-                font.pixelSize: 60
-                color: "black"
-            }
-
-            MouseArea{
-                anchors.fill: parent
-                onClicked: console.log(labelRep1.text)
+            ItemReponse{
+                id: rep1
             }
         }
         Rectangle{
@@ -42,18 +32,8 @@ Item{
             width: 200
             height:220
 
-            Label{
-                id: labelRep2
-                anchors.centerIn: parent
-
-                font.bold: true
-                font.pixelSize: 60
-                color: "black"
-            }
-
-            MouseArea{
-                anchors.fill: parent
-                onClicked: console.log(labelRep2.text)
+            ItemReponse{
+                id: rep2
             }
         }
     }

@@ -1,23 +1,19 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-<<<<<<< HEAD
 import "../Components"
-=======
-import dr.donut 1.0
->>>>>>> 2431019d1d94cd7d3cbcd172223b139a4927018c
 
-Page{
+PageCustom{
     id: pageAccueil
 
     FontLoader{ id: fontPerso; source: "../font/PWYummyDonuts.ttf" }
 
+<<<<<<< HEAD
     /*----Fond ----*/
     Rectangle{
         anchors.fill: parent
         color: 'lightblue'
         opacity: 0.6
-    }
-
+=======
     MainApplication {
         id: main_application
         /*
@@ -26,6 +22,7 @@ Page{
             //main_application.lancerPartie()
         }
         */
+>>>>>>> ecdc69837bc6f44abd19da3eb64fa27f3109142d
     }
 
     SilicaFlickable{
@@ -37,11 +34,17 @@ Page{
                 text: qsTr("A propos")
                 onClicked: console.log("le click marche")
             }
+            /*
+            MenuItem{
+                text: qsTr("Mode de jeu")
+                onClicked: pageStack.push(Qt.resolvedUrl("../pages/ChoixModeDeJeuPage.qml"))
+            }
+            */
         }
 
         Text{
             id: nomProfil
-            text: main_application.nameProfil
+            text: application.nameProfil
             font.bold: true
             font.pixelSize: 28
             x:50
@@ -77,6 +80,8 @@ Page{
             }
         }
 
+
+
         Titre{
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: iconDrDonut.top
@@ -105,47 +110,29 @@ Page{
                 margins:60
             }
 
-<<<<<<< HEAD
             link: "../pages/ChoixModeDeJeuPage.qml"
-=======
-            value : main_application.runPartie
-            link: "../pages/JeuPage.qml"
->>>>>>> 2431019d1d94cd7d3cbcd172223b139a4927018c
         }
 
         BoutonPerso
         {
             id:boutonOptions
             text: qsTr("Options")
-
             anchors{
                 bottom:parent.bottom
                 horizontalCenter: parent.horizontalCenter
-                margins:115
+                margins:130
             }
 
             enable:false
             link: "../pages/JeuPage.qml"
-<<<<<<< HEAD
-=======
-            value: main_application.runPartie
->>>>>>> 2431019d1d94cd7d3cbcd172223b139a4927018c
         }
 
     }
 
     Rectangle {
-        width: animation.width; height: animation.height + 8
+        width: animation.width
+        height: animation.height
 
-        AnimatedImage { id: animation; source: "../images/donuts.gif" }
-
-        Rectangle {
-            property int frames: animation.frameCount
-
-            width: 4; height: 8
-            x: (animation.width - width) * animation.currentFrame / frames
-            y: animation.height
-            color: "red"
-        }
+        AnimatedImage { id: animation; source: "../images/animatedimageitem.gif"}
     }
 }

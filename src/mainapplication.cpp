@@ -1,12 +1,20 @@
 #include "mainapplication.h"
+#include "questionnaireeducatif.h"
+#include <QtQml>
 
-MainApplication::MainApplication() :
+#include <QTextStream>
+
+QQuickView* MainApplication::q_view = NULL;
+
+MainApplication::MainApplication(QQuickView *q_view) :
     QObject(0)
 {
-    creerProfils("Ca marche",  new QDate(1993, 10, 30));
-    changerProfilActif(profils.first());
+    this->q_view = q_view;
+    //QObject::connect(this, SIGNAL(play()), this, SLOT(lancerPartie()));
 
-    partieEnCours = new Partie();
+    //Profil par defaut
+    creerProfils("Claudio",  new QDate(2003, 10, 30));
+    partieEnCours = NULL;
 }
 
 MainApplication::~MainApplication()
@@ -18,37 +26,17 @@ MainApplication::~MainApplication()
     }
 }
 
-const Partie* MainApplication::partie() const
-{
-    return partieEnCours;
-}
-
-const QString MainApplication::nameProfil() const
-{
-    return profilActif->getNom();
-}
-
-const QString MainApplication::nameNiveau() const
-{
-    return partieEnCours->getNiveauDeLaPartie()->getName();
-}
-
-bool MainApplication::runPartie()
-{
-    return isPartieRunning;
-}
-
-void MainApplication::setRunPartie(bool isRunPartie)
-{
-    isPartieRunning = isRunPartie;
-}
-
 void MainApplication::lancerPartie()
 {
     if(profilActif != 0)
     {
-        partieEnCours = new Partie();
-        partieEnCours->setProfilPartie(profilActif);
+        if(partieEnCours != NULL)
+        {
+            delete(partieEnCours);
+        }
+        partieEnCours = new Partie(profilActif);
+
+        q_view->rootContext()->setContextProperty("partie", partieEnCours);
     }
     else {
         // ERREUR BESOIN DE SELECTION JOUEUR
@@ -58,8 +46,10 @@ void MainApplication::lancerPartie()
 
 void MainApplication::creerProfils(QString nom, QDate *date)
 {
-    Profil *defaultProfil = new Profil(nom, date);
-    profils.append(defaultProfil);
+    Profil *newProfil = new Profil(nom, date);
+    profils.append(newProfil);
+
+    changerProfilActif(newProfil);
 }
 
 void MainApplication::changerProfilActif(Profil *newProfilActif)

@@ -23,16 +23,42 @@
         <source>A propos</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
 <<<<<<< HEAD
+    <name>BoutonPerso</name>
     <message>
-        <source>JOUEUR X</source>
+        <source>Calcul</source>
+=======
+    <name>ChoixDifficulteePage</name>
+    <message>
+        <source>Facile</source>
         <translation type="unfinished"></translation>
     </message>
-=======
->>>>>>> 2431019d1d94cd7d3cbcd172223b139a4927018c
+    <message>
+        <source>Moyen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Difficile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Automatique</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Difficult��e</source>
+>>>>>>> ecdc69837bc6f44abd19da3eb64fa27f3109142d
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChoixModeDeJeuPage</name>
+    <message>
+        <source>Mode de Jeu</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message>
         <source>Calcul</source>
         <translation type="unfinished"></translation>
@@ -49,29 +75,9 @@
         <source>Mele</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Mode de Jeu</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>JeuPage</name>
-    <message>
-        <source>1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>4</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Niveau : </source>
         <translation type="unfinished"></translation>

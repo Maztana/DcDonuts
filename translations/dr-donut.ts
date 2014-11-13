@@ -4,6 +4,10 @@
 <context>
     <name>Accueil</name>
     <message>
+        <source>A propos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Profils</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12,15 +16,14 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>../pages/JeuPage.qml</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Options</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>BoutonPerso</name>
     <message>
-        <source>A propos</source>
+        <source>Calcul</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -72,22 +75,6 @@
 </context>
 <context>
     <name>JeuPage</name>
-    <message>
-        <source>1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>4</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Niveau : </source>
         <translation type="unfinished"></translation>

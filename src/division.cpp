@@ -4,6 +4,7 @@ Division::Division(Niveau* niveauDuJeu):
     Calcul(niveauDuJeu)
 {
     MODE_JEU = "DIVISION";
+    defNiveau();
 }
 
 Division::~Division()

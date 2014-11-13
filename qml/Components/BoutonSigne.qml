@@ -10,7 +10,7 @@ Item{
     property alias xText : textSigne.x
     property alias yText : textSigne.y
 
-    property bool isClicked : false;
+    property bool isClicked : false
 
     FontLoader{ id: fontPersoSigne; source: "../font/DESYREL_.ttf" }
 

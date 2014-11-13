@@ -30,17 +30,3 @@ public slots:
 };
 
 #endif // CALCUL_H
-
-
-//////////////////////////////ALGO GENERATEUR ADDITION ET SOUSTRACTION////////////////////////////////////////////////////////
-/*
- *              Random de deux chiffres entre 0 et NB-MAX
- *
- *              si la réponse < 0 on inverse les chiffres
- *
- *              renvoi de la question et du résultat
- *
- *              envoi de 1 à 3 autres réponses comprise entre [ chiffreMin et ChiffreMax + (chiffreMin x2)]
- *                                                      exclu de la valeur résultat
- */
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

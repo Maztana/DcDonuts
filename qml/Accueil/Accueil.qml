@@ -1,6 +1,5 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import dr.donut 1.0
 import "../Components"
 
 PageCustom{
@@ -13,16 +12,6 @@ PageCustom{
     }
 
     FontLoader{ id: fontPerso; source: "../font/PWYummyDonuts.ttf" }
-
-    MainApplication {
-        id: main_application
-        /*
-        onRunPartieChanged: {
-            console.log("ca marche jusqu'a l'appel")
-            //main_application.lancerPartie()
-        }
-        */
-    }
 
     SilicaFlickable{
 
@@ -37,7 +26,7 @@ PageCustom{
 
         Text{
             id: nomProfil
-            text: main_application.nameProfil
+            text: application.nameProfil
             font.bold: true
             font.pixelSize: 28
             x:50
@@ -103,7 +92,6 @@ PageCustom{
                 margins:60
             }
 
-            value : main_application.runPartie
             link: "../pages/ChoixModeDeJeuPage.qml"
         }
 
@@ -111,7 +99,6 @@ PageCustom{
         {
             id:boutonOptions
             text: qsTr("Options")
-
             anchors{
                 bottom:parent.bottom
                 horizontalCenter: parent.horizontalCenter
@@ -120,7 +107,6 @@ PageCustom{
 
             enable:false
             link: "../pages/JeuPage.qml"
-            value: main_application.runPartie
         }
 
     }
