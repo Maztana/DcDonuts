@@ -31,7 +31,6 @@ Page {
             anchors.horizontalCenter: parent.horizontalCenter
             y:100
             font.family: Theme.fontFamilyHeading
-
         }
 
         /* --------------------- Question --------------------- */
@@ -136,7 +135,6 @@ Page {
 
 
         /*-------------------------------------------------*/
-
     }
 
 

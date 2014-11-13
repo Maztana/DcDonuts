@@ -38,14 +38,16 @@ OTHER_FILES += qml/dr-donut.qml \
     qml/Accueil/Accueil.qml \
     qml/pages/JeuPage.qml \
     images/drDonut.png \
-    qml/Accueil/BoutonPerso.qml \
     qml/templatesReponses/Reponse4Propositions.qml \
     qml/templatesReponses/Reponse3Propositions.qml \
     qml/templatesReponses/Reponse2Propositions.qml \
     qml/templatesReponses/ReponseSaisie.qml \
     qml/Accueil/Titre.qml \
     qml/pages/ChoixModeDeJeuPage.qml \
+    qml/Components/BoutonPerso.qml \
+    qml/Components/BoutonSigne.qml \
     qml/templatesReponses/ItemReponse.qml
+	qml/templatesReponses/ItemReponse.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line

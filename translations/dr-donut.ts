@@ -27,7 +27,7 @@
 <context>
     <name>BoutonPerso</name>
     <message>
-        <source>Jouer</source>
+        <source>Calcul</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -39,6 +39,18 @@
     </message>
     <message>
         <source>Calcul</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Denombrement</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Couleur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mele</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

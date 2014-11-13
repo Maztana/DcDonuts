@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../Components"
 
 Page{
     id: pageAccueil
@@ -98,7 +99,7 @@ Page{
                 margins:60
             }
 
-            link: "../pages/JeuPage.qml"
+            link: "../pages/ChoixModeDeJeuPage.qml"
         }
 
         BoutonPerso
