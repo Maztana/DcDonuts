@@ -7,7 +7,7 @@ class Soustraction : public Calcul
 {
     Q_OBJECT
 public:
-    explicit Soustraction();
+    explicit Soustraction(Niveau* niveauDuJeu);
     ~Soustraction();
 
     virtual Question* getQuestion();

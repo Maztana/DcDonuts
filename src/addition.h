@@ -7,7 +7,7 @@ class Addition : public Calcul
 {
     Q_OBJECT
 public:
-    explicit Addition();
+    explicit Addition(Niveau* niveauDuJeu);
     ~Addition();
 
     virtual Question* getQuestion();

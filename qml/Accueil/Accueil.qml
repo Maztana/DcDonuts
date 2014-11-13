@@ -16,10 +16,12 @@ Page{
 
     MainApplication {
         id: main_application
-/*        onRunPartieChanged: {
+        /*
+        onRunPartieChanged: {
             console.log("ca marche jusqu'a l'appel")
             //main_application.lancerPartie()
-        }*/
+        }
+        */
     }
 
     SilicaFlickable{
@@ -29,6 +31,7 @@ Page{
         PullDownMenu{
             MenuItem{
                 text: qsTr("A propos")
+                onClicked: console.log("le click marche")
             }
             /*
             MenuItem{
@@ -106,6 +109,7 @@ Page{
                 margins:60
             }
 
+            value : main_application.runPartie
             link: "../pages/JeuPage.qml"
         }
 
@@ -122,7 +126,9 @@ Page{
 
             enable:false
             link: "../pages/JeuPage.qml"
+            value: main_application.runPartie
         }
+
     }
 
     Rectangle {

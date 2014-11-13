@@ -7,7 +7,7 @@ class Division : public Calcul
 {
     Q_OBJECT
 public:
-    explicit Division();
+    explicit Division(Niveau* niveauDuJeu);
     ~Division();
 
     virtual Question* getQuestion();

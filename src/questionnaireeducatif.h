@@ -12,7 +12,7 @@ class QuestionnaireEducatif : public TypeDeJeu
     Question* questionCourante;
 
 public:
-    explicit QuestionnaireEducatif();
+    explicit QuestionnaireEducatif(Niveau* niveauDuJeu);
     ~QuestionnaireEducatif();
 
     virtual Question* getQuestion() = 0;

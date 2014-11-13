@@ -3,7 +3,7 @@
 MainApplication::MainApplication() :
     QObject(0)
 {
-    creerProfils("Cool Rasta",  new QDate(1993, 10, 30));
+    creerProfils("Ca marche",  new QDate(1993, 10, 30));
     changerProfilActif(profils.first());
 
     partieEnCours = new Partie();

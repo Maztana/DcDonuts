@@ -1,6 +1,7 @@
 #include "addition.h"
 
-Addition::Addition()
+Addition::Addition(Niveau* niveauDuJeu):
+    Calcul(niveauDuJeu)
 {
     MODE_JEU = "ADDITION";
 }

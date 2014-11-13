@@ -4,16 +4,13 @@
 QString QuestionnaireEducatif::MODE_JEU = "";
 
 
-QuestionnaireEducatif::QuestionnaireEducatif()
+QuestionnaireEducatif::QuestionnaireEducatif(Niveau* niveauDuJeu):
+    TypeDeJeu(niveauDuJeu)
 {
 }
 
 QuestionnaireEducatif::~QuestionnaireEducatif()
 {
-    if(niveauDuJeu != 0)
-    {
-        delete(niveauDuJeu);
-    }
 }
 
 const QString& QuestionnaireEducatif::getModeJeu()

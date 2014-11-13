@@ -8,7 +8,6 @@ class Partie : public QObject
 {
     Q_OBJECT
 
-
 private:
     Profil *profilActif;
     TypeDeJeu *typeJeuActif;

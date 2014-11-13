@@ -1,6 +1,7 @@
 #include "division.h"
 
-Division::Division()
+Division::Division(Niveau* niveauDuJeu):
+    Calcul(niveauDuJeu)
 {
     MODE_JEU = "DIVISION";
 }

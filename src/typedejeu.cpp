@@ -1,13 +1,13 @@
 #include "typedejeu.h"
 
-TypeDeJeu::TypeDeJeu():
+TypeDeJeu::TypeDeJeu(Niveau* niveauDuJeu):
     QObject(0)
 {
+    this->niveauDuJeu = niveauDuJeu;
 }
 
 TypeDeJeu::~TypeDeJeu()
 {
-    delete(niveauDuJeu);
 }
 
 const Niveau& TypeDeJeu::getNiveau()

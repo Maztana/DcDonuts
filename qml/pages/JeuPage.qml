@@ -20,6 +20,7 @@ Page {
         id: main
     }
 
+
     SilicaFlickable {
         anchors.fill: parent
 
@@ -31,7 +32,7 @@ Page {
 
         Label {
             id: niveau
-            text: qsTr("Niveau : ") + main.nameNiveau
+            text: qsTr("Niveau : ") + main.niveau
             anchors.horizontalCenter: parent.horizontalCenter
             y:100
             font.family: Theme.fontFamilyHeading

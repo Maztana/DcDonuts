@@ -1,6 +1,7 @@
 #include "soustraction.h"
 
-Soustraction::Soustraction()
+Soustraction::Soustraction(Niveau* niveauDuJeu):
+    Calcul(niveauDuJeu)
 {
     MODE_JEU = "SOUSTRACTION";
 }

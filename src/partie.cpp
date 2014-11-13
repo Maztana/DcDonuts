@@ -1,10 +1,14 @@
 #include "partie.h"
 
+//test
+#include "addition.h"
+
 Partie::Partie():
     QObject(0)
 {
-    // Implémentation incorecte du niveau
+    //Implémentation en dur pour test
     setNiveauDeLaPartie(new Niveau());
+    setTypeJeu(new Addition(niveauDeLaPartie));
 }
 
 Partie::~Partie()
