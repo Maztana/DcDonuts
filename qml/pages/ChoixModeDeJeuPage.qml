@@ -2,7 +2,9 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../Components"
 
-PageCustom {
+Page {
+
+    id: page
 
     SilicaFlickable {
 
@@ -29,67 +31,61 @@ PageCustom {
                     width: btCalcul.width
                     height: btCalcul.height + rowCalculOperations.height
 
-                    BoutonPerso{
+                    Button{
                         id: btCalcul
                         text:qsTr("Calcul")
-                        link: "../pages/JeuPage.qml"
                         z:100
+                        onClicked: {
+                            if(text === qsTr("Calcul"))
+                            {
+                                application.lancerPartie();
+                            }
+                            pageStack.push(Qt.resolvedUrl("../pages/JeuPage.qml"))
+                        }
                     }
 
                     Rectangle{
-                        color:"black"
+                        id:rectangleFond
+                        color:"white"
                         opacity: 0.15
-                        height: rowCalculOperations.height + 30
+                        height: rowCalculOperations.height - 30
                         width: rowCalculOperations.width
-                        anchors.top : btCalcul.bottom
-                        anchors.margins: -27
+                        anchors.top: btCalcul.bottom
+                        anchors.margins: -5
                         radius: 20
                     }
-
 
                     Row
                     {
                         id: rowCalculOperations
-                        anchors.top : btCalcul.bottom
-                        width: parent.width
-                        height: 60
+                        anchors.top: rectangleFond.top
 
-                        BoutonSigne{
-                            width: parent.width/4
-                            signe: "+"
-                            yText: -11
-                            xText: 23
-                            height: parent.height
+                        Switch{
+                            id: switchSignePlus
+                            icon.source: "qrc:///qml/images/signePlus.png"
+                            y:-35
+                            width:60
                         }
 
-                        BoutonSigne{
-                            enabled: false
-                            width: parent.width/4
-                            signe: "-"
-                            yText: -42
-                            xText: 23
-                            taillePolice: 100
-                            height: parent.height
+                        Switch{
+                            id: switchSigneMoins
+                            icon.source: "qrc:///qml/images/signeMoins.png"
+                            y:-35
+                            width:60
                         }
 
-                        BoutonSigne{
-                            enabled: false
-                            width: parent.width/4
-                            signe: "x"
-                            taillePolice: 40
-                            bold:true
-                            yText: 2
-                            xText: 29
-                            height: parent.height
+                        Switch{
+                            id: switchSigneMult
+                            icon.source: "qrc:///qml/images/signeMult.png"
+                            y:-35
+                            width:60
                         }
 
-                        BoutonSigne{
-                            enabled: false
-                            width: parent.width/4
-                            signe: "÷"
-                            yText: -11
-                            xText: 23
-                            height: parent.height
+                        Switch{
+                            id: switchSigneDiv
+                            icon.source: "qrc:///qml/images/signeDiv.png"
+                            y:-35
+                            width:60
                         }
                     }
                 }
@@ -101,10 +97,10 @@ PageCustom {
                 id: ligneDenombrement
                 anchors.horizontalCenter: parent.horizontalCenter
 
-                BoutonPerso{
+                Button{
                     text:qsTr("Denombrement")
-                    enable:false
-                    link: "../pages/ChoixDifficulteePage.qml"
+                    enabled:false
+                    onClicked: pageStack.push(Qt.resolvedUrl("../pages/JeuPage.qml"))
                 }
             }
 
@@ -112,10 +108,10 @@ PageCustom {
                 id: ligneCouleur
                 anchors.horizontalCenter: parent.horizontalCenter
 
-                BoutonPerso{
+                Button{
                     text:qsTr("Couleur")
-                    enable:false
-                    link: "../pages/ChoixDifficulteePage.qml"
+                    enabled:false
+                    onClicked: pageStack.push(Qt.resolvedUrl("../pages/JeuPage.qml"))
                 }
             }
 
@@ -123,10 +119,10 @@ PageCustom {
                 id: ligneMele
                 anchors.horizontalCenter: parent.horizontalCenter
 
-                BoutonPerso{
+                Button{
                     text:qsTr("Mele")
-                    enable:false
-                    link: "../pages/ChoixDifficulteePage.qml"
+                    enabled:false
+                    onClicked: pageStack.push(Qt.resolvedUrl("../pages/JeuPage.qml"))
                 }
             }
 

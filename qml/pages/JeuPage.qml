@@ -4,9 +4,8 @@ import "../templatesReponses"
 import "../Components"
 
 
-PageCustom {
+Page {
     id: pageJeu
-
 
     SilicaFlickable {
         anchors.fill: parent

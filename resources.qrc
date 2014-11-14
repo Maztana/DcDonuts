@@ -3,5 +3,9 @@
         <file>qml/images/donuts.gif</file>
         <file>qml/images/donut.png</file>
         <file>qml/images/drDonut.png</file>
+        <file>qml/images/signeDiv.png</file>
+        <file>qml/images/signeMoins.png</file>
+        <file>qml/images/signeMult.png</file>
+        <file>qml/images/signePlus.png</file>
     </qresource>
 </RCC>
