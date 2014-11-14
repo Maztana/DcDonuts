@@ -40,7 +40,7 @@ PageCustom {
 
             Text {
                 id: question
-                text: questionnaireEducatif.question + " ?"
+                text: questionnaireEducatif.libelleQuestion + " ?"
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter : parent.verticalCenter
                 font.pointSize: 40
@@ -117,30 +117,15 @@ PageCustom {
 
             Reponse4Propositions{
                 id: responses
-                textReponse1: questionnaireEducatif.result
-                textReponse2: questionnaireEducatif.proposition
-                textReponse3: questionnaireEducatif.proposition
-                textReponse4: questionnaireEducatif.proposition
+                textReponse1: questionnaireEducatif.proposition1
+                textReponse2: questionnaireEducatif.proposition2
+                textReponse3: questionnaireEducatif.proposition3
+                textReponse4: questionnaireEducatif.proposition4
             }
         }
 
 
         /*-------------------------------------------------*/
-    }
-
-    Connections {
-        target: questionnaireEducatif
-        onNewQuestion: {
-            updateQuestion();
-        }
-    }
-
-    function updateQuestion() {
-        question.text = questionnaireEducatif.question + " ?";
-        responses.textReponse1 = questionnaireEducatif.result;
-        responses.textReponse2 = questionnaireEducatif.proposition;
-        responses.textReponse3 = questionnaireEducatif.proposition;
-        responses.textReponse4 = questionnaireEducatif.proposition;
     }
 }
 
