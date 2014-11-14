@@ -7,7 +7,7 @@ class Multiplication : public Calcul
 {
     Q_OBJECT
 public:
-    explicit Multiplication();
+    explicit Multiplication(Niveau* niveauDuJeu);
     ~Multiplication();
 
     virtual Question* getQuestion();

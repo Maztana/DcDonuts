@@ -1,18 +1,20 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "../Accueil"
+import "../Components"
 
-Page {
+PageCustom {
+
     SilicaFlickable {
-        anchors.fill: parent
 
-        contentHeight: column.height
+        anchors.fill: parent
+        contentHeight: colonneModeJeux.height
+        contentWidth: parent.width
 
         VerticalScrollDecorator {}
 
         Column {
-            id: column
-            spacing: 40
+            id: colonneModeJeux
+            spacing: 50
             width: parent.width
 
             PageHeader {
@@ -20,67 +22,111 @@ Page {
             }
 
             Row {
-              id: iconButtons
-                spacing: Theme.paddingLarge
+                id: ligneCalcul
                 anchors.horizontalCenter: parent.horizontalCenter
-                anchors.top : parent.top
-                anchors.margins: 180
 
-               BoutonPerso{
+                Item{
+                    width: btCalcul.width
+                    height: btCalcul.height + rowCalculOperations.height
 
-                    text:qsTr("Calcul")
-
-                }
-
-
-              /* IconButton {
-                    icon.source: "image://theme/icon-l-clear"
-                }
-                IconButton {
-                    id: pause
-                    icon.source: "image://theme/icon-l-pause"
-                    onClicked: iconButtons.playing = false
-                    enabled: iconButtons.playing
-                }
-                IconButton {
-                    id: play
-                    icon.source: "image://theme/icon-l-play"
-                    onClicked: iconButtons.playing = true
-                    enabled: !iconButtons.playing
-                }*/
-            }
-
-
-            Row {
-                spacing: Theme.paddingLarge
-                anchors.horizontalCenter: parent.horizontalCenter
-                Button {
-                    text: "Call"
-                }
-                Button {
-                    text: "SMS"
-                }
-            }
-
-
-            Row {
-                spacing: Theme.itemSizeSmall
-                anchors.horizontalCenter: parent.horizontalCenter
-                Switch {
-                    icon.source: "image://theme/icon-l-shuffle"
-                   // enabled: false
-                }
-                Switch {
-                    icon.source: "image://theme/icon-l-repeat"
-                }
-                Switch {
-                    icon.source: "image://theme/icon-l-share"
-                    onCheckedChanged: { busy = true; busyTimer.start() }
-                    Timer {
-                        id: busyTimer
-                        interval: 4200
-                        onTriggered: parent.busy = false
+                    BoutonPerso{
+                        id: btCalcul
+                        text:qsTr("Calcul")
+                        link: "../pages/JeuPage.qml"
+                        z:100
                     }
+
+                    Rectangle{
+                        color:"black"
+                        opacity: 0.15
+                        height: rowCalculOperations.height + 30
+                        width: rowCalculOperations.width
+                        anchors.top : btCalcul.bottom
+                        anchors.margins: -27
+                        radius: 20
+                    }
+
+
+                    Row
+                    {
+                        id: rowCalculOperations
+                        anchors.top : btCalcul.bottom
+                        width: parent.width
+                        height: 60
+
+                        BoutonSigne{
+                            width: parent.width/4
+                            signe: "+"
+                            yText: -11
+                            xText: 23
+                            height: parent.height
+                        }
+
+                        BoutonSigne{
+                            enabled: false
+                            width: parent.width/4
+                            signe: "-"
+                            yText: -42
+                            xText: 23
+                            taillePolice: 100
+                            height: parent.height
+                        }
+
+                        BoutonSigne{
+                            enabled: false
+                            width: parent.width/4
+                            signe: "x"
+                            taillePolice: 40
+                            bold:true
+                            yText: 2
+                            xText: 29
+                            height: parent.height
+                        }
+
+                        BoutonSigne{
+                            enabled: false
+                            width: parent.width/4
+                            signe: "÷"
+                            yText: -11
+                            xText: 23
+                            height: parent.height
+                        }
+                    }
+                }
+
+
+            }
+
+            Row {
+                id: ligneDenombrement
+                anchors.horizontalCenter: parent.horizontalCenter
+
+                BoutonPerso{
+                    text:qsTr("Denombrement")
+                    enable:false
+                    link: "../pages/ChoixDifficulteePage.qml"
+                }
+            }
+
+            Row {
+                id: ligneCouleur
+                anchors.horizontalCenter: parent.horizontalCenter
+
+                BoutonPerso{
+                    text:qsTr("Couleur")
+                    enable:false
+                    link: "../pages/ChoixDifficulteePage.qml"
+                }
+            }
+
+            Row {
+                id: ligneMele
+                anchors.horizontalCenter: parent.horizontalCenter
+
+                BoutonPerso{
+                    text:qsTr("Mele")
+                    enable:false
+                    link: "../pages/ChoixDifficulteePage.qml"
                 }
             }
 

@@ -8,6 +8,7 @@ class Partie : public QObject
 {
     Q_OBJECT
 
+    Q_PROPERTY(QString niveau READ getNameNiveau)
 
 private:
     Profil *profilActif;
@@ -15,13 +16,17 @@ private:
     Niveau *niveauDeLaPartie;
 
 public:
-    explicit Partie();
+    explicit Partie(Profil* profilJeu);
     ~Partie();
+
+
+    inline const QString getNameNiveau(){return niveauDeLaPartie->getName();}
 
     void setProfilPartie(Profil *profilJeu);
 
-    const Profil* getProfilActif()const;
-    const Niveau* getNiveauDeLaPartie()const;
+    //inline const Profil* getProfilActif()const{return profilActif;}
+    //inline const TypeDeJeu* getTypeJeu()const{return typeJeuActif;}
+    //inline const Niveau* getNiveauDeLaPartie()const{return niveauDeLaPartie;}
 
 private:
     void setTypeJeu(TypeDeJeu *typeJeu);

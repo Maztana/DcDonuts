@@ -1,26 +1,17 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import dr.donut 1.0
+import "../Components"
 
-Page{
+PageCustom{
     id: pageAccueil
 
+    AnimatedImage {
+        id: animation
+        anchors.fill:parent
+        source: "qrc:///qml/images/donuts.gif"
+    }
+
     FontLoader{ id: fontPerso; source: "../font/PWYummyDonuts.ttf" }
-
-    /*----Fond ----*/
-    Rectangle{
-        anchors.fill: parent
-        color: 'lightblue'
-        opacity: 0.6
-    }
-
-    MainApplication {
-        id: main_application
-/*        onRunPartieChanged: {
-            console.log("ca marche jusqu'a l'appel")
-            //main_application.lancerPartie()
-        }*/
-    }
 
     SilicaFlickable{
 
@@ -29,18 +20,13 @@ Page{
         PullDownMenu{
             MenuItem{
                 text: qsTr("A propos")
+                onClicked: console.log("le click marche")
             }
-            /*
-            MenuItem{
-                text: qsTr("Mode de jeu")
-                onClicked: pageStack.push(Qt.resolvedUrl("../pages/ChoixModeDeJeuPage.qml"))
-            }
-            */
         }
 
         Text{
             id: nomProfil
-            text: main_application.nameProfil
+            text: application.nameProfil
             font.bold: true
             font.pixelSize: 28
             x:50
@@ -106,14 +92,13 @@ Page{
                 margins:60
             }
 
-            link: "../pages/JeuPage.qml"
+            link: "../pages/ChoixModeDeJeuPage.qml"
         }
 
         BoutonPerso
         {
             id:boutonOptions
             text: qsTr("Options")
-
             anchors{
                 bottom:parent.bottom
                 horizontalCenter: parent.horizontalCenter
@@ -123,20 +108,6 @@ Page{
             enable:false
             link: "../pages/JeuPage.qml"
         }
-    }
 
-    Rectangle {
-        width: animation.width; height: animation.height + 8
-
-        AnimatedImage { id: animation; source: "../images/animatedimageitem.gif"}
-
-        Rectangle {
-            property int frames: animation.frameCount
-
-            width: 4; height: 8
-            x: (animation.width - width) * animation.currentFrame / frames
-            y: animation.height
-            color: "red"
-        }
     }
 }
