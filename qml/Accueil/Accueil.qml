@@ -9,6 +9,7 @@ PageCustom{
         id: animation
         anchors.fill:parent
         source: "qrc:///qml/images/donuts.gif"
+        opacity: 0.1
     }
 
     FontLoader{ id: fontPerso; source: "../font/PWYummyDonuts.ttf" }
@@ -72,7 +73,7 @@ PageCustom{
 
         Image{
             id: iconDrDonut
-            source:"../images/drDonut.png"
+            source:"qrc:///qml/images/drDonut.png"
             width: sourceSize.width/2
             height: sourceSize.height/2
             anchors{
