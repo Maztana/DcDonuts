@@ -5,25 +5,17 @@ import "../Components"
 PageCustom{
     id: pageAccueil
 
-    FontLoader{ id: fontPerso; source: "../font/PWYummyDonuts.ttf" }
-
+    AnimatedImage {
+        id: animation
+        anchors.fill:parent
+        source: "qrc:///qml/images/donuts.gif"
 <<<<<<< HEAD
-    /*----Fond ----*/
-    Rectangle{
-        anchors.fill: parent
-        color: 'lightblue'
-        opacity: 0.6
 =======
-    MainApplication {
-        id: main_application
-        /*
-        onRunPartieChanged: {
-            console.log("ca marche jusqu'a l'appel")
-            //main_application.lancerPartie()
-        }
-        */
->>>>>>> ecdc69837bc6f44abd19da3eb64fa27f3109142d
+        opacity: 0.1
+>>>>>>> d43665d7c1443c8c84f4d69f2e37483f87716b41
     }
+
+    FontLoader{ id: fontPerso; source: "../font/PWYummyDonuts.ttf" }
 
     SilicaFlickable{
 
@@ -34,12 +26,6 @@ PageCustom{
                 text: qsTr("A propos")
                 onClicked: console.log("le click marche")
             }
-            /*
-            MenuItem{
-                text: qsTr("Mode de jeu")
-                onClicked: pageStack.push(Qt.resolvedUrl("../pages/ChoixModeDeJeuPage.qml"))
-            }
-            */
         }
 
         Text{
@@ -90,7 +76,7 @@ PageCustom{
 
         Image{
             id: iconDrDonut
-            source:"../images/drDonut.png"
+            source:"qrc:///qml/images/drDonut.png"
             width: sourceSize.width/2
             height: sourceSize.height/2
             anchors{
@@ -127,12 +113,5 @@ PageCustom{
             link: "../pages/JeuPage.qml"
         }
 
-    }
-
-    Rectangle {
-        width: animation.width
-        height: animation.height
-
-        AnimatedImage { id: animation; source: "../images/animatedimageitem.gif"}
     }
 }

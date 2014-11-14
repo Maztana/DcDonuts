@@ -1,5 +1,7 @@
 #include "questionnaireeducatif.h"
 #include <QTextStream>
+#include <QThread>
+#include "mainapplication.h"
 
 QString QuestionnaireEducatif::MODE_JEU = "";
 
@@ -7,6 +9,7 @@ QString QuestionnaireEducatif::MODE_JEU = "";
 QuestionnaireEducatif::QuestionnaireEducatif(Niveau* niveauDuJeu):
     TypeDeJeu(niveauDuJeu)
 {
+    connect(this, SIGNAL(finishTraitResponse()), this, SLOT(lancerQuestion()));
 }
 
 QuestionnaireEducatif::~QuestionnaireEducatif()
@@ -30,6 +33,11 @@ const QString QuestionnaireEducatif::getPropositionQuestion()
     return QString::number(getCurrentQuestion()->getProposition());
 }
 
+const QString QuestionnaireEducatif::getColor()
+{
+    return colorResponse;
+}
+
 Question* QuestionnaireEducatif::getCurrentQuestion()
 {
     return questionCourante;
@@ -51,10 +59,7 @@ void QuestionnaireEducatif::lancerQuestion()
     questionCourante = this->getQuestion();
     questionsDonnees.append(questionCourante);
 
-    //EMIT
-    //envoiQuestion(questionCourante);
-    // Envoi de la question vers l'interface //
-    // TODO
+    emit newQuestion();
 }
 
 void QuestionnaireEducatif::traitResponse(QString response)
@@ -68,6 +73,9 @@ void QuestionnaireEducatif::traitResponse(QString response)
         QTextStream(stdout) << "reponse juste " << result << endl;
 
         //mise en vert de la réponse
+        colorResponse = "green";
+        emit colorResponseChanged();
+
         //add point au profil
     }
     else
@@ -75,14 +83,22 @@ void QuestionnaireEducatif::traitResponse(QString response)
         //Réponse fausse
 
         //mise en rouge de la réponse choisi
+        colorResponse = "red";
+        emit colorResponseChanged();
+
         QTextStream(stdout) << "reponse fausse " << response << endl;
 
         //mise en vert de la réponse vrai
         QTextStream(stdout) << "reponse vrai " << result << endl;
     }
 
+    //QThread::sleep(5);
+
+    colorResponse = "black";
+    emit colorResponseChanged();
+
     //add stat question
 
     QTextStream(stdout) << "changement question" << endl;
-    lancerQuestion();
+    emit finishTraitResponse();
 }

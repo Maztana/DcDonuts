@@ -14,7 +14,6 @@ Page{
         PullDownMenu{
             MenuItem{
                 text: qsTr("A propos")
-                onClicked: console.log("le click marche")
             }
         }
 

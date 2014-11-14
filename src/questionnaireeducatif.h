@@ -12,6 +12,9 @@ class QuestionnaireEducatif : public TypeDeJeu
     Q_PROPERTY(QString result READ getResultQuestion)
     Q_PROPERTY(QString proposition READ getPropositionQuestion)
 
+    Q_PROPERTY(QString color READ getColor)
+    QString colorResponse;
+
     QList<Question*> questionsDonnees;
     Question* questionCourante;
 
@@ -25,6 +28,8 @@ public:
     const QString getResultQuestion();
     const QString getPropositionQuestion();
 
+    const QString getColor();
+
     virtual Question* getQuestion() = 0;
     Question* getCurrentQuestion();
     const QString& getModeJeu();
@@ -33,7 +38,9 @@ protected:
     static QString MODE_JEU;
 
 signals:
-    void envoiQuestion(Question*);
+    void colorResponseChanged();
+    void finishTraitResponse();
+    void newQuestion();
 
 public slots:
     void lancerJeu();

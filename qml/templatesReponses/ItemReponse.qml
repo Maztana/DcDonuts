@@ -24,4 +24,11 @@ Item {
             questionnaireEducatif.traitResponse(labelRep.text)
         }
     }
+
+    Connections {
+        target: questionnaireEducatif
+        onColorResponseChanged: {
+            labelRep.color = questionnaireEducatif.color;
+        }
+    }
 }

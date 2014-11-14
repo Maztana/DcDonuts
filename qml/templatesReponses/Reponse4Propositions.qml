@@ -29,7 +29,6 @@ Item{
             ItemReponse{
                 id: rep1
             }
-
         }
 
         Rectangle{

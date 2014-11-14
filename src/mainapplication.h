@@ -3,24 +3,23 @@
 
 #include "partie.h"
 #include <QQuickView>
+#include <QGuiApplication>
 
 class MainApplication : public QObject
 {
     Q_OBJECT
 
-    //Q_PROPERTY(Partie partie READ getPartie)
     Q_PROPERTY(QString nameProfil READ getNameProfil)
-
-
 
     QList<Profil*> profils;
     Profil *profilActif;
     Partie *partieEnCours;
 
 public:
-    explicit MainApplication(QQuickView *q_view);
+    explicit MainApplication(QGuiApplication *q_application,QQuickView *q_view);
     ~MainApplication();
 
+    static QGuiApplication *q_application;
     static QQuickView *q_view;
 
     //inline const Partie* getPartie()const{return partieEnCours;}
