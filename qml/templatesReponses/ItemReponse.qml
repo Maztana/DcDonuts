@@ -14,7 +14,7 @@ Item {
 
         font.bold: true
         font.pixelSize: 60
-        color : "black"
+        color: "black"
     }
 
     MouseArea{

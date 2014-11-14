@@ -19,7 +19,7 @@ Item{
 
     Image{
         id:fond
-        source:"../images/donut.png"
+        source:"qrc:///qml/images/donut.png"
         opacity: 0.2
 
         height: parent.height -2

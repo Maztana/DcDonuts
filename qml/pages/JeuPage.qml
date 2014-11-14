@@ -92,7 +92,7 @@ PageCustom {
         /*------------------- Dr Donut --------------------*/
         Image{
             id: drDonut
-            source: "../images/drDonut.png"
+            source: "qrc:///qml/images/drDonut.png"
             x: bulle3.x + bulle3.width + 30
             y: bulle1.y
             width:sourceSize.width/2

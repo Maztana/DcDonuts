@@ -9,7 +9,10 @@ PageCustom{
         id: animation
         anchors.fill:parent
         source: "qrc:///qml/images/donuts.gif"
+<<<<<<< HEAD
+=======
         opacity: 0.1
+>>>>>>> d43665d7c1443c8c84f4d69f2e37483f87716b41
     }
 
     FontLoader{ id: fontPerso; source: "../font/PWYummyDonuts.ttf" }
@@ -21,6 +24,7 @@ PageCustom{
         PullDownMenu{
             MenuItem{
                 text: qsTr("A propos")
+                onClicked: console.log("le click marche")
             }
         }
 

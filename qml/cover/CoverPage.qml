@@ -47,7 +47,7 @@ CoverBackground {
 
     Image{
         id: imgDrDonut
-        source:"../images/drDonut.png"
+        source:"qrc:///qml/images/drDonut.png"
         width:sourceSize.width/3
         height:sourceSize.height/3
         anchors.centerIn: parent
