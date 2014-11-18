@@ -5,6 +5,10 @@
 
 QString QuestionnaireEducatif::MODE_JEU = "";
 int QuestionnaireEducatif::NB_PROPOSITIONS = 4;
+QString QuestionnaireEducatif::COLOR_INIT = "black";
+QString QuestionnaireEducatif::COLOR_SELECTION = "blue";
+QString QuestionnaireEducatif::COLOR_TRUE = "green";
+QString QuestionnaireEducatif::COLOR_FALSE = "red";
 
 
 QuestionnaireEducatif::QuestionnaireEducatif(Niveau* niveauDuJeu):
@@ -43,31 +47,51 @@ const QString QuestionnaireEducatif::getProposition4()
 {
     return QString::number(listProposition.at(3));
 }
-/*
+
+const QString QuestionnaireEducatif::getColor1()
+{
+    return color1;
+}
+
+const QString QuestionnaireEducatif::getColor2()
+{
+    return color2;
+}
+
+const QString QuestionnaireEducatif::getColor3()
+{
+    return color3;
+}
+
+const QString QuestionnaireEducatif::getColor4()
+{
+    return color4;
+}
+
 void QuestionnaireEducatif::setColor1(QString color)
 {
-    //color1 = color;
+    color1 = color;
     emit color1Changed();
 }
 
 void QuestionnaireEducatif::setColor2(QString color)
 {
-    //color2 = color;
+    color2 = color;
     emit color2Changed();
 }
 
 void QuestionnaireEducatif::setColor3(QString color)
 {
-    //color3 = color;
+    color3 = color;
     emit color3Changed();
 }
 
 void QuestionnaireEducatif::setColor4(QString color)
 {
-    //color4 = color;
+    color4 = color;
     emit color4Changed();
 }
-*/
+
 Question* QuestionnaireEducatif::getCurrentQuestion()
 {
     return questionCourante;
@@ -122,39 +146,55 @@ void QuestionnaireEducatif::newQuestion()
     emit proposition4Changed();
 }
 
+void QuestionnaireEducatif::setColor(int index, QString color)
+{
+    switch (index) {
+    case 0:
+        setColor1(color);
+        break;
+    case 1:
+        setColor2(color);
+        break;
+    case 2:
+        setColor3(color);
+        break;
+    case 3:
+        setColor4(color);
+        break;
+    }
+}
+
 void QuestionnaireEducatif::traitResponse(QString response)
 {
-    //TODO
     int result = questionCourante->getResult();
+    int indexRep = listProposition.indexOf(response.toInt());
+    int indexResult = listProposition.indexOf(result);
 
+    //Gestion de la sélection
+    setColor(indexRep, COLOR_SELECTION);
+
+    //Gestion du résultat
     if(response.toInt() == result)
     {
         //Réponse correcte
-        QTextStream(stdout) << "reponse juste " << result << endl;
+        setColor(indexRep, COLOR_TRUE);
 
-        //mise en vert de la réponse
-        //setColor("green");
         //add point au profil
+        emit incrementScore(1);
     }
     else
     {
         //Réponse fausse
+        setColor(indexRep, COLOR_FALSE);
+        setColor(indexResult, COLOR_TRUE);
 
-        //mise en rouge de la réponse choisi
-        //setColor("red");
-
-        QTextStream(stdout) << "reponse fausse " << response << endl;
-
-        //mise en vert de la réponse vrai
-        QTextStream(stdout) << "reponse vrai " << result << endl;
+        setColor(indexResult, COLOR_INIT);
     }
 
-    //QThread::sleep(5);
-
-    //setColor("black");
+    setColor(indexRep, COLOR_INIT);
 
     //add stat question
 
-    QTextStream(stdout) << "changement question" << endl;
+
     emit finishTraitResponse();
 }

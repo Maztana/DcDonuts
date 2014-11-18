@@ -21,6 +21,7 @@ protected:
     void setNiveau(Niveau *newNiveau);
 
 signals:
+    void incrementScore(int);
 
 public slots:
     virtual void lancerJeu() = 0;

@@ -8,7 +8,8 @@ class Partie : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QString niveau READ getNameNiveau)
+    Q_PROPERTY(QString niveau READ getNameNiveau NOTIFY niveauChanged)
+    Q_PROPERTY(int score READ getScore NOTIFY scoreChanged)
 
 private:
     Profil *profilActif;
@@ -21,21 +22,21 @@ public:
 
 
     inline const QString getNameNiveau(){return niveauDeLaPartie->getName();}
+    inline int getScore(){return profilActif->getScore();}
 
     void setProfilPartie(Profil *profilJeu);
-
-    //inline const Profil* getProfilActif()const{return profilActif;}
-    //inline const TypeDeJeu* getTypeJeu()const{return typeJeuActif;}
-    //inline const Niveau* getNiveauDeLaPartie()const{return niveauDeLaPartie;}
 
 private:
     void setTypeJeu(TypeDeJeu *typeJeu);
     void setNiveauDeLaPartie(Niveau *niveauPartie);
 
 signals:
+    void niveauChanged();
+    void scoreChanged();
 
 public slots:
     void lancerJeu();
+    void scoreIncrement(int nbPoints);
 
 };
 

@@ -1,13 +1,14 @@
 #include "profil.h"
 
-Profil::Profil(QString nom, QDate *dateDeNaissance) :
-    QObject(0), nom(nom), dateDeNaissance(dateDeNaissance)
+Profil::Profil(QString nom) :
+    QObject(0), nom(nom)
 {
+    score = 0;
 }
 
 Profil::~Profil()
 {
-    delete(dateDeNaissance);
+
 }
 
 const QString Profil::getNom() const
@@ -15,7 +16,12 @@ const QString Profil::getNom() const
     return nom;
 }
 
-const QDate* Profil::getDateDeNaissance()const
+int Profil::getScore()const
 {
-    return dateDeNaissance;
+    return score;
 }
+
+void Profil::incrementScore(int nbPoints){
+    score+=nbPoints;
+}
+

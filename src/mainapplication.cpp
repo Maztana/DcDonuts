@@ -10,12 +10,14 @@ QGuiApplication* MainApplication::q_application = NULL;
 MainApplication::MainApplication(QGuiApplication *q_application, QQuickView *q_view) :
     QObject(0)
 {
+    QTextStream(stdout) << "Charger les profils" << endl;
+
     this->q_view = q_view;
     this->q_application = q_application;
     //QObject::connect(this, SIGNAL(play()), this, SLOT(lancerPartie()));
 
     //Profil par defaut
-    creerProfils("Claudio",  new QDate(2003, 10, 30));
+    creerProfils("Claudio");
     partieEnCours = NULL;
 }
 
@@ -46,9 +48,9 @@ void MainApplication::lancerPartie()
     }
 }
 
-void MainApplication::creerProfils(QString nom, QDate *date)
+void MainApplication::creerProfils(QString nom)
 {
-    Profil *newProfil = new Profil(nom, date);
+    Profil *newProfil = new Profil(nom);
     profils.append(newProfil);
 
     changerProfilActif(newProfil);

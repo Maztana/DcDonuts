@@ -2,6 +2,8 @@
 #include "mainapplication.h"
 #include <QtQml>
 
+#include <QTextStream>
+
 //test
 #include "addition.h"
 
@@ -13,6 +15,8 @@ Partie::Partie(Profil *profilJeu):
     //Implémentation en dur pour test
     setNiveauDeLaPartie(new Niveau());
     setTypeJeu(new Addition(niveauDeLaPartie));
+
+    connect(typeJeuActif, SIGNAL(incrementScore(int)), this,SLOT(scoreIncrement(int)));
 
     if(typeJeuActif->isQuestionnaire())
     {
@@ -28,6 +32,7 @@ Partie::Partie(Profil *profilJeu):
 
 Partie::~Partie()
 {
+    QTextStream(stdout) << "Enregistrement du profil" << endl;
     delete(typeJeuActif);
     delete(niveauDeLaPartie);
 }
@@ -53,4 +58,10 @@ void Partie::setTypeJeu(TypeDeJeu *typeJeu)
 void Partie::setNiveauDeLaPartie(Niveau *niveauPartie)
 {
     niveauDeLaPartie = niveauPartie;
+    emit niveauChanged();
+}
+
+void Partie::scoreIncrement(int nbPoints){
+    profilActif->incrementScore(nbPoints);
+    emit scoreChanged();
 }

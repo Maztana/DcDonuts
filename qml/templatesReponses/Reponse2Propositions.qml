@@ -24,6 +24,7 @@ Item{
 
             ItemReponse{
                 id: rep1
+                indexRep: 1
             }
         }
         Rectangle{
@@ -34,6 +35,7 @@ Item{
 
             ItemReponse{
                 id: rep2
+                indexRep: 2
             }
         }
     }

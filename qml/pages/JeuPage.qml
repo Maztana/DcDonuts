@@ -121,10 +121,21 @@ Page {
                 textReponse3: questionnaireEducatif.proposition3
                 textReponse4: questionnaireEducatif.proposition4
             }
+
         }
 
 
         /*-------------------------------------------------*/
+
+        /*----------------------- Score -----------------------*/
+        Label{
+            anchors.top: panelReponse.bottom
+            anchors.margins: 340
+            anchors.horizontalCenter: parent.horizontalCenter
+            font.pixelSize: 40
+            text: "Score: "+ partie.score + " Donuts"
+
+        }
     }
 }
 

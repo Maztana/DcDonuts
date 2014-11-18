@@ -28,6 +28,7 @@ Item{
 
             ItemReponse{
                 id: rep1
+                indexRep: 1
             }
 
         }
@@ -39,6 +40,7 @@ Item{
 
             ItemReponse{
                 id: rep2
+                indexRep: 2
             }
         }
     }
@@ -58,6 +60,7 @@ Item{
 
             ItemReponse{
                 id: rep3
+                indexRep: 3
             }
         }
 
