@@ -5,10 +5,11 @@ Item {
 
     property alias rep: labelRep.text
     property int indexRep
-    property alias color : reponse.color
 
     width: 200
     height:100
+	anchors.centerIn: parent
+    anchors.fill: parent
 
     Rectangle{
         id:reponse

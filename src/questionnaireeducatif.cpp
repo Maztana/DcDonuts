@@ -111,6 +111,7 @@ void QuestionnaireEducatif::traitResponse(int indexResponse)
         emit responseTrue(indexResponse);
 
         //add point au profil
+        emit incrementScore(1);
     }
     else
     {

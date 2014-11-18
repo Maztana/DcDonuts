@@ -31,7 +31,7 @@ signals:
 
 public slots:
     void lancerPartie();
-    void creerProfils(QString nom, QDate* date);
+    void creerProfils(QString nom);
     void changerProfilActif(Profil *newProfilActif);
 
 };

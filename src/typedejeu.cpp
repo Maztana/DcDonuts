@@ -19,3 +19,4 @@ void TypeDeJeu::setNiveau(Niveau *newNiveau)
 {
     niveauDuJeu = newNiveau;
 }
+

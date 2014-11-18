@@ -2,25 +2,27 @@
 #define PROFIL_H
 
 #include <QObject>
-#include <QDate>
 
 class Profil : public QObject
 {
     Q_OBJECT
 
     QString nom;
-    QDate *dateDeNaissance;
+    int score;
 
 public:
-    explicit Profil(QString nom, QDate *dateDeNaissance);
+    explicit Profil(QString nom);
     ~Profil();
 
     const QString getNom()const;
-    const QDate* getDateDeNaissance()const;
+    int getScore()const;
+
+    void incrementScore(int nbPoints);
 
 signals:
 
 public slots:
+
 
 };
 
