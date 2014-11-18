@@ -32,8 +32,6 @@
 #include <QtQuick>
 #endif
 
-#include <QGuiApplication>
-#include <QQuickView>
 #include <QtQml>
 
 #include <sailfishapp.h>
@@ -44,12 +42,11 @@ int main(int argc, char *argv[])
 {
     QGuiApplication *q_application = SailfishApp::application( argc, argv);
     QQuickView *q_view = SailfishApp::createView();
-    MainApplication *application = new MainApplication(q_application, q_view);
+    MainApplication application(q_application, q_view);
 
-    q_view->rootContext()->setContextProperty("application", application);
-    //qmlRegisterType<MainApplication>("dr.donut", 1,0, "MainApplication");
+    q_view->rootContext()->setContextProperty("application", &application);
 
-    q_view->setSource(SailfishApp::pathTo( "qml/dr-donut.qml"));
+    q_view->setSource(SailfishApp::pathTo("qml/dr-donut.qml"));
     q_view->showFullScreen();
 
     return q_application->exec();

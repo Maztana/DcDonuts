@@ -2,14 +2,8 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../Components"
 
-PageCustom{
+Page{
     id: pageAccueil
-
-    AnimatedImage {
-        id: animation
-        anchors.fill:parent
-        source: "qrc:///qml/images/donuts.gif"
-    }
 
     FontLoader{ id: fontPerso; source: "../font/PWYummyDonuts.ttf" }
 
@@ -20,13 +14,13 @@ PageCustom{
         PullDownMenu{
             MenuItem{
                 text: qsTr("A propos")
-                onClicked: console.log("le click marche")
             }
         }
 
-        Text{
+        Label{
             id: nomProfil
             text: application.nameProfil
+            color: Theme.highlightColor
             font.bold: true
             font.pixelSize: 28
             x:50
@@ -59,6 +53,7 @@ PageCustom{
                 anchors.top: parent.icon.bottom
                 anchors.horizontalCenter: parent.horizontalCenter
                 font.pixelSize: 30
+                color:"white"
             }
         }
 
@@ -72,7 +67,7 @@ PageCustom{
 
         Image{
             id: iconDrDonut
-            source:"../images/drDonut.png"
+            source:"qrc:///qml/images/drDonut.png"
             width: sourceSize.width/2
             height: sourceSize.height/2
             anchors{
@@ -82,7 +77,7 @@ PageCustom{
             }
         }
 
-        BoutonPerso
+        Button
         {
             id:boutonJouer
             text: qsTr("Jouer")
@@ -91,23 +86,22 @@ PageCustom{
                 horizontalCenter: parent.horizontalCenter
                 margins:60
             }
-
-            link: "../pages/ChoixModeDeJeuPage.qml"
+            onClicked: pageStack.push(Qt.resolvedUrl("../pages/ChoixModeDeJeuPage.qml"))
         }
 
-        BoutonPerso
+        Button
         {
             id:boutonOptions
             text: qsTr("Options")
+
             anchors{
                 bottom:parent.bottom
                 horizontalCenter: parent.horizontalCenter
                 margins:130
             }
-
-            enable:false
-            link: "../pages/JeuPage.qml"
+            enabled: false
         }
 
     }
 }
+

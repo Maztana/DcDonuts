@@ -10,7 +10,7 @@ public:
     explicit Multiplication(Niveau* niveauDuJeu);
     ~Multiplication();
 
-    virtual Question* getQuestion();
+    virtual Question* nextQuestion();
 
 protected:
     void defNiveau();

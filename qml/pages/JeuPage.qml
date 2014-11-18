@@ -4,9 +4,8 @@ import "../templatesReponses"
 import "../Components"
 
 
-PageCustom {
+Page {
     id: pageJeu
-
 
     SilicaFlickable {
         anchors.fill: parent
@@ -39,8 +38,8 @@ PageCustom {
             }
 
             Text {
-                id: question
-                text: questionnaireEducatif.question + " ?"
+                id: libelleQuestion
+                text: question.libelle + " ?"
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter : parent.verticalCenter
                 font.pointSize: 40
@@ -92,7 +91,7 @@ PageCustom {
         /*------------------- Dr Donut --------------------*/
         Image{
             id: drDonut
-            source: "../images/drDonut.png"
+            source: "qrc:///qml/images/drDonut.png"
             x: bulle3.x + bulle3.width + 30
             y: bulle1.y
             width:sourceSize.width/2
@@ -117,26 +116,15 @@ PageCustom {
 
             Reponse4Propositions{
                 id: responses
-
-                textReponse1: questionnaireEducatif.result
-                textReponse2: questionnaireEducatif.proposition
-                textReponse3: questionnaireEducatif.proposition
-                textReponse4: questionnaireEducatif.proposition
-
+                textReponse1: questionnaireEducatif.proposition1
+                textReponse2: questionnaireEducatif.proposition2
+                textReponse3: questionnaireEducatif.proposition3
+                textReponse4: questionnaireEducatif.proposition4
             }
         }
 
 
         /*-------------------------------------------------*/
     }
-
-    function updateQuestion() {
-        question.text = questionnaireEducatif.question + " ?";
-        responses.textReponse1 = questionnaireEducatif.result;
-        responses.textReponse2 = questionnaireEducatif.proposition;
-        responses.textReponse3 = questionnaireEducatif.proposition;
-        responses.textReponse4 = questionnaireEducatif.proposition;
-    }
-
 }
 

@@ -10,7 +10,7 @@ public:
     explicit Soustraction(Niveau* niveauDuJeu);
     ~Soustraction();
 
-    virtual Question* getQuestion();
+    virtual Question* nextQuestion();
 
 protected:
     void defNiveau();

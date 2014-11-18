@@ -11,7 +11,7 @@ Division::~Division()
 {
 }
 
-Question* Division::getQuestion()
+Question* Division::nextQuestion()
 {
     //Générer question
     int operande1 = 0;

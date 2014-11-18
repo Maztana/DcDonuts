@@ -11,7 +11,7 @@ Soustraction::~Soustraction()
 {
 }
 
-Question* Soustraction::getQuestion()
+Question* Soustraction::nextQuestion()
 {
     //Générer question
     int operande1 = qrand() % ((NB_MAX + 1) - NB_MIN) + NB_MIN;

@@ -11,7 +11,7 @@ Multiplication::~Multiplication()
 {
 }
 
-Question* Multiplication::getQuestion()
+Question* Multiplication::nextQuestion()
 {
     //Générer question
     int operande1 = qrand() % ((NB_MAX + 1) - NB_MIN) + NB_MIN;

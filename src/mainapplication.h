@@ -9,7 +9,7 @@ class MainApplication : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QString nameProfil READ getNameProfil)
+    Q_PROPERTY(QString nameProfil READ getNameProfil NOTIFY nameProfilChanged)
 
     QList<Profil*> profils;
     Profil *profilActif;
@@ -27,6 +27,7 @@ public:
 
 
 signals:
+    void nameProfilChanged();
 
 public slots:
     void lancerPartie();

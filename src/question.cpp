@@ -1,10 +1,12 @@
 #include "question.h"
 
 #include <QTextStream>
+#include <QDateTime>
 
 Question::Question(QString mode, int operande1, int operande2) :
     QObject(0), mode(mode)
 {
+    qsrand(QDateTime::currentDateTime().toTime_t());
     //tri des operandes!
     if(!mode.compare("DIVISION"))
     {
@@ -87,7 +89,7 @@ int Question::getProposition()const
     return propo;
 }
 
-const QString Question::toString()const
+QString Question::getLibelle()const
 {
     QString question = "";
 

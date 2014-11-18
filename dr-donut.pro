@@ -13,6 +13,7 @@
 TARGET = dr-donut
 
 CONFIG += sailfishapp
+CONFIG += c++11
 
 SOURCES += src/dr-donut.cpp \
     src/mainapplication.cpp \

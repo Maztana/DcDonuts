@@ -12,7 +12,6 @@ MainApplication::MainApplication(QGuiApplication *q_application, QQuickView *q_v
 {
     this->q_view = q_view;
     this->q_application = q_application;
-    //QObject::connect(this, SIGNAL(play()), this, SLOT(lancerPartie()));
 
     //Profil par defaut
     creerProfils("Claudio",  new QDate(2003, 10, 30));
@@ -21,11 +20,14 @@ MainApplication::MainApplication(QGuiApplication *q_application, QQuickView *q_v
 
 MainApplication::~MainApplication()
 {
-    qDeleteAll(profils);
     if(partieEnCours != 0)
     {
         delete(partieEnCours);
     }
+    qDeleteAll(profils);
+
+    //A vérifier
+    delete(q_view);
 }
 
 void MainApplication::lancerPartie()

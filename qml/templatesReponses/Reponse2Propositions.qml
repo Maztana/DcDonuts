@@ -16,25 +16,14 @@ Item{
         id: ligne
         spacing: 20
 
-        Rectangle{
-            id:reponse1
-
-            width: 200
-            height:220
-
-            ItemReponse{
-                id: rep1
-            }
+        ItemReponse{
+            id: rep1
+            indexRep: 1
         }
-        Rectangle{
-            id:reponse2
 
-            width: 200
-            height:220
-
-            ItemReponse{
-                id: rep2
-            }
+        ItemReponse{
+            id: rep2
+            indexRep: 2
         }
     }
 }

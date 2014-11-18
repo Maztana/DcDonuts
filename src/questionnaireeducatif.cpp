@@ -1,36 +1,43 @@
 #include "questionnaireeducatif.h"
 #include <QTextStream>
+#include <QtQml>
+#include <QThread>
 #include "mainapplication.h"
 
 QString QuestionnaireEducatif::MODE_JEU = "";
+int QuestionnaireEducatif::NB_PROPOSITIONS = 4;
 
 
 QuestionnaireEducatif::QuestionnaireEducatif(Niveau* niveauDuJeu):
     TypeDeJeu(niveauDuJeu)
 {
-    connect(this, SIGNAL(finishTraitResponse()), this, SLOT(lancerQuestion()));
-    connect(this, SIGNAL(newQuestion()), MainApplication::q_application, SLOT(updateQuestion()));
+    qsrand(QDateTime::currentDateTime().toTime_t());
 }
 
 QuestionnaireEducatif::~QuestionnaireEducatif()
 {
-    qDeleteAll(questionsDonnees);
     questionCourante = NULL;
+    qDeleteAll(questionsDonnees);
 }
 
-const QString QuestionnaireEducatif::getLibelleQuestion()
+const QString QuestionnaireEducatif::getProposition1()
 {
-    return getCurrentQuestion()->toString();
+    return QString::number(listProposition.at(0));
 }
 
-const QString QuestionnaireEducatif::getResultQuestion()
+const QString QuestionnaireEducatif::getProposition2()
 {
-    return QString::number(getCurrentQuestion()->getResult());
+    return QString::number(listProposition.at(1));
 }
 
-const QString QuestionnaireEducatif::getPropositionQuestion()
+const QString QuestionnaireEducatif::getProposition3()
 {
-    return QString::number(getCurrentQuestion()->getProposition());
+    return QString::number(listProposition.at(2));
+}
+
+const QString QuestionnaireEducatif::getProposition4()
+{
+    return QString::number(listProposition.at(3));
 }
 
 Question* QuestionnaireEducatif::getCurrentQuestion()
@@ -43,6 +50,26 @@ const QString& QuestionnaireEducatif::getModeJeu()
     return MODE_JEU;
 }
 
+void QuestionnaireEducatif::setListProposition()
+{
+    listProposition.clear();
+
+    int result = questionCourante->getResult();
+    int propo = questionCourante->getResult();
+
+    int index = qrand() % ((NB_PROPOSITIONS) - 0) + 0;
+
+    for(int i=1; i < NB_PROPOSITIONS; i++)
+    {
+        while(propo == result || listProposition.contains(propo))
+        {
+            propo = questionCourante->getProposition();
+        }
+        listProposition.append(propo);
+    }
+    listProposition.insert(index, result);
+}
+
 void QuestionnaireEducatif::lancerJeu()
 {
     //Lancer interface de questionnaire
@@ -51,38 +78,57 @@ void QuestionnaireEducatif::lancerJeu()
 
 void QuestionnaireEducatif::lancerQuestion()
 {
-    questionCourante = this->getQuestion();
-    questionsDonnees.append(questionCourante);
+    emit responseTrait();
 
-    emit newQuestion();
+    questionCourante = this->nextQuestion();
+    questionsDonnees.append(questionCourante);
+    MainApplication::q_view->rootContext()->setContextProperty("question", questionCourante);
+
+    setListProposition();
+    newQuestion();
 }
 
-void QuestionnaireEducatif::traitResponse(QString response)
+void QuestionnaireEducatif::newQuestion()
 {
-    //TODO
-    int result = questionCourante->getResult();
+    emit proposition1Changed();
+    emit proposition2Changed();
+    emit proposition3Changed();
+    emit proposition4Changed();
+}
 
-    if(response.toInt() == result)
+void QuestionnaireEducatif::traitResponse(int indexResponse)
+{
+    emit responseTrait();
+
+    listResetColor.clear();
+    int result = questionCourante->getResult();
+    int indexResult = listProposition.indexOf(result);
+
+    //Gestion du résultat
+    if(listProposition.at(indexResponse-1) == result)
     {
         //Réponse correcte
-        QTextStream(stdout) << "reponse juste " << result << endl;
+        emit responseTrue(indexResponse);
 
-        //mise en vert de la réponse
         //add point au profil
     }
     else
     {
         //Réponse fausse
+        emit responseFalse(indexResponse);
+        emit responseTrue(indexResult + 1);
 
-        //mise en rouge de la réponse choisi
-        QTextStream(stdout) << "reponse fausse " << response << endl;
-
-        //mise en vert de la réponse vrai
-        QTextStream(stdout) << "reponse vrai " << result << endl;
+        listResetColor.append(indexResult + 1);
     }
 
+    listResetColor.append(indexResponse);
     //add stat question
+}
 
-    QTextStream(stdout) << "changement question" << endl;
-    emit finishTraitResponse();
+void QuestionnaireEducatif::responseReset()
+{
+    for(int index : listResetColor)
+    {
+        emit resetResponse(index);
+    }
 }

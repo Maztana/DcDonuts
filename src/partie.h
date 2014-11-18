@@ -8,7 +8,7 @@ class Partie : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QString niveau READ getNameNiveau)
+    Q_PROPERTY(QString niveau READ getNameNiveau NOTIFY niveauChanged)
 
 private:
     Profil *profilActif;
@@ -33,6 +33,7 @@ private:
     void setNiveauDeLaPartie(Niveau *niveauPartie);
 
 signals:
+    void niveauChanged();
 
 public slots:
     void lancerJeu();
