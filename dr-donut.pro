@@ -69,7 +69,8 @@ HEADERS += \
     src/addition.h \
     src/soustraction.h \
     src/multiplication.h \
-    src/division.h
+    src/division.h \
+    src/Ressources.h
 
 RESOURCES += \
     resources.qrc

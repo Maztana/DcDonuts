@@ -11,12 +11,12 @@ class Question : public QObject
     Q_PROPERTY(int result READ getResult NOTIFY resultChanged)
 
 
-    QString mode;
+    const QString& mode;
     int operande1;
     int operande2;
 
 public:
-    explicit Question(QString mode, int operande1, int operande2);
+    explicit Question(const QString& mode, int operande1, int operande2);
 
     int getProposition()const;
     int getResult()const;

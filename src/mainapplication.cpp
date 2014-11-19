@@ -17,7 +17,7 @@ MainApplication::MainApplication(QGuiApplication *q_application, QQuickView *q_v
 
     //Profil par defaut
     creerProfils("Claudio");
-    partieEnCours = NULL;
+    partieEnCours = 0;
 }
 
 MainApplication::~MainApplication()
@@ -32,21 +32,32 @@ MainApplication::~MainApplication()
     delete(q_view);
 }
 
-void MainApplication::lancerPartie()
+const QString MainApplication::getNameProfil()const
+{
+    QString nameProfil = "undefined";
+    if(profilActif != 0)
+    {
+        nameProfil = profilActif->getNom();
+    }
+    return nameProfil;
+}
+
+bool MainApplication::lancerPartie()
 {
     if(profilActif != 0)
     {
-        if(partieEnCours != NULL)
+        if(partieEnCours != 0)
         {
             delete(partieEnCours);
         }
         partieEnCours = new Partie(profilActif);
-
         q_view->rootContext()->setContextProperty("partie", partieEnCours);
+        return true;
     }
     else {
         // ERREUR BESOIN DE SELECTION JOUEUR
         // OUVRIR SELECTION JOUEUR
+        return false;
     }
 }
 
@@ -61,4 +72,5 @@ void MainApplication::creerProfils(QString nom)
 void MainApplication::changerProfilActif(Profil *newProfilActif)
 {
     profilActif = newProfilActif;
+    emit nameProfilChanged();
 }

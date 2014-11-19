@@ -8,9 +8,9 @@ Item {
 
     width: 200
     height:100
-	anchors.centerIn: parent
+/*	anchors.centerIn: parent
     anchors.fill: parent
-
+*/
     Rectangle{
         id:reponse
         anchors.fill: parent
@@ -94,33 +94,28 @@ Item {
         {
             if(reponse.enabled === true)
             {
-                console.log(reponse.enabled)
                 reponse.enabled = false
             }
             else
             {
-                console.log(reponse.enabled)
                 reponse.enabled = true
             }
         }
         onResponseTrue:{
             if(index === indexRep)
             {
-                console.log(index)
                 changeColor("green")
             }
         }
         onResponseFalse:{
             if(index === indexRep)
             {
-                console.log(index)
                 changeColor("red")
             }
         }
         onResetResponse:{
             if(index === indexRep)
             {
-                console.log(index)
                 changeColor("white")
             }
         }
@@ -128,7 +123,6 @@ Item {
 
     function changeColor(nameColor)
     {
-        console.log(nameColor + " " + indexRep)
         reponse.state = nameColor
     }
 }

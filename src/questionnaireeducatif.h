@@ -37,7 +37,6 @@ public:
     const QString& getModeJeu();
 
 protected:
-    static QString MODE_JEU;
     static int NB_PROPOSITIONS;
 
 private:

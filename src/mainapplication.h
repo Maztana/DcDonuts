@@ -22,15 +22,13 @@ public:
     static QGuiApplication *q_application;
     static QQuickView *q_view;
 
-    //inline const Partie* getPartie()const{return partieEnCours;}
-    inline const QString getNameProfil()const{return profilActif->getNom();}
-
+    const QString getNameProfil()const;
 
 signals:
     void nameProfilChanged();
 
 public slots:
-    void lancerPartie();
+    bool lancerPartie();
     void creerProfils(QString nom);
     void changerProfilActif(Profil *newProfilActif);
 

@@ -4,7 +4,6 @@
 #include <QThread>
 #include "mainapplication.h"
 
-QString QuestionnaireEducatif::MODE_JEU = "";
 int QuestionnaireEducatif::NB_PROPOSITIONS = 4;
 
 
@@ -43,11 +42,6 @@ const QString QuestionnaireEducatif::getProposition4()
 Question* QuestionnaireEducatif::getCurrentQuestion()
 {
     return questionCourante;
-}
-
-const QString& QuestionnaireEducatif::getModeJeu()
-{
-    return MODE_JEU;
 }
 
 void QuestionnaireEducatif::setListProposition()

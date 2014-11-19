@@ -1,9 +1,9 @@
 #include "soustraction.h"
+#include "Ressources.h"
 
 Soustraction::Soustraction(Niveau* niveauDuJeu):
     Calcul(niveauDuJeu)
 {
-    MODE_JEU = "SOUSTRACTION";
     defNiveau();
 }
 
@@ -17,7 +17,7 @@ Question* Soustraction::nextQuestion()
     int operande1 = qrand() % ((NB_MAX + 1) - NB_MIN) + NB_MIN;
     int operande2 = qrand() % ((NB_MAX + 1) - NB_MIN) + NB_MIN;
 
-    Question* maQuestion = new Question(MODE_JEU, operande1, operande2);
+    Question* maQuestion = new Question(MODE_SOUSTRACTION, operande1, operande2);
 
     return maQuestion;
 }
@@ -25,5 +25,5 @@ Question* Soustraction::nextQuestion()
 void Soustraction::defNiveau()
 {
     NB_MIN = 0;
-    NB_MAX = 10;
+    NB_MAX = 9;
 }
