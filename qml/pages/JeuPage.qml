@@ -133,7 +133,7 @@ Page {
             anchors.margins: 340
             anchors.horizontalCenter: parent.horizontalCenter
             font.pixelSize: 40
-            text: "Score: "+ partie.score + " Donuts"
+            text: "Score: "+ game.score + " Donuts"
 
         }
     }

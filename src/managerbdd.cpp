@@ -7,97 +7,168 @@
 // les ifdef proviennent du site http://developer.nokia.com/community/wiki/Creating_an_SQLite_database_in_Qt
 
 //Variable statique
-ManagerBdd ManagerBdd::instance= ManagerBdd();
+ManagerBdd ManagerBdd::s_instance= ManagerBdd();
 
-ManagerBdd::ManagerBdd(){
+/** Default constructor
+ * @brief ManagerBdd::ManagerBdd
+ */
+ManagerBdd::ManagerBdd()
+{
 
 }
 
-ManagerBdd::~ManagerBdd(){
+/** Default destructor
+ * @brief ManagerBdd::~ManagerBdd
+ */
+ManagerBdd::~ManagerBdd()
+{
 
 }
 
-ManagerBdd& ManagerBdd::getInstance(){
-
-    return instance;
+/**
+ * @brief ManagerBdd::getInstance
+ * @return ManagerBdd instance
+ */
+ManagerBdd& ManagerBdd::getInstance()
+{
+    return s_instance;
 }
 
-
+/** Create and open sqlite database
+ * @brief ManagerBdd::openDB
+ * @return true if database is open, else return false
+ */
 bool ManagerBdd::openDB()
 {
     // Find QSLite driver
-    db = QSqlDatabase::addDatabase("QSQLITE");
+    m_db = QSqlDatabase::addDatabase("QSQLITE");
 
 #ifdef Q_OS_LINUX
     // NOTE: We have to store database file into user home folder in Linux
     QString path(QDir::home().path());
     path.append(QDir::separator()).append("drdonut.db.sqlite");
     path = QDir::toNativeSeparators(path);
-    db.setDatabaseName(path);
+    m_db.setDatabaseName(path);
 
     QTextStream(stdout) << path << endl;
 
 #else
     // NOTE: File exists in the application private folder, in Symbian Qt implementation
-    db.setDatabaseName("drdonut.db.sqlite");
+    m_db.setDatabaseName("drdonut.db.sqlite");
 #endif
 
     // Open database
-    return db.open();
+    return m_db.open();
 }
 
+/** Close and Delete database
+ * @brief ManagerBdd::deleteDB
+ * @return true if database is delete, else return false
+ */
+bool ManagerBdd::deleteDB()
+{
+    m_db.close();
 
+#ifdef Q_OS_LINUX
+    // NOTE: We have to store database file into user home folder in Linux
+    QString path(QDir::home().path());
+    path.append(QDir::separator()).append("drdonut.db.sqlite");
+    path = QDir::toNativeSeparators(path);
+    return QFile::remove(path);
+#else
+
+    // Remove created database binary file
+    return QFile::remove("drdonut.db.sqlite");
+#endif
+}
+
+/** Close database
+ * @brief ManagerBdd::closeDB
+ */
 void ManagerBdd::closeDB()
 {
-    db.close();
+    m_db.close();
 }
 
+/** Create tables of database
+ * @brief ManagerBdd::createTables
+ */
+void ManagerBdd::createTables()const
+{
 
-void ManagerBdd::creerTables()const{
-
-    QSqlQuery query(db);
+    QSqlQuery query(m_db);
     query.exec("CREATE TABLE IF NOT EXISTS profil (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(20), score INTEGER)");
 
     // AJOUTER TABLE QUESTION
 }
 
+/** Insert a new profile in database and return a profile object
+ * @brief ManagerBdd::insertProfile
+ * @param name of the player
+ * @param score of the player
+ * @return Profile
+ */
+Profil* ManagerBdd::insertProfile(QString name, int score) const
+{
+    int lastId=-1;
+    createTables();
 
-void ManagerBdd::insererProfil(Profil& profil) const{
+    QSqlQuery query(m_db);
 
-    creerTables();
+    query.exec("INSERT INTO profil(name,score) VALUES('"+name+"',"+QString::number(score)+")");
+    query.exec("SELECT MAX(id) FROM profil");
 
-    QSqlQuery query(db);
+    if(query.next()){
+        lastId = query.value(0).toInt();
+    }
 
-    query.exec("INSERT INTO profil(name,score) VALUES('"+profil.getNom()+"',"+QString::number(profil.getScore())+")");
+    Profil* newProfil = new Profil(lastId,name,score);
+
+    return newProfil;
 
 }
 
-void ManagerBdd::modifierProfil(Profil& profil) const{
+/** Update a profile in database
+ * @brief ManagerBdd::updateProfile
+ * @param profil
+ */
+void ManagerBdd::updateProfile(Profil& profil) const
+{
 
-    creerTables();
+    createTables();
 
-    QSqlQuery query(db);
+    QSqlQuery query(m_db);
     query.exec("UPDATE profil SET score="+QString::number(profil.getScore())+" WHERE id="+QString::number(profil.getId()));
 
 }
 
-void ManagerBdd::supprimerProfil(Profil& profil) const{
+/** Delete a profile in database
+ * @brief ManagerBdd::deleteProfile
+ * @param profil
+ */
+void ManagerBdd::deleteProfile(Profil& profil) const
+{
 
-    creerTables();
+    createTables();
 
-    QSqlQuery query(db);
+    QSqlQuery query(m_db);
     query.exec("DELETE from profil WHERE id="+QString::number(profil.getId()));
 
 }
 
-QList<Profil*> ManagerBdd::selectAllProfils(){
+/** Select all profiles which are in database and return them in a list
+ * @brief ManagerBdd::selectAllProfiles
+ * @return List of all profiles
+ */
+QList<Profil*> ManagerBdd::selectAllProfiles()
+{
     QList<Profil*> lesProfils;
 
     int id;
     QString name;
     int score;
 
-    QSqlQuery query(db);
+    QSqlQuery query(m_db);
     query.exec("SELECT * FROM profil");
 
     while(query.next()){

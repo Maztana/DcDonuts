@@ -14,9 +14,13 @@ QQuickView* MainApplication::q_view = NULL;
 MainApplication::MainApplication(QQuickView *q_view) :
     QObject(0), managerBDD(ManagerBdd::getInstance())
 {
+    //managerBDD.deleteDB();
+
     loadProfiles();
+
     currentGame = 0;
     this->q_view = q_view;
+
 }
 
 /** Default destructor
@@ -26,7 +30,7 @@ MainApplication::~MainApplication()
 {
     if(currentGame != 0)
     {
-        delete(currentGame);
+        deleteGame();
     }
     qDeleteAll(profiles);
 
@@ -43,19 +47,27 @@ void MainApplication::loadProfiles()
 
     if(isOpen)
     {
-        profiles=managerBDD.selectAllProfils();
+        profiles=managerBDD.selectAllProfiles();
 
         if(profiles.size()<1)
         {
             // si aucun profil en BDD
-            //Profil par defaut
-            createProfile("François");
+            createProfile("François",0); //Profil par defaut
         }
         else
         {
             changeCurrentProfile(profiles.value(0)); // on prend le premier par défaut pour le moment
         }
     }
+}
+/** Save profile and delete currentGame after
+ * @brief MainApplication::deleteGame
+ */
+void MainApplication::deleteGame()
+{ 
+    managerBDD.updateProfile(*currentProfile);
+
+    delete(currentGame);
 }
 
 /** Getter of actif profil's name
@@ -100,11 +112,13 @@ bool MainApplication::launchGame()
  * @brief MainApplication::createProfil
  * @param nom the name of new profil
  */
-void MainApplication::createProfile(QString name)
+void MainApplication::createProfile(QString name,int score)
 {
-    Profil *newProfil = new Profil(name);
-    profiles.append(newProfil);
+    Profil* newProfil; //= new Profil(name);
 
+    newProfil = managerBDD.insertProfile(name,score);
+
+    profiles.append(newProfil);
     changeCurrentProfile(newProfil);
 }
 

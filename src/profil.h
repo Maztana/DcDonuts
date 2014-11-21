@@ -13,7 +13,7 @@ class Profil : public QObject
 
 
 public:
-    explicit Profil(QString nom);
+
     Profil(int id, QString name, int score);
     ~Profil();
 

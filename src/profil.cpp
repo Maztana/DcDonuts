@@ -1,14 +1,9 @@
 #include "profil.h"
 
-Profil::Profil(QString nom) :
-    QObject(0), nom(nom)
+Profil::Profil(int id, QString name, int score):
+    id(id), nom(name), score(score)
 {
-    score = 0;
-}
-Profil::Profil(int id, QString name, int score){
-    this->id=id;
-    this->nom=name;
-    this->score=score;
+
 }
 
 Profil::~Profil()

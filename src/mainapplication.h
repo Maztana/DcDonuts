@@ -31,13 +31,14 @@ public:
 
 private:
     void loadProfiles();
+    void deleteGame();
 
 signals:
     void nameProfileChanged();
 
 public slots:
     bool launchGame();
-    void createProfile(QString nom);
+    void createProfile(QString nom, int score);
     void changeCurrentProfile(Profil *newCurrentProfile);
 
 };
