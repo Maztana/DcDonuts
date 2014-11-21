@@ -8,37 +8,59 @@ QQuickView* MainApplication::q_view = NULL;
 QGuiApplication* MainApplication::q_application = NULL;
 
 MainApplication::MainApplication(QGuiApplication *q_application, QQuickView *q_view) :
-    QObject(0)
+    QObject(0), managerBDD(ManagerBdd::getInstance())
 {
-    QTextStream(stdout) << "Charger les profils" << endl;
+    chargerProfils();
 
     this->q_view = q_view;
     this->q_application = q_application;
-    //QObject::connect(this, SIGNAL(play()), this, SLOT(lancerPartie()));
 
-    //Profil par defaut
-    creerProfils("Claudio");
-    partieEnCours = NULL;
+    partieEnCours = 0;
+
 }
 
 MainApplication::~MainApplication()
 {
-    qDeleteAll(profils);
     if(partieEnCours != 0)
     {
         delete(partieEnCours);
     }
+    qDeleteAll(profils);
+}
+
+void MainApplication::chargerProfils(){
+
+    bool isOpen = managerBDD.openDB();
+
+    if(isOpen){
+        profils=managerBDD.selectAllProfils();
+
+        if(profils.size()<1){
+            // si aucun profil en BDD
+            //Profil par defaut
+            creerProfils("DefaultProfil");
+        }
+        else{
+
+            changerProfilActif(profils.value(0)); // on prend le premier par défaut pour le moment
+        }
+    }
+
 }
 
 void MainApplication::lancerPartie()
 {
+
     if(profilActif != 0)
     {
-        if(partieEnCours != NULL)
+        if(partieEnCours != 0)
         {
             delete(partieEnCours);
         }
+
         partieEnCours = new Partie(profilActif);
+
+
 
         q_view->rootContext()->setContextProperty("partie", partieEnCours);
     }
@@ -60,3 +82,5 @@ void MainApplication::changerProfilActif(Profil *newProfilActif)
 {
     profilActif = newProfilActif;
 }
+
+

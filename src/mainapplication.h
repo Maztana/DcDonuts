@@ -2,8 +2,10 @@
 #define MAINAPPLICATION_H
 
 #include "partie.h"
+#include "managerbdd.h"
 #include <QQuickView>
 #include <QGuiApplication>
+
 
 class MainApplication : public QObject
 {
@@ -14,6 +16,7 @@ class MainApplication : public QObject
     QList<Profil*> profils;
     Profil *profilActif;
     Partie *partieEnCours;
+    ManagerBdd &managerBDD;
 
 public:
     explicit MainApplication(QGuiApplication *q_application,QQuickView *q_view);
@@ -25,6 +28,8 @@ public:
     //inline const Partie* getPartie()const{return partieEnCours;}
     inline const QString getNameProfil()const{return profilActif->getNom();}
 
+private:
+    void chargerProfils();
 
 signals:
 

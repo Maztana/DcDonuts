@@ -26,7 +26,8 @@ SOURCES += src/dr-donut.cpp \
     src/addition.cpp \
     src/soustraction.cpp \
     src/multiplication.cpp \
-    src/division.cpp
+    src/division.cpp \
+    src/managerbdd.cpp
 
 OTHER_FILES += qml/dr-donut.qml \
     qml/cover/CoverPage.qml \
@@ -68,8 +69,11 @@ HEADERS += \
     src/addition.h \
     src/soustraction.h \
     src/multiplication.h \
-    src/division.h
+    src/division.h \
+    src/managerbdd.h
 
 RESOURCES += \
     resources.qrc
+
+QT += sql
 

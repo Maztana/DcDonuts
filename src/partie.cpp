@@ -1,8 +1,8 @@
 #include "partie.h"
 #include "mainapplication.h"
 #include <QtQml>
-
 #include <QTextStream>
+
 
 //test
 #include "addition.h"
@@ -32,7 +32,11 @@ Partie::Partie(Profil *profilJeu):
 
 Partie::~Partie()
 {
-    QTextStream(stdout) << "Enregistrement du profil" << endl;
+
+   //saveProfil();
+    //QTextStream(stdout) << "Apres enregistrement du profil" << endl;
+
+
     delete(typeJeuActif);
     delete(niveauDeLaPartie);
 }
@@ -59,6 +63,13 @@ void Partie::setNiveauDeLaPartie(Niveau *niveauPartie)
 {
     niveauDeLaPartie = niveauPartie;
     emit niveauChanged();
+}
+
+void Partie::saveProfil(){
+
+
+
+
 }
 
 void Partie::scoreIncrement(int nbPoints){
