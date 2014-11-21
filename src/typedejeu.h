@@ -14,11 +14,14 @@ public:
 
     const Niveau& getNiveau();
     virtual inline bool isQuestionnaire()const{return false;}
+    static TypeDeJeu* makeTypeJeu(Niveau* niveauDeLaPartie, QString nameJeu);
 
 protected:
-    Niveau *niveauDuJeu;
+    static int INCREMENTAL_SCORE;
+    const Niveau *niveauDuJeu;
 
-    void setNiveau(Niveau *newNiveau);
+private:
+    static TypeDeJeu* makeTypeCalcul(Niveau* niveauDeLaPartie, QString nameJeu);
 
 signals:
     void incrementScore(int);

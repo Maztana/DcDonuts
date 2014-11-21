@@ -18,7 +18,7 @@ Page{
         }
 
         Label{
-            id: nomProfil
+            id: nameProfil
             text: application.nameProfil
             color: Theme.highlightColor
             font.bold: true
@@ -73,13 +73,13 @@ Page{
             anchors{
                 horizontalCenter: parent.horizontalCenter
                 margins:60
-                bottom: boutonJouer.top
+                bottom: buttonPlay.top
             }
         }
 
         Button
         {
-            id:boutonJouer
+            id:buttonPlay
             text: qsTr("Jouer")
             anchors{
                 bottom:boutonOptions.top
@@ -87,7 +87,7 @@ Page{
                 margins:60
             }
             onClicked: {
-                if(application.lancerPartie())
+                if(application.launchGame())
                 {
                     pageStack.push(Qt.resolvedUrl("../pages/ChoixModeDeJeuPage.qml"))
                 }

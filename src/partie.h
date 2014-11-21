@@ -4,11 +4,10 @@
 #include "typedejeu.h"
 #include "profil.h"
 
-class Partie : public QObject
+class Game : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QString niveau READ getNameNiveau NOTIFY niveauChanged)
     Q_PROPERTY(int score READ getScore NOTIFY scoreChanged)
 
 private:
@@ -17,13 +16,10 @@ private:
     Niveau *niveauDeLaPartie;
 
 public:
-    explicit Partie(Profil* profilJeu);
-    ~Partie();
+    explicit Game(Profil* profilJeu);
+    ~Game();
 
-
-    inline const QString getNameNiveau(){return niveauDeLaPartie->getName();}
     inline int getScore(){return profilActif->getScore();}
-
     void setProfilPartie(Profil *profilJeu);
 
 private:
@@ -35,8 +31,9 @@ signals:
     void scoreChanged();
 
 public slots:
-    void lancerJeu();
-    void initTypeJeu(QString nameTypeJeu);
+    inline const QString getNameNiveau(){return niveauDeLaPartie->getName();}
+    void initNiveauPartie(QString nameNiveau);
+    void launchTypeJeu(QString nameTypeJeu);
     void scoreIncrement(int nbPoints);
 
 };

@@ -1,9 +1,8 @@
 #include "niveau.h"
 
-Niveau::Niveau() :
-    QObject(0)
+Niveau::Niveau(QString nameNiveau) :
+    QObject(0), name(nameNiveau)
 {
-    name = "non défini";
 }
 
 const QString& Niveau::getName()const

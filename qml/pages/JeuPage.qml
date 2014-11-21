@@ -18,7 +18,7 @@ Page {
 
         Label {
             id: niveau
-            text: qsTr("Niveau : ") + partie.niveau
+            text: qsTr("Niveau : ") + partie.getNameNiveau()
             anchors.horizontalCenter: parent.horizontalCenter
             y:100
             font.family: Theme.fontFamilyHeading

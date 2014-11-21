@@ -13,13 +13,12 @@ class MainApplication : public QObject
 
     QList<Profil*> profils;
     Profil *profilActif;
-    Partie *partieEnCours;
+    Game *playingGame;
 
 public:
-    explicit MainApplication(QGuiApplication *q_application,QQuickView *q_view);
+    explicit MainApplication(QQuickView *q_view);
     ~MainApplication();
 
-    static QGuiApplication *q_application;
     static QQuickView *q_view;
 
     const QString getNameProfil()const;
@@ -28,9 +27,9 @@ signals:
     void nameProfilChanged();
 
 public slots:
-    bool lancerPartie();
-    void creerProfils(QString nom);
-    void changerProfilActif(Profil *newProfilActif);
+    bool launchGame();
+    void createProfil(QString nom);
+    void changeActifProfil(Profil *newProfilActif);
 
 };
 

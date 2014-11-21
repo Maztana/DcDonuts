@@ -36,7 +36,7 @@ Page {
                         text:qsTr("Calcul")
                         z:100
                         onClicked: {
-                            lancementJeu()
+                            lancementJeuCalcul()
                             pageStack.push(Qt.resolvedUrl("../pages/JeuPage.qml"))
                         }
                     }
@@ -93,14 +93,14 @@ Page {
                             icon.source: "qrc:///qml/images/signeDiv.png"
                             y:-35
                             width:60
+                            enabled: false
+                            visible: false
                             onClicked: {
                                 buttonGroupChanged(switchSigneDiv)
                             }
                         }
                     }
                 }
-
-
             }
 
             Row {
@@ -139,50 +139,44 @@ Page {
         }
     }
 
-    function lancementJeu()
+    function lancementJeuCalcul()
     {
         if(switchSignePlus.checked)
         {
-            partie.initTypeJeu("ADDITION")
+            game.launchTypeJeu("ADDITION")
         }
         else if(switchSigneMoins.checked)
         {
-            partie.initTypeJeu("SOUSTRACTION")
+            game.launchTypeJeu("SOUSTRACTION")
         }
         else if(switchSigneMult.checked)
         {
-            partie.initTypeJeu("MULTIPLICATION")
+            game.launchTypeJeu("MULTIPLICATION")
         }
         else if(switchSigneDiv.checked)
         {
-            partie.initTypeJeu("DIVISION")
+            game.launchTypeJeu("DIVISION")
         }
-        partie.lancerJeu()
     }
 
     function buttonGroupChanged(switchClicked)
     {
         if(switchClicked !== switchSignePlus)
         {
-            console.log("ca marche + ")
             switchSignePlus.checked = false
         }
         if(switchClicked !== switchSigneMoins)
         {
-            console.log("ca marche - ")
             switchSigneMoins.checked = false
         }
         if(switchClicked !== switchSigneMult)
         {
-            console.log("ca marche * ")
             switchSigneMult.checked = false
         }
         if(switchClicked !== switchSigneDiv)
         {
-            console.log("ca marche / ")
             switchSigneDiv.checked = false
         }
-
         switchClicked.checked = true
     }
 }

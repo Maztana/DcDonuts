@@ -1,10 +1,11 @@
 #include "addition.h"
-#include "Ressources.h"
+#include "ressources.h"
 
 Addition::Addition(Niveau* niveauDuJeu):
     Calcul(niveauDuJeu)
 {
     defNiveau();
+    INCREMENTAL_SCORE = INCREMENTAL_SCORE_ADDITION;
 }
 
 Addition::~Addition()

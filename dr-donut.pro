@@ -70,7 +70,7 @@ HEADERS += \
     src/soustraction.h \
     src/multiplication.h \
     src/division.h \
-    src/Ressources.h
+    src/ressources.h
 
 RESOURCES += \
     resources.qrc

@@ -54,7 +54,7 @@ signals:
     void resetResponse(int index);
 
 public slots:
-    void lancerJeu();
+    virtual void lancerJeu();
     void lancerQuestion();
     void newQuestion();
     void traitResponse(int indexResponse);

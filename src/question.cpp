@@ -1,5 +1,5 @@
 #include "question.h"
-#include "Ressources.h"
+#include "ressources.h"
 
 #include <QTextStream>
 #include <QDateTime>
@@ -10,28 +10,16 @@ Question::Question(const QString& mode, int operande1, int operande2) :
     qsrand(QDateTime::currentDateTime().toTime_t());
 
     //tri des operandes!
-    if(!mode.compare(MODE_DIVISION))
-    {
-        if(operande2 == 0)
-        {
-            this->operande1 = operande2;
-            this->operande2 = operande1;
-            QTextStream(stdout) << "division" << endl;
-        }
-    }
-    else if(!mode.compare(MODE_SOUSTRACTION))
+    this->operande1 = operande1;
+    this->operande2 = operande2;
+
+    if(!mode.compare(MODE_SOUSTRACTION))
     {
         if(operande1 < operande2)
         {
             this->operande1 = operande2;
             this->operande2 = operande1;
-            QTextStream(stdout) << "soustraction" << endl;
         }
-    }
-    else
-    {
-        this->operande1 = operande1;
-        this->operande2 = operande2;
     }
 }
 
@@ -46,12 +34,10 @@ int Question::getResult()const
     else if (!mode.compare(MODE_SOUSTRACTION))
     {
         result = operande1 - operande2;
-        QTextStream(stdout) << "result -> " << result << endl;
     }
     else if(!mode.compare(MODE_DIVISION))
     {
         result = operande1 / operande2;
-        QTextStream(stdout) << "result -> " << result << endl;
     }
     else if(!mode.compare(MODE_MULTIPLICATION))
     {
@@ -69,26 +55,68 @@ int Question::getProposition()const
     ///
     /////////////////////////////////////////////////////////////////////////////////////
     int propo = 0;
+    int nbMin = 0;
+    int nbMax = 0;
+    bool isRandomable = false;
 
     if(!mode.compare(MODE_ADDITION))
     {
-        propo = qrand() % (((operande1 + 3 +(operande2*2)) + 1) - operande2-operande1) + operande2+operande1;
+        nbMax = operande1 + 3 +(operande2*2);
+        nbMin = operande2-operande1;
+        isRandomable = true;
     }
     else if (!mode.compare(MODE_SOUSTRACTION))
     {
-        propo = qrand() % (((operande1 + 3 +(operande2*2)) + 1) - operande2-operande1) + operande2+operande1;
-        QTextStream(stdout) << "propo -> " << propo << endl;
+        nbMax = operande1 + 3;
+        nbMin = operande1- 3 - (operande2*2);
+        isRandomable = true;
     }
     else if(!mode.compare(MODE_DIVISION))
     {
-        propo = qrand() % (((operande1 + 3 +(operande2*2)) + 1) - operande2-operande1) + operande2+operande1;
-        QTextStream(stdout) << "propo -> " << propo << endl;
+        nbMax = qrand() % (((operande1 + 1) + 1) - (operande1 - 1)) + (operande1 - 1);
+        nbMin = qrand() % (((operande2 + 1) + 1) - (operande2 - 1)) + (operande2 - 1);
     }
     else if(!mode.compare(MODE_MULTIPLICATION))
     {
-        propo = qrand() % (((operande1 + 3 +(operande2*2)) + 1) - operande2-operande1) + operande2+operande1;
+        nbMax = qrand() % (((operande1 + 1) + 1) - (operande1 - 1)) + (operande1 - 1);
+        nbMin = qrand() % (((operande2 + 1) + 1) - (operande2 - 1)) + (operande2 - 1);
+    }
+    if(nbMax < nbMin)
+    {
+        int tmp = nbMax;
+        nbMax = nbMin;
+        nbMin = tmp;
     }
 
+    if(!isRandomable)
+    {
+        if(!mode.compare(MODE_DIVISION))
+        {
+            if(nbMin == 0)
+            {
+                nbMin = 1;
+            }
+            propo = nbMax / nbMin;
+            QTextStream(stdout) << nbMax << " / " << nbMin << " = " << propo << endl;
+        }
+        else if(!mode.compare(MODE_MULTIPLICATION))
+        {
+            propo = nbMax * nbMin;
+        }
+        if(getResult() < 3)
+        {
+            propo = qrand() % 4;
+        }
+    }
+    else
+    {
+        propo = qrand() % (((nbMax) + 1) - nbMin) + nbMin;
+    }
+
+    if(propo < 0)
+    {
+        propo = 0;
+    }
     return propo;
 }
 

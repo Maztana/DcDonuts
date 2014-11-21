@@ -10,7 +10,7 @@ class Niveau : public QObject
     QString name;
 
 public:
-    explicit Niveau();
+    explicit Niveau(QString nameNiveau);
 
     const QString& getName()const;
 

@@ -3,6 +3,7 @@
 #include <QtQml>
 #include <QThread>
 #include "mainapplication.h"
+#include "ressources.h"
 
 int QuestionnaireEducatif::NB_PROPOSITIONS = 4;
 
@@ -66,7 +67,6 @@ void QuestionnaireEducatif::setListProposition()
 
 void QuestionnaireEducatif::lancerJeu()
 {
-    //Lancer interface de questionnaire
     lancerQuestion();
 }
 
@@ -105,7 +105,7 @@ void QuestionnaireEducatif::traitResponse(int indexResponse)
         emit responseTrue(indexResponse);
 
         //add point au profil
-        emit incrementScore(1);
+        emit incrementScore(this->INCREMENTAL_SCORE);
     }
     else
     {
