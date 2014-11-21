@@ -5,7 +5,7 @@ import "../Components"
 Page{
     id: pageAccueil
 
-    FontLoader{ id: fontPerso; source: "../font/PWYummyDonuts.ttf" }
+    //FontLoader{ id: fontDonut; source: "../font/PWYummyDonuts.ttf" }
 
     SilicaFlickable{
 
@@ -86,7 +86,16 @@ Page{
                 horizontalCenter: parent.horizontalCenter
                 margins:60
             }
-            onClicked: pageStack.push(Qt.resolvedUrl("../pages/ChoixModeDeJeuPage.qml"))
+            onClicked: {
+                if(application.lancerPartie())
+                {
+                    pageStack.push(Qt.resolvedUrl("../pages/ChoixModeDeJeuPage.qml"))
+                }
+                else
+                {
+                    pageStack.push(Qt.resolvedUrl("../pages/GestionProfils.qml"))
+                }
+            }
         }
 
         Button

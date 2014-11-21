@@ -11,7 +11,7 @@ Page{
         VerticalScrollDecorator {}
 
         PageHeader {
-            title: qsTr("Difficultée")
+            title: application.nameProfil
         }
 
         Column {

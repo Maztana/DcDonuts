@@ -20,29 +20,16 @@ Item{
         id:ligne1
         anchors.top : parent.top
         spacing: 20
-        Rectangle{
-            id:reponse1
-
-            width: 200
-            height:100
 
             ItemReponse{
                 id: rep1
                 indexRep: 1
             }
-        }
-
-        Rectangle{
-            id:reponse2
-
-            width: 200
-            height:100
 
             ItemReponse{
                 id: rep2
                 indexRep: 2
             }
-        }
     }
 
     Row{
@@ -53,28 +40,14 @@ Item{
 
         spacing: 20
 
-        Rectangle{
-            id:reponse3
-
-            width: 200
-            height:100
-
             ItemReponse{
                 id: rep3
                 indexRep: 3
             }
-        }
-        Rectangle{
-            id:reponse4
-
-            width: 200
-            height:100
 
             ItemReponse{
                 id: rep4
                 indexRep: 4
             }
-        }
     }
-
 }

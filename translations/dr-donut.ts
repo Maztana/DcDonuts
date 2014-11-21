@@ -45,17 +45,9 @@
         <source>Automatique</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Difficult��e</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>ChoixModeDeJeuPage</name>
-    <message>
-        <source>Mode de Jeu</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Calcul</source>
         <translation type="unfinished"></translation>

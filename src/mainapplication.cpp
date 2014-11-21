@@ -26,6 +26,9 @@ MainApplication::~MainApplication()
         delete(partieEnCours);
     }
     qDeleteAll(profils);
+
+	//A vérifier
+    delete(q_view);
 }
 
 void MainApplication::chargerProfils(){
@@ -48,25 +51,32 @@ void MainApplication::chargerProfils(){
 
 }
 
-void MainApplication::lancerPartie()
+const QString MainApplication::getNameProfil()const
 {
+    QString nameProfil = "undefined";
+    if(profilActif != 0)
+    {
+        nameProfil = profilActif->getNom();
+    }
+    return nameProfil;
+}
 
+bool MainApplication::lancerPartie()
+{
     if(profilActif != 0)
     {
         if(partieEnCours != 0)
         {
             delete(partieEnCours);
         }
-
         partieEnCours = new Partie(profilActif);
-
-
-
         q_view->rootContext()->setContextProperty("partie", partieEnCours);
+        return true;
     }
     else {
         // ERREUR BESOIN DE SELECTION JOUEUR
         // OUVRIR SELECTION JOUEUR
+        return false;
     }
 }
 
@@ -81,6 +91,5 @@ void MainApplication::creerProfils(QString nom)
 void MainApplication::changerProfilActif(Profil *newProfilActif)
 {
     profilActif = newProfilActif;
+    emit nameProfilChanged();
 }
-
-

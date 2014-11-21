@@ -10,7 +10,7 @@ public:
     explicit Division(Niveau* niveauDuJeu);
     ~Division();
 
-    virtual Question* getQuestion();
+    virtual Question* nextQuestion();
 
 protected:
     void defNiveau();

@@ -10,7 +10,7 @@ public:
     explicit Calcul(Niveau* niveauDuJeu);
     ~Calcul();
 
-    virtual Question* getQuestion() = 0;
+    virtual Question* nextQuestion() = 0;
     int getNbMax();
     int getNbMin();
 

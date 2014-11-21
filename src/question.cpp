@@ -1,12 +1,16 @@
 #include "question.h"
+#include "Ressources.h"
 
 #include <QTextStream>
+#include <QDateTime>
 
-Question::Question(QString mode, int operande1, int operande2) :
+Question::Question(const QString& mode, int operande1, int operande2) :
     QObject(0), mode(mode)
 {
+    qsrand(QDateTime::currentDateTime().toTime_t());
+
     //tri des operandes!
-    if(!mode.compare("DIVISION"))
+    if(!mode.compare(MODE_DIVISION))
     {
         if(operande2 == 0)
         {
@@ -15,7 +19,7 @@ Question::Question(QString mode, int operande1, int operande2) :
             QTextStream(stdout) << "division" << endl;
         }
     }
-    else if(!mode.compare("SOUSTRACTION"))
+    else if(!mode.compare(MODE_SOUSTRACTION))
     {
         if(operande1 < operande2)
         {
@@ -35,79 +39,81 @@ int Question::getResult()const
 {
     int result = 0;
 
-    if(!mode.compare("ADDITION"))
+    if(!mode.compare(MODE_ADDITION))
     {
         result = operande1 + operande2;
     }
-    else if (!mode.compare("SOUSTRACTION"))
+    else if (!mode.compare(MODE_SOUSTRACTION))
     {
         result = operande1 - operande2;
+        QTextStream(stdout) << "result -> " << result << endl;
     }
-    else if(!mode.compare("DIVISION"))
+    else if(!mode.compare(MODE_DIVISION))
     {
         result = operande1 / operande2;
+        QTextStream(stdout) << "result -> " << result << endl;
     }
-    else if(!mode.compare("MULTIPLICATION"))
+    else if(!mode.compare(MODE_MULTIPLICATION))
     {
         result = operande1 * operande2;
     }
 
-    //QTextStream(stdout) << "result -> " << result << endl;
     return result;
 }
 
 int Question::getProposition()const
 {
     ////////////////////////////////////////////////////////////////////////////////////
-    /// \brief propo
     ///
     ///         REVOIR LES RANDOMS DE CHAQUE PROPOSITION
     ///
     /////////////////////////////////////////////////////////////////////////////////////
     int propo = 0;
 
-    if(!mode.compare("ADDITION"))
+    if(!mode.compare(MODE_ADDITION))
     {
-        propo = qrand() % (((operande1 +(operande2*2)) + 1) - operande2) + operande2;
+        propo = qrand() % (((operande1 + 3 +(operande2*2)) + 1) - operande2-operande1) + operande2+operande1;
     }
-    else if (!mode.compare("SOUSTRACTION"))
+    else if (!mode.compare(MODE_SOUSTRACTION))
     {
-        propo = qrand() % (((operande1 -(operande2*2)) + 1) - operande2) + operande2;
+        propo = qrand() % (((operande1 + 3 +(operande2*2)) + 1) - operande2-operande1) + operande2+operande1;
+        QTextStream(stdout) << "propo -> " << propo << endl;
     }
-    else if(!mode.compare("DIVISION"))
+    else if(!mode.compare(MODE_DIVISION))
     {
-        propo = qrand() % (((operande1 +(operande2*2)) + 1) - operande2) + operande2;
+        propo = qrand() % (((operande1 + 3 +(operande2*2)) + 1) - operande2-operande1) + operande2+operande1;
+        QTextStream(stdout) << "propo -> " << propo << endl;
     }
-    else if(!mode.compare("MULTIPLICATION"))
+    else if(!mode.compare(MODE_MULTIPLICATION))
     {
-        propo = qrand() % (((operande1 +(operande2*2)) + 1) - operande2) + operande2;
+        propo = qrand() % (((operande1 + 3 +(operande2*2)) + 1) - operande2-operande1) + operande2+operande1;
     }
 
-    //QTextStream(stdout) << "propo -> " << propo << endl;
     return propo;
 }
 
-const QString Question::toString()const
+QString Question::getLibelle()const
 {
-    QString question = "";
+    QString question = QString::number(operande1);
 
-    if(!mode.compare("ADDITION"))
+    if(!mode.compare(MODE_ADDITION))
     {
-        question =  QString::number(operande1) + " + " + QString::number(operande2) + " = ";
+        question += " + ";
     }
-    else if (!mode.compare("SOUSTRACTION"))
+    else if (!mode.compare(MODE_SOUSTRACTION))
     {
-        question = QString::number(operande1) + " - " + QString::number(operande2) + " = ";
+        question += " - ";
     }
-    else if(!mode.compare("DIVISION"))
+    else if(!mode.compare(MODE_DIVISION))
     {
-        question = QString::number(operande1) + " / " + QString::number(operande2) + " = ";
+        question += " / ";
     }
-    else if(!mode.compare("MULTIPLICATION"))
+    else if(!mode.compare(MODE_MULTIPLICATION))
     {
-        question = QString::number(operande1) + " x " + QString::number(operande2) + " = ";
+        question += " x ";
     }
 
-    //QTextStream(stdout) << "question -> " << question << endl;
+    question += QString::number(operande2) + " = ";
+
     return question;
 }

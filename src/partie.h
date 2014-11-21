@@ -37,6 +37,7 @@ signals:
 
 public slots:
     void lancerJeu();
+    void initTypeJeu(QString nameTypeJeu);
     void scoreIncrement(int nbPoints);
 
 };

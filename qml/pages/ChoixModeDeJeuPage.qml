@@ -20,7 +20,7 @@ Page {
             width: parent.width
 
             PageHeader {
-                title: qsTr("Mode de Jeu")
+                title: application.nameProfil
             }
 
             Row {
@@ -36,10 +36,7 @@ Page {
                         text:qsTr("Calcul")
                         z:100
                         onClicked: {
-                            if(text === qsTr("Calcul"))
-                            {
-                                application.lancerPartie();
-                            }
+                            lancementJeu()
                             pageStack.push(Qt.resolvedUrl("../pages/JeuPage.qml"))
                         }
                     }
@@ -65,6 +62,10 @@ Page {
                             icon.source: "qrc:///qml/images/signePlus.png"
                             y:-35
                             width:60
+                            checked: true
+                            onClicked: {
+                                buttonGroupChanged(switchSignePlus)
+                            }
                         }
 
                         Switch{
@@ -72,6 +73,9 @@ Page {
                             icon.source: "qrc:///qml/images/signeMoins.png"
                             y:-35
                             width:60
+                            onClicked: {
+                                buttonGroupChanged(switchSigneMoins)
+                            }
                         }
 
                         Switch{
@@ -79,6 +83,9 @@ Page {
                             icon.source: "qrc:///qml/images/signeMult.png"
                             y:-35
                             width:60
+                            onClicked: {
+                                buttonGroupChanged(switchSigneMult)
+                            }
                         }
 
                         Switch{
@@ -86,6 +93,9 @@ Page {
                             icon.source: "qrc:///qml/images/signeDiv.png"
                             y:-35
                             width:60
+                            onClicked: {
+                                buttonGroupChanged(switchSigneDiv)
+                            }
                         }
                     }
                 }
@@ -127,5 +137,52 @@ Page {
             }
 
         }
+    }
+
+    function lancementJeu()
+    {
+        if(switchSignePlus.checked)
+        {
+            partie.initTypeJeu("ADDITION")
+        }
+        else if(switchSigneMoins.checked)
+        {
+            partie.initTypeJeu("SOUSTRACTION")
+        }
+        else if(switchSigneMult.checked)
+        {
+            partie.initTypeJeu("MULTIPLICATION")
+        }
+        else if(switchSigneDiv.checked)
+        {
+            partie.initTypeJeu("DIVISION")
+        }
+        partie.lancerJeu()
+    }
+
+    function buttonGroupChanged(switchClicked)
+    {
+        if(switchClicked !== switchSignePlus)
+        {
+            console.log("ca marche + ")
+            switchSignePlus.checked = false
+        }
+        if(switchClicked !== switchSigneMoins)
+        {
+            console.log("ca marche - ")
+            switchSigneMoins.checked = false
+        }
+        if(switchClicked !== switchSigneMult)
+        {
+            console.log("ca marche * ")
+            switchSigneMult.checked = false
+        }
+        if(switchClicked !== switchSigneDiv)
+        {
+            console.log("ca marche / ")
+            switchSigneDiv.checked = false
+        }
+
+        switchClicked.checked = true
     }
 }

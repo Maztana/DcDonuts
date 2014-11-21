@@ -1,9 +1,9 @@
 #include "division.h"
+#include "Ressources.h"
 
 Division::Division(Niveau* niveauDuJeu):
     Calcul(niveauDuJeu)
 {
-    MODE_JEU = "DIVISION";
     defNiveau();
 }
 
@@ -11,7 +11,7 @@ Division::~Division()
 {
 }
 
-Question* Division::getQuestion()
+Question* Division::nextQuestion()
 {
     //Générer question
     int operande1 = 0;
@@ -22,7 +22,7 @@ Question* Division::getQuestion()
         operande2 = qrand() % ((NB_MAX + 1) - NB_MIN) + NB_MIN;
     }
 
-    Question* maQuestion = new Question(MODE_JEU, operande1, operande2);
+    Question* maQuestion = new Question(MODE_DIVISION, operande1, operande2);
 
     return maQuestion;
 }

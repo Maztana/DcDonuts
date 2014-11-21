@@ -10,7 +10,7 @@ public:
     explicit Addition(Niveau* niveauDuJeu);
     ~Addition();
 
-    virtual Question* getQuestion();
+    virtual Question* nextQuestion();
 
 protected:
     virtual void defNiveau();

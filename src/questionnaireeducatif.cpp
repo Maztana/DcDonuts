@@ -1,31 +1,22 @@
 #include "questionnaireeducatif.h"
 #include <QTextStream>
+#include <QtQml>
 #include <QThread>
 #include "mainapplication.h"
 
-QString QuestionnaireEducatif::MODE_JEU = "";
 int QuestionnaireEducatif::NB_PROPOSITIONS = 4;
-QString QuestionnaireEducatif::COLOR_INIT = "black";
-QString QuestionnaireEducatif::COLOR_SELECTION = "blue";
-QString QuestionnaireEducatif::COLOR_TRUE = "green";
-QString QuestionnaireEducatif::COLOR_FALSE = "red";
 
 
 QuestionnaireEducatif::QuestionnaireEducatif(Niveau* niveauDuJeu):
     TypeDeJeu(niveauDuJeu)
 {
-    connect(this, SIGNAL(finishTraitResponse()), this, SLOT(lancerQuestion()));
+    qsrand(QDateTime::currentDateTime().toTime_t());
 }
 
 QuestionnaireEducatif::~QuestionnaireEducatif()
 {
-    qDeleteAll(questionsDonnees);
     questionCourante = NULL;
-}
-
-const QString QuestionnaireEducatif::getLibelleQuestion()
-{
-    return getCurrentQuestion()->toString();
+    qDeleteAll(questionsDonnees);
 }
 
 const QString QuestionnaireEducatif::getProposition1()
@@ -48,58 +39,9 @@ const QString QuestionnaireEducatif::getProposition4()
     return QString::number(listProposition.at(3));
 }
 
-const QString QuestionnaireEducatif::getColor1()
-{
-    return color1;
-}
-
-const QString QuestionnaireEducatif::getColor2()
-{
-    return color2;
-}
-
-const QString QuestionnaireEducatif::getColor3()
-{
-    return color3;
-}
-
-const QString QuestionnaireEducatif::getColor4()
-{
-    return color4;
-}
-
-void QuestionnaireEducatif::setColor1(QString color)
-{
-    color1 = color;
-    emit color1Changed();
-}
-
-void QuestionnaireEducatif::setColor2(QString color)
-{
-    color2 = color;
-    emit color2Changed();
-}
-
-void QuestionnaireEducatif::setColor3(QString color)
-{
-    color3 = color;
-    emit color3Changed();
-}
-
-void QuestionnaireEducatif::setColor4(QString color)
-{
-    color4 = color;
-    emit color4Changed();
-}
-
 Question* QuestionnaireEducatif::getCurrentQuestion()
 {
     return questionCourante;
-}
-
-const QString& QuestionnaireEducatif::getModeJeu()
-{
-    return MODE_JEU;
 }
 
 void QuestionnaireEducatif::setListProposition()
@@ -130,8 +72,11 @@ void QuestionnaireEducatif::lancerJeu()
 
 void QuestionnaireEducatif::lancerQuestion()
 {
-    questionCourante = this->getQuestion();
+    emit responseTrait();
+
+    questionCourante = this->nextQuestion();
     questionsDonnees.append(questionCourante);
+    MainApplication::q_view->rootContext()->setContextProperty("question", questionCourante);
 
     setListProposition();
     newQuestion();
@@ -139,45 +84,25 @@ void QuestionnaireEducatif::lancerQuestion()
 
 void QuestionnaireEducatif::newQuestion()
 {
-    emit libelleQuestionChanged();
     emit proposition1Changed();
     emit proposition2Changed();
     emit proposition3Changed();
     emit proposition4Changed();
 }
 
-void QuestionnaireEducatif::setColor(int index, QString color)
+void QuestionnaireEducatif::traitResponse(int indexResponse)
 {
-    switch (index) {
-    case 0:
-        setColor1(color);
-        break;
-    case 1:
-        setColor2(color);
-        break;
-    case 2:
-        setColor3(color);
-        break;
-    case 3:
-        setColor4(color);
-        break;
-    }
-}
+    emit responseTrait();
 
-void QuestionnaireEducatif::traitResponse(QString response)
-{
+    listResetColor.clear();
     int result = questionCourante->getResult();
-    int indexRep = listProposition.indexOf(response.toInt());
     int indexResult = listProposition.indexOf(result);
 
-    //Gestion de la sélection
-    setColor(indexRep, COLOR_SELECTION);
-
     //Gestion du résultat
-    if(response.toInt() == result)
+    if(listProposition.at(indexResponse-1) == result)
     {
         //Réponse correcte
-        setColor(indexRep, COLOR_TRUE);
+        emit responseTrue(indexResponse);
 
         //add point au profil
         emit incrementScore(1);
@@ -185,16 +110,20 @@ void QuestionnaireEducatif::traitResponse(QString response)
     else
     {
         //Réponse fausse
-        setColor(indexRep, COLOR_FALSE);
-        setColor(indexResult, COLOR_TRUE);
+        emit responseFalse(indexResponse);
+        emit responseTrue(indexResult + 1);
 
-        setColor(indexResult, COLOR_INIT);
+        listResetColor.append(indexResult + 1);
     }
 
-    setColor(indexRep, COLOR_INIT);
-
+    listResetColor.append(indexResponse);
     //add stat question
+}
 
-
-    emit finishTraitResponse();
+void QuestionnaireEducatif::responseReset()
+{
+    for(int index : listResetColor)
+    {
+        emit resetResponse(index);
+    }
 }

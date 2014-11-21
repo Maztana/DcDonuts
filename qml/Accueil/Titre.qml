@@ -3,7 +3,7 @@ import Sailfish.Silica 1.0
 
 Item
 {
-    FontLoader{ id: fontPerso; source: "../font/PWYummyDonuts.ttf" }
+    FontLoader{ id: fontDonut; source: "../font/PWYummyDonuts.ttf" }
 
     width: lettreD.width + morceau1.width
     height: lettreD.height
@@ -12,7 +12,7 @@ Item
         id: lettreD
         text:qsTr("D")
         font.pixelSize: 150
-        font.family: fontPerso.name
+        font.family: fontDonut.name
     }
 
     Label{
@@ -21,7 +21,7 @@ Item
         y: lettreD.y + lettreD.height/2 - 45
         text:qsTr("octor")
         font.pixelSize: 50
-        font.family: fontPerso.name
+        font.family: fontDonut.name
     }
 
     Label{
@@ -30,6 +30,6 @@ Item
         y: lettreD.y + lettreD.height/2 + 10
         text:qsTr("onut")
         font.pixelSize: 50
-        font.family: fontPerso.name
+        font.family: fontDonut.name
     }
 }

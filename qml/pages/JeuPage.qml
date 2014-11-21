@@ -38,8 +38,8 @@ Page {
             }
 
             Text {
-                id: question
-                text: questionnaireEducatif.libelleQuestion + " ?"
+                id: libelleQuestion
+                text: question.libelle + " ?"
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter : parent.verticalCenter
                 font.pointSize: 40

@@ -6,42 +6,123 @@ Item {
     property alias rep: labelRep.text
     property int indexRep
 
-    anchors.centerIn: parent
+    width: 200
+    height:100
+/*	anchors.centerIn: parent
     anchors.fill: parent
+*/
+    Rectangle{
+        id:reponse
+        anchors.fill: parent
+        state: "white"
 
-    Label{
-        id: labelRep
-        anchors.centerIn: parent
+        Label{
+            id: labelRep
+            anchors.centerIn: parent
 
-        font.bold: true
-        font.pixelSize: 60
-        color: questionnaireEducatif.colorRep1
-        /*{
-            if(indexRep == 1)
-            {
-                console.log("je suis dans couleur 1" + questionnaireEducatif.colorRep1)
-                return questionnaireEducatif.colorRep1
+            font.bold: true
+            font.pixelSize: 60
+            color: "black"
+        }
+
+        MouseArea{
+            anchors.fill: parent
+            onClicked: {
+                questionnaireEducatif.traitResponse(indexRep)
             }
-            else if(indexRep == 2)
+        }
+
+        states:[
+            State
             {
-                questionnaireEducatif.colorRep2
-            }
-            else if(indexRep == 3)
+                name:"white"
+                PropertyChanges { target:reponse; color:"white"}
+            },
+            State
             {
-                questionnaireEducatif.colorRep3
-            }
-            else if(indexRep == 4)
+                name:"green"
+                PropertyChanges { target:reponse; color:"green"}
+            },
+            State
             {
-                questionnaireEducatif.colorRep4
+                name:"red"
+                PropertyChanges { target:reponse; color:"red"}
             }
-        }*/
+        ]
+
+        transitions:[
+            Transition {
+                from: "white"
+                to: "red"
+                SequentialAnimation{
+                    ColorAnimation {duration: 400 }
+                }
+            },
+            Transition {
+                from: "white"
+                to: "green"
+                SequentialAnimation{
+                    ColorAnimation {duration: 400 }
+                    ScriptAction{
+                        script:questionnaireEducatif.responseReset()
+                    }
+                }
+            },
+            Transition {
+                from: "green"
+                to: "white"
+                SequentialAnimation{
+                    ColorAnimation {duration: 600 }
+                    ScriptAction{
+                        script:questionnaireEducatif.lancerQuestion()
+                    }
+                }
+            },
+            Transition {
+                from: "red"
+                to: "white"
+                SequentialAnimation{
+                    ColorAnimation {duration: 600 }
+                }
+            }
+        ]
     }
 
-    MouseArea{
-        anchors.fill: parent
-        onClicked: {
-            console.log(labelRep.text)
-            questionnaireEducatif.traitResponse(labelRep.text)
+    Connections{
+        target: questionnaireEducatif
+        onResponseTrait:
+        {
+            if(reponse.enabled === true)
+            {
+                reponse.enabled = false
+            }
+            else
+            {
+                reponse.enabled = true
+            }
         }
+        onResponseTrue:{
+            if(index === indexRep)
+            {
+                changeColor("green")
+            }
+        }
+        onResponseFalse:{
+            if(index === indexRep)
+            {
+                changeColor("red")
+            }
+        }
+        onResetResponse:{
+            if(index === indexRep)
+            {
+                changeColor("white")
+            }
+        }
+    }
+
+    function changeColor(nameColor)
+    {
+        reponse.state = nameColor
     }
 }

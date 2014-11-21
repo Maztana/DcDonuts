@@ -13,6 +13,7 @@
 TARGET = dr-donut
 
 CONFIG += sailfishapp
+CONFIG += c++11
 
 SOURCES += src/dr-donut.cpp \
     src/mainapplication.cpp \
@@ -70,7 +71,8 @@ HEADERS += \
     src/soustraction.h \
     src/multiplication.h \
     src/division.h \
-    src/managerbdd.h
+    src/managerbdd.h \
+	src/Ressources.h
 
 RESOURCES += \
     resources.qrc

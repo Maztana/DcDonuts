@@ -45,9 +45,7 @@ int main(int argc, char *argv[])
     MainApplication application(q_application, q_view);
 
     q_view->rootContext()->setContextProperty("application", &application);
-    //qmlRegisterType<MainApplication>("dr.donut", 1,0, "MainApplication");
-
-    q_view->setSource(SailfishApp::pathTo( "qml/dr-donut.qml"));
+    q_view->setSource(SailfishApp::pathTo("qml/dr-donut.qml"));
     q_view->showFullScreen();
 
     return q_application->exec();
