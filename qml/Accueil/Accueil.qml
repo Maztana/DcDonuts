@@ -19,7 +19,7 @@ Page{
 
         Label{
             id: nameProfil
-            text: application.nameProfil
+            text: application.nameProfile
             color: Theme.highlightColor
             font.bold: true
             font.pixelSize: 28

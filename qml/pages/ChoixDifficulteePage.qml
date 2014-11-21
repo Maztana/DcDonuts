@@ -11,7 +11,7 @@ Page{
         VerticalScrollDecorator {}
 
         PageHeader {
-            title: application.nameProfil
+            title: application.nameProfile
         }
 
         Column {

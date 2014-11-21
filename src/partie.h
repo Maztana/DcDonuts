@@ -25,6 +25,7 @@ public:
 private:
     void setTypeJeu(TypeDeJeu *typeJeu);
     void setNiveauDeLaPartie(Niveau *niveauPartie);
+    void saveProfil();
 
 signals:
     void niveauChanged();

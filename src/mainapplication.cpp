@@ -12,16 +12,11 @@ QQuickView* MainApplication::q_view = NULL;
  * @param q_view the view of application
  */
 MainApplication::MainApplication(QQuickView *q_view) :
-    QObject(0)
+    QObject(0), managerBDD(ManagerBdd::getInstance())
 {
-    QTextStream(stdout) << "Charger les profils" << endl;
-
+    loadProfiles();
+    currentGame = 0;
     this->q_view = q_view;
-    /*this->q_application = q_application;*/
-
-    //Profil par defaut
-    createProfil("François");
-    playingGame = 0;
 }
 
 /** Default destructor
@@ -29,26 +24,50 @@ MainApplication::MainApplication(QQuickView *q_view) :
  */
 MainApplication::~MainApplication()
 {
-    if(playingGame != 0)
+    if(currentGame != 0)
     {
-        delete(playingGame);
+        delete(currentGame);
     }
-    qDeleteAll(profils);
+    qDeleteAll(profiles);
 
     //A vérifier
     delete(q_view);
+}
+
+/** Load all profils from the data base
+ * @brief MainApplication::loadProfils
+ */
+void MainApplication::loadProfiles()
+{
+    bool isOpen = managerBDD.openDB();
+
+    if(isOpen)
+    {
+        profiles=managerBDD.selectAllProfils();
+
+        if(profiles.size()<1)
+        {
+            // si aucun profil en BDD
+            //Profil par defaut
+            createProfile("François");
+        }
+        else
+        {
+            changeCurrentProfile(profiles.value(0)); // on prend le premier par défaut pour le moment
+        }
+    }
 }
 
 /** Getter of actif profil's name
  * @brief MainApplication::getNameProfil
  * @return the name of actif profil
  */
-const QString MainApplication::getNameProfil()const
+const QString MainApplication::getNameProfile()const
 {
     QString nameProfil = "undefined";
-    if(profilActif != 0)
+    if(currentProfile != 0)
     {
-        nameProfil = profilActif->getNom();
+        nameProfil = currentProfile->getNom();
     }
     return nameProfil;
 }
@@ -60,14 +79,14 @@ const QString MainApplication::getNameProfil()const
  */
 bool MainApplication::launchGame()
 {
-    if(profilActif != 0)
+    if(currentProfile != 0)
     {
-        if(playingGame != 0)
+        if(currentGame != 0)
         {
-            delete(playingGame);
+            delete(currentGame);
         }
-        playingGame = new Game(profilActif);
-        q_view->rootContext()->setContextProperty("game", playingGame);
+        currentGame = new Game(currentProfile);
+        q_view->rootContext()->setContextProperty("game", currentGame);
         return true;
     }
     else {
@@ -81,20 +100,20 @@ bool MainApplication::launchGame()
  * @brief MainApplication::createProfil
  * @param nom the name of new profil
  */
-void MainApplication::createProfil(QString name)
+void MainApplication::createProfile(QString name)
 {
     Profil *newProfil = new Profil(name);
-    profils.append(newProfil);
+    profiles.append(newProfil);
 
-    changeActifProfil(newProfil);
+    changeCurrentProfile(newProfil);
 }
 
 /** Change actif profil by the profil in parameter
  * @brief MainApplication::changeActifProfil
  * @param newProfilActif the new actif profil
  */
-void MainApplication::changeActifProfil(Profil *newProfilActif)
+void MainApplication::changeCurrentProfile(Profil *newProfilActif)
 {
-    profilActif = newProfilActif;
-    emit nameProfilChanged();
+    currentProfile = newProfilActif;
+    emit nameProfileChanged();
 }

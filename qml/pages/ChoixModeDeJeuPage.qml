@@ -20,7 +20,7 @@ Page {
             width: parent.width
 
             PageHeader {
-                title: application.nameProfil
+                title: application.nameProfile
             }
 
             Row {

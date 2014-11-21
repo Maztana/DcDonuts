@@ -15,7 +15,6 @@ Game::Game(Profil *profilJeu):
 
 Game::~Game()
 {
-    QTextStream(stdout) << "Enregistrement du profil" << endl;
     if(typeJeuActif != 0)
     {
         delete(typeJeuActif);
@@ -52,7 +51,6 @@ void Game::setTypeJeu(TypeDeJeu *typeJeu)
     {
         delete(typeJeuActif);
     }
-
     typeJeuActif = typeJeu;
 
     if(typeJeuActif->isQuestionnaire())

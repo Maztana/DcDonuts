@@ -2,6 +2,7 @@
 #define MAINAPPLICATION_H
 
 #include "partie.h"
+#include "managerbdd.h"
 #include <QQuickView>
 #include <QGuiApplication>
 
@@ -9,27 +10,35 @@ class MainApplication : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QString nameProfil READ getNameProfil NOTIFY nameProfilChanged)
+    /** Name profil property */
+    Q_PROPERTY(QString nameProfile READ getNameProfile NOTIFY nameProfileChanged)
 
-    QList<Profil*> profils;
-    Profil *profilActif;
-    Game *playingGame;
+    /** List all profiles */
+    QList<Profil*> profiles;
+    /** Current profile */
+    Profil *currentProfile;
+    /** Current game */
+    Game *currentGame;
+    /** Data base manager */
+    ManagerBdd &managerBDD;
 
 public:
     explicit MainApplication(QQuickView *q_view);
     ~MainApplication();
 
     static QQuickView *q_view;
+    const QString getNameProfile()const;
 
-    const QString getNameProfil()const;
+private:
+    void loadProfiles();
 
 signals:
-    void nameProfilChanged();
+    void nameProfileChanged();
 
 public slots:
     bool launchGame();
-    void createProfil(QString nom);
-    void changeActifProfil(Profil *newProfilActif);
+    void createProfile(QString nom);
+    void changeCurrentProfile(Profil *newCurrentProfile);
 
 };
 
