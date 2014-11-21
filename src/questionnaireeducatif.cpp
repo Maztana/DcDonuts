@@ -76,7 +76,7 @@ void QuestionnaireEducatif::lancerQuestion()
 
     questionCourante = this->nextQuestion();
     questionsDonnees.append(questionCourante);
-    MainApplication::q_view->rootContext()->setContextProperty("question", questionCourante);
+    MainApplication::s_view->rootContext()->setContextProperty("question", questionCourante);
 
     setListProposition();
     newQuestion();

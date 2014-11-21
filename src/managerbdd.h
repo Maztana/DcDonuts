@@ -1,6 +1,6 @@
 #ifndef MANAGERBDD_H
 #define MANAGERBDD_H
-#include "profil.h"
+#include "profile.h"
 #include <QSqlDatabase>
 
 class ManagerBdd
@@ -20,11 +20,11 @@ public:
 
     void creerTables() const;
 
-    void insererProfil(Profil& profil) const;
-    void modifierProfil(Profil& profil) const;
-    void supprimerProfil(Profil& profil) const;
+    void insererProfil(Profile& profil) const;
+    void modifierProfil(Profile& profil) const;
+    void supprimerProfil(Profile& profil) const;
 
-    QList<Profil*> selectAllProfils();
+    QList<Profile*> selectAllProfils();
 
 };
 

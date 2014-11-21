@@ -17,18 +17,18 @@ CONFIG += c++11
 
 SOURCES += src/dr-donut.cpp \
     src/mainapplication.cpp \
-    src/profil.cpp \
     src/typedejeu.cpp \
     src/questionnaireeducatif.cpp \
     src/calcul.cpp \
-    src/partie.cpp \
     src/niveau.cpp \
     src/question.cpp \
     src/addition.cpp \
     src/soustraction.cpp \
     src/multiplication.cpp \
     src/division.cpp \
-    src/managerbdd.cpp
+    src/managerbdd.cpp \
+    src/profile.cpp \
+    src/game.cpp
 
 OTHER_FILES += qml/dr-donut.qml \
     qml/cover/CoverPage.qml \
@@ -60,11 +60,9 @@ TRANSLATIONS += translations/dr-donut-de.ts
 
 HEADERS += \
     src/mainapplication.h \
-    src/profil.h \
     src/typedejeu.h \
     src/questionnaireeducatif.h \
     src/calcul.h \
-    src/partie.h \
     src/niveau.h \
     src/question.h \
     src/addition.h \
@@ -72,7 +70,9 @@ HEADERS += \
     src/multiplication.h \
     src/division.h \
     src/managerbdd.h \
-	src/ressources.h
+	src/ressources.h \
+    src/profile.h \
+    src/game.h
 
 RESOURCES += \
     resources.qrc

@@ -29,14 +29,14 @@ Page {
 
                 Item{
                     width: btCalcul.width
-                    height: btCalcul.height + rowCalculOperations.height
+                    height: btCalcul.height + (rowCalculOperations.height / 2)
 
                     Button{
                         id: btCalcul
                         text:qsTr("Calcul")
                         z:100
                         onClicked: {
-                            lancementJeuCalcul()
+                            launchCalculGame()
                             pageStack.push(Qt.resolvedUrl("../pages/JeuPage.qml"))
                         }
                     }
@@ -48,6 +48,7 @@ Page {
                         height: rowCalculOperations.height - 30
                         width: rowCalculOperations.width
                         anchors.top: btCalcul.bottom
+                        anchors.horizontalCenter: parent.horizontalCenter
                         anchors.margins: -5
                         radius: 20
                     }
@@ -56,6 +57,8 @@ Page {
                     {
                         id: rowCalculOperations
                         anchors.top: rectangleFond.top
+                        anchors.horizontalCenter: parent.horizontalCenter
+
 
                         Switch{
                             id: switchSignePlus
@@ -139,23 +142,23 @@ Page {
         }
     }
 
-    function lancementJeuCalcul()
+    function launchCalculGame()
     {
         if(switchSignePlus.checked)
         {
-            game.launchTypeJeu("ADDITION")
+            game.launchTypeGame("ADDITION")
         }
         else if(switchSigneMoins.checked)
         {
-            game.launchTypeJeu("SOUSTRACTION")
+            game.launchTypeGame("SOUSTRACTION")
         }
         else if(switchSigneMult.checked)
         {
-            game.launchTypeJeu("MULTIPLICATION")
+            game.launchTypeGame("MULTIPLICATION")
         }
         else if(switchSigneDiv.checked)
         {
-            game.launchTypeJeu("DIVISION")
+            game.launchTypeGame("DIVISION")
         }
     }
 

@@ -62,17 +62,17 @@ void ManagerBdd::creerTables()const{
 }
 
 
-void ManagerBdd::insererProfil(Profil& profil) const{
+void ManagerBdd::insererProfil(Profile& profil) const{
 
     creerTables();
 
     QSqlQuery query(db);
 
-    query.exec("INSERT INTO profil(name,score) VALUES('"+profil.getNom()+"',"+QString::number(profil.getScore())+")");
+    query.exec("INSERT INTO profil(name,score) VALUES('"+profil.getName()+"',"+QString::number(profil.getScore())+")");
 
 }
 
-void ManagerBdd::modifierProfil(Profil& profil) const{
+void ManagerBdd::modifierProfil(Profile& profil) const{
 
     creerTables();
 
@@ -81,7 +81,7 @@ void ManagerBdd::modifierProfil(Profil& profil) const{
 
 }
 
-void ManagerBdd::supprimerProfil(Profil& profil) const{
+void ManagerBdd::supprimerProfil(Profile& profil) const{
 
     creerTables();
 
@@ -90,8 +90,8 @@ void ManagerBdd::supprimerProfil(Profil& profil) const{
 
 }
 
-QList<Profil*> ManagerBdd::selectAllProfils(){
-    QList<Profil*> lesProfils;
+QList<Profile*> ManagerBdd::selectAllProfils(){
+    QList<Profile*> lesProfils;
 
     int id;
     QString name;
@@ -106,7 +106,7 @@ QList<Profil*> ManagerBdd::selectAllProfils(){
         name =query.value(1).toString();
         score =query.value(2).toInt();
 
-        lesProfils.append(new Profil(id,name,score));
+        lesProfils.append(new Profile(id,name,score));
     }
 
     return lesProfils;
