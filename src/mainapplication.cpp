@@ -14,9 +14,13 @@ QQuickView* MainApplication::q_view = NULL;
 MainApplication::MainApplication(QQuickView *q_view) :
     QObject(0), managerBDD(ManagerBdd::getInstance())
 {
-    //managerBDD.deleteDB();
 
-    loadProfiles();
+    bool isOpen = managerBDD.openDB();
+
+    if(isOpen)
+    {
+        loadProfiles();
+    }
 
     currentGame = 0;
     this->q_view = q_view;
@@ -36,6 +40,8 @@ MainApplication::~MainApplication()
 
     //A vérifier
     delete(q_view);
+
+    managerBDD.closeDB();
 }
 
 /** Load all profils from the data base
@@ -43,22 +49,18 @@ MainApplication::~MainApplication()
  */
 void MainApplication::loadProfiles()
 {
-    bool isOpen = managerBDD.openDB();
+    profiles=managerBDD.selectAllProfiles();
 
-    if(isOpen)
+    if(profiles.size()<1)
     {
-        profiles=managerBDD.selectAllProfiles();
-
-        if(profiles.size()<1)
-        {
-            // si aucun profil en BDD
-            createProfile("François",0); //Profil par defaut
-        }
-        else
-        {
-            changeCurrentProfile(profiles.value(0)); // on prend le premier par défaut pour le moment
-        }
+        // si aucun profil en BDD
+        createProfile("François",0); //Profil par defaut
     }
+    else
+    {
+        changeCurrentProfile(profiles.value(0)); // on prend le premier par défaut pour le moment
+    }
+
 }
 /** Save profile and delete currentGame after
  * @brief MainApplication::deleteGame
@@ -83,6 +85,21 @@ const QString MainApplication::getNameProfile()const
     }
     return nameProfil;
 }
+
+/**
+ * @brief MainApplication::getAllId
+ * @return all id of profiles
+ */
+const QList<int> MainApplication::getAllId() const
+{
+    QList<int> allId;
+
+    for(int i = 0; i < profiles.size();i++){
+        allId.append(profiles.value(i)->getId());
+    }
+    return allId;
+}
+
 
 /** Launcher of game
  * @brief MainApplication::lancerGame
@@ -114,7 +131,7 @@ bool MainApplication::launchGame()
  */
 void MainApplication::createProfile(QString name,int score)
 {
-    Profil* newProfil; //= new Profil(name);
+    Profil* newProfil;
 
     newProfil = managerBDD.insertProfile(name,score);
 
@@ -130,4 +147,50 @@ void MainApplication::changeCurrentProfile(Profil *newProfilActif)
 {
     currentProfile = newProfilActif;
     emit nameProfileChanged();
+}
+
+
+/**
+ * @brief MainApplication::getNameProfileById
+ * @param id of the profile
+ * @return the name of the profile selected by id
+ */
+QString MainApplication::getNameProfileById(int id)
+{
+
+    Profil* p=NULL;
+
+    for(int i=0; i<profiles.size();i++){
+        if(profiles.value(i)->getId()==id){
+            p=profiles.value(i);
+        }
+    }
+
+    return p->getNom();
+
+}
+
+/**
+ * @brief MainApplication::getScoreProfileById
+ * @param id of the profile
+ * @return the score of the profile selected by id
+ */
+int MainApplication::getScoreProfileById(int id)
+{
+
+    Profil* p=NULL;
+
+    for(int i=0; i<profiles.size();i++){
+        if(profiles.value(i)->getId()==id){
+            p=profiles.value(i);
+        }
+    }
+
+    return p->getScore();
+
+}
+
+int MainApplication::getNbProfiles()
+{
+    return profiles.size();
 }

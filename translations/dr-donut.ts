@@ -73,6 +73,45 @@
     </message>
 </context>
 <context>
+    <name>ProfileManagerPage</name>
+    <message>
+        <source>Aucun profil</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cr��er un joueur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Importer un joueur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pull down pour ajouter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>R��initialiser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Supprimer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exporter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Suppression</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Joueurs</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Titre</name>
     <message>
         <source>D</source>
