@@ -1,21 +1,20 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "../Components"
 
 Page {
 
-    id: page
+    id: pageChoiseMode
 
     SilicaFlickable {
 
         anchors.fill: parent
-        contentHeight: colonneModeJeux.height
+        contentHeight: columnGamesMode.height
         contentWidth: parent.width
 
         VerticalScrollDecorator {}
 
         Column {
-            id: colonneModeJeux
+            id: columnGamesMode
             spacing: 50
             width: parent.width
 
@@ -24,7 +23,7 @@ Page {
             }
 
             Row {
-                id: ligneCalcul
+                id: lineCalcul
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 Item{
@@ -37,12 +36,12 @@ Page {
                         z:100
                         onClicked: {
                             launchCalculGame()
-                            pageStack.push(Qt.resolvedUrl("../pages/JeuPage.qml"))
+                            pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
                         }
                     }
 
                     Rectangle{
-                        id:rectangleFond
+                        id:rectangleBackground
                         color:"white"
                         opacity: 0.15
                         height: rowCalculOperations.height - 30
@@ -56,50 +55,50 @@ Page {
                     Row
                     {
                         id: rowCalculOperations
-                        anchors.top: rectangleFond.top
+                        anchors.top: rectangleBackground.top
                         anchors.horizontalCenter: parent.horizontalCenter
 
 
                         Switch{
-                            id: switchSignePlus
+                            id: switchSignPlus
                             icon.source: "qrc:///qml/images/signePlus.png"
                             y:-35
                             width:60
                             checked: true
                             onClicked: {
-                                buttonGroupChanged(switchSignePlus)
+                                buttonGroupChanged(switchSignPlus)
                             }
                         }
 
                         Switch{
-                            id: switchSigneMoins
+                            id: switchSignMoins
                             icon.source: "qrc:///qml/images/signeMoins.png"
                             y:-35
                             width:60
                             onClicked: {
-                                buttonGroupChanged(switchSigneMoins)
+                                buttonGroupChanged(switchSignMoins)
                             }
                         }
 
                         Switch{
-                            id: switchSigneMult
+                            id: switchSignMult
                             icon.source: "qrc:///qml/images/signeMult.png"
                             y:-35
                             width:60
                             onClicked: {
-                                buttonGroupChanged(switchSigneMult)
+                                buttonGroupChanged(switchSignMult)
                             }
                         }
 
                         Switch{
-                            id: switchSigneDiv
+                            id: switchSignDiv
                             icon.source: "qrc:///qml/images/signeDiv.png"
                             y:-35
                             width:60
                             enabled: false
                             visible: false
                             onClicked: {
-                                buttonGroupChanged(switchSigneDiv)
+                                buttonGroupChanged(switchSignDiv)
                             }
                         }
                     }
@@ -107,35 +106,35 @@ Page {
             }
 
             Row {
-                id: ligneDenombrement
+                id: lineEnumeration
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 Button{
                     text:qsTr("Denombrement")
                     enabled:false
-                    onClicked: pageStack.push(Qt.resolvedUrl("../pages/JeuPage.qml"))
+                    onClicked: pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
                 }
             }
 
             Row {
-                id: ligneCouleur
+                id: lineColor
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 Button{
                     text:qsTr("Couleur")
                     enabled:false
-                    onClicked: pageStack.push(Qt.resolvedUrl("../pages/JeuPage.qml"))
+                    onClicked: pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
                 }
             }
 
             Row {
-                id: ligneMele
+                id: lineMele
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 Button{
                     text:qsTr("Mele")
                     enabled:false
-                    onClicked: pageStack.push(Qt.resolvedUrl("../pages/JeuPage.qml"))
+                    onClicked: pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
                 }
             }
 
@@ -144,41 +143,41 @@ Page {
 
     function launchCalculGame()
     {
-        if(switchSignePlus.checked)
+        if(switchSignPlus.checked)
         {
-            game.launchTypeGame("ADDITION")
+            game.launchGameType("ADDITION")
         }
-        else if(switchSigneMoins.checked)
+        else if(switchSignMoins.checked)
         {
-            game.launchTypeGame("SOUSTRACTION")
+            game.launchGameType("SOUSTRACTION")
         }
-        else if(switchSigneMult.checked)
+        else if(switchSignMult.checked)
         {
-            game.launchTypeGame("MULTIPLICATION")
+            game.launchGameType("MULTIPLICATION")
         }
-        else if(switchSigneDiv.checked)
+        else if(switchSignDiv.checked)
         {
-            game.launchTypeGame("DIVISION")
+            game.launchGameType("DIVISION")
         }
     }
 
     function buttonGroupChanged(switchClicked)
     {
-        if(switchClicked !== switchSignePlus)
+        if(switchClicked !== switchSignPlus)
         {
-            switchSignePlus.checked = false
+            switchSignPlus.checked = false
         }
-        if(switchClicked !== switchSigneMoins)
+        if(switchClicked !== switchSignMoins)
         {
-            switchSigneMoins.checked = false
+            switchSignMoins.checked = false
         }
-        if(switchClicked !== switchSigneMult)
+        if(switchClicked !== switchSignMult)
         {
-            switchSigneMult.checked = false
+            switchSignMult.checked = false
         }
-        if(switchClicked !== switchSigneDiv)
+        if(switchClicked !== switchSignDiv)
         {
-            switchSigneDiv.checked = false
+            switchSignDiv.checked = false
         }
         switchClicked.checked = true
     }

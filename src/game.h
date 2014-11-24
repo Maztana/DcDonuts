@@ -1,7 +1,7 @@
-#ifndef PARTIE_H
-#define PARTIE_H
+#ifndef GAME_H
+#define GAME_H
 
-#include "typedejeu.h"
+#include "gametype.h"
 #include "profile.h"
 
 class Game : public QObject
@@ -13,33 +13,34 @@ class Game : public QObject
 
 private:
     /** Current profile */
-    Profile *m_profilActif;
+    Profile *m_currentProfile;
     /** Current type game */
-    TypeDeJeu *m_currentTypeGame;
+    GameType *m_currentTypeGame;
     /** Current level game */
-    Niveau *m_levelGame;
+    Level *m_levelGame;
 
 public:
     explicit Game(Profile* profileGame);
     ~Game();
 
-    inline int getScore(){return m_profilActif->getScore();}
+    inline int getScore(){return m_currentProfile->getScore();}
     void setProfileGame(Profile *profileGame);
 
 private:
-    void setTypeGame(TypeDeJeu *typeGame);
-    void setLevelGame(Niveau *levelGame);
+    void setTypeGame(GameType *typeGame);
+    void setLevelGame(Level *levelGame);
 
 signals:
     void levelChanged();
     void scoreChanged();
 
 public slots:
-    inline const QString getNameLevel(){return m_levelGame->getName();}
+    inline const QString getLevelName(){return m_levelGame->getName();}
     void initLevelGame(QString nameLevel);
-    void launchTypeGame(QString nameTypeGame);
+    void launchGameType(QString nameTypeGame);
     void scoreIncrement(int nbPoints);
+    void scoreDecrement(int nbPoints);
 
 };
 
-#endif // PARTIE_H
+#endif // GAME_H

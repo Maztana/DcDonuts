@@ -4,43 +4,43 @@ import Sailfish.Silica 1.0
 
 Item{
 
-    property alias textReponse1 : rep1.rep
-    property alias textReponse2 : rep2.rep
-    property alias textReponse3 : rep3.rep
+    property alias textAnswer1 : ans1.answer
+    property alias textAnswer2 : ans2.answer
+    property alias textAnswer3 : ans3.answer
 
     anchors.horizontalCenter: parent.horizontalCenter
-    width: ligne1.width
+    width: line1.width
 
     anchors.top: parent.top
     anchors.margins: 90
 
     Row{
 
-        id:ligne1
+        id:line1
         anchors.top : parent.top
         spacing: 20
 
         ItemReponse{
-            id: rep1
-            indexRep: 1
+            id: ans1
+            indexAnswers: 1
         }
 
         ItemReponse{
-            id: rep2
-            indexRep: 2
+            id: ans2
+            indexAnswers: 2
         }
     }
 
     Row{
-        id: ligne2
-        anchors.top: ligne1.bottom
+        id: line2
+        anchors.top: line1.bottom
         anchors.margins: 20
         anchors.horizontalCenter: parent.horizontalCenter
         spacing: 20
 
         ItemReponse{
-            id: rep3
-            indexRep: 3
+            id: ans3
+            indexAnswers: 3
         }
     }
 }

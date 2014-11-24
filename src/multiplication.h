@@ -1,19 +1,19 @@
 #ifndef MULTIPLICATION_H
 #define MULTIPLICATION_H
 
-#include "calcul.h"
+#include "calculation.h"
 
-class Multiplication : public Calcul
+class Multiplication : public Calculation
 {
     Q_OBJECT
 public:
-    explicit Multiplication(Niveau* niveauDuJeu);
+    explicit Multiplication(Level* m_gameLevel);
     ~Multiplication();
 
-    virtual Question* nextQuestion();
+    virtual Question* buildQuestion();
 
 protected:
-    void defNiveau();
+    void definitionLimitsForLevel();
 
 signals:
 

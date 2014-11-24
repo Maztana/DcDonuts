@@ -1,18 +1,26 @@
 #include "division.h"
 #include "ressources.h"
 
-Division::Division(Niveau* niveauDuJeu):
-    Calcul(niveauDuJeu)
+
+/** Constructor
+ * @brief Division::Division
+ * @param gameLevel the level of game
+ */
+Division::Division(Level* gameLevel):
+    Calculation(gameLevel)
 {
-    defNiveau();
-    INCREMENTAL_SCORE = INCREMENTAL_SCORE_DIVISION;
+    definitionLimitsForLevel();
+    s_incremental_score = INCREMENTAL_SCORE_DIVISION;
 }
 
+/** Destructor
+ * @brief Division::~Division
+ */
 Division::~Division()
 {
 }
 
-Question* Division::nextQuestion()
+Question* Division::buildQuestion()
 {
     //Générer question
     int operande1 = 0;
@@ -20,8 +28,8 @@ Question* Division::nextQuestion()
     int mod = 1;
     while(mod != 0)
     {
-        operande1 = qrand() % ((NB_MAX + 1) - NB_MIN) + NB_MIN;
-        operande2 = qrand() % ((NB_MAX + 1) - NB_MIN) + NB_MIN;
+        operande1 = qrand() % ((s_number_max + 1) - s_number_min) + s_number_min;
+        operande2 = qrand() % ((s_number_max + 1) - s_number_min) + s_number_min;
 
         if(operande1 == 0 && operande2 == 0)
         {
@@ -43,8 +51,8 @@ Question* Division::nextQuestion()
     return maQuestion;
 }
 
-void Division::defNiveau()
+void Division::definitionLimitsForLevel()
 {
-    NB_MIN = 0;
-    NB_MAX = 9;
+    s_number_min = 0;
+    s_number_max = 9;
 }

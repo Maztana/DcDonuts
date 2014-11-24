@@ -6,8 +6,13 @@
 class ManagerBdd
 {
 private:
-    QSqlDatabase db;
-    static ManagerBdd instance;
+
+    /** Database Object */
+    QSqlDatabase m_db;
+    /** ManagerBdd instance */
+    static ManagerBdd s_instance;
+
+
     explicit ManagerBdd();
 
 public:
@@ -15,16 +20,16 @@ public:
     static ManagerBdd& getInstance();
 
     bool openDB();
+    bool deleteDB();
     void closeDB();
 
 
-    void creerTables() const;
+    void createTables() const;
+    Profile* insertProfile(QString name, int score) const;
+    void updateProfile(Profile& profile) const;
+    void deleteProfile(Profile& profile) const;
 
-    void insererProfil(Profile& profil) const;
-    void modifierProfil(Profile& profil) const;
-    void supprimerProfil(Profile& profil) const;
-
-    QList<Profile*> selectAllProfils();
+    QList<Profile*> selectAllProfiles();
 
 };
 

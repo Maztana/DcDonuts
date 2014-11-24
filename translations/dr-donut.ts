@@ -2,52 +2,7 @@
 <!DOCTYPE TS>
 <TS version="2.0">
 <context>
-    <name>Accueil</name>
-    <message>
-        <source>A propos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Profils</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Jouer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Options</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>BoutonPerso</name>
-    <message>
-        <source>Calcul</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ChoixDifficulteePage</name>
-    <message>
-        <source>Facile</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Moyen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Difficile</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Automatique</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ChoixModeDeJeuPage</name>
+    <name>ChoiseGameModePage</name>
     <message>
         <source>Calcul</source>
         <translation type="unfinished"></translation>
@@ -66,14 +21,52 @@
     </message>
 </context>
 <context>
-    <name>JeuPage</name>
+    <name>ChoiseLevelPage</name>
+    <message>
+        <source>Facile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Moyen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Difficile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>GameQuizPage</name>
     <message>
         <source>Niveau : </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>Titre</name>
+    <name>Homepage</name>
+    <message>
+        <source>A propos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profils</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Jouer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Options</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Title</name>
     <message>
         <source>D</source>
         <translation type="unfinished"></translation>

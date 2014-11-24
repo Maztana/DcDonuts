@@ -1,29 +1,37 @@
 #include "addition.h"
 #include "ressources.h"
 
-Addition::Addition(Niveau* niveauDuJeu):
-    Calcul(niveauDuJeu)
+
+/** Constructor
+ * @brief Addition::Addition
+ * @param gameLevel the level of game
+ */
+Addition::Addition(Level* gameLevel):
+    Calculation(gameLevel)
 {
-    defNiveau();
-    INCREMENTAL_SCORE = INCREMENTAL_SCORE_ADDITION;
+    definitionLimitsForLevel();
+    s_incremental_score = INCREMENTAL_SCORE_ADDITION;
 }
 
+/** Destructor
+ * @brief Addition::~Addition
+ */
 Addition::~Addition()
 {
 }
 
-Question* Addition::nextQuestion()
+Question* Addition::buildQuestion()
 {
     //Générer question
-    int operande1 = qrand() % ((NB_MAX + 1) - NB_MIN) + NB_MIN;
-    int operande2 = qrand() % ((NB_MAX + 1) - NB_MIN) + NB_MIN;
+    int operande1 = qrand() % ((s_number_max + 1) - s_number_min) + s_number_min;
+    int operande2 = qrand() % ((s_number_max + 1) - s_number_min) + s_number_min;
 
     Question* maQuestion = new Question(MODE_ADDITION, operande1, operande2);
     return maQuestion;
 }
 
-void Addition::defNiveau()
+void Addition::definitionLimitsForLevel()
 {
-    NB_MIN = 0;
-    NB_MAX = 9;
+    s_number_min = 0;
+    s_number_max = 9;
 }

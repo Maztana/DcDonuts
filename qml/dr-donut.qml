@@ -35,8 +35,8 @@ import "Accueil"
 
 ApplicationWindow
 {
-    initialPage: Component { Accueil { } }
-    cover: Qt.resolvedUrl("cover/CoverPage.qml")
+    initialPage: Qt.resolvedUrl("Accueil/Homepage.qml") //Component { Accueil { } }
+    cover: Qt.resolvedUrl("cover/Cover.qml")
 }
 
 

@@ -3,21 +3,19 @@ import Sailfish.Silica 1.0
 
 Item {
 
-    property alias rep: labelRep.text
-    property int indexRep
+    property alias answer: labelAnswer.text
+    property int indexAnswers
 
     width: 200
     height:100
-/*	anchors.centerIn: parent
-    anchors.fill: parent
-*/
+
     Rectangle{
-        id:reponse
+        id:answer
         anchors.fill: parent
         state: "white"
 
         Label{
-            id: labelRep
+            id: labelAnswer
             anchors.centerIn: parent
 
             font.bold: true
@@ -28,7 +26,7 @@ Item {
         MouseArea{
             anchors.fill: parent
             onClicked: {
-                questionnaireEducatif.traitResponse(indexRep)
+                educationQuiz.traitAnswer(indexAnswers)
             }
         }
 
@@ -36,17 +34,17 @@ Item {
             State
             {
                 name:"white"
-                PropertyChanges { target:reponse; color:"white"}
+                PropertyChanges { target:answer; color:"white"}
             },
             State
             {
                 name:"green"
-                PropertyChanges { target:reponse; color:"green"}
+                PropertyChanges { target:answer; color:"green"}
             },
             State
             {
                 name:"red"
-                PropertyChanges { target:reponse; color:"red"}
+                PropertyChanges { target:answer; color:"red"}
             }
         ]
 
@@ -64,7 +62,7 @@ Item {
                 SequentialAnimation{
                     ColorAnimation {duration: 400 }
                     ScriptAction{
-                        script:questionnaireEducatif.responseReset()
+                        script:educationQuiz.answersReset()
                     }
                 }
             },
@@ -74,7 +72,7 @@ Item {
                 SequentialAnimation{
                     ColorAnimation {duration: 600 }
                     ScriptAction{
-                        script:questionnaireEducatif.lancerQuestion()
+                        script:educationQuiz.launchQuestion()
                     }
                 }
             },
@@ -89,32 +87,32 @@ Item {
     }
 
     Connections{
-        target: questionnaireEducatif
-        onResponseTrait:
+        target: educationQuiz
+        onAnswerTrait:
         {
-            if(reponse.enabled === true)
+            if(answer.enabled === true)
             {
-                reponse.enabled = false
+                answer.enabled = false
             }
             else
             {
-                reponse.enabled = true
+                answer.enabled = true
             }
         }
-        onResponseTrue:{
-            if(index === indexRep)
+        onAnswerRight:{
+            if(index === indexAnswers)
             {
                 changeColor("green")
             }
         }
-        onResponseFalse:{
-            if(index === indexRep)
+        onAnswerWrong:{
+            if(index === indexAnswers)
             {
                 changeColor("red")
             }
         }
-        onResetResponse:{
-            if(index === indexRep)
+        onResetAnswer:{
+            if(index === indexAnswers)
             {
                 changeColor("white")
             }
@@ -123,6 +121,6 @@ Item {
 
     function changeColor(nameColor)
     {
-        reponse.state = nameColor
+        answer.state = nameColor
     }
 }

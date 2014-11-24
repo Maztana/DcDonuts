@@ -30,11 +30,10 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "../Components"
 
 CoverBackground {
 
-    FontLoader{ id: fontPerso; source: "../font/PWYummyDonuts.ttf" }
+    FontLoader{ id: personalFont; source: "../font/PWYummyDonuts.ttf" }
 
     /*----Fond ----*/
     Rectangle{
@@ -59,7 +58,7 @@ CoverBackground {
         anchors.top: imgDrDonut.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         font.pixelSize: 38
-        font.family:fontPerso.name
+        font.family:personalFont.name
     }
 }
 

@@ -26,18 +26,20 @@ public:
     explicit MainApplication(QQuickView *q_view);
     ~MainApplication();
 
+    /** View of the application */
     static QQuickView *s_view;
     const QString getNameProfile()const;
 
 private:
     void loadProfiles();
+    void deleteGame();
 
 signals:
     void nameProfileChanged();
 
 public slots:
     bool launchGame();
-    void createProfile(QString nom);
+    void createProfile(QString nom, int score);
     void changeCurrentProfile(Profile *newCurrentProfile);
 
 };

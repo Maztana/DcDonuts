@@ -1,5 +1,5 @@
-#ifndef PROFIL_H
-#define PROFIL_H
+#ifndef PROFILE_H
+#define PROFILE_H
 
 #include <QObject>
 
@@ -24,6 +24,7 @@ public:
     int getId()const;
 
     void incrementScore(int nbPoints);
+    void decrementScore(int nbPoints);
 
 signals:
 
@@ -32,4 +33,4 @@ public slots:
 
 };
 
-#endif // PROFIL_H
+#endif // PROFILE_H

@@ -1,5 +1,5 @@
 #include "mainapplication.h"
-#include "questionnaireeducatif.h"
+#include "educationalquiz.h"
 #include "ressources.h"
 #include <QtQml>
 
@@ -14,6 +14,8 @@ QQuickView* MainApplication::s_view = NULL;
 MainApplication::MainApplication(QQuickView *q_view) :
     QObject(0), m_managerBDD(ManagerBdd::getInstance())
 {
+    //managerBDD.deleteDB();
+
     loadProfiles();
     m_currentGame = 0;
     this->s_view = q_view;
@@ -26,7 +28,7 @@ MainApplication::~MainApplication()
 {
     if(m_currentGame != 0)
     {
-        delete(m_currentGame);
+        deleteGame();
     }
     qDeleteAll(m_profiles);
 
@@ -43,19 +45,27 @@ void MainApplication::loadProfiles()
 
     if(isOpen)
     {
-        m_profiles=m_managerBDD.selectAllProfils();
+        m_profiles=m_managerBDD.selectAllProfiles();
 
         if(m_profiles.size()<1)
         {
             // si aucun profil en BDD
-            //Profil par defaut
-            createProfile("François");
+            createProfile("François",0); //Profil par defaut
         }
         else
         {
             changeCurrentProfile(m_profiles.value(0)); // on prend le premier par défaut pour le moment
         }
     }
+}
+/** Save profile and delete currentGame after
+ * @brief MainApplication::deleteGame
+ */
+void MainApplication::deleteGame()
+{ 
+    m_managerBDD.updateProfile(*m_currentProfile);
+
+    delete(m_currentGame);
 }
 
 /** Getter of actif profil's name
@@ -100,12 +110,13 @@ bool MainApplication::launchGame()
  * @brief MainApplication::createProfil
  * @param nom the name of new profil
  */
-void MainApplication::createProfile(QString name)
+void MainApplication::createProfile(QString name,int score)
 {
-    Profile *newProfil = new Profile(0, name, 0);
-    m_profiles.append(newProfil);
+    Profile* newProfile;
 
-    changeCurrentProfile(newProfil);
+    newProfile = m_managerBDD.insertProfile(name,score);
+    m_profiles.append(newProfile);
+    changeCurrentProfile(newProfile);
 }
 
 /** Change actif profil by the profil in parameter
