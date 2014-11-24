@@ -20,12 +20,12 @@ Item{
         anchors.top : parent.top
         spacing: 20
 
-        ItemReponse{
+        ItemAnswer{
             id: ans1
             indexAnswers: 1
         }
 
-        ItemReponse{
+        ItemAnswer{
             id: ans2
             indexAnswers: 2
         }
@@ -38,7 +38,7 @@ Item{
         anchors.horizontalCenter: parent.horizontalCenter
         spacing: 20
 
-        ItemReponse{
+        ItemAnswer{
             id: ans3
             indexAnswers: 3
         }

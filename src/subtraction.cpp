@@ -1,6 +1,8 @@
 #include "subtraction.h"
 #include "ressources.h"
 
+#include <QTextStream>
+
 /** Constructor
  * @brief Subtraction::Subtraction
  * @param gameLevel the level game
@@ -9,7 +11,7 @@ Subtraction::Subtraction(Level* gameLevel):
     Calculation(gameLevel)
 {
     definitionLimitsForLevel();
-    s_incremental_score = INCREMENTAL_SCORE_MULTIPLICATION;
+    s_incremental_score = INCREMENTAL_SCORE_SUBTRACTION;
 }
 
 /** Destructor
@@ -32,7 +34,7 @@ Question* Subtraction::buildQuestion()
         operande2 = tmp;
     }
 
-    Question* maQuestion = new Question(MODE_SOUSTRACTION, operande1, operande2);
+    Question* maQuestion = new Question(MODE_SUBTRACTION, operande1, operande2);
     return maQuestion;
 }
 

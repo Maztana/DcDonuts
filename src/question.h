@@ -24,6 +24,9 @@ public:
     QString getResult()const;
     QString getDescription()const;
 
+private:
+    QString getProposalCalculation()const;
+
 signals:
     void descriptionChanged();
 

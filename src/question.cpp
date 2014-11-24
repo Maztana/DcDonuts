@@ -28,7 +28,7 @@ QString Question::getResult()const
     {
         result = QString::number(m_firstOperande + m_secondOperande);
     }
-    else if (!m_gameMode.compare(MODE_SOUSTRACTION))
+    else if (!m_gameMode.compare(MODE_SUBTRACTION))
     {
         result = QString::number(m_firstOperande - m_secondOperande);
     }
@@ -50,6 +50,34 @@ QString Question::getResult()const
  */
 QString Question::getProposal()const
 {
+    QString proposal = "";
+
+    if(!m_gameMode.compare(MODE_COLOR))
+    {
+        // MAKE PROPOSAL COLOR
+    }
+    else if (!m_gameMode.compare(MODE_ENUMERATION))
+    {
+        // MAKE PROPOSAL MODE_DENOMBREMENT
+    }
+    else if(!m_gameMode.compare(MODE_FLASHCARD))
+    {
+        //MAKE PROPOSAL MODE_FLASHCARD
+    }
+    else
+    {
+        proposal = getProposalCalculation();
+    }
+
+    return proposal;
+}
+
+/** Getter of proposition for calculation
+ * @brief Question::getProposalCalculation
+ * @return a posible proposition for this question
+ */
+QString Question::getProposalCalculation()const
+{
     ////////////////////////////////////////////////////////////////////////////////////
     ///
     ///         REVOIR LES RANDOMS DE CHAQUE PROPOSITION
@@ -66,7 +94,7 @@ QString Question::getProposal()const
         nbMin = m_secondOperande-m_firstOperande;
         isRandomable = true;
     }
-    else if (!m_gameMode.compare(MODE_SOUSTRACTION))
+    else if (!m_gameMode.compare(MODE_SUBTRACTION))
     {
         nbMax = m_firstOperande + 3;
         nbMin = m_firstOperande- 3 - (m_secondOperande*2);
@@ -82,6 +110,7 @@ QString Question::getProposal()const
         nbMax = qrand() % (((m_firstOperande + 1) + 1) - (m_firstOperande - 1)) + (m_firstOperande - 1);
         nbMin = qrand() % (((m_secondOperande + 1) + 1) - (m_secondOperande - 1)) + (m_secondOperande - 1);
     }
+
     if(nbMax < nbMin)
     {
         int tmp = nbMax;
@@ -133,7 +162,7 @@ QString Question::getDescription()const
     {
         question += " + ";
     }
-    else if (!m_gameMode.compare(MODE_SOUSTRACTION))
+    else if (!m_gameMode.compare(MODE_SUBTRACTION))
     {
         question += " - ";
     }

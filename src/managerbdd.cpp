@@ -1,4 +1,5 @@
 #include "managerbdd.h"
+#include "ressources.h"
 #include <QDir>
 #include <QSqlQuery>
 #include <QTextStream>
@@ -46,7 +47,7 @@ bool ManagerBdd::openDB()
 #ifdef Q_OS_LINUX
     // NOTE: We have to store database file into user home folder in Linux
     QString path(QDir::home().path());
-    path.append(QDir::separator()).append("drdonut.db.sqlite");
+    path.append(QDir::separator()).append(PATH_DATA_BASE);
     path = QDir::toNativeSeparators(path);
     m_db.setDatabaseName(path);
 
@@ -54,7 +55,7 @@ bool ManagerBdd::openDB()
 
 #else
     // NOTE: File exists in the application private folder, in Symbian Qt implementation
-    m_db.setDatabaseName("drdonut.db.sqlite");
+    m_db.setDatabaseName(PATH_DATA_BASE);
 #endif
 
     // Open database
@@ -72,13 +73,13 @@ bool ManagerBdd::deleteDB()
 #ifdef Q_OS_LINUX
     // NOTE: We have to store database file into user home folder in Linux
     QString path(QDir::home().path());
-    path.append(QDir::separator()).append("drdonut.db.sqlite");
+    path.append(QDir::separator()).append(PATH_DATA_BASE);
     path = QDir::toNativeSeparators(path);
     return QFile::remove(path);
 #else
 
     // Remove created database binary file
-    return QFile::remove("drdonut.db.sqlite");
+    return QFile::remove(PATH_DATA_BASE);
 #endif
 }
 

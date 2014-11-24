@@ -16,12 +16,12 @@ Item{
         id: line
         spacing: 20
 
-        ItemReponse{
+        ItemAnswer{
             id: ans1
             indexAnswers: 1
         }
 
-        ItemReponse{
+        ItemAnswer{
             id: ans2
             indexAnswers: 2
         }

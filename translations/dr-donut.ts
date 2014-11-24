@@ -19,6 +19,10 @@
         <source>Mele</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Flashcard</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChoiseLevelPage</name>

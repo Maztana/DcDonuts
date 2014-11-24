@@ -3,8 +3,6 @@
 #include "ressources.h"
 #include <QtQml>
 
-#include <QTextStream>
-
 QQuickView* MainApplication::s_view = NULL;
 
 /** Default constructor

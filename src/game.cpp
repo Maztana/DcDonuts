@@ -4,8 +4,6 @@
 #include "ressources.h"
 #include <QtQml>
 
-#include <QTextStream>
-
 /** Constructor of game with current profile
  * @brief Game::Game
  * @param profileGame the profile for the game
@@ -33,11 +31,11 @@ Game::~Game()
  * @brief Game::setProfileGame
  * @param profileGame the new profile for game
  */
-void Game::setProfileGame(Profile *profileGame)
+/*void Game::setProfileGame(Profile *profileGame)
 {
     m_currentProfile = profileGame;
 }
-
+*/
 /** Setter for the game type in game.
  * @brief Game::setTypeGame
  * @param typeGame the game type
@@ -72,6 +70,7 @@ void Game::setLevelGame(Level *levelGame)
     }
     m_levelGame = levelGame;
 }
+
 
 /** Initialisation of level game
  * @brief Game::initLevelGame

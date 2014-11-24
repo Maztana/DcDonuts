@@ -112,7 +112,11 @@ Page {
                 Button{
                     text:qsTr("Denombrement")
                     enabled:false
-                    onClicked: pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
+                    onClicked:
+                    {
+                        game.launchGameType("ENUMERATION")
+                        pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
+                    }
                 }
             }
 
@@ -123,7 +127,11 @@ Page {
                 Button{
                     text:qsTr("Couleur")
                     enabled:false
-                    onClicked: pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
+                    onClicked:
+                    {
+                        game.launchGameType("COLOR")
+                        pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
+                    }
                 }
             }
 
@@ -134,7 +142,26 @@ Page {
                 Button{
                     text:qsTr("Mele")
                     enabled:false
-                    onClicked: pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
+                    onClicked:
+                    {
+                        game.launchGameType("ALL")
+                        pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
+                    }
+                }
+            }
+
+            Row {
+                id: lineFlashcard
+                anchors.horizontalCenter: parent.horizontalCenter
+
+                Button{
+                    text:qsTr("Flashcard")
+                    enabled:false
+                    onClicked:
+                    {
+                        game.launchGameType("FLASHCARD")
+                        pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
+                    }
                 }
             }
 
@@ -149,7 +176,7 @@ Page {
         }
         else if(switchSignMoins.checked)
         {
-            game.launchGameType("SOUSTRACTION")
+            game.launchGameType("SUBTRACTION")
         }
         else if(switchSignMult.checked)
         {

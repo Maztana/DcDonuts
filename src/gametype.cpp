@@ -2,7 +2,7 @@
 #include "ressources.h"
 
 #include "addition.h"
-#include "soustraction.h"
+#include "subtraction.h"
 #include "division.h"
 #include "multiplication.h"
 
@@ -47,11 +47,11 @@ GameType* GameType::makeGameType(Level* gameLevel, QString gameName)
     {
         currentGameType = new Addition(gameLevel);
     }
-    else if(!gameName.compare(MODE_DENOMBREMENT))
+    else if(!gameName.compare(MODE_ENUMERATION))
     {
         currentGameType = new Subtraction(gameLevel);
     }
-    else if(!gameName.compare(MODE_COULEUR))
+    else if(!gameName.compare(MODE_COLOR))
     {
         currentGameType = new Multiplication(gameLevel);
     }
@@ -76,7 +76,7 @@ GameType* GameType::makeGameModeCalculation(Level* gameLevel, QString gameName)
     {
         currentGameType = new Addition(gameLevel);
     }
-    else if(!gameName.compare(MODE_SOUSTRACTION))
+    else if(!gameName.compare(MODE_SUBTRACTION))
     {
         currentGameType = new Subtraction(gameLevel);
     }

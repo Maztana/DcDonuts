@@ -30,12 +30,10 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "pages"
-import "Accueil"
 
 ApplicationWindow
 {
-    initialPage: Qt.resolvedUrl("Accueil/Homepage.qml") //Component { Accueil { } }
+    initialPage: Qt.resolvedUrl("homepage/Homepage.qml")
     cover: Qt.resolvedUrl("cover/Cover.qml")
 }
 

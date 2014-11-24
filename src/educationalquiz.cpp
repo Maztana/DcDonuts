@@ -1,5 +1,4 @@
 #include "educationalquiz.h"
-#include <QTextStream>
 #include <QtQml>
 #include <QThread>
 #include "mainapplication.h"
