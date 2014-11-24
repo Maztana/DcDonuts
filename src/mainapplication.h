@@ -16,8 +16,6 @@ class MainApplication : public QObject
     Q_PROPERTY(QList<int> allId READ getAllId)
 
 
-
-
     /** List all profiles */
     QList<Profil*> profiles;
     /** Current profile */
@@ -50,10 +48,13 @@ public slots:
     bool launchGame();
     void createProfile(QString nom, int score);
     void changeCurrentProfile(Profil *newCurrentProfile);
+    void changeCurrentProfile(int id);
 
+    Profil* getProfileById(int id);
     QString getNameProfileById(int id);
     int getScoreProfileById(int id);
     int getNbProfiles();
+
 
 };
 

@@ -37,13 +37,22 @@ Page{
             id: listItem
             menu: profileOptionsMenu
 
+            onClicked:
+            {
+                console.log(itemprofile.ident)
+                application.changeCurrentProfile(itemprofile.ident)
+                pageStack.pop()
+            }
+
             function remove() {
                 remorseAction(qsTr("Suppression"), function() { listModel.remove(index) })
             }
 
 
+
             ItemProfile{
-                ident: 0
+                id:itemprofile
+                ident: model.ident
                 name:model.name
                 score: model.score
 
@@ -82,7 +91,7 @@ Page{
             var id = application.allId[i];
             var name = application.getNameProfileById(id)
             var score = application.getScoreProfileById(id)
-            listModel.append({"name": name, "score":score + " Donuts"})
+            listModel.append({"ident": id, "name": name, "score":score + " Donuts"})
         }
 
     }

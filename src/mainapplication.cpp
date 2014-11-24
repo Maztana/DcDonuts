@@ -149,6 +149,25 @@ void MainApplication::changeCurrentProfile(Profil *newProfilActif)
     emit nameProfileChanged();
 }
 
+void MainApplication::changeCurrentProfile(int id){
+
+    changeCurrentProfile(getProfileById(id));
+}
+
+Profil* MainApplication::getProfileById(int id){
+
+    Profil* p=NULL;
+
+    for(int i=0; i<profiles.size();i++){
+        if(profiles.value(i)->getId()==id){
+            p=profiles.value(i);
+        }
+    }
+
+    return p;
+
+}
+
 
 /**
  * @brief MainApplication::getNameProfileById
@@ -187,9 +206,12 @@ int MainApplication::getScoreProfileById(int id)
     }
 
     return p->getScore();
-
 }
 
+/**
+ * @brief MainApplication::getNbProfiles
+ * @return number of available profiles
+ */
 int MainApplication::getNbProfiles()
 {
     return profiles.size();
