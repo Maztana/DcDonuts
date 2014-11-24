@@ -28,6 +28,7 @@ public:
     Profile* insertProfile(QString name, int score) const;
     void updateProfile(Profile& profile) const;
     void deleteProfile(Profile& profile) const;
+    void resetProfile(Profile& profile) const;
 
     QList<Profile*> selectAllProfiles();
 

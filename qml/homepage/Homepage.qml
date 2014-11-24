@@ -31,7 +31,8 @@ Page{
             id: logoProfile
             smooth: true
             y:30
-            opacity: 0.3
+            //opacity: 0.3
+            onClicked: pageStack.push(Qt.resolvedUrl("../pages/ProfileManagerPage.qml"))
 
             anchors{
                 right: parent.right
@@ -88,7 +89,7 @@ Page{
                 }
                 else
                 {
-                    pageStack.push(Qt.resolvedUrl("../pages/GestionProfils.qml"))
+                    pageStack.push(Qt.resolvedUrl("../pages/ProfileManagerPage.qml"))
                 }
             }
         }

@@ -2,8 +2,9 @@
 #include "ressources.h"
 #include <QDir>
 #include <QSqlQuery>
-#include <QTextStream>
 #include <QSqlError>
+
+#include <QTextStream>
 
 // les ifdef proviennent du site http://developer.nokia.com/community/wiki/Creating_an_SQLite_database_in_Qt
 
@@ -45,7 +46,6 @@ bool ManagerBdd::openDB()
     m_db = QSqlDatabase::addDatabase("QSQLITE");
 
 #ifdef Q_OS_LINUX
-    // NOTE: We have to store database file into user home folder in Linux
     QString path(QDir::home().path());
     path.append(QDir::separator()).append(PATH_DATA_BASE);
     path = QDir::toNativeSeparators(path);
@@ -54,7 +54,6 @@ bool ManagerBdd::openDB()
     QTextStream(stdout) << path << endl;
 
 #else
-    // NOTE: File exists in the application private folder, in Symbian Qt implementation
     m_db.setDatabaseName(PATH_DATA_BASE);
 #endif
 
@@ -71,14 +70,11 @@ bool ManagerBdd::deleteDB()
     m_db.close();
 
 #ifdef Q_OS_LINUX
-    // NOTE: We have to store database file into user home folder in Linux
     QString path(QDir::home().path());
     path.append(QDir::separator()).append(PATH_DATA_BASE);
     path = QDir::toNativeSeparators(path);
     return QFile::remove(path);
 #else
-
-    // Remove created database binary file
     return QFile::remove(PATH_DATA_BASE);
 #endif
 }
@@ -98,7 +94,7 @@ void ManagerBdd::createTables()const
 {
 
     QSqlQuery query(m_db);
-    query.exec("CREATE TABLE IF NOT EXISTS profil (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(20), score INTEGER)");
+    query.exec("CREATE TABLE IF NOT EXISTS profile (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(20), score INTEGER)");
 
     // AJOUTER TABLE QUESTION
 }
@@ -116,8 +112,8 @@ Profile* ManagerBdd::insertProfile(QString name, int score) const
 
     QSqlQuery query(m_db);
 
-    query.exec("INSERT INTO profil(name,score) VALUES('"+name+"',"+QString::number(score)+")");
-    query.exec("SELECT MAX(id) FROM profil");
+    query.exec("INSERT INTO profile(name,score) VALUES('"+name+"',"+QString::number(score)+")");
+    query.exec("SELECT MAX(id) FROM profile");
 
     if(query.next()){
         lastId = query.value(0).toInt();
@@ -131,16 +127,12 @@ Profile* ManagerBdd::insertProfile(QString name, int score) const
 
 /** Update a profile in database
  * @brief ManagerBdd::updateProfile
- * @param profil
+ * @param profile
  */
 void ManagerBdd::updateProfile(Profile& profile) const
 {
-
-    createTables();
-
     QSqlQuery query(m_db);
-    query.exec("UPDATE profil SET score="+QString::number(profile.getScore())+" WHERE id="+QString::number(profile.getId()));
-
+    query.exec("UPDATE profile SET score="+QString::number(profile.getScore())+" WHERE id="+QString::number(profile.getId()));
 }
 
 /** Delete a profile in database
@@ -149,11 +141,19 @@ void ManagerBdd::updateProfile(Profile& profile) const
  */
 void ManagerBdd::deleteProfile(Profile& profile) const
 {
+    QSqlQuery query(m_db);
+    query.exec("DELETE from profile WHERE id="+QString::number(profile.getId()));
+}
 
-    createTables();
+
+/** Reset score of a profile
+ * @brief resetProfile
+ * @param profile to reset
+ */
+void ManagerBdd::resetProfile(Profile& profile)const{
 
     QSqlQuery query(m_db);
-    query.exec("DELETE from profil WHERE id="+QString::number(profile.getId()));
+    query.exec("UPDATE profile SET score=0 WHERE id="+QString::number(profile.getId()));
 
 }
 
@@ -170,13 +170,13 @@ QList<Profile*> ManagerBdd::selectAllProfiles()
     int score;
 
     QSqlQuery query(m_db);
-    query.exec("SELECT * FROM profil");
+    query.exec("SELECT * FROM profile");
 
     while(query.next()){
 
-        id =query.value(0).toInt();
-        name =query.value(1).toString();
-        score =query.value(2).toInt();
+        id = query.value(0).toInt();
+        name = query.value(1).toString();
+        score = query.value(2).toInt();
 
         listProfiles.append(new Profile(id,name,score));
     }

@@ -54,7 +54,8 @@ OTHER_FILES += qml/dr-donut.qml \
     qml/templatesAnswers/ThreeProposals.qml \
     qml/templatesAnswers/Seizure.qml \
     qml/templatesAnswers/ItemAnswer.qml \
-    qml/templatesAnswers/FourProposals.qml
+    qml/templatesAnswers/FourProposals.qml \
+    qml/pages/ProfileManagerPage.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line

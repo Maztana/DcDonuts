@@ -10,8 +10,13 @@ class MainApplication : public QObject
 {
     Q_OBJECT
 
-    /** Name profil property */
+    /** Name of current profil property */
     Q_PROPERTY(QString nameProfile READ getNameProfile NOTIFY nameProfileChanged)
+    /** List of all profile's id */
+    Q_PROPERTY(QList<int> allId READ getAllId)
+
+
+
 
     /** List all profiles */
     QList<Profile*> m_profiles;
@@ -22,6 +27,8 @@ class MainApplication : public QObject
     /** Data base manager */
     ManagerBdd &m_managerBDD;
 
+
+
 public:
     explicit MainApplication(QQuickView *q_view);
     ~MainApplication();
@@ -29,8 +36,11 @@ public:
     /** View of the application */
     static QQuickView *s_view;
     const QString getNameProfile()const;
+    const QList<int> getAllId() const;
+
 
 private:
+
     void loadProfiles();
     void deleteGame();
 
@@ -41,6 +51,10 @@ public slots:
     bool launchGame();
     void createProfile(QString nom, int score);
     void changeCurrentProfile(Profile *newCurrentProfile);
+
+    QString getNameProfileById(int id);
+    int getScoreProfileById(int id);
+    int getNbProfiles();
 
 };
 

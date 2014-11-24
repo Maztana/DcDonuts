@@ -14,9 +14,16 @@ MainApplication::MainApplication(QQuickView *q_view) :
 {
     //managerBDD.deleteDB();
 
-    loadProfiles();
+    bool isOpen = m_managerBDD.openDB();
+
+    if(isOpen)
+    {
+        loadProfiles();
+    }
+
     m_currentGame = 0;
     this->s_view = q_view;
+
 }
 
 /** Default destructor
@@ -32,6 +39,8 @@ MainApplication::~MainApplication()
 
     //A vérifier
     delete(s_view);
+
+    m_managerBDD.closeDB();
 }
 
 /** Load all profils from the data base
@@ -39,22 +48,18 @@ MainApplication::~MainApplication()
  */
 void MainApplication::loadProfiles()
 {
-    bool isOpen = m_managerBDD.openDB();
+    m_profiles = m_managerBDD.selectAllProfiles();
 
-    if(isOpen)
+    if(m_profiles.size()<1)
     {
-        m_profiles=m_managerBDD.selectAllProfiles();
-
-        if(m_profiles.size()<1)
-        {
-            // si aucun profil en BDD
-            createProfile("François",0); //Profil par defaut
-        }
-        else
-        {
-            changeCurrentProfile(m_profiles.value(0)); // on prend le premier par défaut pour le moment
-        }
+        // si aucun profil en BDD
+        createProfile("François",0); //Profil par defaut
     }
+    else
+    {
+        changeCurrentProfile(m_profiles.value(0)); // on prend le premier par défaut pour le moment
+    }
+
 }
 /** Save profile and delete currentGame after
  * @brief MainApplication::deleteGame
@@ -79,6 +84,21 @@ const QString MainApplication::getNameProfile()const
     }
     return nameProfil;
 }
+
+/**
+ * @brief MainApplication::getAllId
+ * @return all id of profiles
+ */
+const QList<int> MainApplication::getAllId() const
+{
+    QList<int> allId;
+
+    for(int i = 0; i < m_profiles.size();i++){
+        allId.append(m_profiles.value(i)->getId());
+    }
+    return allId;
+}
+
 
 /** Launcher of game
  * @brief MainApplication::lancerGame
@@ -125,4 +145,48 @@ void MainApplication::changeCurrentProfile(Profile *newProfilActif)
 {
     m_currentProfile = newProfilActif;
     emit nameProfileChanged();
+}
+
+
+/**
+ * @brief MainApplication::getNameProfileById
+ * @param id of the profile
+ * @return the name of the profile selected by id
+ */
+QString MainApplication::getNameProfileById(int id)
+{
+
+    Profile* p = NULL;
+
+    for(int i=0; i<m_profiles.size();i++){
+        if(m_profiles.value(i)->getId()==id){
+            p = m_profiles.value(i);
+        }
+    }
+    return p->getName();
+}
+
+/**
+ * @brief MainApplication::getScoreProfileById
+ * @param id of the profile
+ * @return the score of the profile selected by id
+ */
+int MainApplication::getScoreProfileById(int id)
+{
+
+    Profile* p = NULL;
+
+    for(int i=0; i<m_profiles.size();i++){
+        if(m_profiles.value(i)->getId()==id){
+            p = m_profiles.value(i);
+        }
+    }
+
+    return p->getScore();
+
+}
+
+int MainApplication::getNbProfiles()
+{
+    return m_profiles.size();
 }
