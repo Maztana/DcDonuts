@@ -1,6 +1,5 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "../Components"
 
 Page{
 
@@ -15,52 +14,55 @@ Page{
         }
 
         Column {
-            id: colonneDifficulte
+            id: columnDifficulte
             spacing: 50
             width: parent.width
             anchors.verticalCenter: parent.verticalCenter
 
             Row {
-                id: ligneFacile
+                id: lineEasy
                 anchors.horizontalCenter: parent.horizontalCenter
 
-                BoutonPerso{
-                    id: btFacile
+                Button{
                     text:qsTr("Facile")
-                    link: "../pages/JeuPage.qml"
+                    enabled:false
+                    //onClicked: pageStack.push(Qt.resolvedUrl("../pages/JeuPage.qml"))
                 }
+
             }
 
             Row {
-                id: ligneMoyen
+                id: lineMedium
                 anchors.horizontalCenter: parent.horizontalCenter
 
-                BoutonPerso{
+                Button{
                     text:qsTr("Moyen")
-                    enable:false
-                    link: "../pages/JeuPage.qml"
+                    enabled:false
+                    //onClicked: pageStack.push(Qt.resolvedUrl("../pages/JeuPage.qml"))
                 }
+
             }
 
             Row {
-                id: ligneDifficile
+                id: lineDifficult
                 anchors.horizontalCenter: parent.horizontalCenter
 
-                BoutonPerso{
+                Button{
                     text:qsTr("Difficile")
-                    enable:false
-                    link: "../pages/JeuPage.qml"
+                    enabled:false
+                    //onClicked: pageStack.push(Qt.resolvedUrl("../pages/JeuPage.qml"))
+
                 }
             }
 
             Row {
-                id: ligneAutomatique
+                id: lineAutomatique
                 anchors.horizontalCenter: parent.horizontalCenter
 
-                BoutonPerso{
-                    text:qsTr("Automatique")
-                    enable:false
-                    link: "../pages/JeuPage.qml"
+                Button{
+                    text:qsTr("Auto")
+                    enabled:false
+                    //onClicked: pageStack.push(Qt.resolvedUrl("../pages/JeuPage.qml"))
                 }
             }
 

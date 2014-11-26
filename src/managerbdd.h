@@ -1,6 +1,6 @@
 #ifndef MANAGERBDD_H
 #define MANAGERBDD_H
-#include "profil.h"
+#include "profile.h"
 #include <QSqlDatabase>
 
 class ManagerBdd
@@ -11,7 +11,6 @@ private:
     QSqlDatabase m_db;
     /** ManagerBdd instance */
     static ManagerBdd s_instance;
-
 
     explicit ManagerBdd();
 
@@ -25,12 +24,12 @@ public:
 
 
     void createTables() const;
-    Profil* insertProfile(QString name, int score) const;
-    void updateProfile(Profil& profile) const;
-    void deleteProfile(Profil& profile) const;
-    void resetProfile(Profil& profile) const;
+    Profile* insertProfile(QString name, int score) const;
+    void updateProfile(Profile& profile) const;
+    void deleteProfile(Profile& profile) const;
+    void resetProfile(Profile& profile) const;
 
-    QList<Profil*> selectAllProfiles();
+    QList<Profile*> selectAllProfiles();
 
 };
 

@@ -2,7 +2,79 @@
 <!DOCTYPE TS>
 <TS version="2.0">
 <context>
-    <name>Accueil</name>
+    <name>ChoiseGameModePage</name>
+    <message>
+        <source>Calcul</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Denombrement</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Couleur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mele</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Flashcard</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ChoiseLevelPage</name>
+    <message>
+        <source>Facile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Moyen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Difficile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>CreationProfilePage</name>
+    <message>
+        <source>Valider</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Annuler</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tapez votre nom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Donut(s)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>GameQuizPage</name>
+    <message>
+        <source>Niveau : </source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Homepage</name>
     <message>
         <source>A propos</source>
         <translation type="unfinished"></translation>
@@ -21,61 +93,17 @@
     </message>
 </context>
 <context>
-    <name>BoutonPerso</name>
-    <message>
-        <source>Calcul</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ChoixDifficulteePage</name>
-    <message>
-        <source>Facile</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Moyen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Difficile</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Automatique</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ChoixModeDeJeuPage</name>
-    <message>
-        <source>Calcul</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Denombrement</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Couleur</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mele</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>JeuPage</name>
-    <message>
-        <source>Niveau : </source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>ProfileManagerPage</name>
     <message>
+        <source>Joueurs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Aucun profil</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pull down pour ajouter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -87,7 +115,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Pull down pour ajouter</source>
+        <source>Suppression</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -103,16 +131,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Suppression</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Joueurs</source>
+        <source> Donut(s)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>Titre</name>
+    <name>Title</name>
     <message>
         <source>D</source>
         <translation type="unfinished"></translation>

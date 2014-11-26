@@ -1,11 +1,8 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "../Components"
 
 Page{
-    id: pageAccueil
-
-    //FontLoader{ id: fontDonut; source: "../font/PWYummyDonuts.ttf" }
+    id: homepage
 
     SilicaFlickable{
 
@@ -18,7 +15,7 @@ Page{
         }
 
         Label{
-            id: nameProfil
+            id: nameProfile
             text: application.nameProfile
             color: Theme.highlightColor
             font.bold: true
@@ -31,7 +28,7 @@ Page{
         }
 
         IconButton {
-            id: logoProfil
+            id: logoProfile
             smooth: true
             y:30
             //opacity: 0.3
@@ -58,9 +55,7 @@ Page{
             }
         }
 
-
-
-        Titre{
+        Title{
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: iconDrDonut.top
             anchors.margins: 30
@@ -83,14 +78,14 @@ Page{
             id:buttonPlay
             text: qsTr("Jouer")
             anchors{
-                bottom:boutonOptions.top
+                bottom:buttonOptions.top
                 horizontalCenter: parent.horizontalCenter
                 margins:60
             }
             onClicked: {
                 if(application.launchGame())
                 {
-                    pageStack.push(Qt.resolvedUrl("../pages/ChoixModeDeJeuPage.qml"))
+                    pageStack.push(Qt.resolvedUrl("../pages/ChoiseGameModePage.qml"))
                 }
                 else
                 {
@@ -101,7 +96,7 @@ Page{
 
         Button
         {
-            id:boutonOptions
+            id:buttonOptions
             text: qsTr("Options")
 
             anchors{

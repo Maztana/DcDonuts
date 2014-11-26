@@ -1,7 +1,10 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
+
 Page{
+
+    onStatusChanged: addItems()
     id:profileManager
 
     SilicaListView {
@@ -23,10 +26,12 @@ Page{
 
             MenuItem {
                 text: qsTr("Créer un joueur")
+                onClicked: pageStack.push(Qt.resolvedUrl("CreationProfilePage.qml"))
             }
 
             MenuItem {
                 text: qsTr("Importer un joueur")
+                enabled: false
             }
 
         }
@@ -37,17 +42,20 @@ Page{
             id: listItem
             menu: profileOptionsMenu
 
+
             onClicked:
             {
-                console.log(itemprofile.ident)
                 application.changeCurrentProfile(itemprofile.ident)
                 pageStack.pop()
             }
 
             function remove() {
-                remorseAction(qsTr("Suppression"), function() { listModel.remove(index) })
+                remorseAction(qsTr("Suppression"), function()
+                {
+                    listModel.remove(index)
+                    application.deleteProfile(itemprofile.ident)
+                })
             }
-
 
 
             ItemProfile{
@@ -63,13 +71,18 @@ Page{
                 ContextMenu {
                     MenuItem {
                         text: qsTr("Réinitialiser")
+
+                        onClicked: {application.resetProfile(itemprofile.ident);addItems()}
                     }
                     MenuItem {
                         text: qsTr("Supprimer")
-                        onClicked: remove()
+                        onClicked:{
+                            remove()
+                        }
                     }
                     MenuItem {
                         text: qsTr("Exporter")
+                        enabled: false
                     }
                 }
             }
@@ -80,9 +93,9 @@ Page{
         id: listModel
     }
 
-    onPageContainerChanged: addItems()
-
     function addItems() {
+
+        listModel.clear();
 
         var nbProfiles = application.getNbProfiles()
 
@@ -91,10 +104,11 @@ Page{
             var id = application.allId[i];
             var name = application.getNameProfileById(id)
             var score = application.getScoreProfileById(id)
-            listModel.append({"ident": id, "name": name, "score":score + " Donuts"})
+            listModel.append({"ident": id, "name": name, "score":score + qsTr(" Donut(s)")})
         }
 
     }
+
 
 
 }

@@ -1,7 +1,7 @@
 #ifndef MAINAPPLICATION_H
 #define MAINAPPLICATION_H
 
-#include "partie.h"
+#include "game.h"
 #include "managerbdd.h"
 #include <QQuickView>
 #include <QGuiApplication>
@@ -17,13 +17,13 @@ class MainApplication : public QObject
 
 
     /** List all profiles */
-    QList<Profil*> profiles;
+    QList<Profile*> m_profiles;
     /** Current profile */
-    Profil *currentProfile;
+    Profile *m_currentProfile;
     /** Current game */
-    Game *currentGame;
+    Game *m_currentGame;
     /** Data base manager */
-    ManagerBdd &managerBDD;
+    ManagerBdd &m_managerBDD;
 
 
 
@@ -31,7 +31,8 @@ public:
     explicit MainApplication(QQuickView *q_view);
     ~MainApplication();
 
-    static QQuickView *q_view;
+    /** View of the application */
+    static QQuickView *s_view;
     const QString getNameProfile()const;
     const QList<int> getAllId() const;
 
@@ -43,18 +44,20 @@ private:
 
 signals:
     void nameProfileChanged();
+    void profileChanged();
 
 public slots:
     bool launchGame();
-    void createProfile(QString nom, int score);
-    void changeCurrentProfile(Profil *newCurrentProfile);
+    void createProfile(QString nom, int score = 0);
+    void changeCurrentProfile(Profile *newCurrentProfile);
     void changeCurrentProfile(int id);
 
-    Profil* getProfileById(int id);
+    Profile* getProfileById(int id);
     QString getNameProfileById(int id);
     int getScoreProfileById(int id);
     int getNbProfiles();
-
+    void resetProfile(int id);
+    void deleteProfile(int id);
 
 };
 

@@ -1,19 +1,19 @@
 #ifndef ADDITION_H
 #define ADDITION_H
 
-#include "calcul.h"
+#include "calculation.h"
 
-class Addition : public Calcul
+class Addition : public Calculation
 {
     Q_OBJECT
 public:
-    explicit Addition(Niveau* niveauDuJeu);
+    explicit Addition(Level* m_gameLevel);
     ~Addition();
 
-    virtual Question* nextQuestion();
+    virtual Question* buildQuestion();
 
 protected:
-    virtual void defNiveau();
+    virtual void definitionLimitsForLevel();
 
 signals:
 

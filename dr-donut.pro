@@ -17,43 +17,47 @@ CONFIG += c++11
 
 SOURCES += src/dr-donut.cpp \
     src/mainapplication.cpp \
-    src/profil.cpp \
-    src/typedejeu.cpp \
-    src/questionnaireeducatif.cpp \
-    src/calcul.cpp \
-    src/partie.cpp \
-    src/niveau.cpp \
     src/question.cpp \
     src/addition.cpp \
-    src/soustraction.cpp \
     src/multiplication.cpp \
     src/division.cpp \
-    src/managerbdd.cpp
+    src/managerbdd.cpp \
+    src/profile.cpp \
+    src/game.cpp \
+    src/level.cpp \
+    src/gametype.cpp \
+    src/educationalquiz.cpp \
+    src/calculation.cpp \
+    src/subtraction.cpp
 
 OTHER_FILES += qml/dr-donut.qml \
-    qml/cover/CoverPage.qml \
     rpm/dr-donut.changes.in \
     rpm/dr-donut.spec \
     rpm/dr-donut.yaml \
     translations/*.ts \
     dr-donut.desktop \
-    qml/Accueil/Accueil.qml \
-    qml/pages/JeuPage.qml \
     images/drDonut.png \
-    qml/templatesReponses/Reponse4Propositions.qml \
-    qml/templatesReponses/Reponse3Propositions.qml \
-    qml/templatesReponses/Reponse2Propositions.qml \
-    qml/templatesReponses/ReponseSaisie.qml \
-    qml/Accueil/Titre.qml \
-    qml/pages/ChoixModeDeJeuPage.qml \
-    qml/Components/BoutonPerso.qml \
-    qml/Components/BoutonSigne.qml \
-    qml/Components/PageCustom.qml \
-    qml/pages/ChoixDifficulteePage.qml \
-    qml/templatesReponses/ItemReponse.qml \
+    qml/Accueil/Homepage.qml \
+    qml/Accueil/Title.qml \
+    qml/cover/Cover.qml \
+    qml/pages/ChoiseLevelPage.qml \
+    qml/pages/ChoiseGameModePage.qml \
+    qml/pages/GameQuizPage.qml \
+    qml/templatesReponses/ItemAnswer.qml \
+    qml/templatesReponses/TwoProposals.qml \
+    qml/templatesReponses/ThreeProposals.qml \
+    qml/templatesReponses/FourProposals.qml \
+    qml/templatesReponses/Seizure.qml \
+    qml/homepage/Homepage.qml \
+    qml/homepage/Title.qml \
+    qml/templatesAnswers/TwoProposals.qml \
+    qml/templatesAnswers/ThreeProposals.qml \
+    qml/templatesAnswers/Seizure.qml \
+    qml/templatesAnswers/ItemAnswer.qml \
+    qml/templatesAnswers/FourProposals.qml \
     qml/pages/ProfileManagerPage.qml \
+    qml/pages/CreationProfilePage.qml \
     qml/pages/ItemProfile.qml
-    qml/templatesReponses/ItemReponse.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line
@@ -62,19 +66,19 @@ TRANSLATIONS += translations/dr-donut-de.ts
 
 HEADERS += \
     src/mainapplication.h \
-    src/profil.h \
-    src/typedejeu.h \
-    src/questionnaireeducatif.h \
-    src/calcul.h \
-    src/partie.h \
-    src/niveau.h \
     src/question.h \
     src/addition.h \
-    src/soustraction.h \
     src/multiplication.h \
     src/division.h \
     src/managerbdd.h \
-	src/ressources.h
+	src/ressources.h \
+    src/profile.h \
+    src/game.h \
+    src/level.h \
+    src/gametype.h \
+    src/educationalquiz.h \
+    src/calculation.h \
+    src/subtraction.h
 
 RESOURCES += \
     resources.qrc

@@ -10,15 +10,14 @@ Item{
     Label {
         id: nameLabel
         x:Theme.paddingLarge
-        //text: model.name
         font.capitalization: Font.Capitalize
+        font.pixelSize: Theme.fontSizeLarge
     }
 
     Label {
         id:scoreLabel
         anchors.top: nameLabel.bottom
         x:Theme.paddingLarge
-        //text: model.score
-        font.pixelSize: 22
+        font.pixelSize: Theme.fontSizeExtraSmall
     }
 }

@@ -1,19 +1,19 @@
 #ifndef DIVISION_H
 #define DIVISION_H
 
-#include "calcul.h"
+#include "calculation.h"
 
-class Division : public Calcul
+class Division : public Calculation
 {
     Q_OBJECT
 public:
-    explicit Division(Niveau* niveauDuJeu);
+    explicit Division(Level* m_gameLevel);
     ~Division();
 
-    virtual Question* nextQuestion();
+    virtual Question* buildQuestion();
 
 protected:
-    void defNiveau();
+    void definitionLimitsForLevel();
 
 signals:
 
