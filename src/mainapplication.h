@@ -44,15 +44,20 @@ private:
 
 signals:
     void nameProfileChanged();
+    void profileChanged();
 
 public slots:
     bool launchGame();
-    void createProfile(QString nom, int score);
+    void createProfile(QString nom, int score = 0);
     void changeCurrentProfile(Profile *newCurrentProfile);
+    void changeCurrentProfile(int id);
 
+    Profile* getProfileById(int id);
     QString getNameProfileById(int id);
     int getScoreProfileById(int id);
     int getNbProfiles();
+    void resetProfile(int id);
+    void deleteProfile(int id);
 
 };
 

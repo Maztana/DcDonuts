@@ -12,14 +12,14 @@ QQuickView* MainApplication::s_view = NULL;
 MainApplication::MainApplication(QQuickView *q_view) :
     QObject(0), m_managerBDD(ManagerBdd::getInstance())
 {
+    m_currentProfile = nullptr;
+    m_currentGame = nullptr;
+
     if(m_managerBDD.openDB())
     {
         loadProfiles();
     }
-
-    m_currentGame = 0;
     this->s_view = q_view;
-
 }
 
 /** Default destructor
@@ -39,16 +39,10 @@ MainApplication::~MainApplication()
 void MainApplication::loadProfiles()
 {
     m_profiles = m_managerBDD.selectAllProfiles();
-
-    if(m_profiles.size()<1)
+    if(!m_profiles.empty())
     {
-        createProfile("François",0); //Profil par defaut
+        changeCurrentProfile(m_profiles.value(0));
     }
-    else
-    {
-        changeCurrentProfile(m_profiles.value(0)); // on prend le premier par défaut pour le moment
-    }
-
 }
 /** Save profile and delete currentGame after
  * @brief MainApplication::deleteGame
@@ -65,14 +59,13 @@ void MainApplication::deleteGame()
  */
 const QString MainApplication::getNameProfile()const
 {
-    QString nameProfil = "undefined";
-    if(m_currentProfile != 0)
+    QString nameProfil = "Aucun profil";
+    if(m_currentProfile != nullptr)
     {
         nameProfil = m_currentProfile->getName();
     }
     return nameProfil;
 }
-
 
 /**
  * @brief MainApplication::getAllId
@@ -81,7 +74,6 @@ const QString MainApplication::getNameProfile()const
 const QList<int> MainApplication::getAllId() const
 {
     QList<int> allId;
-
     for(int i = 0; i < m_profiles.size();i++){
         allId.append(m_profiles.value(i)->getId());
     }
@@ -96,7 +88,7 @@ const QList<int> MainApplication::getAllId() const
  */
 bool MainApplication::launchGame()
 {
-    if(m_currentProfile != 0)
+    if(m_currentProfile != nullptr)
     {
         delete(m_currentGame);
         m_currentGame = new Game(m_currentProfile);
@@ -106,9 +98,10 @@ bool MainApplication::launchGame()
     return false;
 }
 
-/** Create a profil with a name
+/** Create a profil with a name and a score. The default value for score is 0
  * @brief MainApplication::createProfil
- * @param nom the name of new profil
+ * @param name the name of new profil
+ * @param score of the profile
  */
 void MainApplication::createProfile(QString name,int score)
 {
@@ -129,6 +122,23 @@ void MainApplication::changeCurrentProfile(Profile *newProfilActif)
     emit nameProfileChanged();
 }
 
+void MainApplication::changeCurrentProfile(int id){
+
+    changeCurrentProfile(getProfileById(id));
+}
+
+Profile* MainApplication::getProfileById(int id)
+{
+    Profile* p=nullptr;
+
+    for(int i=0; i<m_profiles.size();i++){
+        if(m_profiles.value(i)->getId()==id){
+            p=m_profiles.value(i);
+        }
+    }
+    return p;
+}
+
 
 /**
  * @brief MainApplication::getNameProfileById
@@ -137,8 +147,7 @@ void MainApplication::changeCurrentProfile(Profile *newProfilActif)
  */
 QString MainApplication::getNameProfileById(int id)
 {
-
-    Profile* p = NULL;
+    Profile* p = nullptr;
 
     for(int i=0; i<m_profiles.size();i++){
         if(m_profiles.value(i)->getId()==id){
@@ -155,8 +164,7 @@ QString MainApplication::getNameProfileById(int id)
  */
 int MainApplication::getScoreProfileById(int id)
 {
-
-    Profile* p = NULL;
+    Profile* p = nullptr;
 
     for(int i=0; i<m_profiles.size();i++){
         if(m_profiles.value(i)->getId()==id){
@@ -165,10 +173,38 @@ int MainApplication::getScoreProfileById(int id)
     }
 
     return p->getScore();
-
 }
 
+/**
+ * @brief MainApplication::getNbProfiles
+ * @return number of available profiles
+ */
 int MainApplication::getNbProfiles()
 {
     return m_profiles.size();
+}
+
+/** Reset score and stats of a profile
+ * @brief MainApplication::resetProfile
+ * @param id of the profile to reset
+ */
+void MainApplication::resetProfile(int id)
+{
+    Profile* p = getProfileById(id);
+    m_managerBDD.resetProfile(*p);
+    p->resetScore();
+
+}
+
+
+/** Delete one profile and after put the first profile in current profile
+ * @brief MainApplication::deleteProfile
+ * @param id of the profile to delete
+ */
+void MainApplication::deleteProfile(int id)
+{
+    m_managerBDD.deleteProfile(*m_profiles.takeAt(m_profiles.indexOf(getProfileById(id))));
+    delete(m_currentProfile);
+    m_currentProfile = nullptr;
+    emit nameProfileChanged();
 }

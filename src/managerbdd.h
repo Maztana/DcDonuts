@@ -12,7 +12,6 @@ private:
     /** ManagerBdd instance */
     static ManagerBdd s_instance;
 
-
     explicit ManagerBdd();
 
 public:

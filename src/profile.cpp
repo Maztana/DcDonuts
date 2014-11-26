@@ -70,3 +70,11 @@ void Profile::decrementScore(int nbPoints)
     }
 }
 
+/** Reset score of profile
+ * @brief Profile::resetScore
+ */
+void Profile::resetScore()
+{
+    m_score = 0;
+}
+

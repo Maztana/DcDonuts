@@ -1,7 +1,9 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
+
 Page{
+    onStatusChanged: addItems()
     id:profileManager
 
     SilicaListView {
@@ -11,7 +13,6 @@ Page{
         model: listModel
 
         header: PageHeader{ title:qsTr("Joueurs") }
-
 
         ViewPlaceholder {
             enabled: profilesList.count == 0
@@ -23,14 +24,13 @@ Page{
 
             MenuItem {
                 text: qsTr("Créer un joueur")
-                enabled: false
+                onClicked: pageStack.push(Qt.resolvedUrl("CreationProfilePage.qml"))
             }
 
             MenuItem {
                 text: qsTr("Importer un joueur")
                 enabled: false
             }
-
         }
 
         VerticalScrollDecorator {}
@@ -39,17 +39,26 @@ Page{
             id: listItem
             menu: profileOptionsMenu
 
+            onClicked:
+            {
+                application.changeCurrentProfile(itemprofile.ident)
+                pageStack.pop()
+            }
+
             function remove() {
-                remorseAction(qsTr("Suppression"), function() { listModel.remove(index) })
+                remorseAction(qsTr("Suppression"), function()
+                {
+                    listModel.remove(index)
+                    application.deleteProfile(itemprofile.ident)
+                })
             }
 
 
             ItemProfile{
-                id: itemProfile
+                id:itemprofile
                 ident: model.ident
                 name:model.name
                 score: model.score
-
             }
 
             Component {
@@ -57,12 +66,14 @@ Page{
                 ContextMenu {
                     MenuItem {
                         text: qsTr("Réinitialiser")
-                        enabled: false
+
+                        onClicked: {application.resetProfile(itemprofile.ident);addItems()}
                     }
                     MenuItem {
                         text: qsTr("Supprimer")
-                        enabled: false
-                        onClicked: remove()
+                        onClicked:{
+                            remove()
+                        }
                     }
                     MenuItem {
                         text: qsTr("Exporter")
@@ -77,9 +88,9 @@ Page{
         id: listModel
     }
 
-    onPageContainerChanged: addItems()
-
     function addItems() {
+
+        listModel.clear();
 
         var nbProfiles = application.getNbProfiles()
 
@@ -88,10 +99,7 @@ Page{
             var id = application.allId[i];
             var name = application.getNameProfileById(id)
             var score = application.getScoreProfileById(id)
-            listModel.append({"ident":id, "name": name, "score":score + " Donuts"})
+            listModel.append({"ident": id, "name": name, "score":score + qsTr(" Donut(s)")})
         }
-
     }
-
-
 }

@@ -37,5 +37,5 @@ Question* Addition::buildQuestion()
 void Addition::definitionLimitsForLevel()
 {
     s_number_min = 0;
-    s_number_max = 9;
+    s_number_max = 99;
 }

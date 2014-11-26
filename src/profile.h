@@ -26,6 +26,8 @@ public:
     void incrementScore(int nbPoints);
     void decrementScore(int nbPoints);
 
+    void resetScore();
+
 signals:
 
 public slots:

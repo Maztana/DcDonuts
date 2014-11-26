@@ -49,14 +49,16 @@ OTHER_FILES += qml/dr-donut.qml \
     qml/templatesReponses/Seizure.qml \
     qml/homepage/Homepage.qml \
     qml/homepage/Title.qml \
-    qml/templatesAnswers/Seizure.qml \
+	qml/templatesAnswers/Seizure.qml \
     qml/templatesAnswers/ItemAnswer.qml \
     qml/pages/ProfileManagerPage.qml \
     qml/pages/ChoiceGameModePage.qml \
     qml/pages/ChoiceLevelPage.qml \
     qml/templatesAnswers/FourPropositions.qml \
     qml/templatesAnswers/ThreePropositions.qml \
-    qml/templatesAnswers/TwoPropositions.qml
+    qml/templatesAnswers/TwoPropositions.qml \
+    qml/pages/CreationProfilePage.qml \
+    qml/pages/ItemProfile.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line

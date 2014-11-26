@@ -44,6 +44,25 @@
     </message>
 </context>
 <context>
+    <name>CreationProfilePage</name>
+    <message>
+        <source>Valider</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Annuler</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tapez votre nom</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>GameQuizPage</name>
     <message>
         <source>Niveau : </source>
@@ -105,6 +124,10 @@
     </message>
     <message>
         <source>Exporter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> Donut(s)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
