@@ -7,7 +7,7 @@
  * @param gameLevel the level of game
  */
 Division::Division(Level* gameLevel):
-    Calculation(gameLevel)
+    Calcul(gameLevel)
 {
     definitionLimitsForLevel();
     s_incremental_score = INCREMENTAL_SCORE_DIVISION;
@@ -47,7 +47,11 @@ Question* Division::buildQuestion()
         }
     }
 
-    Question* maQuestion = new Question(MODE_DIVISION, operande1, operande2);
+    QList<QString> listValues;
+    listValues.append(QString::number(operande1));
+    listValues.append(QString::number(operande2));
+
+    Question* maQuestion = new Question(MODE_DIVISION, listValues);
     return maQuestion;
 }
 

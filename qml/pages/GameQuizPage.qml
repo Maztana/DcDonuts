@@ -19,7 +19,8 @@ Page {
             id: level
             text: qsTr("Niveau : ") + game.getLevelName()
             anchors.horizontalCenter: parent.horizontalCenter
-            y:100
+            anchors.topMargin: Theme.paddingLarge * 4
+            anchors.top: parent.top
             font.family: Theme.fontFamilyHeading
         }
 
@@ -29,11 +30,11 @@ Page {
             width: Screen.width-40
             height: 150
             radius: 20
-            color: '#F8F8FF'
+            color: Theme.primaryColor
             anchors{
                 horizontalCenter: parent.horizontalCenter
                 top: level.bottom
-                margins:20
+                margins:Theme.paddingMedium
             }
 
             Text {
@@ -41,7 +42,7 @@ Page {
                 text: question.description + " ?"
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter : parent.verticalCenter
-                font.pointSize: 40
+                font.pixelSize: Theme.fontSizeHuge
                 font.bold: true
             }
         }
@@ -49,85 +50,79 @@ Page {
 
         /* --------- Bulles ---------- */
         Rectangle{
-            id: buble1
-            width: 50
-            height: 50
+            id: bubble1
+            width: drDonut.width/5
+            height: bubble1.width
             radius: 1000
-            x : rectangleQuestion.x + 130
             anchors{
-                top:rectangleQuestion.bottom
-                margins:10
+                top: rectangleQuestion.bottom
+                right: bubble2.left
+                topMargin: Theme.paddingSmall
             }
         }
 
         Rectangle{
-            id: buble2
-            width: 30
-            height: 30
+            id: bubble2
+            width: bubble1.width / 1.5
+            height: bubble2.width
             radius: 1000
-            x: buble1.x + buble1.width
             anchors{
-                top:buble1.bottom
-                margins:10
+                verticalCenter: bubble1.bottom
+                right: bubble3.left
+                margins: Theme.paddingSmall
             }
         }
 
         Rectangle{
-            id: buble3
-            width: 25
-            height: 25
+            id: bubble3
+            width: bubble2.width / 1.5
+            height: bubble3.width
             radius: 1000
-            x : buble2.x + buble2.width + 15
             anchors{
-                top:buble2.bottom
-                margins:6
+                verticalCenter: bubble2.bottom
+                right: drDonut.left
+                margins: Theme.paddingSmall
             }
         }
         /* --------------------------- */
-
 
 
         /*------------------- Dr Donut --------------------*/
         Image{
             id: drDonut
             source: "qrc:///qml/images/drDonut.png"
-            x: buble3.x + buble3.width + 30
-            y: buble1.y
-            width:sourceSize.width/2
-            height:sourceSize.height/2
+            anchors{
+                right: rectangleQuestion.right
+                top: rectangleQuestion.bottom
+                topMargin: Theme.paddingMedium
+                rightMargin: Theme.paddingSmall
+            }
+
+            width: Theme.iconSizeLarge * 2.2
+            height: drDonut.width
         }
         /*-------------------------------------------------*/
 
         /*------------------- Réponses --------------------*/
 
-
-        Column{
-            id: panelAnswers
-
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: drDonut.bottom
-            width: parent.width
-
-
-            FourProposals{
-                id: answers
-                textAnswer1: educationQuiz.proposal1
-                textAnswer2: educationQuiz.proposal2
-                textAnswer3: educationQuiz.proposal3
-                textAnswer4: educationQuiz.proposal4
-            }
-
+        FourPropositions{
+            id: answers
+            anchors.bottom: scoreLabel.top
+            textAnswer1: educationQuiz.proposition1
+            textAnswer2: educationQuiz.proposition2
+            textAnswer3: educationQuiz.proposition3
+            textAnswer4: educationQuiz.proposition4
         }
-
 
         /*-------------------------------------------------*/
 
         /*----------------------- Score -----------------------*/
         Label{
-            anchors.top: panelAnswers.bottom
-            anchors.margins: 340
+            id: scoreLabel
+            anchors.bottom: parent.bottom
+            anchors.margins: Theme.paddingLarge
             anchors.horizontalCenter: parent.horizontalCenter
-            font.pixelSize: 40
+            font.pixelSize: Theme.fontSizeExtraLarge
             text: "Score: "+ game.score + " Donuts"
         }
     }

@@ -15,7 +15,7 @@ Page{
 
         Column {
             id: columnDifficulte
-            spacing: 50
+            spacing: Theme.paddingLarge * 2
             width: parent.width
             anchors.verticalCenter: parent.verticalCenter
 

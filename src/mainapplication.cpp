@@ -12,11 +12,7 @@ QQuickView* MainApplication::s_view = NULL;
 MainApplication::MainApplication(QQuickView *q_view) :
     QObject(0), m_managerBDD(ManagerBdd::getInstance())
 {
-    //managerBDD.deleteDB();
-
-    bool isOpen = m_managerBDD.openDB();
-
-    if(isOpen)
+    if(m_managerBDD.openDB())
     {
         loadProfiles();
     }
@@ -31,15 +27,9 @@ MainApplication::MainApplication(QQuickView *q_view) :
  */
 MainApplication::~MainApplication()
 {
-    if(m_currentGame != 0)
-    {
-        deleteGame();
-    }
+    deleteGame();
     qDeleteAll(m_profiles);
-
-    //A vérifier
     delete(s_view);
-
     m_managerBDD.closeDB();
 }
 
@@ -52,7 +42,6 @@ void MainApplication::loadProfiles()
 
     if(m_profiles.size()<1)
     {
-        // si aucun profil en BDD
         createProfile("François",0); //Profil par defaut
     }
     else
@@ -67,7 +56,6 @@ void MainApplication::loadProfiles()
 void MainApplication::deleteGame()
 { 
     m_managerBDD.updateProfile(*m_currentProfile);
-
     delete(m_currentGame);
 }
 
@@ -84,6 +72,7 @@ const QString MainApplication::getNameProfile()const
     }
     return nameProfil;
 }
+
 
 /**
  * @brief MainApplication::getAllId
@@ -109,19 +98,12 @@ bool MainApplication::launchGame()
 {
     if(m_currentProfile != 0)
     {
-        if(m_currentGame != 0)
-        {
-            delete(m_currentGame);
-        }
+        delete(m_currentGame);
         m_currentGame = new Game(m_currentProfile);
         s_view->rootContext()->setContextProperty("game", m_currentGame);
         return true;
     }
-    else {
-        // ERREUR BESOIN DE SELECTION JOUEUR
-        // OUVRIR SELECTION JOUEUR
-        return false;
-    }
+    return false;
 }
 
 /** Create a profil with a name

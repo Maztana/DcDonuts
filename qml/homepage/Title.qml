@@ -11,25 +11,27 @@ Item
     Label{
         id: letterD
         text:qsTr("D")
-        font.pixelSize: 150
-        font.family: fontDonut.name
-    }
-
-    Label{
-        id: firstPiece
-        anchors.left: letterD.right
-        y: letterD.y + letterD.height/2 - 45
-        text:qsTr("octor")
-        font.pixelSize: 50
+        font.pixelSize: Theme.fontSizeHuge * 2
         font.family: fontDonut.name
     }
 
     Label{
         id: secondPiece
         anchors.left: letterD.right
-        y: letterD.y + letterD.height/2 + 10
+        anchors.bottom: letterD.bottom
+        anchors.bottomMargin: Theme.paddingSmall
         text:qsTr("onut")
-        font.pixelSize: 50
+        font.pixelSize: letterD.font.pixelSize / 2
+        font.family: fontDonut.name
+    }
+
+    Label{
+        id: firstPiece
+        anchors.left: letterD.right
+        anchors.bottom: secondPiece.top
+        anchors.bottomMargin: Theme.paddingSmall
+        text:qsTr("octor")
+        font.pixelSize: secondPiece.font.pixelSize / (firstPiece.text.length + 1) * secondPiece.text.length
         font.family: fontDonut.name
     }
 }

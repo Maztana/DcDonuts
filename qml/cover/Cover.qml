@@ -38,7 +38,7 @@ CoverBackground {
     /*----Fond ----*/
     Rectangle{
         anchors.fill: parent
-        color: 'lightblue'
+        color: Theme.secondaryHighlightColor
         opacity: 0.6
     }
 
@@ -47,18 +47,28 @@ CoverBackground {
     Image{
         id: imgDrDonut
         source:"qrc:///qml/images/drDonut.png"
-        width:sourceSize.width/3
-        height:sourceSize.height/3
+        width: Theme.iconSizeLarge * 1.5
+        height: imgDrDonut.width
         anchors.centerIn: parent
     }
 
     Label{
-        anchors.margins: 20
+        anchors.margins: Theme.paddingLarge
         text: "dr donut"
         anchors.top: imgDrDonut.bottom
         anchors.horizontalCenter: parent.horizontalCenter
-        font.pixelSize: 38
+        font.pixelSize: Theme.fontSizeLarge
         font.family:personalFont.name
+    }
+
+    Label{
+        anchors.margins: Theme.paddingLarge
+        text: application.nameProfile
+        anchors.bottom: imgDrDonut.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        font.pixelSize: Theme.fontSizeLarge
+        font.family: Theme.fontFamilyHeading
+        color: Theme.highlightColor
     }
 }
 

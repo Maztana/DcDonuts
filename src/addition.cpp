@@ -7,7 +7,7 @@
  * @param gameLevel the level of game
  */
 Addition::Addition(Level* gameLevel):
-    Calculation(gameLevel)
+    Calcul(gameLevel)
 {
     definitionLimitsForLevel();
     s_incremental_score = INCREMENTAL_SCORE_ADDITION;
@@ -26,7 +26,11 @@ Question* Addition::buildQuestion()
     int operande1 = qrand() % ((s_number_max + 1) - s_number_min) + s_number_min;
     int operande2 = qrand() % ((s_number_max + 1) - s_number_min) + s_number_min;
 
-    Question* maQuestion = new Question(MODE_ADDITION, operande1, operande2);
+    QList<QString> listValues;
+    listValues.append(QString::number(operande1));
+    listValues.append(QString::number(operande2));
+
+    Question* maQuestion = new Question(MODE_ADDITION, listValues);
     return maQuestion;
 }
 

@@ -16,8 +16,6 @@ class MainApplication : public QObject
     Q_PROPERTY(QList<int> allId READ getAllId)
 
 
-
-
     /** List all profiles */
     QList<Profile*> m_profiles;
     /** Current profile */

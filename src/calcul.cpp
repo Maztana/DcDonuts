@@ -1,43 +1,43 @@
-#include "calculation.h"
+#include "calcul.h"
 #include <QDateTime>
 
 // Déclaration statique
-int Calculation::s_number_max = 0;
-int Calculation::s_number_min = 0;
+int Calcul::s_number_max = 0;
+int Calcul::s_number_min = 0;
 ///////////////////////
 
 /** Constructor
- * @brief Calculation::Calculation
+ * @brief Calcul::Calcul
  * @param gameLevel level of the game
  */
-Calculation::Calculation(Level* gameLevel) :
+Calcul::Calcul(Level* gameLevel) :
     EducationalQuiz(gameLevel)
 {
     //qsrand(QDateTime::currentDateTime().toTime_t());
 }
 
 /** Destructor
- * @brief Calculation::~Calculation
+ * @brief Calcul::~Calcul
  */
-Calculation::~Calculation()
+Calcul::~Calcul()
 {
 
 }
 
 /** Getter of max number limit
- * @brief Calculation::getNbMax
+ * @brief Calcul::getNbMax
  * @return the limit up
  */
-int Calculation::getNbMax()
+int Calcul::getNbMax()
 {
     return s_number_max;
 }
 
 /** Getter of the min number limit
- * @brief Calculation::getNbMin
+ * @brief Calcul::getNbMin
  * @return the limit down
  */
-int Calculation::getNbMin()
+int Calcul::getNbMin()
 {
     return s_number_min;
 }

@@ -7,13 +7,13 @@ Item{
     width: parent.width
 
     TextField {
-        color: "black"
+        color: Theme.highlightColor
         focus:true
         width: parent.width
         inputMethodHints: Qt.ImhDigitsOnly
-        placeholderText: "Entrez votre réponse"
-        placeholderColor: "black"
-        cursorColor: "black"
+        placeholderText: qsTr("Entrez votre réponse")
+        placeholderColor: Theme.highlightColor
+        cursorColor: Theme.highlightColor
 
         EnterKey.enabled: text.length > 0
         EnterKey.text : "OK"

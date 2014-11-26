@@ -8,24 +8,28 @@ class Question : public QObject
     Q_OBJECT
 
     /** Description of the question */
-    Q_PROPERTY(QString description READ getDescription NOTIFY descriptionChanged)
+    Q_PROPERTY(QString description READ getTextQuestion NOTIFY descriptionChanged)
 
     /** The game mode for this question */
     const QString& m_gameMode;
+    /** All values for this question */
+    QList<QString> m_listValues;
     /** The first operande */
-    int m_firstOperande;
+    //int m_firstOperande;
     /** The second operand */
-    int m_secondOperande;
+    //int m_secondOperande;
 
 public:
-    explicit Question(const QString& gameMode, int firstOperande, int secondOperande);
+    explicit Question(const QString& gameMode, QList<QString> listValues);
 
-    QString getProposal()const;
+    QString getProposition()const;
     QString getResult()const;
-    QString getDescription()const;
+    QString getTextQuestion()const;
 
 private:
-    QString getProposalCalculation()const;
+    int rollDice(int nbMax, int nbMin)const;
+    int getResultCalcul()const;
+    QString getPropositionCalcul()const;
 
 signals:
     void descriptionChanged();

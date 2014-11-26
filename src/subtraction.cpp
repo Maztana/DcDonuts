@@ -8,7 +8,7 @@
  * @param gameLevel the level game
  */
 Subtraction::Subtraction(Level* gameLevel):
-    Calculation(gameLevel)
+    Calcul(gameLevel)
 {
     definitionLimitsForLevel();
     s_incremental_score = INCREMENTAL_SCORE_SUBTRACTION;
@@ -34,7 +34,11 @@ Question* Subtraction::buildQuestion()
         operande2 = tmp;
     }
 
-    Question* maQuestion = new Question(MODE_SUBTRACTION, operande1, operande2);
+    QList<QString> listValues;
+    listValues.append(QString::number(operande1));
+    listValues.append(QString::number(operande2));
+
+    Question* maQuestion = new Question(MODE_SUBTRACTION, listValues);
     return maQuestion;
 }
 

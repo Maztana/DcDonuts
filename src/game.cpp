@@ -11,8 +11,8 @@
 Game::Game(Profile *profileGame):
     QObject(0), m_currentProfile(profileGame)
 {
-    m_currentTypeGame = 0;
-    m_levelGame = 0;
+    m_currentTypeGame = nullptr;
+    m_levelGame = nullptr;
 }
 
 /** Destructor of game
@@ -20,10 +20,7 @@ Game::Game(Profile *profileGame):
  */
 Game::~Game()
 {
-    if(m_currentTypeGame != 0)
-    {
-        delete(m_currentTypeGame);
-    }
+    delete(m_currentTypeGame);
     delete(m_levelGame);
 }
 
@@ -42,10 +39,8 @@ Game::~Game()
  */
 void Game::setTypeGame(GameType *typeGame)
 {
-    if(m_currentTypeGame != 0)
-    {
-        delete(m_currentTypeGame);
-    }
+
+    delete(m_currentTypeGame);
     m_currentTypeGame = typeGame;
 
     if(m_currentTypeGame->isQuiz())
@@ -64,10 +59,7 @@ void Game::setTypeGame(GameType *typeGame)
  */
 void Game::setLevelGame(Level *levelGame)
 {
-    if(m_levelGame != 0)
-    {
-        delete(m_levelGame);
-    }
+    delete(m_levelGame);
     m_levelGame = levelGame;
 }
 

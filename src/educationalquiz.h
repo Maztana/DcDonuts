@@ -8,13 +8,13 @@ class EducationalQuiz : public GameType
 {
     Q_OBJECT
 
-    Q_PROPERTY(QString proposal1 READ getProposal1 NOTIFY proposal1Changed)
-    Q_PROPERTY(QString proposal2 READ getProposal2 NOTIFY proposal2Changed)
-    Q_PROPERTY(QString proposal3 READ getProposal3 NOTIFY proposal3Changed)
-    Q_PROPERTY(QString proposal4 READ getProposal4 NOTIFY proposal4Changed)
+    Q_PROPERTY(QString proposition1 READ getProposition1 NOTIFY proposition1Changed)
+    Q_PROPERTY(QString proposition2 READ getProposition2 NOTIFY proposition2Changed)
+    Q_PROPERTY(QString proposition3 READ getProposition3 NOTIFY proposition3Changed)
+    Q_PROPERTY(QString proposition4 READ getProposition4 NOTIFY proposition4Changed)
 
-    /** List of proposals */
-    QList<QString> m_listProposals;
+    /** List of propositions */
+    QList<QString> m_listPropositions;
     /** List of questions asked in this game */
     QList<Question*> m_questionsAsked;
     /** current question asked */
@@ -26,14 +26,14 @@ class EducationalQuiz : public GameType
 
 public:
     explicit EducationalQuiz(Level* gameLevel);
-    ~EducationalQuiz();
+    virtual ~EducationalQuiz();
 
     virtual inline bool isQuiz()const{return true;}
 
-    const QString getProposal1();
-    const QString getProposal2();
-    const QString getProposal3();
-    const QString getProposal4();
+    const QString getProposition1();
+    const QString getProposition2();
+    const QString getProposition3();
+    const QString getProposition4();
 
     /** Build a new question, according to the game mode.
      * @brief buildQuestion
@@ -41,21 +41,20 @@ public:
      */
     virtual Question* buildQuestion() = 0;
     Question* getCurrentQuestion();
-    //const QString& getGameMode();
 
 protected:
-    /** number of proposals, according to the level */
-    static int s_number_proposals;
+    /** number of propositions, according to the level */
+    static int s_number_propositions;
 
 private:
-    void setListProposals();
-    void traitAnswerCalculation(int indexAnswer);
+    void setListPropositions();
+    void traitAnswerCalcul(int indexAnswer);
 
 signals:
-    void proposal1Changed();
-    void proposal2Changed();
-    void proposal3Changed();
-    void proposal4Changed();
+    void proposition1Changed();
+    void proposition2Changed();
+    void proposition3Changed();
+    void proposition4Changed();
 
     void answerTrait();
     void answerRight(int index);

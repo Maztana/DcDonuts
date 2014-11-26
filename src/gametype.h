@@ -10,7 +10,7 @@ class GameType : public QObject
 
 public:
     explicit GameType(Level* gameLevel);
-    ~GameType();
+    virtual ~GameType();
 
     const Level& getLevel();
     /** If the game is a quiz
@@ -27,7 +27,7 @@ protected:
     const Level *m_gameLevel;
 
 private:
-    static GameType* makeGameModeCalculation(Level* gameLevel, QString gameName);
+    static GameType* makeGameModeCalcul(Level* gameLevel, QString gameName);
 
 signals:
     /** signal for increment score of player */

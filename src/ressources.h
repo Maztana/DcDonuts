@@ -3,17 +3,34 @@
 
 #include <QString>
 
+// Data base
 const QString PATH_DATA_BASE = "drdonut.db.sqlite";
+
+
+// Game Mode
+enum EnumGameType {
+    Mode_Addition = 1,
+    Mode_Subtraction = 2,
+    Mode_Multiplication = 3,
+    Mode_Division = 4,
+    Mode_Couting = 5,
+    Mode_Color = 6,
+    Mode_Mele = 7,
+    Mode_Flashcard = 8
+};
+
 
 const QString MODE_FLASHCARD = "FLASHCARD";
 const QString MODE_MELE = "ALL";
-const QString MODE_ENUMERATION = "ENUMERATION";
+const QString MODE_COUNTING = "COUNTING";
 const QString MODE_COLOR = "COLOR";
 const QString MODE_ADDITION = "ADDITION";
 const QString MODE_SUBTRACTION = "SUBTRACTION";
 const QString MODE_MULTIPLICATION = "MULTIPLICATION";
 const QString MODE_DIVISION = "DIVISION";
 
+
+// Score points
 const int INCREMENTAL_SCORE_ADDITION = 1;
 const int INCREMENTAL_SCORE_SUBTRACTION = 1;
 const int INCREMENTAL_SCORE_MULTIPLICATION = 2;

@@ -1,9 +1,9 @@
 #ifndef ADDITION_H
 #define ADDITION_H
 
-#include "calculation.h"
+#include "calcul.h"
 
-class Addition : public Calculation
+class Addition : public Calcul
 {
     Q_OBJECT
 public:

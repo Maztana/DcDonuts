@@ -1,14 +1,14 @@
-#ifndef CALCULATION_H
-#define CALCULATION_H
+#ifndef CALCUL_H
+#define CALCUL_H
 
 #include "educationalquiz.h"
 
-class Calculation : public EducationalQuiz
+class Calcul : public EducationalQuiz
 {
     Q_OBJECT
 public:
-    explicit Calculation(Level* gameLevel);
-    ~Calculation();
+    explicit Calcul(Level* gameLevel);
+    virtual ~Calcul();
 
     virtual Question* buildQuestion() = 0;
     int getNbMax();
@@ -26,4 +26,4 @@ public slots:
 
 };
 
-#endif // CALCULATION_H
+#endif // CALCUL_H

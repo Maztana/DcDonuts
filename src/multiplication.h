@@ -1,9 +1,9 @@
 #ifndef MULTIPLICATION_H
 #define MULTIPLICATION_H
 
-#include "calculation.h"
+#include "calcul.h"
 
-class Multiplication : public Calculation
+class Multiplication : public Calcul
 {
     Q_OBJECT
 public:

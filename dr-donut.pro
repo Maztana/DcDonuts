@@ -27,8 +27,9 @@ SOURCES += src/dr-donut.cpp \
     src/level.cpp \
     src/gametype.cpp \
     src/educationalquiz.cpp \
-    src/calculation.cpp \
-    src/subtraction.cpp
+    src/subtraction.cpp \
+    src/calcul.cpp \
+    src/gametypefactory.cpp
 
 OTHER_FILES += qml/dr-donut.qml \
     rpm/dr-donut.changes.in \
@@ -40,8 +41,6 @@ OTHER_FILES += qml/dr-donut.qml \
     qml/Accueil/Homepage.qml \
     qml/Accueil/Title.qml \
     qml/cover/Cover.qml \
-    qml/pages/ChoiseLevelPage.qml \
-    qml/pages/ChoiseGameModePage.qml \
     qml/pages/GameQuizPage.qml \
     qml/templatesReponses/ItemAnswer.qml \
     qml/templatesReponses/TwoProposals.qml \
@@ -50,12 +49,14 @@ OTHER_FILES += qml/dr-donut.qml \
     qml/templatesReponses/Seizure.qml \
     qml/homepage/Homepage.qml \
     qml/homepage/Title.qml \
-    qml/templatesAnswers/TwoProposals.qml \
-    qml/templatesAnswers/ThreeProposals.qml \
     qml/templatesAnswers/Seizure.qml \
     qml/templatesAnswers/ItemAnswer.qml \
-    qml/templatesAnswers/FourProposals.qml \
-    qml/pages/ProfileManagerPage.qml
+    qml/pages/ProfileManagerPage.qml \
+    qml/pages/ChoiceGameModePage.qml \
+    qml/pages/ChoiceLevelPage.qml \
+    qml/templatesAnswers/FourPropositions.qml \
+    qml/templatesAnswers/ThreePropositions.qml \
+    qml/templatesAnswers/TwoPropositions.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line
@@ -75,8 +76,9 @@ HEADERS += \
     src/level.h \
     src/gametype.h \
     src/educationalquiz.h \
-    src/calculation.h \
-    src/subtraction.h
+    src/subtraction.h \
+    src/calcul.h \
+    src/gametypefactory.h
 
 RESOURCES += \
     resources.qrc

@@ -1,9 +1,9 @@
 #ifndef DIVISION_H
 #define DIVISION_H
 
-#include "calculation.h"
+#include "calcul.h"
 
-class Division : public Calculation
+class Division : public Calcul
 {
     Q_OBJECT
 public:

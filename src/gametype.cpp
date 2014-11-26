@@ -41,34 +41,34 @@ const Level& GameType::getLevel()
  */
 GameType* GameType::makeGameType(Level* gameLevel, QString gameName)
 {
-    GameType* currentGameType;
+    GameType* currentGameType = NULL;
 
     if(!gameName.compare(MODE_FLASHCARD))
     {
-        currentGameType = new Addition(gameLevel);
+        //
     }
-    else if(!gameName.compare(MODE_ENUMERATION))
+    else if(!gameName.compare(MODE_COUNTING))
     {
-        currentGameType = new Subtraction(gameLevel);
+        //
     }
     else if(!gameName.compare(MODE_COLOR))
     {
-        currentGameType = new Multiplication(gameLevel);
+        //
     }
     else
     {
-        currentGameType = GameType::makeGameModeCalculation(gameLevel, gameName);
+        currentGameType = GameType::makeGameModeCalcul(gameLevel, gameName);
     }
     return currentGameType;
 }
 
-/** Factory for make a concret game type calculation with level and name
- * @brief GameType::makeGameModeCalculation
+/** Factory for make a concret game type calcul with level and name
+ * @brief GameType::makeGameModeCalcul
  * @param gameLevel the level of game
  * @param gameName the name of concret game type
  * @return the concret game type
  */
-GameType* GameType::makeGameModeCalculation(Level* gameLevel, QString gameName)
+GameType* GameType::makeGameModeCalcul(Level* gameLevel, QString gameName)
 {
     GameType* currentGameType;
 

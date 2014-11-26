@@ -18,31 +18,31 @@ Page{
             id: nameProfile
             text: application.nameProfile
             color: Theme.highlightColor
-            font.bold: true
-            font.pixelSize: 28
-            x:50
+            font.family: Theme.fontFamilyHeading
+            font.pixelSize: Theme.fontSizeLarge
             anchors{
                 top: parent.top
-                margins: 50
+                left: parent.left
+                topMargin: Theme.paddingLarge * 2
+                leftMargin: Theme.paddingLarge * 2
             }
         }
 
         IconButton {
             id: logoProfile
             smooth: true
-            y:30
-            //opacity: 0.3
             onClicked: pageStack.push(Qt.resolvedUrl("../pages/ProfileManagerPage.qml"))
 
             anchors{
+                top: parent.top
                 right: parent.right
-                margins: Theme.paddingLarge
+                topMargin: Theme.paddingLarge
+                rightMargin: Theme.paddingLarge
             }
 
             icon{
-                width:80
-                height:80
-                anchors.top:parent.top
+                width: Theme.iconSizeLarge
+                height: logoProfile.icon.width
                 source: "../images/profils.png"
             }
 
@@ -50,26 +50,28 @@ Page{
                 text: qsTr("Profils")
                 anchors.top: parent.icon.bottom
                 anchors.horizontalCenter: parent.horizontalCenter
-                font.pixelSize: 30
-                color:"white"
+                font.family: Theme.fontFamilyHeading
+                font.pixelSize: Theme.fontSizeMedium
+                color: Theme.primaryColor
             }
         }
 
         Title{
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: iconDrDonut.top
-            anchors.margins: 30
+            anchors.margins: Theme.paddingLarge * 2
         }
 
         Image{
             id: iconDrDonut
             source:"qrc:///qml/images/drDonut.png"
-            width: sourceSize.width/2
-            height: sourceSize.height/2
+            width: Theme.itemSizeExtraLarge * 1.8
+            height: iconDrDonut.width
             anchors{
                 horizontalCenter: parent.horizontalCenter
-                margins:60
-                bottom: buttonPlay.top
+                margins: Theme.paddingLarge * 2
+                //bottom: buttonPlay.top
+                verticalCenter: parent.verticalCenter
             }
         }
 
@@ -78,14 +80,14 @@ Page{
             id:buttonPlay
             text: qsTr("Jouer")
             anchors{
-                bottom:buttonOptions.top
+                top: iconDrDonut.bottom
                 horizontalCenter: parent.horizontalCenter
-                margins:60
+                margins: Theme.paddingLarge * 2
             }
             onClicked: {
                 if(application.launchGame())
                 {
-                    pageStack.push(Qt.resolvedUrl("../pages/ChoiseGameModePage.qml"))
+                    pageStack.push(Qt.resolvedUrl("../pages/ChoiceGameModePage.qml"))
                 }
                 else
                 {
@@ -100,9 +102,9 @@ Page{
             text: qsTr("Options")
 
             anchors{
-                bottom:parent.bottom
+                top: buttonPlay.bottom
                 horizontalCenter: parent.horizontalCenter
-                margins:130
+                margins: Theme.paddingLarge * 2
             }
             enabled: false
         }
