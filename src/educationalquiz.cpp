@@ -106,8 +106,6 @@ void EducationalQuiz::launchGame()
  */
 void EducationalQuiz::launchQuestion()
 {
-    emit answerTrait();
-
     m_currentQuestion = this->buildQuestion();
     m_questionsAsked.append(m_currentQuestion);
     MainApplication::s_view->rootContext()->setContextProperty("question", m_currentQuestion);
@@ -125,22 +123,23 @@ void EducationalQuiz::newQuestion()
     emit proposition2Changed();
     emit proposition3Changed();
     emit proposition4Changed();
+    emit questionChanged();
 }
 
-/** Trait response if right or wrong
- * @brief QuestionnaireEducatif::traitAnswer
+/** Treat response if right or wrong
+ * @brief QuestionnaireEducatif::treatAnswer
  * @param indexAnswer the index of answer
  */
-void EducationalQuiz::traitAnswer(int indexAnswer)
+void EducationalQuiz::treatAnswer(int indexAnswer)
 {
-    emit answerTrait();
+    emit answerGiven();
 
     m_listResetAnswers.clear();
 
     //si questionnaire
     if(this->isQuiz())
     {
-        traitAnswerCalcul(indexAnswer);
+        treatAnswerQuiz(indexAnswer);
     }
     else //si flashcard
     {
@@ -148,11 +147,11 @@ void EducationalQuiz::traitAnswer(int indexAnswer)
     }
 }
 
-/** Trait response if right or wrong
- * @brief QuestionnaireEducatif::traitAnswer
+/** Treat response if right or wrong
+ * @brief QuestionnaireEducatif::treatAnswerQuiz
  * @param indexAnswer the index of answer
  */
-void EducationalQuiz::traitAnswerCalcul(int indexAnswer)
+void EducationalQuiz::treatAnswerQuiz(int indexAnswer)
 {
     int result = m_currentQuestion->getResult().toInt();
     int indexResult = m_listPropositions.indexOf(QString::number(result));
@@ -169,8 +168,7 @@ void EducationalQuiz::traitAnswerCalcul(int indexAnswer)
     else
     {
         //Réponse fausse
-        emit answerWrong(indexAnswer);
-        emit answerRight(indexResult + 1);
+        emit answerWrong(indexAnswer, indexResult + 1);
         emit decrementScore(this->s_incremental_score);
 
         m_listResetAnswers.append(indexResult + 1);

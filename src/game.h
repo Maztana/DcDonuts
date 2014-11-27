@@ -8,8 +8,7 @@ class Game : public QObject
 {
     Q_OBJECT
 
-    /** Score of current profile */
-    Q_PROPERTY(int score READ getScore NOTIFY scoreChanged)
+    Q_PROPERTY(QString level READ getLevelName NOTIFY levelChanged)
 
 private:
     /** Current profile */
@@ -23,18 +22,20 @@ public:
     explicit Game(Profile* profileGame);
     ~Game();
 
-    inline int getScore(){return m_currentProfile->getScore();}
+    inline const QString getLevelName(){return m_levelGame->getName();}
 
 private:
     void setTypeGame(GameType *typeGame);
     void setLevelGame(Level *levelGame);
 
 signals:
-    void levelChanged();
+    /** When the score changed */
     void scoreChanged();
+    /** When the level changed */
+    void levelChanged();
 
 public slots:
-    inline const QString getLevelName(){return m_levelGame->getName();}
+
     void initLevelGame(QString nameLevel);
     void launchGameType(QString nameTypeGame);
     void scoreIncrement(int nbPoints);

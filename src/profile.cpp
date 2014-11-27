@@ -39,6 +39,12 @@ int Profile::getScore()const
     return m_score;
 }
 
+void Profile::setScore(int nbPoint)
+{
+    m_score = nbPoint;
+    emit scoreChanged();
+}
+
 /** Getter identifiant profile
  * @brief Profile::getId
  * @return the identifiant of profile
@@ -54,7 +60,8 @@ int Profile::getId()const
  */
 void Profile::incrementScore(int nbPoints)
 {
-    m_score += nbPoints;
+    int newScore = m_score + nbPoints;
+    setScore(newScore);
 }
 
 /** Method for decrement score
@@ -63,11 +70,12 @@ void Profile::incrementScore(int nbPoints)
  */
 void Profile::decrementScore(int nbPoints)
 {
-    m_score -= nbPoints;
-    if(m_score < 0)
+    int newScore = m_score - nbPoints;
+    if(newScore < 0)
     {
-        m_score = 0;
+        newScore = 0;
     }
+    setScore(newScore);
 }
 
 /** Reset score of profile
@@ -75,6 +83,12 @@ void Profile::decrementScore(int nbPoints)
  */
 void Profile::resetScore()
 {
-    m_score = 0;
+    setScore(0);
+}
+
+void Profile::profileChanged()
+{
+    emit nameChanged();
+    emit scoreChanged();
 }
 

@@ -63,7 +63,7 @@ CoverBackground {
 
     Label{
         anchors.margins: Theme.paddingLarge
-        text: application.nameProfile
+        text: currentProfile.name
         anchors.bottom: imgDrDonut.top
         anchors.horizontalCenter: parent.horizontalCenter
         font.pixelSize: Theme.fontSizeLarge

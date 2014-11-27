@@ -9,15 +9,34 @@ Page{
 
         VerticalScrollDecorator {}
 
-        PageHeader {
-            title: application.nameProfile
-        }
-
         Column {
             id: columnDifficulte
             spacing: Theme.paddingLarge * 2
             width: parent.width
             anchors.verticalCenter: parent.verticalCenter
+
+            PageHeader {
+                Label {
+                    id: nameProfile
+                    text: currentProfile.name
+                    font.pixelSize: Theme.fontSizeLarge
+                    color: Theme.highlightColor
+                    anchors.right: parent.right
+                    anchors.top: parent.top
+                    anchors.margins: Theme.paddingLarge
+                }
+                Label{
+                    id: scoreProfile
+                    text: currentProfile.score + " Donut(s)"
+                    color: Theme.secondaryHighlightColor
+                    font.family: Theme.fontFamilyHeading
+                    font.pixelSize: Theme.fontSizeMedium
+                    anchors{
+                        top: nameProfile.bottom
+                        right: nameProfile.right
+                    }
+                }
+            }
 
             Row {
                 id: lineEasy

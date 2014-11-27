@@ -1,5 +1,5 @@
-#ifndef SOUSTRACTION_H
-#define SOUSTRACTION_H
+#ifndef SUBTRACTION_H
+#define SUBTRACTION_H
 
 #include "calcul.h"
 
@@ -21,4 +21,4 @@ public slots:
 
 };
 
-#endif // SOUSTRACTION_H
+#endif // SUBTRACTION_H

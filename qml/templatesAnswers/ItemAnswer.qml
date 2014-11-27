@@ -26,7 +26,7 @@ Item {
         MouseArea{
             anchors.fill: parent
             onClicked: {
-                educationQuiz.traitAnswer(indexAnswers)
+                educationQuiz.treatAnswer(indexAnswers)
             }
         }
 
@@ -88,39 +88,45 @@ Item {
 
     Connections{
         target: educationQuiz
-        onAnswerTrait:
-        {
-            if(answer.enabled === true)
-            {
-                answer.enabled = false
-            }
-            else
-            {
-                answer.enabled = true
-            }
-        }
+        onQuestionChanged: answer.enabled = true
+        onAnswerGiven: answer.enabled = false;
+
         onAnswerRight:{
             if(index === indexAnswers)
             {
-                changeColor("green")
+                managerValidation(1)
             }
         }
         onAnswerWrong:{
-            if(index === indexAnswers)
+            if(indexWrong === indexAnswers)
             {
-                changeColor("red")
+                managerValidation(2)
+            }
+            if(indexRight === indexAnswers)
+            {
+                managerValidation(1)
             }
         }
         onResetAnswer:{
             if(index === indexAnswers)
             {
-                changeColor("white")
+                managerValidation(0)
             }
         }
     }
 
-    function changeColor(nameColor)
+    function managerValidation(indexTreatment)
     {
-        answer.state = nameColor
+        switch (indexTreatment){
+        case 1:
+            answer.state = "green"
+            break
+        case 2:
+            answer.state = "red"
+            break
+        default:
+            answer.state = "white"
+            break
+        }
     }
 }

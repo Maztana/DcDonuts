@@ -32,6 +32,7 @@ private:
     QString getPropositionCalcul()const;
 
 signals:
+    /** When text question changed */
     void descriptionChanged();
 
 public slots:

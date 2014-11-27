@@ -13,13 +13,34 @@ Page {
 
         VerticalScrollDecorator {}
 
+
+
         Column {
             id: columnGamesMode
             spacing: Theme.paddingLarge * 2
             width: parent.width
 
             PageHeader {
-                title: application.nameProfile
+                Label {
+                    id: nameProfile
+                    text: currentProfile.name
+                    font.pixelSize: Theme.fontSizeLarge
+                    color: Theme.highlightColor
+                    anchors.right: parent.right
+                    anchors.top: parent.top
+                    anchors.margins: Theme.paddingLarge
+                }
+                Label{
+                    id: scoreProfile
+                    text: currentProfile.score + " Donut(s)"
+                    color: Theme.secondaryHighlightColor
+                    font.family: Theme.fontFamilyHeading
+                    font.pixelSize: Theme.fontSizeMedium
+                    anchors{
+                        top: nameProfile.bottom
+                        right: nameProfile.right
+                    }
+                }
             }
 
             Row {
@@ -90,10 +111,7 @@ Page {
                         Switch{
                             id: switchSignDiv
                             icon.source: "qrc:///qml/images/signeDiv.png"
-                            y:-35
                             width:60
-                            enabled: false
-                            visible: false
                             onClicked: {
                                 buttonGroupChanged(switchSignDiv)
                             }

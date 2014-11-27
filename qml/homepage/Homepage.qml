@@ -16,7 +16,7 @@ Page{
 
         Label{
             id: nameProfile
-            text: application.nameProfile
+            text: currentProfile.name
             color: Theme.highlightColor
             font.family: Theme.fontFamilyHeading
             font.pixelSize: Theme.fontSizeLarge
@@ -25,6 +25,19 @@ Page{
                 left: parent.left
                 topMargin: Theme.paddingLarge * 2
                 leftMargin: Theme.paddingLarge * 2
+            }
+        }
+
+        Label{
+            id: scoreProfile
+            text: currentProfile.score + " Donut(s)"
+            color: Theme.secondaryHighlightColor
+            font.family: Theme.fontFamilyHeading
+            font.pixelSize: Theme.fontSizeMedium
+            anchors{
+                top: nameProfile.bottom
+                left: nameProfile.left
+                topMargin: Theme.paddingSmall
             }
         }
 
@@ -59,7 +72,7 @@ Page{
         Title{
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: iconDrDonut.top
-            anchors.margins: Theme.paddingLarge * 2
+            anchors.margins: Theme.paddingLarge
         }
 
         Image{
@@ -69,8 +82,7 @@ Page{
             height: iconDrDonut.width
             anchors{
                 horizontalCenter: parent.horizontalCenter
-                margins: Theme.paddingLarge * 2
-                //bottom: buttonPlay.top
+                margins: Theme.paddingLarge
                 verticalCenter: parent.verticalCenter
             }
         }

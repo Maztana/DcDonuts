@@ -61,6 +61,7 @@ void Game::setLevelGame(Level *levelGame)
 {
     delete(m_levelGame);
     m_levelGame = levelGame;
+    emit levelChanged();
 }
 
 
