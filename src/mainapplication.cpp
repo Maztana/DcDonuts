@@ -12,16 +12,14 @@ QQuickView* MainApplication::s_view = NULL;
 MainApplication::MainApplication(QQuickView *q_view) :
     QObject(0), m_managerBDD(ManagerBdd::getInstance())
 {
-    bool isOpen = m_managerBDD.openDB();
+    m_currentProfile = nullptr;
+    m_currentGame = nullptr;
 
-    if(isOpen)
+    if(m_managerBDD.openDB())
     {
         loadProfiles();
     }
-
-    m_currentGame = 0;
     this->s_view = q_view;
-
 }
 
 /** Default destructor
@@ -29,15 +27,9 @@ MainApplication::MainApplication(QQuickView *q_view) :
  */
 MainApplication::~MainApplication()
 {
-    if(m_currentGame != 0)
-    {
-        deleteGame();
-    }
+    deleteGame();
     qDeleteAll(m_profiles);
-
-    //A vérifier
     delete(s_view);
-
     m_managerBDD.closeDB();
 }
 
@@ -47,17 +39,10 @@ MainApplication::~MainApplication()
 void MainApplication::loadProfiles()
 {
     m_profiles = m_managerBDD.selectAllProfiles();
-
-    if(m_profiles.size()<1)
+    if(!m_profiles.empty())
     {
-        // si aucun profil en BDD
-        createProfile("François",0); //Profil par defaut
+        changeCurrentProfile(m_profiles.value(0));
     }
-    else
-    {
-        changeCurrentProfile(m_profiles.value(0)); // on prend le premier par défaut pour le moment
-    }
-
 }
 /** Save profile and delete currentGame after
  * @brief MainApplication::deleteGame
@@ -65,7 +50,6 @@ void MainApplication::loadProfiles()
 void MainApplication::deleteGame()
 { 
     m_managerBDD.updateProfile(*m_currentProfile);
-
     delete(m_currentGame);
 }
 
@@ -75,8 +59,8 @@ void MainApplication::deleteGame()
  */
 const QString MainApplication::getNameProfile()const
 {
-    QString nameProfil = "undefined";
-    if(m_currentProfile != 0)
+    QString nameProfil = "Aucun profil";
+    if(m_currentProfile != nullptr)
     {
         nameProfil = m_currentProfile->getName();
     }
@@ -90,7 +74,6 @@ const QString MainApplication::getNameProfile()const
 const QList<int> MainApplication::getAllId() const
 {
     QList<int> allId;
-
     for(int i = 0; i < m_profiles.size();i++){
         allId.append(m_profiles.value(i)->getId());
     }
@@ -105,21 +88,14 @@ const QList<int> MainApplication::getAllId() const
  */
 bool MainApplication::launchGame()
 {
-    if(m_currentProfile != 0)
+    if(m_currentProfile != nullptr)
     {
-        if(m_currentGame != 0)
-        {
-            delete(m_currentGame);
-        }
+        delete(m_currentGame);
         m_currentGame = new Game(m_currentProfile);
         s_view->rootContext()->setContextProperty("game", m_currentGame);
         return true;
     }
-    else {
-        // ERREUR BESOIN DE SELECTION JOUEUR
-        // OUVRIR SELECTION JOUEUR
-        return false;
-    }
+    return false;
 }
 
 /** Create a profil with a name and a score. The default value for score is 0
@@ -151,9 +127,9 @@ void MainApplication::changeCurrentProfile(int id){
     changeCurrentProfile(getProfileById(id));
 }
 
-Profile* MainApplication::getProfileById(int id){
-
-    Profile* p=NULL;
+Profile* MainApplication::getProfileById(int id)
+{
+    Profile* p=nullptr;
 
     for(int i=0; i<m_profiles.size();i++){
         if(m_profiles.value(i)->getId()==id){
@@ -171,8 +147,7 @@ Profile* MainApplication::getProfileById(int id){
  */
 QString MainApplication::getNameProfileById(int id)
 {
-
-    Profile* p = NULL;
+    Profile* p = nullptr;
 
     for(int i=0; i<m_profiles.size();i++){
         if(m_profiles.value(i)->getId()==id){
@@ -189,8 +164,7 @@ QString MainApplication::getNameProfileById(int id)
  */
 int MainApplication::getScoreProfileById(int id)
 {
-
-    Profile* p = NULL;
+    Profile* p = nullptr;
 
     for(int i=0; i<m_profiles.size();i++){
         if(m_profiles.value(i)->getId()==id){
@@ -227,9 +201,10 @@ void MainApplication::resetProfile(int id)
  * @brief MainApplication::deleteProfile
  * @param id of the profile to delete
  */
-void MainApplication::deleteProfile(int id){
-
-    m_managerBDD.deleteProfile(*getProfileById(id));
-    loadProfiles();
-
+void MainApplication::deleteProfile(int id)
+{
+    m_managerBDD.deleteProfile(*m_profiles.takeAt(m_profiles.indexOf(getProfileById(id))));
+    delete(m_currentProfile);
+    m_currentProfile = nullptr;
+    emit nameProfileChanged();
 }

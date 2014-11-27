@@ -1,9 +1,9 @@
 #ifndef SOUSTRACTION_H
 #define SOUSTRACTION_H
 
-#include "calculation.h"
+#include "calcul.h"
 
-class Subtraction : public Calculation
+class Subtraction : public Calcul
 {
     Q_OBJECT
 public:

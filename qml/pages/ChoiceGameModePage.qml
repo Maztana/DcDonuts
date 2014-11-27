@@ -15,7 +15,7 @@ Page {
 
         Column {
             id: columnGamesMode
-            spacing: 50
+            spacing: Theme.paddingLarge * 2
             width: parent.width
 
             PageHeader {
@@ -33,7 +33,7 @@ Page {
                     Button{
                         id: btCalcul
                         text:qsTr("Calcul")
-                        z:100
+                        z: 100
                         onClicked: {
                             launchCalculGame()
                             pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
@@ -42,27 +42,26 @@ Page {
 
                     Rectangle{
                         id:rectangleBackground
-                        color:"white"
+                        color:Theme.secondaryColor
                         opacity: 0.15
                         height: rowCalculOperations.height - 30
                         width: rowCalculOperations.width
                         anchors.top: btCalcul.bottom
+                        anchors.topMargin: -Theme.paddingMedium
                         anchors.horizontalCenter: parent.horizontalCenter
-                        anchors.margins: -5
                         radius: 20
                     }
 
                     Row
                     {
                         id: rowCalculOperations
-                        anchors.top: rectangleBackground.top
+                        anchors.bottom: rectangleBackground.bottom
                         anchors.horizontalCenter: parent.horizontalCenter
-
+                        anchors.bottomMargin: Theme.paddingSmall
 
                         Switch{
                             id: switchSignPlus
                             icon.source: "qrc:///qml/images/signePlus.png"
-                            y:-35
                             width:60
                             checked: true
                             onClicked: {
@@ -73,7 +72,6 @@ Page {
                         Switch{
                             id: switchSignMoins
                             icon.source: "qrc:///qml/images/signeMoins.png"
-                            y:-35
                             width:60
                             onClicked: {
                                 buttonGroupChanged(switchSignMoins)
@@ -83,7 +81,6 @@ Page {
                         Switch{
                             id: switchSignMult
                             icon.source: "qrc:///qml/images/signeMult.png"
-                            y:-35
                             width:60
                             onClicked: {
                                 buttonGroupChanged(switchSignMult)
@@ -106,7 +103,7 @@ Page {
             }
 
             Row {
-                id: lineEnumeration
+                id: lineCounting
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 Button{
@@ -114,7 +111,7 @@ Page {
                     enabled:false
                     onClicked:
                     {
-                        game.launchGameType("ENUMERATION")
+                        game.launchGameType("COUNTING")
                         pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
                     }
                 }

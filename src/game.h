@@ -24,7 +24,6 @@ public:
     ~Game();
 
     inline int getScore(){return m_currentProfile->getScore();}
-    //void setProfileGame(Profile *profileGame);
 
 private:
     void setTypeGame(GameType *typeGame);

@@ -9,8 +9,8 @@ Item{
 
     anchors.horizontalCenter: parent.horizontalCenter
     width: line.width
-    anchors.top: parent.top
-    anchors.margins: 90
+    height: line1.height + line2.height
+    anchors.margins: Theme.paddingLarge * 2
 
     Row{
         id: line

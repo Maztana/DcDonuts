@@ -2,11 +2,7 @@
 <!DOCTYPE TS>
 <TS version="2.0">
 <context>
-    <name>ChoiseGameModePage</name>
-    <message>
-        <source>Calcul</source>
-        <translation type="unfinished"></translation>
-    </message>
+    <name>ChoiceGameModePage</name>
     <message>
         <source>Denombrement</source>
         <translation type="unfinished"></translation>
@@ -23,9 +19,13 @@
         <source>Flashcard</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Calcul</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
-    <name>ChoiseLevelPage</name>
+    <name>ChoiceLevelPage</name>
     <message>
         <source>Facile</source>
         <translation type="unfinished"></translation>
@@ -59,10 +59,6 @@
     </message>
     <message>
         <source>Tapez votre nom</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Donut(s)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -132,6 +128,13 @@
     </message>
     <message>
         <source> Donut(s)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Seizure</name>
+    <message>
+        <source>Entrez votre r��ponse</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -7,14 +7,14 @@ Dialog {
 
 
     onAccepted: {
-        application.createProfile(nameInput.text);
+        application.createProfile(nameInput.text)
     }
 
     DialogHeader {
         defaultAcceptText: qsTr("Valider")
         cancelText: qsTr("Annuler")
-
     }
+
     Column{
         anchors.fill : parent
         Row{
@@ -33,29 +33,6 @@ Dialog {
                 EnterKey.text : "OK"
                 EnterKey.onClicked: parent.focus = true
 
-            }
-        }
-
-
-        Row{
-            id:rowScore
-            anchors.top: rowName.bottom
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.margins: Theme.paddingLarge * 2
-            width:parent.width - Theme.paddingLarge * 2
-            height: scoreInput.height
-
-            TextField{
-                id:scoreInput
-                width:parent.width - Theme.paddingLarge * 15
-                text: "0"
-                readOnly: true
-
-            }
-            Label{
-                text: qsTr("Donut(s)")
-                anchors.top : parent.top
-                anchors.margins: Theme.paddingSmall
             }
         }
     }

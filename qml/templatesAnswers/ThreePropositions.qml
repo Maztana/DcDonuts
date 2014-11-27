@@ -10,15 +10,14 @@ Item{
 
     anchors.horizontalCenter: parent.horizontalCenter
     width: line1.width
-
-    anchors.top: parent.top
-    anchors.margins: 90
+    height: line1.height + line2.height
+    anchors.margins: Theme.paddingLarge * 2
 
     Row{
 
         id:line1
         anchors.top : parent.top
-        spacing: 20
+        spacing: Theme.paddingLarge
 
         ItemAnswer{
             id: ans1
@@ -34,9 +33,8 @@ Item{
     Row{
         id: line2
         anchors.top: line1.bottom
-        anchors.margins: 20
-        anchors.horizontalCenter: parent.horizontalCenter
-        spacing: 20
+        anchors.margins: Theme.paddingLarge
+        spacing: Theme.paddingLarge
 
         ItemAnswer{
             id: ans3

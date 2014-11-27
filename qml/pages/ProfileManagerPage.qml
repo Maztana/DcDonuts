@@ -3,7 +3,6 @@ import Sailfish.Silica 1.0
 
 
 Page{
-
     onStatusChanged: addItems()
     id:profileManager
 
@@ -14,7 +13,6 @@ Page{
         model: listModel
 
         header: PageHeader{ title:qsTr("Joueurs") }
-
 
         ViewPlaceholder {
             enabled: profilesList.count == 0
@@ -33,7 +31,6 @@ Page{
                 text: qsTr("Importer un joueur")
                 enabled: false
             }
-
         }
 
         VerticalScrollDecorator {}
@@ -41,7 +38,6 @@ Page{
         delegate: ListItem {
             id: listItem
             menu: profileOptionsMenu
-
 
             onClicked:
             {
@@ -63,7 +59,6 @@ Page{
                 ident: model.ident
                 name:model.name
                 score: model.score
-
             }
 
             Component {
@@ -106,9 +101,5 @@ Page{
             var score = application.getScoreProfileById(id)
             listModel.append({"ident": id, "name": name, "score":score + qsTr(" Donut(s)")})
         }
-
     }
-
-
-
 }

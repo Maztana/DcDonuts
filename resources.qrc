@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>qml/images/donuts.gif</file>
         <file>qml/images/donut.png</file>
         <file>qml/images/drDonut.png</file>
         <file>qml/images/signeDiv.png</file>

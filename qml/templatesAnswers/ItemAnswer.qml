@@ -19,7 +19,7 @@ Item {
             anchors.centerIn: parent
 
             font.bold: true
-            font.pixelSize: 60
+            font.pixelSize: Theme.fontSizeHuge
             color: "black"
         }
 
