@@ -28,7 +28,7 @@ Dialog {
                 width:parent.width
                 label: qsTr("Nom")
                 placeholderText: qsTr("Tapez votre nom")
-                validator: RegExpValidator { regExp: /^[a-zA-Z]{2,}$/ }
+                validator: RegExpValidator { regExp: /^([a-zA-Z]+((-|\ )?[a-zA-Z]+)+)$/ }
                 inputMethodHints: Qt.ImhNoPredictiveText
                 EnterKey.text : "OK"
                 EnterKey.onClicked: parent.focus = true

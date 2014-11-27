@@ -11,6 +11,11 @@ Page{
         PullDownMenu{
             MenuItem{
                 text: qsTr("A propos")
+                enabled:false
+            }
+            MenuItem{
+                text: qsTr("Règles du Jeu")
+                enabled:false
             }
         }
 
@@ -37,7 +42,6 @@ Page{
             anchors{
                 top: nameProfile.bottom
                 left: nameProfile.left
-                //topMargin: Theme.paddingSmall
             }
         }
 

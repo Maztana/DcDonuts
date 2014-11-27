@@ -87,6 +87,10 @@
         <source>Options</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>R��gles du Jeu</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ProfileManagerPage</name>
