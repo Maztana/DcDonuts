@@ -5,7 +5,6 @@ Dialog {
     id: dialog
     canAccept: !nameInput.errorHighlight
 
-
     onAccepted: {
         application.createProfile(nameInput.text)
     }
@@ -30,6 +29,7 @@ Dialog {
                 label: qsTr("Nom")
                 placeholderText: qsTr("Tapez votre nom")
                 validator: RegExpValidator { regExp: /^[a-zA-Z]{2,}$/ }
+                inputMethodHints: Qt.ImhNoPredictiveText
                 EnterKey.text : "OK"
                 EnterKey.onClicked: parent.focus = true
 

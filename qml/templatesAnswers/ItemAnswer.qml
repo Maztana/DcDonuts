@@ -12,7 +12,66 @@ Item {
     Rectangle{
         id:answer
         anchors.fill: parent
-        state: "white"
+        /*---------------------------------- Image correction ----------------------------------*/
+        Image{
+            id:imgreponse
+            state: "default"
+            anchors.centerIn: parent
+            opacity:0.4
+
+            states:[
+                State
+                {
+                    name:"default"
+                    PropertyChanges { target:imgreponse; source:""}
+                },
+                State
+                {
+                    name:"right"
+                    PropertyChanges { target:imgreponse; source:"qrc:///qml/images/smiley_good.png"; rotation: 360}
+                },
+                State
+                {
+                    name:"wrong"
+                    PropertyChanges { target:imgreponse; source:"qrc:///qml/images/smiley_bad.png"; rotation: 360}
+                }
+            ]
+            transitions:[
+                Transition {
+                    from: "default"
+                    to: "wrong"
+                    SequentialAnimation{
+                        NumberAnimation{ property: "rotation"; duration: 1200; easing.type: Easing.OutQuad  }
+                    }
+                },
+                Transition {
+                    from: "default"
+                    to: "right"
+
+                    SequentialAnimation{
+                        NumberAnimation{ property: "rotation"; duration: 1200; easing.type: Easing.OutQuad  }
+                        ScriptAction{
+                            script:{educationQuiz.answersReset()}
+                        }
+                    }
+                },
+                Transition {
+                    from: "right"
+                    to: "default"
+
+                    SequentialAnimation{
+                        ScriptAction{
+                            script:{educationQuiz.launchQuestion()}
+                        }
+                    }
+                },
+                Transition {
+                    from: "wrong"
+                    to: "default"
+                }
+            ]
+        }
+        /*----------------------------------------------------------------------------------------------------*/
 
         Label{
             id: labelAnswer
@@ -29,62 +88,9 @@ Item {
                 educationQuiz.traitAnswer(indexAnswers)
             }
         }
-
-        states:[
-            State
-            {
-                name:"white"
-                PropertyChanges { target:answer; color:"white"}
-            },
-            State
-            {
-                name:"green"
-                PropertyChanges { target:answer; color:"green"}
-            },
-            State
-            {
-                name:"red"
-                PropertyChanges { target:answer; color:"red"}
-            }
-        ]
-
-        transitions:[
-            Transition {
-                from: "white"
-                to: "red"
-                SequentialAnimation{
-                    ColorAnimation {duration: 400 }
-                }
-            },
-            Transition {
-                from: "white"
-                to: "green"
-                SequentialAnimation{
-                    ColorAnimation {duration: 400 }
-                    ScriptAction{
-                        script:educationQuiz.answersReset()
-                    }
-                }
-            },
-            Transition {
-                from: "green"
-                to: "white"
-                SequentialAnimation{
-                    ColorAnimation {duration: 600 }
-                    ScriptAction{
-                        script:educationQuiz.launchQuestion()
-                    }
-                }
-            },
-            Transition {
-                from: "red"
-                to: "white"
-                SequentialAnimation{
-                    ColorAnimation {duration: 600 }
-                }
-            }
-        ]
     }
+
+
 
     Connections{
         target: educationQuiz
@@ -102,25 +108,25 @@ Item {
         onAnswerRight:{
             if(index === indexAnswers)
             {
-                changeColor("green")
+                changeColor("right")
             }
         }
         onAnswerWrong:{
             if(index === indexAnswers)
             {
-                changeColor("red")
+                changeColor("wrong")
             }
         }
         onResetAnswer:{
             if(index === indexAnswers)
             {
-                changeColor("white")
+                changeColor("default")
             }
         }
     }
 
-    function changeColor(nameColor)
+    function changeColor(etat)
     {
-        answer.state = nameColor
+        imgreponse.state = etat
     }
 }

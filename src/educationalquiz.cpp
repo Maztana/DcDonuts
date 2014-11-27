@@ -157,6 +157,7 @@ void EducationalQuiz::traitAnswerCalcul(int indexAnswer)
     int result = m_currentQuestion->getResult().toInt();
     int indexResult = m_listPropositions.indexOf(QString::number(result));
 
+
     //Gestion du résultat
     if(m_listPropositions.at(indexAnswer-1).toInt() == result)
     {
@@ -175,8 +176,8 @@ void EducationalQuiz::traitAnswerCalcul(int indexAnswer)
 
         m_listResetAnswers.append(indexResult + 1);
     }
-
     m_listResetAnswers.append(indexAnswer);
+
     //add stat question
 }
 

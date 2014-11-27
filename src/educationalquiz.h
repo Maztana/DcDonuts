@@ -23,7 +23,6 @@ class EducationalQuiz : public GameType
     /** list of response who must be reset */
     QList<int> m_listResetAnswers;
 
-
 public:
     explicit EducationalQuiz(Level* gameLevel);
     virtual ~EducationalQuiz();

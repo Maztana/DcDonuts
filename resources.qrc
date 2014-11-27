@@ -6,5 +6,7 @@
         <file>qml/images/signeMoins.png</file>
         <file>qml/images/signeMult.png</file>
         <file>qml/images/signePlus.png</file>
+        <file>qml/images/smiley_bad.png</file>
+        <file>qml/images/smiley_good.png</file>
     </qresource>
 </RCC>
