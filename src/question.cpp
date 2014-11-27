@@ -12,10 +12,6 @@
 Question::Question(const QString& gameMode, QList<QString> listValues) :
     QObject(0), m_gameMode(gameMode), m_listValues(listValues)
 {
-    //test en attente remaniment propositions
-    //m_firstOperande = listValues[0].toInt();
-    //m_secondOperande = listValues[1].toInt();
-    ///////////////////////////////////////////////
 }
 
 /** Getter for result of question
@@ -80,7 +76,7 @@ QString Question::getProposition()const
  */
 QString Question::getTextQuestion()const
 {
-    QString question /*= QString::number(m_firstOperande)*/;
+    QString question;
     bool isFirstValue = true;
 
     for(QString value : m_listValues)
@@ -112,7 +108,6 @@ QString Question::getTextQuestion()const
         }
     }
     question += " = ";
-    QTextStream(stdout) << question << endl;
     return question;
 }
 
@@ -123,7 +118,7 @@ QString Question::getTextQuestion()const
  * @param nbMin number min
  * @return a random number between nbMin and nbMax
  */
-int Question::rollDice(int nbMax, int nbMin)const
+int Question::rollDice(int nbMin, int nbMax)const
 {
     return qrand() % (((nbMax) + 1) - nbMin) + nbMin;
 }
@@ -175,11 +170,6 @@ int Question::getResultCalcul()const
  */
 QString Question::getPropositionCalcul()const
 {
-    ////////////////////////////////////////////////////////////////////////////////////
-    ///
-    ///         REVOIR LES RANDOMS DE CHAQUE PROPOSITION
-    ///
-    /////////////////////////////////////////////////////////////////////////////////////
     int propo = 0;
     QList<int> values;
     bool isFirstValue = true;
@@ -187,45 +177,41 @@ QString Question::getPropositionCalcul()const
     int nbMax = 0;
     bool isRandomable = false;
 
-    if(!m_gameMode.compare(MODE_ADDITION) || !m_gameMode.compare(MODE_SUBTRACTION))
+    if(!m_gameMode.compare(MODE_ADDITION) || !m_gameMode.compare(MODE_SUBTRACTION) || !m_gameMode.compare(MODE_DIVISION))
     {
         nbMax = getResult().toInt() + getResult().toInt()/2;
         nbMin = getResult().toInt() - getResult().toInt()/2;
         isRandomable = true;
     }
-    else if(!m_gameMode.compare(MODE_DIVISION))
-    {
-        //nbMax = qrand() % (((m_firstOperande + 1) + 1) - (m_firstOperande - 1)) + (m_firstOperande - 1);
-        //nbMin = qrand() % (((m_secondOperande + 1) + 1) - (m_secondOperande - 1)) + (m_secondOperande - 1);
-    }
     else if(!m_gameMode.compare(MODE_MULTIPLICATION))
     {
-        QTextStream(stdout) << m_listValues[0] << " " << m_listValues[1] << endl;
         values.append(m_listValues[0].toInt() + rollDice(-2, 2));
-        //qrand() % (((m_firstOperande + 1) + 1) - (m_firstOperande - 1)) + (m_firstOperande - 1);
         values.append(m_listValues[1].toInt() + rollDice(-2, 2));
-        //qrand() % (((m_secondOperande + 1) + 1) - (m_secondOperande - 1)) + (m_secondOperande - 1);
     }
-
-    /*if(nbMax < nbMin)
-    {
-        int tmp = nbMax;
-        nbMax = nbMin;
-        nbMin = tmp;
-    }*/
 
     if(!isRandomable)
     {
-        if(!m_gameMode.compare(MODE_DIVISION))
+        /*if(!m_gameMode.compare(MODE_DIVISION))
         {
-            if(nbMin == 0)
+            if(values[1] < 1)
             {
-                nbMin = 1;
+                values[1] = 1;
             }
-            propo = nbMax / nbMin;
-            QTextStream(stdout) << nbMax << " / " << nbMin << " = " << propo << endl;
+            for(int value : values)
+            {
+                if(isFirstValue)
+                {
+                    propo = value;
+                    isFirstValue = false;
+                }
+                else
+                {
+                    QTextStream(stdout) << propo << " / " << value << endl;
+                    propo = propo / value;
+                }
+            }
         }
-        else if(!m_gameMode.compare(MODE_MULTIPLICATION))
+        else*/ if(!m_gameMode.compare(MODE_MULTIPLICATION))
         {
             for(int value : values)
             {
@@ -236,11 +222,16 @@ QString Question::getPropositionCalcul()const
                 }
                 else
                 {
-                    QTextStream(stdout) << propo << "*" << value << endl;
+                    if(!m_gameMode.compare(MODE_DIVISION))
+                    {
+                        if(value < 1)
+                        {
+                            value = 1;
+                        }
+                    }
                     propo = propo * value;
                 }
             }
-            //propo = nbMax * nbMin;
         }
 
     }
@@ -252,7 +243,7 @@ QString Question::getPropositionCalcul()const
         }
         else
         {
-            propo = rollDice(nbMax, nbMin);
+            propo = rollDice(nbMin, nbMax);
         }
     }
 

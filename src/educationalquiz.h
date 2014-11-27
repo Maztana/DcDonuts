@@ -47,24 +47,31 @@ protected:
 
 private:
     void setListPropositions();
-    void traitAnswerCalcul(int indexAnswer);
+    void treatAnswerQuiz(int indexAnswer);
 
 signals:
+    /** When proposition changed */
     void proposition1Changed();
     void proposition2Changed();
     void proposition3Changed();
     void proposition4Changed();
 
-    void answerTrait();
+    /** When new question */
+    void questionChanged();
+    /** When answer is gave */
+    void answerGiven();
+    /** When answer is right */
     void answerRight(int index);
-    void answerWrong(int index);
+    /** When answer is wrong */
+    void answerWrong(int indexWrong, int indexRight);
+    /** When question changed */
     void resetAnswer(int index);
 
 public slots:
     virtual void launchGame();
     void launchQuestion();
     void newQuestion();
-    void traitAnswer(int indexAnswer);
+    void treatAnswer(int indexAnswer);
     void answersReset();
 
 };

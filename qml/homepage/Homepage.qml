@@ -16,7 +16,7 @@ Page{
 
         Label{
             id: nameProfile
-            text: application.nameProfile
+            text: currentProfile.name
             color: Theme.highlightColor
             font.family: Theme.fontFamilyHeading
             font.pixelSize: Theme.fontSizeLarge
@@ -28,10 +28,24 @@ Page{
             }
         }
 
+        Label{
+            id: scoreProfile
+            text: currentProfile.score + " Donut(s)"
+            color: Theme.secondaryHighlightColor
+            font.family: Theme.fontFamilyHeading
+            font.pixelSize: Theme.fontSizeMedium
+            anchors{
+                top: nameProfile.bottom
+                left: nameProfile.left
+                //topMargin: Theme.paddingSmall
+            }
+        }
+
         IconButton {
             id: logoProfile
             smooth: true
             onClicked: pageStack.push(Qt.resolvedUrl("../pages/ProfileManagerPage.qml"))
+
 
             anchors{
                 top: parent.top
@@ -59,7 +73,7 @@ Page{
         Title{
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: iconDrDonut.top
-            anchors.margins: Theme.paddingLarge * 2
+            anchors.margins: Theme.paddingLarge
         }
 
         Image{
@@ -69,8 +83,7 @@ Page{
             height: iconDrDonut.width
             anchors{
                 horizontalCenter: parent.horizontalCenter
-                margins: Theme.paddingLarge * 2
-                //bottom: buttonPlay.top
+                margins: Theme.paddingLarge
                 verticalCenter: parent.verticalCenter
             }
         }

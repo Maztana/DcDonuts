@@ -17,7 +17,7 @@ Item {
             id:imgreponse
             state: "default"
             anchors.centerIn: parent
-            opacity:0.4
+            opacity:0.6
 
             states:[
                 State
@@ -85,48 +85,52 @@ Item {
         MouseArea{
             anchors.fill: parent
             onClicked: {
-                educationQuiz.traitAnswer(indexAnswers)
+                educationQuiz.treatAnswer(indexAnswers)
             }
         }
     }
 
-
-
     Connections{
         target: educationQuiz
-        onAnswerTrait:
-        {
-            if(answer.enabled === true)
-            {
-                answer.enabled = false
-            }
-            else
-            {
-                answer.enabled = true
-            }
-        }
+        onQuestionChanged: answer.enabled = true
+        onAnswerGiven: answer.enabled = false;
+
         onAnswerRight:{
             if(index === indexAnswers)
             {
-                changeColor("right")
+                managerValidation(1)
             }
         }
         onAnswerWrong:{
-            if(index === indexAnswers)
+            if(indexWrong === indexAnswers)
             {
-                changeColor("wrong")
+                managerValidation(2)
+            }
+            if(indexRight === indexAnswers)
+            {
+                managerValidation(1)
             }
         }
         onResetAnswer:{
             if(index === indexAnswers)
             {
-                changeColor("default")
+                managerValidation(0)
             }
         }
     }
 
-    function changeColor(etat)
+    function managerValidation(indexTreatment)
     {
-        imgreponse.state = etat
+        switch (indexTreatment){
+        case 1:
+            imgreponse.state = "right"
+            break
+        case 2:
+            imgreponse.state = "wrong"
+            break
+        default:
+            imgreponse.state = "default"
+            break
+        }
     }
 }

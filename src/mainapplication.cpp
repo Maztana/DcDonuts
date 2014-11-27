@@ -3,7 +3,8 @@
 #include "ressources.h"
 #include <QtQml>
 
-QQuickView* MainApplication::s_view = NULL;
+QQuickView* MainApplication::s_view = nullptr;
+Profile* MainApplication::s_defaultProfile = new Profile(-1, "Aucun profil", 0);
 
 /** Default constructor
  * @brief MainApplication::MainApplication
@@ -12,14 +13,14 @@ QQuickView* MainApplication::s_view = NULL;
 MainApplication::MainApplication(QQuickView *q_view) :
     QObject(0), m_managerBDD(ManagerBdd::getInstance())
 {
-    m_currentProfile = nullptr;
+    this->s_view = q_view;
+    changeCurrentProfile(s_defaultProfile);
     m_currentGame = nullptr;
 
     if(m_managerBDD.openDB())
     {
         loadProfiles();
     }
-    this->s_view = q_view;
 }
 
 /** Default destructor
@@ -59,12 +60,7 @@ void MainApplication::deleteGame()
  */
 const QString MainApplication::getNameProfile()const
 {
-    QString nameProfil = "Aucun profil";
-    if(m_currentProfile != nullptr)
-    {
-        nameProfil = m_currentProfile->getName();
-    }
-    return nameProfil;
+    return m_currentProfile->getName();
 }
 
 /**
@@ -88,7 +84,7 @@ const QList<int> MainApplication::getAllId() const
  */
 bool MainApplication::launchGame()
 {
-    if(m_currentProfile != nullptr)
+    if(m_currentProfile != s_defaultProfile)
     {
         delete(m_currentGame);
         m_currentGame = new Game(m_currentProfile);
@@ -119,7 +115,8 @@ void MainApplication::createProfile(QString name,int score)
 void MainApplication::changeCurrentProfile(Profile *newProfilActif)
 {
     m_currentProfile = newProfilActif;
-    emit nameProfileChanged();
+    s_view->rootContext()->setContextProperty("currentProfile", m_currentProfile);
+    m_currentProfile->profileChanged();
 }
 
 void MainApplication::changeCurrentProfile(int id){
@@ -193,7 +190,6 @@ void MainApplication::resetProfile(int id)
     Profile* p = getProfileById(id);
     m_managerBDD.resetProfile(*p);
     p->resetScore();
-
 }
 
 
@@ -205,6 +201,5 @@ void MainApplication::deleteProfile(int id)
 {
     m_managerBDD.deleteProfile(*m_profiles.takeAt(m_profiles.indexOf(getProfileById(id))));
     delete(m_currentProfile);
-    m_currentProfile = nullptr;
-    emit nameProfileChanged();
+    changeCurrentProfile(s_defaultProfile);
 }

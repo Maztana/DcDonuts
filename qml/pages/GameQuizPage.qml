@@ -12,12 +12,12 @@ Page {
         VerticalScrollDecorator {}
 
         PageHeader {
-            title: application.nameProfile
+            title: currentProfile.name
         }
 
         Label {
             id: level
-            text: qsTr("Niveau : ") + game.getLevelName()
+            text: qsTr("Niveau : ") + game.level
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.topMargin: Theme.paddingLarge * 4
             anchors.top: parent.top
@@ -34,7 +34,7 @@ Page {
             anchors{
                 horizontalCenter: parent.horizontalCenter
                 top: level.bottom
-                margins:Theme.paddingMedium
+                margins:Theme.paddingMedium * 2
             }
 
             Text {
@@ -94,7 +94,7 @@ Page {
             anchors{
                 right: rectangleQuestion.right
                 top: rectangleQuestion.bottom
-                topMargin: Theme.paddingMedium
+                topMargin: Theme.paddingMedium * 4
                 rightMargin: Theme.paddingSmall
             }
 
@@ -108,6 +108,7 @@ Page {
         FourPropositions{
             id: answers
             anchors.bottom: scoreLabel.top
+            anchors.bottomMargin: Theme.paddingLarge * 3
             textAnswer1: educationQuiz.proposition1
             textAnswer2: educationQuiz.proposition2
             textAnswer3: educationQuiz.proposition3
@@ -123,7 +124,7 @@ Page {
             anchors.margins: Theme.paddingLarge
             anchors.horizontalCenter: parent.horizontalCenter
             font.pixelSize: Theme.fontSizeExtraLarge
-            text: "Score: "+ game.score + " Donuts"
+            text: "Score: "+ currentProfile.score + " Donut(s)"
         }
     }
 }

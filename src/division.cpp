@@ -1,6 +1,7 @@
 #include "division.h"
 #include "ressources.h"
 
+#include <QTextStream>
 
 /** Constructor
  * @brief Division::Division
@@ -43,6 +44,10 @@ Question* Division::buildQuestion()
                 operande1 = operande2;
                 operande2 = tmp;
             }
+            if(operande2 == 0)
+            {
+                operande2 = 1;
+            }
             mod = operande1 % operande2;
         }
     }
@@ -58,5 +63,5 @@ Question* Division::buildQuestion()
 void Division::definitionLimitsForLevel()
 {
     s_number_min = 0;
-    s_number_max = 15;
+    s_number_max = 14;
 }

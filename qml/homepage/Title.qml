@@ -11,7 +11,7 @@ Item
     Label{
         id: letterD
         text:qsTr("D")
-        font.pixelSize: Theme.fontSizeHuge * 2
+        font.pixelSize: Theme.fontSizeHuge * 2.5
         font.family: fontDonut.name
     }
 

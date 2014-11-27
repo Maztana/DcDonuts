@@ -45,5 +45,5 @@ Question* Subtraction::buildQuestion()
 void Subtraction::definitionLimitsForLevel()
 {
     s_number_min = 0;
-    s_number_max = 99;
+    s_number_max = 14;
 }
