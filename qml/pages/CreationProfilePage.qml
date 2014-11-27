@@ -5,6 +5,7 @@ Dialog {
     id: dialog
     canAccept: !nameInput.errorHighlight
 
+
     onAccepted: {
         application.createProfile(nameInput.text);
     }
