@@ -3,6 +3,8 @@
 #include "ressources.h"
 #include <QtQml>
 
+#include <QTextStream>
+
 QQuickView* MainApplication::s_view = nullptr;
 Profile* MainApplication::s_defaultProfile = new Profile(-1, "Aucun profil", 0);
 
@@ -21,6 +23,8 @@ MainApplication::MainApplication(QQuickView *q_view) :
     {
         loadProfiles();
     }
+
+    loadConfigurations();
 }
 
 /** Default destructor
@@ -28,6 +32,7 @@ MainApplication::MainApplication(QQuickView *q_view) :
  */
 MainApplication::~MainApplication()
 {
+    saveConfigurations();
     deleteGame();
     qDeleteAll(m_profiles);
     delete(s_view);
@@ -40,10 +45,6 @@ MainApplication::~MainApplication()
 void MainApplication::loadProfiles()
 {
     m_profiles = m_managerBDD.selectAllProfiles();
-    if(!m_profiles.empty())
-    {
-        changeCurrentProfile(m_profiles.value(0));
-    }
 }
 /** Save profile and delete currentGame after
  * @brief MainApplication::deleteGame
@@ -53,6 +54,72 @@ void MainApplication::deleteGame()
     m_managerBDD.updateProfile(*m_currentProfile);
     delete(m_currentGame);
 }
+
+
+/** Load all configurations which are save in a json file
+ * @brief MainApplication::loadConfigurations
+ */
+void MainApplication::loadConfigurations()
+{
+    QFile file("config.json");
+
+    if(file.open(QIODevice::ReadOnly))
+    {
+        QJsonParseError jerror;
+        QJsonDocument jdoc= QJsonDocument::fromJson(file.readAll(),&jerror);
+
+        if(!(jerror.error != QJsonParseError::NoError)){
+            QJsonObject config = jdoc.object();
+
+            int saveid = config["profile"].toDouble();
+            bool isInProfiles = false;
+
+            for(int i=0; i<m_profiles.size();i++){
+                if(m_profiles.value(i)->getId()==saveid)
+                {
+                    isInProfiles = true;
+                }
+            }
+
+            if(isInProfiles)
+            {
+                changeCurrentProfile(config["profile"].toDouble());
+            }
+
+            /////////////////////////////////////////////////////
+            //Prendre en compte la langue, le son et la musique
+            ////////////////////////////////////////////////////
+        }
+    }
+
+}
+
+/** Save config (current profile, language, saound, musique)  of the application on json file
+ * @brief MainApplication::saveConfigurations
+ */
+void MainApplication::saveConfigurations()
+{
+
+    int id = m_currentProfile->getId();
+    QString lg = "fr";
+
+    QJsonObject config;
+
+    config["profile"] = id ;
+    config["language"] = lg;
+    config["sound"] = false;
+    config["music"] = false;
+
+    QFile file("config.json");
+
+    if (file.open(QIODevice::WriteOnly | QIODevice::Text))
+    {
+        QTextStream out(&file);
+        out << QJsonDocument(config).toJson(QJsonDocument::Compact) << endl;
+    }
+
+}
+
 
 /** Getter of actif profil's name
  * @brief MainApplication::getNameProfil
