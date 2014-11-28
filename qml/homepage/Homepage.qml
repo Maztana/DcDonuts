@@ -11,11 +11,12 @@ Page{
         PullDownMenu{
             MenuItem{
                 text: qsTr("A propos")
-                enabled:false
+                onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutPage.qml"))
+
             }
             MenuItem{
                 text: qsTr("Règles du Jeu")
-                enabled:false
+                onClicked: pageStack.push(Qt.resolvedUrl("../pages/HowToPlay.qml"))
             }
         }
 
