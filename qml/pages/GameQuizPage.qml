@@ -6,6 +6,7 @@ import "../templatesAnswers"
 Page {
     id: pageJeu
 
+
     SilicaFlickable {
         anchors.fill: parent
 
@@ -94,17 +95,88 @@ Page {
             anchors{
                 right: rectangleQuestion.right
                 top: rectangleQuestion.bottom
-                topMargin: Theme.paddingMedium * 4
+                topMargin: Theme.paddingMedium * 2
                 rightMargin: Theme.paddingSmall
             }
-
-            width: Theme.iconSizeLarge * 2.2
-            height: drDonut.width
+            width: Theme.iconSizeLarge * 2
+            height: drDonut.width * 1.2
         }
         /*-------------------------------------------------*/
 
-        /*------------------- Réponses --------------------*/
+        /*---------------------------------- Image correction ----------------------------------*/
+        Image{
+            id:imgreponse
+            state: "default"
+            anchors{
+                verticalCenter: drDonut.verticalCenter
+                right: bubble1.left
+                topMargin: Theme.paddingMedium * 2
+                rightMargin: Theme.paddingSmall
+            }
+            opacity:1
 
+            states:[
+                State
+                {
+                    name:"default"
+                    PropertyChanges { target:imgreponse; source:""}
+                },
+                State
+                {
+                    name:"right"
+                    PropertyChanges { target:imgreponse; source:"qrc:///qml/images/smiley_good.png"; rotation: 360}
+                },
+                State
+                {
+                    name:"wrong"
+                    PropertyChanges { target:imgreponse; source:"qrc:///qml/images/smiley_bad.png"; rotation: 360}
+                }
+            ]
+            transitions:[
+                Transition {
+                    from: "default"
+                    to: "wrong"
+                    SequentialAnimation{
+                        NumberAnimation{ property: "rotation"; duration: 1200; easing.type: Easing.OutQuad  }
+                        ScriptAction{
+                            script:{educationQuiz.answersCorrected()}
+                        }
+                    }
+                },
+                Transition {
+                    from: "default"
+                    to: "right"
+                    SequentialAnimation{
+                        NumberAnimation{ property: "rotation"; duration: 1200; easing.type: Easing.OutQuad  }
+                        ScriptAction{
+                            script:{educationQuiz.answersReset()}
+                        }
+                    }
+                },
+                Transition {
+                    from: "wrong"
+                    to: "right"
+                    SequentialAnimation{
+                        NumberAnimation{ property: "rotation"; duration: 1200; easing.type: Easing.OutQuad  }
+                        ScriptAction{
+                            script:{educationQuiz.answersReset()}
+                        }
+                    }
+                },
+                Transition {
+                    from: "right"
+                    to: "default"
+                    SequentialAnimation{
+                        ScriptAction{
+                            script:{educationQuiz.launchQuestion()}
+                        }
+                    }
+                }
+            ]
+        }
+        /*----------------------------------------------------------------------------------------------------*/
+
+        /*------------------- Réponses --------------------*/
         FourPropositions{
             id: answers
             anchors.bottom: scoreLabel.top
@@ -114,7 +186,6 @@ Page {
             textAnswer3: educationQuiz.proposition3
             textAnswer4: educationQuiz.proposition4
         }
-
         /*-------------------------------------------------*/
 
         /*----------------------- Score -----------------------*/
@@ -126,6 +197,14 @@ Page {
             font.pixelSize: Theme.fontSizeExtraLarge
             text: "Score: "+ currentProfile.score + " Donut(s)"
         }
+    }
+
+    Connections{
+        target: educationQuiz
+        onAnswerRight: imgreponse.state = "right"
+        onAnswerWrong: imgreponse.state = "wrong"
+        onCorrectedAnswer: imgreponse.state = "right"
+        onResetAnswer: imgreponse.state = "default"
     }
 }
 

@@ -154,7 +154,6 @@ void EducationalQuiz::treatAnswer(int indexAnswer)
 void EducationalQuiz::treatAnswerQuiz(int indexAnswer)
 {
     int result = m_currentQuestion->getResult().toInt();
-    int indexResult = m_listPropositions.indexOf(QString::number(result));
 
 
     //Gestion du résultat
@@ -162,21 +161,25 @@ void EducationalQuiz::treatAnswerQuiz(int indexAnswer)
     {
         //Réponse correcte
         emit answerRight(indexAnswer);
-
         //add point au profil
         emit incrementScore(this->s_incremental_score * 2);
     }
     else
     {
         //Réponse fausse
-        emit answerWrong(indexAnswer, indexResult + 1);
+        emit answerWrong(indexAnswer);
         emit decrementScore(this->s_incremental_score);
-
-        m_listResetAnswers.append(indexResult + 1);
     }
-    m_listResetAnswers.append(indexAnswer);
-
     //add stat question
+}
+
+/** Method for emit correct answers
+ * @brief QuestionnaireEducatif::answersReset
+ */
+void EducationalQuiz::answersCorrected()
+{
+    int indexResult = m_listPropositions.indexOf(m_currentQuestion->getResult());
+    emit correctedAnswer(indexResult + 1);
 }
 
 /** Method for emit reset answers
@@ -184,8 +187,5 @@ void EducationalQuiz::treatAnswerQuiz(int indexAnswer)
  */
 void EducationalQuiz::answersReset()
 {
-    for(int index : m_listResetAnswers)
-    {
-        emit resetAnswer(index);
-    }
+    emit resetAnswer();
 }

@@ -66,7 +66,6 @@ Page{
                 ContextMenu {
                     MenuItem {
                         text: qsTr("Réinitialiser")
-
                         onClicked: {application.resetProfile(itemprofile.ident);addItems()}
                     }
                     MenuItem {

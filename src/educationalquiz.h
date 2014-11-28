@@ -63,15 +63,18 @@ signals:
     /** When answer is right */
     void answerRight(int index);
     /** When answer is wrong */
-    void answerWrong(int indexWrong, int indexRight);
+    void answerWrong(int index);
+    /** When answer is corrected */
+    void correctedAnswer(int index);
     /** When question changed */
-    void resetAnswer(int index);
+    void resetAnswer();
 
 public slots:
     virtual void launchGame();
     void launchQuestion();
     void newQuestion();
     void treatAnswer(int indexAnswer);
+    void answersCorrected();
     void answersReset();
 
 };

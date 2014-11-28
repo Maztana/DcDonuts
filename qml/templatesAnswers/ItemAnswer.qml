@@ -12,66 +12,6 @@ Item {
     Rectangle{
         id:answer
         anchors.fill: parent
-        /*---------------------------------- Image correction ----------------------------------*/
-        Image{
-            id:imgreponse
-            state: "default"
-            anchors.centerIn: parent
-            opacity:0.6
-
-            states:[
-                State
-                {
-                    name:"default"
-                    PropertyChanges { target:imgreponse; source:""}
-                },
-                State
-                {
-                    name:"right"
-                    PropertyChanges { target:imgreponse; source:"qrc:///qml/images/smiley_good.png"; rotation: 360}
-                },
-                State
-                {
-                    name:"wrong"
-                    PropertyChanges { target:imgreponse; source:"qrc:///qml/images/smiley_bad.png"; rotation: 360}
-                }
-            ]
-            transitions:[
-                Transition {
-                    from: "default"
-                    to: "wrong"
-                    SequentialAnimation{
-                        NumberAnimation{ property: "rotation"; duration: 1200; easing.type: Easing.OutQuad  }
-                    }
-                },
-                Transition {
-                    from: "default"
-                    to: "right"
-
-                    SequentialAnimation{
-                        NumberAnimation{ property: "rotation"; duration: 1200; easing.type: Easing.OutQuad  }
-                        ScriptAction{
-                            script:{educationQuiz.answersReset()}
-                        }
-                    }
-                },
-                Transition {
-                    from: "right"
-                    to: "default"
-
-                    SequentialAnimation{
-                        ScriptAction{
-                            script:{educationQuiz.launchQuestion()}
-                        }
-                    }
-                },
-                Transition {
-                    from: "wrong"
-                    to: "default"
-                }
-            ]
-        }
-        /*----------------------------------------------------------------------------------------------------*/
 
         Label{
             id: labelAnswer
@@ -96,41 +36,38 @@ Item {
         onAnswerGiven: answer.enabled = false;
 
         onAnswerRight:{
-            if(index === indexAnswers)
+            if(index !== indexAnswers)
             {
-                managerValidation(1)
+                notSelected()
             }
         }
         onAnswerWrong:{
-            if(indexWrong === indexAnswers)
+            if(index !== indexAnswers)
             {
-                managerValidation(2)
+                notSelected()
             }
-            if(indexRight === indexAnswers)
+        }
+        onCorrectedAnswer:{
+            reset()
+            if(index !== indexAnswers)
             {
-                managerValidation(1)
+                notSelected()
             }
         }
         onResetAnswer:{
-            if(index === indexAnswers)
-            {
-                managerValidation(0)
-            }
+                reset()
         }
     }
 
-    function managerValidation(indexTreatment)
+    function notSelected()
     {
-        switch (indexTreatment){
-        case 1:
-            imgreponse.state = "right"
-            break
-        case 2:
-            imgreponse.state = "wrong"
-            break
-        default:
-            imgreponse.state = "default"
-            break
-        }
+        answer.color = Theme.secondaryHighlightColor
+        answer.opacity = 0.5
+    }
+
+    function reset()
+    {
+        answer.color = "white"
+        answer.opacity = 1
     }
 }

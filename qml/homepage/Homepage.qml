@@ -61,7 +61,7 @@ Page{
 
             icon{
                 width: Theme.iconSizeLarge
-                height: logoProfile.icon.width
+                height: logoProfile.icon.width * 0.9
                 source: "../images/profils.png"
             }
 
@@ -85,7 +85,7 @@ Page{
             id: iconDrDonut
             source:"qrc:///qml/images/drDonut.png"
             width: Theme.itemSizeExtraLarge * 1.8
-            height: iconDrDonut.width
+            height: iconDrDonut.width * 1.2
             anchors{
                 horizontalCenter: parent.horizontalCenter
                 margins: Theme.paddingLarge

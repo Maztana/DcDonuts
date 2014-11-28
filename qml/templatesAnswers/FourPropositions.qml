@@ -3,7 +3,6 @@ import Sailfish.Silica 1.0
 
 
 Item{
-
     property alias textAnswer1 : ans1.answer
     property alias textAnswer2 : ans2.answer
     property alias textAnswer3 : ans3.answer
@@ -20,15 +19,15 @@ Item{
         anchors.top : parent.top
         spacing: Theme.paddingLarge
 
-            ItemAnswer{
-                id: ans1
-                indexAnswers: 1
-            }
+        ItemAnswer{
+            id: ans1
+            indexAnswers: 1
+        }
 
-            ItemAnswer{
-                id: ans2
-                indexAnswers: 2
-            }
+        ItemAnswer{
+            id: ans2
+            indexAnswers: 2
+        }
     }
 
     Row{
@@ -38,14 +37,14 @@ Item{
 
         spacing: Theme.paddingLarge
 
-            ItemAnswer{
-                id: ans3
-                indexAnswers: 3
-            }
+        ItemAnswer{
+            id: ans3
+            indexAnswers: 3
+        }
 
-            ItemAnswer{
-                id: ans4
-                indexAnswers: 4
-            }
+        ItemAnswer{
+            id: ans4
+            indexAnswers: 4
+        }
     }
 }
