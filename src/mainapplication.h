@@ -6,9 +6,14 @@
 #include <QQuickView>
 #include <QGuiApplication>
 
+#include <QTime>
+
 class MainApplication : public QObject
 {
     Q_OBJECT
+
+
+    QTime time;
 
 
     /** List of all profile's id */

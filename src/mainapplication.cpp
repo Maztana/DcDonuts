@@ -25,6 +25,8 @@ MainApplication::MainApplication(QQuickView *q_view) :
     }
 
     loadConfigurations();
+
+    time.start();
 }
 
 /** Default destructor
@@ -266,7 +268,16 @@ void MainApplication::resetProfile(int id)
  */
 void MainApplication::deleteProfile(int id)
 {
-    m_managerBDD.deleteProfile(*m_profiles.takeAt(m_profiles.indexOf(getProfileById(id))));
-    delete(m_currentProfile);
-    changeCurrentProfile(s_defaultProfile);
+    Profile* profileDeleted = m_profiles.takeAt(m_profiles.indexOf(getProfileById(id)));
+    m_managerBDD.deleteProfile(*profileDeleted);
+
+    if(profileDeleted == m_currentProfile)
+    {
+        delete(m_currentProfile);
+        changeCurrentProfile(s_defaultProfile);
+    }
+    else
+    {
+        delete(profileDeleted);
+    }
 }
