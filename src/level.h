@@ -9,11 +9,14 @@ class Level : public QObject
 
     /** Name of level */
     QString m_name;
+    /** Number propositions also level */
+    int m_numberPropositions;
 
 public:
     explicit Level(QString nameNiveau);
 
     const QString& getName()const;
+    int getNumberPropositions()const;
 
 signals:
 

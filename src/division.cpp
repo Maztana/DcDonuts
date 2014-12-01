@@ -7,8 +7,8 @@
  * @brief Division::Division
  * @param gameLevel the level of game
  */
-Division::Division(Level* gameLevel):
-    Calcul(gameLevel)
+Division::Division():
+    Calcul()
 {
     definitionLimitsForLevel();
     s_incremental_score = INCREMENTAL_SCORE_DIVISION;
@@ -64,4 +64,80 @@ void Division::definitionLimitsForLevel()
 {
     s_number_min = 0;
     s_number_max = 14;
+}
+
+/** Getter of proposition
+ * @brief Division::getProposition
+ * @return a posible proposition for this question
+ */
+const QString Division::getProposition()const
+{
+    int propo = 0;
+
+    if(getResult().toInt() < 4)
+    {
+        propo = qrand() % 4;
+    }
+    else
+    {
+        int nbMax = getResult().toInt() + getResult().toInt()/2;
+        int nbMin = getResult().toInt() - getResult().toInt()/2;
+        propo = rollDice(nbMin, nbMax);
+    }
+
+    if(propo < 0)
+    {
+        propo = 0;
+    }
+    return QString::number(propo);
+}
+
+
+/** Getter result of question
+ * @brief Division::getResult
+ * @return the result
+ */
+const QString Division::getResult()const
+{
+    bool firstValue = true;
+    int result = 0;
+
+    for(QString value : m_currentQuestion->getValues())
+    {
+        if(firstValue)
+        {
+            result = value.toInt();
+            firstValue = false;
+        }
+        else
+        {
+            result = result / value.toInt();
+        }
+    }
+    return QString::number(result);
+}
+
+/** Getter of question description
+ * @brief Addition::getDescription
+ * @return the description of question
+ */
+const QString Division::getTextQuestion()const
+{
+    QString question;
+    bool isFirstValue = true;
+
+    for(QString value : m_currentQuestion->getValues())
+    {
+        if(isFirstValue)
+        {
+            question = value;
+            isFirstValue = false;
+        }
+        else
+        {
+            question += " / " + value;
+        }
+    }
+    question += " = ";
+    return question;
 }

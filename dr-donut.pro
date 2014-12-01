@@ -29,7 +29,11 @@ SOURCES += src/dr-donut.cpp \
     src/educationalquiz.cpp \
     src/subtraction.cpp \
     src/calcul.cpp \
-    src/gametypefactory.cpp
+    src/gametypefactory.cpp \
+    src/additiongamefactory.cpp \
+    src/subtractiongamefactory.cpp \
+    src/multiplicationgamefactory.cpp \
+    src/divisiongamefactory.cpp
 
 OTHER_FILES += qml/dr-donut.qml \
     rpm/dr-donut.changes.in \
@@ -82,7 +86,11 @@ HEADERS += \
     src/educationalquiz.h \
     src/subtraction.h \
     src/calcul.h \
-    src/gametypefactory.h
+    src/gametypefactory.h \
+    src/additiongamefactory.h \
+    src/subtractiongamefactory.h \
+    src/multiplicationgamefactory.h \
+    src/divisiongamefactory.h
 
 RESOURCES += \
     resources.qrc

@@ -7,13 +7,17 @@ class Division : public Calcul
 {
     Q_OBJECT
 public:
-    explicit Division(Level* m_gameLevel);
+    explicit Division();
     ~Division();
 
     virtual Question* buildQuestion();
 
 protected:
-    void definitionLimitsForLevel();
+    virtual void definitionLimitsForLevel();
+
+    virtual const QString getProposition()const;
+    virtual const QString getResult()const;
+    virtual const QString getTextQuestion()const;
 
 signals:
 

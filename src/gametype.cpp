@@ -12,9 +12,12 @@ int GameType::s_incremental_score = 1;
  * @brief GameType::GameType
  * @param gameLevel the level of game
  */
-GameType::GameType(Level* gameLevel):
-    QObject(0), m_gameLevel(gameLevel)
+GameType::GameType():
+    QObject(0), m_levelGame(nullptr)
 {
+    //tant que pas de niveau défini
+    initLevelGame("non defini");
+    /////////////////////////////////
 }
 
 /** Destructor of game type
@@ -22,6 +25,7 @@ GameType::GameType(Level* gameLevel):
  */
 GameType::~GameType()
 {
+    delete(m_levelGame);
 }
 
 /** Getter of level game
@@ -30,63 +34,26 @@ GameType::~GameType()
  */
 const Level& GameType::getLevel()
 {
-    return *m_gameLevel;
+    return *m_levelGame;
 }
 
-/** Factory for make a concret game type with level and name
- * @brief GameType::makeGameType
- * @param gameLevel the level of game
- * @param gameName the name of concret game type
- * @return the concret game type
+/** Setter for the level game
+ * @brief Game::setLevelGame
+ * @param levelGame the level game
  */
-GameType* GameType::makeGameType(Level* gameLevel, QString gameName)
+void GameType::setLevelGame(Level *levelGame)
 {
-    GameType* currentGameType = NULL;
-
-    if(!gameName.compare(MODE_FLASHCARD))
-    {
-        //
-    }
-    else if(!gameName.compare(MODE_COUNTING))
-    {
-        //
-    }
-    else if(!gameName.compare(MODE_COLOR))
-    {
-        //
-    }
-    else
-    {
-        currentGameType = GameType::makeGameModeCalcul(gameLevel, gameName);
-    }
-    return currentGameType;
+    delete(m_levelGame);
+    m_levelGame = levelGame;
+    emit levelChanged();
 }
 
-/** Factory for make a concret game type calcul with level and name
- * @brief GameType::makeGameModeCalcul
- * @param gameLevel the level of game
- * @param gameName the name of concret game type
- * @return the concret game type
- */
-GameType* GameType::makeGameModeCalcul(Level* gameLevel, QString gameName)
-{
-    GameType* currentGameType;
 
-    if(!gameName.compare(MODE_ADDITION))
-    {
-        currentGameType = new Addition(gameLevel);
-    }
-    else if(!gameName.compare(MODE_SUBTRACTION))
-    {
-        currentGameType = new Subtraction(gameLevel);
-    }
-    else if(!gameName.compare(MODE_MULTIPLICATION))
-    {
-        currentGameType = new Multiplication(gameLevel);
-    }
-    else
-    {
-        currentGameType = new Division(gameLevel);
-    }
-    return currentGameType;
+/** Initialisation of level game
+ * @brief Game::initLevelGame
+ * @param nameLevel the name of level
+ */
+void GameType::initLevelGame(QString nameLevel)
+{
+    setLevelGame(new Level(nameLevel));
 }

@@ -10,8 +10,8 @@ int Calcul::s_number_min = 0;
  * @brief Calcul::Calcul
  * @param gameLevel level of the game
  */
-Calcul::Calcul(Level* gameLevel) :
-    EducationalQuiz(gameLevel)
+Calcul::Calcul() :
+    EducationalQuiz()
 {
     //qsrand(QDateTime::currentDateTime().toTime_t());
 }
@@ -40,4 +40,15 @@ int Calcul::getNbMax()
 int Calcul::getNbMin()
 {
     return s_number_min;
+}
+
+/** Roll a dice between nbMin and nbMax
+ * @brief Question::rollDice
+ * @param nbMax number max
+ * @param nbMin number min
+ * @return a random number between nbMin and nbMax
+ */
+int Calcul::rollDice(int nbMin, int nbMax)const
+{
+    return qrand() % (((nbMax) + 1) - nbMin) + nbMin;
 }

@@ -40,11 +40,21 @@ Item {
             {
                 notSelected()
             }
+            else
+            {
+                answer.color = "Lime"
+                answer.opacity = 0.8
+            }
         }
         onAnswerWrong:{
             if(index !== indexAnswers)
             {
                 notSelected()
+            }
+            else
+            {
+                answer.color = "OrangeRed"
+                answer.opacity = 0.8
             }
         }
         onCorrectedAnswer:{
@@ -52,6 +62,11 @@ Item {
             if(index !== indexAnswers)
             {
                 notSelected()
+            }
+            else
+            {
+                answer.color = "Lime"
+                answer.opacity = 0.8
             }
         }
         onResetAnswer:{

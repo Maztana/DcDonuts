@@ -6,19 +6,18 @@
 // Data base
 const QString PATH_DATA_BASE = "drdonut.db.sqlite";
 
-/*
+
 // Game Mode
 enum EnumGameType {
-    MODE_ADDITION = 1,
-    MODE_SUBTRACTION = 2,
-    MODE_MULTIPLICATION = 3,
-    MODE_DIVISION = 4,
-    MODE_COUNTING = 5,
-    MODE_COLOR = 6,
-    MODE_MELE = 7,
-    MODE_FLASHCARD = 8
+    ADDITION_MODE = 1,
+    SUBTRACTION_MODE = 2,
+    MULTIPLICATION_MODE = 3,
+    DIVISION_MODE = 4,
+    COUNTING_MODE = 5,
+    COLOR_MODE = 6,
+    FLASHCARD_MODE = 7
 };
-*/
+
 
 const QString MODE_FLASHCARD = "FLASHCARD";
 const QString MODE_MELE = "ALL";

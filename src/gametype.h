@@ -8,35 +8,40 @@ class GameType : public QObject
 {
     Q_OBJECT
 
+    Q_PROPERTY(QString level READ getLevelName NOTIFY levelChanged)
+
 public:
-    explicit GameType(Level* gameLevel);
+    explicit GameType();
     virtual ~GameType();
 
+    inline const QString getLevelName(){return m_levelGame->getName();}
     const Level& getLevel();
     /** If the game is a quiz
      * @brief isQuiz
      * @return True if is a quiz, else return false
      */
     virtual inline bool isQuiz()const{return false;}
-    static GameType* makeGameType(Level* gameLevel, QString gameName);
 
 protected:
     /** the value of incremental score*/
     static int s_incremental_score;
-    /** the level of game */
-    const Level *m_gameLevel;
+    /** Current level game */
+    Level *m_levelGame;
 
 private:
-    static GameType* makeGameModeCalcul(Level* gameLevel, QString gameName);
+    void setLevelGame(Level *levelGame);
 
 signals:
     /** signal for increment score of player */
     void incrementScore(int);
     /** signal for decrement score of player */
     void decrementScore(int);
+    /** When the level changed */
+    void levelChanged();
 
 public slots:
     virtual void launchGame() = 0;
+    void initLevelGame(QString nameLevel);
 
 };
 

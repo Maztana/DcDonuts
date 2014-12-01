@@ -40,7 +40,7 @@ Page {
 
             Text {
                 id: descriptionQuestion
-                text: question.description + " ?"
+                text: educationQuiz.textQuestion + " ?"
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter : parent.verticalCenter
                 font.pixelSize: Theme.fontSizeHuge
