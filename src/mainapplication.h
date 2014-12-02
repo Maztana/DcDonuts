@@ -54,8 +54,7 @@ private:
     const QString getNameProfile()const;
     void loadProfiles();
     void deleteGame();
-    void loadConfigurations();
-    void saveConfigurations();
+    void loadCurrentProfile();
 
 signals:
 
