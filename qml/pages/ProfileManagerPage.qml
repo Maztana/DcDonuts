@@ -53,6 +53,14 @@ Page{
                 })
             }
 
+            function reset() {
+                remorseAction(qsTr("Réninitialisation"), function()
+                {
+                    application.resetProfile(itemprofile.ident)
+                    addItems()
+                })
+            }
+
 
             ItemProfile{
                 id:itemprofile
@@ -66,7 +74,9 @@ Page{
                 ContextMenu {
                     MenuItem {
                         text: qsTr("Réinitialiser")
-                        onClicked: {application.resetProfile(itemprofile.ident);addItems()}
+                        onClicked: {
+                            reset()
+                        }
                     }
                     MenuItem {
                         text: qsTr("Supprimer")

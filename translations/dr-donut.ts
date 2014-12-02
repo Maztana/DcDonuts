@@ -12,10 +12,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Projet r��alis�� ��</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>FRANCE.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -25,6 +21,10 @@
     </message>
     <message>
         <source>D��veloppeurs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Projet r��alis�� ��</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -190,6 +190,10 @@
     </message>
     <message>
         <source> Donut(s)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>R��ninitialisation</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

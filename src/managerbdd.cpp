@@ -27,7 +27,7 @@ ManagerBdd::~ManagerBdd()
 
 }
 
-/**
+/** Return ManagerBDD's instance
  * @brief ManagerBdd::getInstance
  * @return ManagerBdd instance
  */

@@ -25,18 +25,20 @@ Page{
             readOnly: true
         }
 
-        TextEdit{
+        Text{
             id: iut
             x: Theme.paddingLarge
             anchors.topMargin: Theme.paddingLarge * 2
             anchors.top: description.bottom
-            text: qsTr("Projet réalisé à")+" IUT d’Aubière , Université Clermont I, "+qsTr("FRANCE.")
+            text: qsTr("Projet réalisé à")+'<html><a href="http://iutweb.u-clermont1.fr/"> IUT Aubière</a></html>' + ", Université Clermont I, "+qsTr("FRANCE.")
             color: Theme.secondaryColor
             font.italic: true
             wrapMode: TextEdit.WordWrap
             width:parent.width - 2 * Theme.paddingLarge
-            readOnly: true
+            onLinkActivated: Qt.openUrlExternally("http://iutweb.u-clermont1.fr/")
         }
+
+
 
         TextEdit{
             id: projectmanager
