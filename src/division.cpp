@@ -10,8 +10,16 @@
 Division::Division():
     Calcul()
 {
-    definitionLimitsForLevel();
-    s_incremental_score = INCREMENTAL_SCORE_DIVISION;
+    s_incremental_score = INCREMENTAL_DIVISION_SCORE;
+    /** Easy */
+    s_min_values.append(0);
+    s_max_values.append(0);
+    /** Medium */
+    s_min_values.append(0);
+    s_max_values.append(9);
+    /** Hard */
+    s_min_values.append(0);
+    s_max_values.append(99);
 }
 
 /** Destructor
@@ -29,8 +37,8 @@ Question* Division::buildQuestion()
     int mod = 1;
     while(mod != 0)
     {
-        operande1 = qrand() % ((s_number_max + 1) - s_number_min) + s_number_min;
-        operande2 = qrand() % ((s_number_max + 1) - s_number_min) + s_number_min;
+        operande1 = rollDice(s_min_values[m_levelGame->getIndex()-1], s_max_values[m_levelGame->getIndex()-1]);
+        operande2 = rollDice(s_min_values[m_levelGame->getIndex()-1], s_max_values[m_levelGame->getIndex()-1]);
 
         if(operande1 == 0 && operande2 == 0)
         {
@@ -56,14 +64,8 @@ Question* Division::buildQuestion()
     listValues.append(QString::number(operande1));
     listValues.append(QString::number(operande2));
 
-    Question* maQuestion = new Question(MODE_DIVISION, listValues);
+    Question* maQuestion = new Question(listValues);
     return maQuestion;
-}
-
-void Division::definitionLimitsForLevel()
-{
-    s_number_min = 0;
-    s_number_max = 14;
 }
 
 /** Getter of proposition

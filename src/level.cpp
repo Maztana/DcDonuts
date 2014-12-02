@@ -5,12 +5,19 @@
  * @brief Level::Level
  * @param nameNiveau name of level
  */
-Level::Level(QString nameNiveau) :
-    QObject(0), m_name(nameNiveau)
+Level::Level(int indexNiveau) :
+    QObject(0), m_indexLevel(indexNiveau)
 {
-    // Tant que les niveaux ne sont pas définis
-    m_numberPropositions = 4;
-    ///////////////////////////////////////////
+    initLevel();
+}
+
+/** Getter of level index
+ * @brief Level::getIndex
+ * @return the index of level
+ */
+int Level::getIndex()const
+{
+    return m_indexLevel;
 }
 
 /** Getter of level name
@@ -22,11 +29,20 @@ const QString& Level::getName()const
     return m_name;
 }
 
-/** Getter of number propositions also level
- * @brief getNumberPropositions
- * @return the number of propositions
- */
-int Level::getNumberPropositions()const
+void Level::initLevel()
 {
-    return m_numberPropositions;
+    switch (m_indexLevel) {
+    case 1:
+        m_name = "Easy";
+        break;
+    case 2:
+        m_name = "Medium";
+        break;
+    case 3:
+        m_name = "Hard";
+        break;
+    case 4:
+        m_name = "Auto";
+        break;
+    }
 }

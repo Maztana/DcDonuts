@@ -8,8 +8,16 @@
 Addition::Addition():
     Calcul()
 {
-    definitionLimitsForLevel();
-    s_incremental_score = INCREMENTAL_SCORE_ADDITION;
+    s_incremental_score = INCREMENTAL_ADDITION_SCORE;
+    /** Easy */
+    s_min_values.append(0);
+    s_max_values.append(9);
+    /** Medium */
+    s_min_values.append(0);
+    s_max_values.append(99);
+    /** Hard */
+    s_min_values.append(0);
+    s_max_values.append(9999);
 }
 
 /** Destructor
@@ -22,21 +30,15 @@ Addition::~Addition()
 Question* Addition::buildQuestion()
 {
     //Générer question
-    int operande1 = qrand() % ((s_number_max + 1) - s_number_min) + s_number_min;
-    int operande2 = qrand() % ((s_number_max + 1) - s_number_min) + s_number_min;
+    int operande1 = rollDice(s_min_values[m_levelGame->getIndex()-1], s_max_values[m_levelGame->getIndex()-1]);
+    int operande2 = rollDice(s_min_values[m_levelGame->getIndex()-1], s_max_values[m_levelGame->getIndex()-1]);
 
     QList<QString> listValues;
     listValues.append(QString::number(operande1));
     listValues.append(QString::number(operande2));
 
-    Question* maQuestion = new Question(MODE_ADDITION, listValues);
+    Question* maQuestion = new Question(listValues);
     return maQuestion;
-}
-
-void Addition::definitionLimitsForLevel()
-{
-    s_number_min = 0;
-    s_number_max = 14;
 }
 
 /** Getter of proposition

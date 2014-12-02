@@ -1,5 +1,6 @@
 #include "gametypefactory.h"
 #include "ressources.h"
+
 #include "additiongamefactory.h"
 #include "subtractiongamefactory.h"
 #include "multiplicationgamefactory.h"
@@ -18,7 +19,8 @@ GameTypeFactory::GameTypeFactory(QObject *parent) :
 GameType* GameTypeFactory::makeGameType(QList<int> identifiantsGameType)
 {
     GameType* gameType = nullptr;
-/*    if(identifiantsGameType.size() > 1)
+/*
+    if(identifiantsGameType.size() > 1)
     {
         gameType = MixedGameFactory::makeSpecificGameType();
         for(int identifiant : identifiantsGameType)
@@ -42,7 +44,9 @@ GameType* GameTypeFactory::makeGameType(QList<int> identifiantsGameType)
         case DIVISION_MODE:
             gameType = DivisionGameFactory::makeSpecificGameType();
             break;
-/*        case COUNTING_MODE:
+            ////////////////////////////////////////////////////////////
+            /*
+          case COUNTING_MODE:
             gameType = CountingGameFactory::makeSpecificGameType();
             break;
         case COLOR_MODE:
@@ -50,7 +54,9 @@ GameType* GameTypeFactory::makeGameType(QList<int> identifiantsGameType)
             break;
         case FLASHCARD_MODE:
             gameType = FlashcardGameFactory::makeSpecificGameType();
-            break;*/
+            break;
+            */
+            //////////////////////////////////////////////////
         }
 //    }
     return gameType;

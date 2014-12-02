@@ -69,9 +69,9 @@ void EducationalQuiz::setListPropositions()
     QString result = getResult();
     QString propo = result;
 
-    int index = qrand() % ((m_levelGame->getNumberPropositions()) - 0) + 0;
+    int index = qrand() % ((getNumberPropositions()) - 0) + 0;
 
-    for(int i=1; i < m_levelGame->getNumberPropositions(); i++)
+    for(int i=1; i < getNumberPropositions(); i++)
     {
         while(!propo.compare(result) || m_listPropositions.contains(propo))
         {

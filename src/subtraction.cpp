@@ -10,8 +10,16 @@
 Subtraction::Subtraction():
     Calcul()
 {
-    definitionLimitsForLevel();
-    s_incremental_score = INCREMENTAL_SCORE_SUBTRACTION;
+    s_incremental_score = INCREMENTAL_SUBTRACTION_SCORE;
+    /** Easy */
+    s_min_values.append(0);
+    s_max_values.append(9);
+    /** Medium */
+    s_min_values.append(0);
+    s_max_values.append(99);
+    /** Hard */
+    s_min_values.append(0);
+    s_max_values.append(9999);
 }
 
 /** Destructor
@@ -24,8 +32,8 @@ Subtraction::~Subtraction()
 Question* Subtraction::buildQuestion()
 {
     //Générer question
-    int operande1 = qrand() % ((s_number_max + 1) - s_number_min) + s_number_min;
-    int operande2 = qrand() % ((s_number_max + 1) - s_number_min) + s_number_min;
+    int operande1 = rollDice(s_min_values[m_levelGame->getIndex()-1], s_max_values[m_levelGame->getIndex()-1]);
+    int operande2 = rollDice(s_min_values[m_levelGame->getIndex()-1], s_max_values[m_levelGame->getIndex()-1]);
 
     if(operande1 < operande2)
     {
@@ -38,14 +46,8 @@ Question* Subtraction::buildQuestion()
     listValues.append(QString::number(operande1));
     listValues.append(QString::number(operande2));
 
-    Question* maQuestion = new Question(MODE_SUBTRACTION, listValues);
+    Question* maQuestion = new Question(listValues);
     return maQuestion;
-}
-
-void Subtraction::definitionLimitsForLevel()
-{
-    s_number_min = 0;
-    s_number_max = 14;
 }
 
 /** Getter of proposition

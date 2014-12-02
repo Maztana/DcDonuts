@@ -1,9 +1,11 @@
 #include "calcul.h"
 #include <QDateTime>
 
+#include <QTextStream>
+
 // Déclaration statique
-int Calcul::s_number_max = 0;
-int Calcul::s_number_min = 0;
+QList<int> Calcul::s_min_values = {0};
+QList<int> Calcul::s_max_values = {0};
 ///////////////////////
 
 /** Constructor
@@ -13,7 +15,8 @@ int Calcul::s_number_min = 0;
 Calcul::Calcul() :
     EducationalQuiz()
 {
-    //qsrand(QDateTime::currentDateTime().toTime_t());
+    s_min_values.clear();
+    s_max_values.clear();
 }
 
 /** Destructor
@@ -22,24 +25,6 @@ Calcul::Calcul() :
 Calcul::~Calcul()
 {
 
-}
-
-/** Getter of max number limit
- * @brief Calcul::getNbMax
- * @return the limit up
- */
-int Calcul::getNbMax()
-{
-    return s_number_max;
-}
-
-/** Getter of the min number limit
- * @brief Calcul::getNbMin
- * @return the limit down
- */
-int Calcul::getNbMin()
-{
-    return s_number_min;
 }
 
 /** Roll a dice between nbMin and nbMax
@@ -51,4 +36,49 @@ int Calcul::getNbMin()
 int Calcul::rollDice(int nbMin, int nbMax)const
 {
     return qrand() % (((nbMax) + 1) - nbMin) + nbMin;
+}
+
+/** Setter for the number of propositions also level
+ * @brief Calcul::setNumberPropositions
+ * @param indexLevel the index of the level
+ */
+void Calcul::setNumberPropositions(int indexLevel)
+{
+    switch (indexLevel) {
+    case 1:
+        m_numberPropositions = 2;
+        break;
+    case 2:
+        m_numberPropositions = 4;
+        break;
+    case 3:
+        m_numberPropositions = 0;
+        break;
+    default:
+        m_numberPropositions = 4;
+        break;
+    }
+
+    //////////////////////////////////////////////////////////////////
+    m_numberPropositions = 4;
+    /////////////////////////////////////////////////////////////////
+
+
+    emit numberPropositionsChanged();
+}
+
+/** Setter of list levels selectable
+ * @brief Calcul::setLevelsSelectable
+ */
+void Calcul::setLevelsSelectable()
+{
+    m_listLevelSelectable.clear();
+
+    for(int indexLevel = 0; indexLevel < s_min_values.size(); indexLevel++)
+    {
+        if(s_max_values[indexLevel] != s_min_values[indexLevel])
+        {
+            m_listLevelSelectable.append(1+indexLevel);
+        }
+    }
 }
