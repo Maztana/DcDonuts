@@ -212,7 +212,7 @@ Page {
 
 
         /*------------------- Réponses --------------------*/
-        Component.onCompleted: loadAnswers(4);
+        Component.onCompleted: loadAnswers(educationQuiz.numberPropositions);
         /*-------------------------------------------------*/
     }
 

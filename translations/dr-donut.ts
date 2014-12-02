@@ -31,6 +31,26 @@
 <context>
     <name>ChoiceGameModePage</name>
     <message>
+        <source>Level</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Easy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Medium</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Calcul</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Denombrement</source>
         <translation type="unfinished"></translation>
     </message>
@@ -44,29 +64,6 @@
     </message>
     <message>
         <source>Flashcard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Calcul</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ChoiceLevelPage</name>
-    <message>
-        <source>Facile</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Moyen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Difficile</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Auto</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -58,14 +58,14 @@ OTHER_FILES += qml/dr-donut.qml \
     qml/templatesAnswers/ItemAnswer.qml \
     qml/pages/ProfileManagerPage.qml \
     qml/pages/ChoiceGameModePage.qml \
-    qml/pages/ChoiceLevelPage.qml \
     qml/templatesAnswers/FourPropositions.qml \
     qml/templatesAnswers/ThreePropositions.qml \
     qml/templatesAnswers/TwoPropositions.qml \
     qml/pages/CreationProfilePage.qml \
     qml/pages/ItemProfile.qml \
     qml/pages/AboutPage.qml \
-    qml/pages/HowToPlay.qml
+    qml/pages/HowToPlay.qml \
+    qml/pages/LevelItem.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line

@@ -3,184 +3,238 @@ import Sailfish.Silica 1.0
 
 Page {
 
-    id: pageChoiseMode
+    id: pageChoiceMode
 
-    SilicaFlickable {
+    Drawer {
+        id: drawerLevel
+        onOpenChanged: addItems()
 
         anchors.fill: parent
-        contentHeight: columnGamesMode.height
-        contentWidth: parent.width
+        dock: Dock.Top
+        height: listItem.contentHeight + Theme.paddingLarge
 
-        VerticalScrollDecorator {}
+        background: SilicaListView {
+            anchors.fill: parent
+            model: listModel
+
+            header: PageHeader { title: qsTr("Level") }
 
 
+            VerticalScrollDecorator {}
 
-        Column {
-            id: columnGamesMode
-            spacing: Theme.paddingLarge * 2
-            width: parent.width
+            delegate: ListItem {
+                id: listItem
 
-            PageHeader {
-                Label {
-                    id: nameProfile
-                    text: currentProfile.name
-                    font.pixelSize: Theme.fontSizeLarge
-                    color: Theme.highlightColor
-                    anchors.right: parent.right
-                    anchors.top: parent.top
-                    anchors.margins: Theme.paddingLarge
+
+                LevelItem{
+                    indexLevel: model.indexLevel
+                    text:model.text
+                    image:model.image
                 }
-                Label{
-                    id: scoreProfile
-                    text: currentProfile.score + " Donut(s)"
-                    color: Theme.secondaryHighlightColor
-                    font.family: Theme.fontFamilyHeading
-                    font.pixelSize: Theme.fontSizeMedium
-                    anchors{
-                        top: nameProfile.bottom
-                        right: nameProfile.right
-                    }
+
+                onClicked: {
+                    educationQuiz.initLevelGame(model.indexLevel)
+                    pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
+                    drawerLevel.open = false
                 }
+
+            }
+        }
+
+        SilicaFlickable {
+
+            anchors.fill: parent
+            contentHeight: columnGamesMode.height
+            contentWidth: parent.width
+
+            VerticalScrollDecorator {}
+
+            MouseArea {
+                enabled: drawerLevel.open
+                anchors.fill: columnGamesMode
+                onClicked: drawerLevel.open = false
             }
 
-            Row {
-                id: lineCalcul
-                anchors.horizontalCenter: parent.horizontalCenter
+            Column {
+                id: columnGamesMode
+                spacing: Theme.paddingLarge * 2
+                width: parent.width
+                enabled: !drawerLevel.opened
 
-                Item{
-                    width: btCalcul.width
-                    height: btCalcul.height + (rowCalculOperations.height / 2)
+                PageHeader {
+                    Label {
+                        id: nameProfile
+                        text: currentProfile.name
+                        font.pixelSize: Theme.fontSizeLarge
+                        color: Theme.highlightColor
+                        anchors.right: parent.right
+                        anchors.top: parent.top
+                        anchors.margins: Theme.paddingLarge
+                    }
+                    Label{
+                        id: scoreProfile
+                        text: currentProfile.score + " Donut(s)"
+                        color: Theme.secondaryHighlightColor
+                        font.family: Theme.fontFamilyHeading
+                        font.pixelSize: Theme.fontSizeMedium
+                        anchors{
+                            top: nameProfile.bottom
+                            right: nameProfile.right
+                        }
+                    }
+                }
+
+                Row {
+                    id: lineCalcul
+                    anchors.horizontalCenter: parent.horizontalCenter
+
+                    Item{
+                        width: btCalcul.width
+                        height: btCalcul.height + (rowCalculOperations.height / 2)
+
+                        Button{
+                            id: btCalcul
+                            text:qsTr("Calcul")
+                            z: 100
+                            onClicked: {
+                                launchCalculGame()
+                                //pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
+                                drawerLevel.open = true
+                            }
+                        }
+
+                        Rectangle{
+                            id:rectangleBackground
+                            color:Theme.secondaryColor
+                            opacity: 0.15
+                            height: rowCalculOperations.height - 30
+                            width: rowCalculOperations.width
+                            anchors.top: btCalcul.bottom
+                            anchors.topMargin: -Theme.paddingMedium
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            radius: 20
+                        }
+
+                        Row
+                        {
+                            id: rowCalculOperations
+                            anchors.bottom: rectangleBackground.bottom
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.bottomMargin: Theme.paddingSmall
+
+                            Switch{
+                                id: switchSignPlus
+                                icon.source: "qrc:///qml/images/signePlus.png"
+                                width:60
+                                checked: true
+                                onClicked: {
+                                    buttonGroupChanged(switchSignPlus)
+                                }
+                            }
+
+                            Switch{
+                                id: switchSignMoins
+                                icon.source: "qrc:///qml/images/signeMoins.png"
+                                width:60
+                                onClicked: {
+                                    buttonGroupChanged(switchSignMoins)
+                                }
+                            }
+
+                            Switch{
+                                id: switchSignMult
+                                icon.source: "qrc:///qml/images/signeMult.png"
+                                width:60
+                                onClicked: {
+                                    buttonGroupChanged(switchSignMult)
+                                }
+                            }
+
+                            Switch{
+                                id: switchSignDiv
+                                icon.source: "qrc:///qml/images/signeDiv.png"
+                                width:60
+                                onClicked: {
+                                    buttonGroupChanged(switchSignDiv)
+                                }
+                            }
+                        }
+                    }
+                }
+
+                Row {
+                    id: lineCounting
+                    anchors.horizontalCenter: parent.horizontalCenter
 
                     Button{
-                        id: btCalcul
-                        text:qsTr("Calcul")
-                        z: 100
-                        onClicked: {
-                            launchCalculGame()
+                        text:qsTr("Denombrement")
+                        enabled:false
+                        onClicked:
+                        {
+                            game.launchGameType([5])
                             pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
                         }
                     }
+                }
 
-                    Rectangle{
-                        id:rectangleBackground
-                        color:Theme.secondaryColor
-                        opacity: 0.15
-                        height: rowCalculOperations.height - 30
-                        width: rowCalculOperations.width
-                        anchors.top: btCalcul.bottom
-                        anchors.topMargin: -Theme.paddingMedium
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        radius: 20
-                    }
+                Row {
+                    id: lineColor
+                    anchors.horizontalCenter: parent.horizontalCenter
 
-                    Row
-                    {
-                        id: rowCalculOperations
-                        anchors.bottom: rectangleBackground.bottom
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        anchors.bottomMargin: Theme.paddingSmall
-
-                        Switch{
-                            id: switchSignPlus
-                            icon.source: "qrc:///qml/images/signePlus.png"
-                            width:60
-                            checked: true
-                            onClicked: {
-                                buttonGroupChanged(switchSignPlus)
-                            }
-                        }
-
-                        Switch{
-                            id: switchSignMoins
-                            icon.source: "qrc:///qml/images/signeMoins.png"
-                            width:60
-                            onClicked: {
-                                buttonGroupChanged(switchSignMoins)
-                            }
-                        }
-
-                        Switch{
-                            id: switchSignMult
-                            icon.source: "qrc:///qml/images/signeMult.png"
-                            width:60
-                            onClicked: {
-                                buttonGroupChanged(switchSignMult)
-                            }
-                        }
-
-                        Switch{
-                            id: switchSignDiv
-                            icon.source: "qrc:///qml/images/signeDiv.png"
-                            width:60
-                            onClicked: {
-                                buttonGroupChanged(switchSignDiv)
-                            }
+                    Button{
+                        text:qsTr("Couleur")
+                        enabled:false
+                        onClicked:
+                        {
+                            game.launchGameType([6])
+                            pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
                         }
                     }
                 }
-            }
 
-            Row {
-                id: lineCounting
-                anchors.horizontalCenter: parent.horizontalCenter
+                Row {
+                    id: lineMele
+                    anchors.horizontalCenter: parent.horizontalCenter
 
-                Button{
-                    text:qsTr("Denombrement")
-                    enabled:false
-                    onClicked:
-                    {
-                        game.launchGameType([5])
-                        pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
+                    Button{
+                        text:qsTr("Mele")
+                        enabled:false
+                        onClicked:
+                        {
+                            game.launchGameType([1,2,3,4,5,6,7])
+                            pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
+                        }
                     }
                 }
-            }
 
-            Row {
-                id: lineColor
-                anchors.horizontalCenter: parent.horizontalCenter
+                Row {
+                    id: lineFlashcard
+                    anchors.horizontalCenter: parent.horizontalCenter
 
-                Button{
-                    text:qsTr("Couleur")
-                    enabled:false
-                    onClicked:
-                    {
-                        game.launchGameType([6])
-                        pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
+                    Button{
+                        text:qsTr("Flashcard")
+                        enabled:false
+                        onClicked:
+                        {
+                            game.launchGameType([7])
+                            pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
+                        }
                     }
                 }
+
             }
-
-            Row {
-                id: lineMele
-                anchors.horizontalCenter: parent.horizontalCenter
-
-                Button{
-                    text:qsTr("Mele")
-                    enabled:false
-                    onClicked:
-                    {
-                        game.launchGameType([1,2,3,4,5,6,7])
-                        pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
-                    }
-                }
-            }
-
-            Row {
-                id: lineFlashcard
-                anchors.horizontalCenter: parent.horizontalCenter
-
-                Button{
-                    text:qsTr("Flashcard")
-                    enabled:false
-                    onClicked:
-                    {
-                        game.launchGameType([7])
-                        pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
-                    }
-                }
-            }
-
         }
+    }
+
+    ListModel {
+        id: listModel
+    }
+
+    function addItems() {
+        listModel.clear()
+        listModel.append({"indexLevel": 1, "text": qsTr("Easy"), "image":"qrc:///qml/images/star.png"})
+        listModel.append({"indexLevel": 2, "text": qsTr("Medium"), "image":"qrc:///qml/images/star.png"})
+        listModel.append({"indexLevel": 3, "text": qsTr("Hard"), "image":"qrc:///qml/images/star.png"})
     }
 
     function launchCalculGame()

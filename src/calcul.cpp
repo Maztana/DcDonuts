@@ -49,20 +49,12 @@ void Calcul::setNumberPropositions(int indexLevel)
         m_numberPropositions = 2;
         break;
     case 2:
-        m_numberPropositions = 4;
+        m_numberPropositions = 3;
         break;
     case 3:
-        m_numberPropositions = 0;
-        break;
-    default:
         m_numberPropositions = 4;
         break;
     }
-
-    //////////////////////////////////////////////////////////////////
-    m_numberPropositions = 4;
-    /////////////////////////////////////////////////////////////////
-
 
     emit numberPropositionsChanged();
 }

@@ -58,4 +58,5 @@ void GameType::setLevelGame(Level *levelGame)
 void GameType::initLevelGame(int indexLevel)
 {
     setLevelGame(new Level(indexLevel));
+    launchGame();
 }
