@@ -11,15 +11,18 @@ public:
     virtual ~Calcul();
 
     virtual Question* buildQuestion() = 0;
-    int getNbMax();
-    int getNbMin();
 
 protected:
-    static int s_number_min;
-    static int s_number_max;
+    /** Min values list */
+    static QList<int> s_min_values;
+    /** Max values list */
+    static QList<int> s_max_values;
 
-    virtual void definitionLimitsForLevel() = 0;
     int rollDice(int nbMin, int nbMax)const;
+
+private:
+    virtual void setNumberPropositions(int indexLevel);
+    virtual void setLevelsSelectable();
 
 signals:
 

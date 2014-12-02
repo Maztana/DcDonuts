@@ -9,8 +9,16 @@
 Multiplication::Multiplication():
     Calcul()
 {
-    definitionLimitsForLevel();
-    s_incremental_score = INCREMENTAL_SCORE_MULTIPLICATION;
+    s_incremental_score = INCREMENTAL_MULTIPLICATION_SCORE;
+    /** Easy */
+    s_min_values.append(0);
+    s_max_values.append(0);
+    /** Medium */
+    s_min_values.append(0);
+    s_max_values.append(9);
+    /** Hard */
+    s_min_values.append(0);
+    s_max_values.append(99);
 }
 
 /** Destructor
@@ -23,21 +31,15 @@ Multiplication::~Multiplication()
 Question* Multiplication::buildQuestion()
 {
     //Générer question
-    int operande1 = qrand() % ((s_number_max + 1) - s_number_min) + s_number_min;
-    int operande2 = qrand() % ((s_number_max + 1) - s_number_min) + s_number_min;
+    int operande1 = rollDice(s_min_values[m_levelGame->getIndex()-1], s_max_values[m_levelGame->getIndex()-1]);
+    int operande2 = rollDice(s_min_values[m_levelGame->getIndex()-1], s_max_values[m_levelGame->getIndex()-1]);
 
     QList<QString> listValues;
     listValues.append(QString::number(operande1));
     listValues.append(QString::number(operande2));
 
-    Question* maQuestion = new Question(MODE_MULTIPLICATION, listValues);
+    Question* maQuestion = new Question(listValues);
     return maQuestion;
-}
-
-void Multiplication::definitionLimitsForLevel()
-{
-    s_number_min = 0;
-    s_number_max = 9;
 }
 
 /** Getter of proposition

@@ -70,7 +70,8 @@ void MainApplication::loadConfigurations()
         QJsonParseError jerror;
         QJsonDocument jdoc= QJsonDocument::fromJson(file.readAll(),&jerror);
 
-        if(!(jerror.error != QJsonParseError::NoError)){
+        if(!(jerror.error != QJsonParseError::NoError))
+        {
             QJsonObject config = jdoc.object();
 
             int saveid = config["profile"].toDouble();
