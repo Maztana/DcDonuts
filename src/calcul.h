@@ -7,7 +7,7 @@ class Calcul : public EducationalQuiz
 {
     Q_OBJECT
 public:
-    explicit Calcul(Level* gameLevel);
+    explicit Calcul();
     virtual ~Calcul();
 
     virtual Question* buildQuestion() = 0;
@@ -19,6 +19,7 @@ protected:
     static int s_number_max;
 
     virtual void definitionLimitsForLevel() = 0;
+    int rollDice(int nbMin, int nbMax)const;
 
 signals:
 

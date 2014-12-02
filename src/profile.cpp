@@ -58,7 +58,7 @@ int Profile::getId()const
  * @brief Profile::incrementScore
  * @param nbPoints the number of increment score
  */
-void Profile::incrementScore(int nbPoints)
+void Profile::scoreIncrement(int nbPoints)
 {
     int newScore = m_score + nbPoints;
     setScore(newScore);
@@ -68,7 +68,7 @@ void Profile::incrementScore(int nbPoints)
  * @brief Profile::decrementScore
  * @param nbPoints the number of decrement score
  */
-void Profile::decrementScore(int nbPoints)
+void Profile::scoreDecrement(int nbPoints)
 {
     int newScore = m_score - nbPoints;
     if(newScore < 0)
@@ -86,6 +86,7 @@ void Profile::resetScore()
     setScore(0);
 }
 
+/** When current profile changed, we emit name and score changed */
 void Profile::profileChanged()
 {
     emit nameChanged();

@@ -30,8 +30,7 @@ public:
     int getScore()const;
     int getId()const;
 
-    void incrementScore(int nbPoints);
-    void decrementScore(int nbPoints);
+
 
     void resetScore();
 
@@ -43,6 +42,8 @@ signals:
     void scoreChanged();
 
 public slots:
+    void scoreIncrement(int nbPoints);
+    void scoreDecrement(int nbPoints);
 
 
 

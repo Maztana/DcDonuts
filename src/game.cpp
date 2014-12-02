@@ -2,6 +2,7 @@
 #include "mainapplication.h"
 #include "educationalquiz.h"
 #include "ressources.h"
+#include "gametypefactory.h"
 #include <QtQml>
 
 /** Constructor of game with current profile
@@ -11,8 +12,7 @@
 Game::Game(Profile *profileGame):
     QObject(0), m_currentProfile(profileGame)
 {
-    m_currentTypeGame = nullptr;
-    m_levelGame = nullptr;
+    m_currentGameType = nullptr;
 }
 
 /** Destructor of game
@@ -20,19 +20,9 @@ Game::Game(Profile *profileGame):
  */
 Game::~Game()
 {
-    delete(m_currentTypeGame);
-    delete(m_levelGame);
+    delete(m_currentGameType);
 }
 
-/** Setter of profile for the game
- * @brief Game::setProfileGame
- * @param profileGame the new profile for game
- */
-/*void Game::setProfileGame(Profile *profileGame)
-{
-    m_currentProfile = profileGame;
-}
-*/
 /** Setter for the game type in game.
  * @brief Game::setTypeGame
  * @param typeGame the game type
@@ -40,12 +30,12 @@ Game::~Game()
 void Game::setTypeGame(GameType *typeGame)
 {
 
-    delete(m_currentTypeGame);
-    m_currentTypeGame = typeGame;
+    delete(m_currentGameType);
+    m_currentGameType = typeGame;
 
-    if(m_currentTypeGame->isQuiz())
+    if(m_currentGameType->isQuiz())
     {
-        MainApplication::s_view->rootContext()->setContextProperty("educationQuiz", (EducationalQuiz*)m_currentTypeGame);
+        MainApplication::s_view->rootContext()->setContextProperty("educationQuiz", (EducationalQuiz*)m_currentGameType);
     }
     else
     {
@@ -53,61 +43,16 @@ void Game::setTypeGame(GameType *typeGame)
     }
 }
 
-/** Setter for the level game
- * @brief Game::setLevelGame
- * @param levelGame the level game
- */
-void Game::setLevelGame(Level *levelGame)
-{
-    delete(m_levelGame);
-    m_levelGame = levelGame;
-    emit levelChanged();
-}
-
-
-/** Initialisation of level game
- * @brief Game::initLevelGame
- * @param nameLevel the name of level
- */
-void Game::initLevelGame(QString nameLevel)
-{
-    setLevelGame(new Level(nameLevel));
-}
-
 /** Launcher of game type
  * @brief Game::launchTypeGame
  * @param nameTypeGame the game type
  */
-void Game::launchGameType(QString nameTypeGame)
+void Game::launchGameType(QList<int> identifiantsGameType)
 {
-    //tant que pas de niveau défini
-    initLevelGame("non defini");
-    /////////////////////////////////
+    setTypeGame(GameTypeFactory::makeGameType(identifiantsGameType));
 
-    setTypeGame(GameType::makeGameType(m_levelGame, nameTypeGame));
+    connect(m_currentGameType, SIGNAL(incrementScore(int)), m_currentProfile,SLOT(scoreIncrement(int)));
+    connect(m_currentGameType, SIGNAL(decrementScore(int)), m_currentProfile,SLOT(scoreDecrement(int)));
 
-    connect(m_currentTypeGame, SIGNAL(incrementScore(int)), this,SLOT(scoreIncrement(int)));
-    connect(m_currentTypeGame, SIGNAL(decrementScore(int)), this,SLOT(scoreDecrement(int)));
-
-    m_currentTypeGame->launchGame();
-}
-
-/** Method for increment score of player game
- * @brief Game::scoreIncrement
- * @param nbPoints the number of point incremental
- */
-void Game::scoreIncrement(int nbPoints)
-{
-    m_currentProfile->incrementScore(nbPoints);
-    emit scoreChanged();
-}
-
-/** Method for decrement score of player game
- * @brief Game::scoreDecrement
- * @param nbPoints the number of point decremental
- */
-void Game::scoreDecrement(int nbPoints)
-{
-    m_currentProfile->decrementScore(nbPoints);
-    emit scoreChanged();
+    m_currentGameType->launchGame();
 }

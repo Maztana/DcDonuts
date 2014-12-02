@@ -54,7 +54,7 @@ Page{
             }
 
             function reset() {
-                remorseAction(qsTr("Réninitialisation"), function()
+                remorseAction(qsTr("Réinitialisation"), function()
                 {
                     application.resetProfile(itemprofile.ident)
                     addItems()

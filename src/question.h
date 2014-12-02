@@ -7,9 +7,6 @@ class Question : public QObject
 {
     Q_OBJECT
 
-    /** Description of the question */
-    Q_PROPERTY(QString description READ getTextQuestion NOTIFY descriptionChanged)
-
     /** The game mode for this question */
     const QString& m_gameMode;
     /** All values for this question */
@@ -22,18 +19,10 @@ class Question : public QObject
 public:
     explicit Question(const QString& gameMode, QList<QString> listValues);
 
-    QString getProposition()const;
-    QString getResult()const;
-    QString getTextQuestion()const;
-
-private:
-    int rollDice(int nbMax, int nbMin)const;
-    int getResultCalcul()const;
-    QString getPropositionCalcul()const;
+    const QString getTextQuestion()const;
+    const QList<QString> getValues()const;
 
 signals:
-    /** When text question changed */
-    void descriptionChanged();
 
 public slots:
 

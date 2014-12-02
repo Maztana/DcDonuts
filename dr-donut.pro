@@ -30,6 +30,10 @@ SOURCES += src/dr-donut.cpp \
     src/subtraction.cpp \
     src/calcul.cpp \
     src/gametypefactory.cpp \
+    src/additiongamefactory.cpp \
+    src/subtractiongamefactory.cpp \
+    src/multiplicationgamefactory.cpp \
+    src/divisiongamefactory.cpp \
     src/jsonmanager.cpp
 
 OTHER_FILES += qml/dr-donut.qml \
@@ -84,7 +88,11 @@ HEADERS += \
     src/subtraction.h \
     src/calcul.h \
     src/gametypefactory.h \
-    src/jsonmanager.h
+    src/jsonmanager.h \
+    src/additiongamefactory.h \
+    src/subtractiongamefactory.h \
+    src/multiplicationgamefactory.h \
+    src/divisiongamefactory.h
 
 RESOURCES += \
     resources.qrc

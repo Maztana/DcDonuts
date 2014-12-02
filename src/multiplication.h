@@ -7,13 +7,17 @@ class Multiplication : public Calcul
 {
     Q_OBJECT
 public:
-    explicit Multiplication(Level* m_gameLevel);
+    explicit Multiplication();
     ~Multiplication();
 
     virtual Question* buildQuestion();
 
 protected:
-    void definitionLimitsForLevel();
+    virtual void definitionLimitsForLevel();
+
+    virtual const QString getProposition()const;
+    virtual const QString getResult()const;
+    virtual const QString getTextQuestion()const;
 
 signals:
 

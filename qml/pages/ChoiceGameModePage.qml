@@ -129,7 +129,7 @@ Page {
                     enabled:false
                     onClicked:
                     {
-                        game.launchGameType("COUNTING")
+                        game.launchGameType([5])
                         pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
                     }
                 }
@@ -144,7 +144,7 @@ Page {
                     enabled:false
                     onClicked:
                     {
-                        game.launchGameType("COLOR")
+                        game.launchGameType([6])
                         pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
                     }
                 }
@@ -159,7 +159,7 @@ Page {
                     enabled:false
                     onClicked:
                     {
-                        game.launchGameType("ALL")
+                        game.launchGameType([1,2,3,4,5,6,7])
                         pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
                     }
                 }
@@ -174,7 +174,7 @@ Page {
                     enabled:false
                     onClicked:
                     {
-                        game.launchGameType("FLASHCARD")
+                        game.launchGameType([7])
                         pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
                     }
                 }
@@ -187,19 +187,19 @@ Page {
     {
         if(switchSignPlus.checked)
         {
-            game.launchGameType("ADDITION")
+            game.launchGameType([1])
         }
         else if(switchSignMoins.checked)
         {
-            game.launchGameType("SUBTRACTION")
+            game.launchGameType([2])
         }
         else if(switchSignMult.checked)
         {
-            game.launchGameType("MULTIPLICATION")
+            game.launchGameType([3])
         }
         else if(switchSignDiv.checked)
         {
-            game.launchGameType("DIVISION")
+            game.launchGameType([4])
         }
     }
 
