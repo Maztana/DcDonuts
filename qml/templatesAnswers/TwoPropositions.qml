@@ -9,21 +9,24 @@ Item{
 
     anchors.horizontalCenter: parent.horizontalCenter
     width: line.width
-    height: line1.height + line2.height
+    height: line.height
     anchors.margins: Theme.paddingLarge * 2
 
     Row{
         id: line
-        spacing: 20
+        anchors.top : parent.top
+        spacing: Theme.paddingLarge
 
         ItemAnswer{
             id: ans1
             indexAnswers: 1
+            height:200
         }
 
         ItemAnswer{
             id: ans2
             indexAnswers: 2
+            height: 200
         }
     }
 }

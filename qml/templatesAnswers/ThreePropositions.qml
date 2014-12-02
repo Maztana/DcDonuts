@@ -35,6 +35,7 @@ Item{
         anchors.top: line1.bottom
         anchors.margins: Theme.paddingLarge
         spacing: Theme.paddingLarge
+        anchors.horizontalCenter: parent.horizontalCenter
 
         ItemAnswer{
             id: ans3
