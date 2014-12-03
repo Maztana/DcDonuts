@@ -137,7 +137,7 @@ void ManagerBdd::updateProfile(Profile& profile) const
 
 /** Delete a profile in database
  * @brief ManagerBdd::deleteProfile
- * @param profil
+ * @param profile
  */
 void ManagerBdd::deleteProfile(Profile& profile) const
 {

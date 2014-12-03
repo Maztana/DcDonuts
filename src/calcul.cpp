@@ -10,7 +10,6 @@ QList<int> Calcul::s_max_values = {0};
 
 /** Constructor
  * @brief Calcul::Calcul
- * @param gameLevel level of the game
  */
 Calcul::Calcul() :
     EducationalQuiz()

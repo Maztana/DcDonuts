@@ -5,7 +5,6 @@
 
 /** Constructor
  * @brief Division::Division
- * @param gameLevel the level of game
  */
 Division::Division():
     Calcul()
@@ -29,40 +28,44 @@ Division::~Division()
 {
 }
 
+/** Build a division's question
+ * @brief Division::buildQuestion
+ * @return a division question
+ */
 Question* Division::buildQuestion()
 {
     //Générer question
-    int operande1 = 0;
-    int operande2 = 0;
+    int operand1 = 0;
+    int operand2 = 0;
     int mod = 1;
     while(mod != 0)
     {
-        operande1 = rollDice(s_min_values[m_levelGame->getIndex()-1], s_max_values[m_levelGame->getIndex()-1]);
-        operande2 = rollDice(s_min_values[m_levelGame->getIndex()-1], s_max_values[m_levelGame->getIndex()-1]);
+        operand1 = rollDice(s_min_values[m_levelGame->getIndex()-1], s_max_values[m_levelGame->getIndex()-1]);
+        operand2 = rollDice(s_min_values[m_levelGame->getIndex()-1], s_max_values[m_levelGame->getIndex()-1]);
 
-        if(operande1 == 0 && operande2 == 0)
+        if(operand1 == 0 && operand2 == 0)
         {
             mod = 1;
         }
         else
         {
-            if(operande1 < operande2)
+            if(operand1 < operand2)
             {
-                int tmp = operande1;
-                operande1 = operande2;
-                operande2 = tmp;
+                int tmp = operand1;
+                operand1 = operand2;
+                operand2 = tmp;
             }
-            if(operande2 == 0)
+            if(operand2 == 0)
             {
-                operande2 = 1;
+                operand2 = 1;
             }
-            mod = operande1 % operande2;
+            mod = operand1 % operand2;
         }
     }
 
     QList<QString> listValues;
-    listValues.append(QString::number(operande1));
-    listValues.append(QString::number(operande2));
+    listValues.append(QString::number(operand1));
+    listValues.append(QString::number(operand2));
 
     Question* maQuestion = new Question(listValues);
     return maQuestion;
@@ -119,9 +122,9 @@ const QString Division::getResult()const
     return QString::number(result);
 }
 
-/** Getter of question description
- * @brief Addition::getDescription
- * @return the description of question
+/** Getter of question text
+ * @brief Addition::getTextQuestion
+ * @return the text of question
  */
 const QString Division::getTextQuestion()const
 {

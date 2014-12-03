@@ -3,7 +3,7 @@
 
 /** Complete constructor level whith name
  * @brief Level::Level
- * @param nameNiveau name of level
+ * @param indexNiveau index of level
  */
 Level::Level(int indexNiveau) :
     QObject(0), m_indexLevel(indexNiveau)

@@ -11,7 +11,6 @@ Page {
 
         anchors.fill: parent
         dock: Dock.Top
-        height: listItem.contentHeight + Theme.paddingLarge
 
         background: SilicaListView {
             anchors.fill: parent
@@ -25,6 +24,7 @@ Page {
             delegate: ListItem {
                 id: listItem
 
+                enabled: model.enabled
 
                 LevelItem{
                     indexLevel: model.indexLevel
@@ -98,7 +98,6 @@ Page {
                             z: 100
                             onClicked: {
                                 launchCalculGame()
-                                //pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
                                 drawerLevel.open = true
                             }
                         }
@@ -172,7 +171,7 @@ Page {
                         onClicked:
                         {
                             game.launchGameType([5])
-                            pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
+                            drawerLevel.open = true
                         }
                     }
                 }
@@ -187,7 +186,7 @@ Page {
                         onClicked:
                         {
                             game.launchGameType([6])
-                            pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
+                            drawerLevel.open = true
                         }
                     }
                 }
@@ -202,7 +201,7 @@ Page {
                         onClicked:
                         {
                             game.launchGameType([1,2,3,4,5,6,7])
-                            pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
+                            drawerLevel.open = true
                         }
                     }
                 }
@@ -217,7 +216,7 @@ Page {
                         onClicked:
                         {
                             game.launchGameType([7])
-                            pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
+                            drawerLevel.open = true
                         }
                     }
                 }
@@ -232,9 +231,10 @@ Page {
 
     function addItems() {
         listModel.clear()
-        listModel.append({"indexLevel": 1, "text": qsTr("Easy"), "image":"qrc:///qml/images/star.png"})
-        listModel.append({"indexLevel": 2, "text": qsTr("Medium"), "image":"qrc:///qml/images/star.png"})
-        listModel.append({"indexLevel": 3, "text": qsTr("Hard"), "image":"qrc:///qml/images/star.png"})
+        listModel.append({"indexLevel": 1, "text": qsTr("Easy"), "image":"qrc:///qml/images/star.png","enabled": true})
+        listModel.append({"indexLevel": 2, "text": qsTr("Medium"), "image":"qrc:///qml/images/star.png","enabled": true})
+        listModel.append({"indexLevel": 3, "text": qsTr("Hard"), "image":"qrc:///qml/images/star.png","enabled": true})
+        listModel.append({"indexLevel": 4, "text": qsTr("Auto"), "image":"qrc:///qml/images/auto.png","enabled": false})
     }
 
     function launchCalculGame()

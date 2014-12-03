@@ -5,7 +5,6 @@ int GameType::s_incremental_score = 1;
 
 /** Constructor complete of game type
  * @brief GameType::GameType
- * @param gameLevel the level of game
  */
 GameType::GameType():
     QObject(0), m_levelGame(nullptr)

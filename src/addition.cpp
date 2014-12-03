@@ -3,7 +3,6 @@
 
 /** Constructor
  * @brief Addition::Addition
- * @param gameLevel the level of game
  */
 Addition::Addition():
     Calcul()
@@ -27,6 +26,10 @@ Addition::~Addition()
 {
 }
 
+/** Build a question of addition
+ * @brief Addition::buildQuestion
+ * @return addition's question
+ */
 Question* Addition::buildQuestion()
 {
     //Générer question
@@ -93,7 +96,7 @@ const QString Addition::getResult()const
 }
 
 /** Getter of question description
- * @brief Addition::getDescription
+ * @brief Addition::getTextQuestion
  * @return the description of question
  */
 const QString Addition::getTextQuestion()const

@@ -91,7 +91,7 @@ const QString MainApplication::getNameProfile()const
     return m_currentProfile->getName();
 }
 
-/**
+/** List all of profiles id available
  * @brief MainApplication::getAllId
  * @return all id of profiles
  */
@@ -106,7 +106,7 @@ const QList<int> MainApplication::getAllId() const
 
 
 /** Launcher of game
- * @brief MainApplication::lancerGame
+ * @brief MainApplication::launchGame
  * @return if we have actif profil en game return true,
  *         else return false and no launch game.
  */
@@ -123,8 +123,8 @@ bool MainApplication::launchGame()
 }
 
 /** Create a profil with a name and a score. The default value for score is 0
- * @brief MainApplication::createProfil
- * @param name the name of new profil
+ * @brief MainApplication::createProfile
+ * @param name the name of new profile
  * @param score of the profile
  */
 void MainApplication::createProfile(QString name,int score)
@@ -136,7 +136,7 @@ void MainApplication::createProfile(QString name,int score)
     changeCurrentProfile(newProfile);
 }
 
-/** Change actif profil by the profil in parameter
+/** Change active profile by the profile in parameter
  * @brief MainApplication::changeActifProfil
  * @param newProfilActif the new actif profil
  */
@@ -147,11 +147,20 @@ void MainApplication::changeCurrentProfile(Profile *newProfilActif)
     m_currentProfile->profileChanged();
 }
 
+/** Change active profile by the profile which have is id in parameter
+ * @brief MainApplication::changeCurrentProfile
+ * @param id of the new current profile
+ */
 void MainApplication::changeCurrentProfile(int id){
 
     changeCurrentProfile(getProfileById(id));
 }
 
+/** Get a profile which is selected by is id
+ * @brief MainApplication::getProfileById
+ * @param id of the profile
+ * @return profile
+ */
 Profile* MainApplication::getProfileById(int id)
 {
     Profile* p=nullptr;

@@ -5,7 +5,6 @@
 
 /** Constructor
  * @brief Subtraction::Subtraction
- * @param gameLevel the level game
  */
 Subtraction::Subtraction():
     Calcul()
@@ -29,6 +28,10 @@ Subtraction::~Subtraction()
 {
 }
 
+/** Build a substraction's question
+ * @brief Substraction::buildQuestion
+ * @return  substraction question
+ */
 Question* Subtraction::buildQuestion()
 {
     //Générer question
@@ -101,9 +104,9 @@ const QString Subtraction::getResult()const
     return QString::number(result);
 }
 
-/** Getter of question description
- * @brief Addition::getDescription
- * @return the description of question
+/** Getter of question text
+ * @brief Addition::getTextQuestion
+ * @return the text of question
  */
 const QString Subtraction::getTextQuestion()const
 {

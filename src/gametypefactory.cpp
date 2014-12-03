@@ -6,6 +6,10 @@
 #include "multiplicationgamefactory.h"
 #include "divisiongamefactory.h"
 
+/** Default constructor
+ * @brief GameTypeFactory::GameTypeFactory
+ * @param parent
+ */
 GameTypeFactory::GameTypeFactory(QObject *parent) :
     QObject(parent)
 {
