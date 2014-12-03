@@ -3,8 +3,7 @@
 #include <QDir>
 #include <QSqlQuery>
 #include <QSqlError>
-
-#include <QTextStream>
+#include <QVariant>
 
 // les ifdef proviennent du site http://developer.nokia.com/community/wiki/Creating_an_SQLite_database_in_Qt
 
@@ -50,8 +49,6 @@ bool ManagerBdd::openDB()
     path.append(QDir::separator()).append(PATH_DATA_BASE);
     path = QDir::toNativeSeparators(path);
     m_db.setDatabaseName(path);
-
-    QTextStream(stdout) << path << endl;
 
 #else
     m_db.setDatabaseName(PATH_DATA_BASE);

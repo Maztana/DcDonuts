@@ -28,6 +28,7 @@ JsonManager::~JsonManager()
  */
 void JsonManager::loadConfig()
 {
+
     QFile file("config.json");
 
     if(file.open(QIODevice::ReadOnly))
@@ -67,8 +68,9 @@ void JsonManager::saveConfig(int idProfile,QString language)
     config["language"] = language;
     config["sound"] = false;
 
-
     QFile file("config.json");
+
+
 
     if (file.open(QIODevice::WriteOnly | QIODevice::Text))
     {
