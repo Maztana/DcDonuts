@@ -47,8 +47,15 @@ void GameType::setLevelGame(Level *levelGame)
     delete(m_levelGame);
     m_levelGame = levelGame;
     setNumberPropositions(m_levelGame->getIndex());
-    setLevelsSelectable();
     emit levelChanged();
+}
+
+/** Initialise levels selectable for this game
+ * @brief GameType::initLevelsSelectable
+ */
+void GameType::initLevelsSelectable()
+{
+    setLevelsSelectable();
 }
 
 /** Initialisation of level game
@@ -58,5 +65,4 @@ void GameType::setLevelGame(Level *levelGame)
 void GameType::initLevelGame(int indexLevel)
 {
     setLevelGame(new Level(indexLevel));
-    launchGame();
 }

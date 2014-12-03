@@ -137,10 +137,7 @@ void EducationalQuiz::treatAnswer(const int indexAnswer)
  */
 void EducationalQuiz::treatmentAnswer(const int indexAnswer)
 {
-    int result = getResult().toInt();
-
-    //Gestion du résultat
-    if(m_listPropositions.at(indexAnswer-1).toInt() == result)
+    if(m_listPropositions.at(indexAnswer-1).toInt() == getResult().toInt())
     {
         //Réponse correcte
         emit answerRight(indexAnswer);
@@ -153,7 +150,6 @@ void EducationalQuiz::treatmentAnswer(const int indexAnswer)
         emit answerWrong(indexAnswer);
         emit decrementScore(this->s_incremental_score);
     }
-    //add stat question
 }
 /*******************************************************************************************************/
 
@@ -162,8 +158,7 @@ void EducationalQuiz::treatmentAnswer(const int indexAnswer)
  */
 void EducationalQuiz::answersCorrected()
 {
-    int indexResult = m_listPropositions.indexOf(getResult());
-    emit correctedAnswer(indexResult + 1);
+    emit correctedAnswer(m_listPropositions.indexOf(getResult()) + 1);
 }
 
 /** Method for emit reset answers

@@ -13,7 +13,7 @@ class GameType : public QObject
     /** Number of propositions for level */
     Q_PROPERTY(int numberPropositions READ getNumberPropositions NOTIFY numberPropositionsChanged)
     /** List of index level selectable */
-    Q_PROPERTY(QList<int> levelSelectable READ getLevelSelectable NOTIFY levelSelectableChanged)
+    Q_PROPERTY(QList<int> levelsSelectable READ getLevelsSelectable NOTIFY levelsSelectableChanged)
 
 public:
     explicit GameType();
@@ -22,7 +22,7 @@ public:
     inline const QString getLevelName(){return m_levelGame->getName();}
     const Level& getLevel();
     int getNumberPropositions()const;
-    inline QList<int>& getLevelSelectable(){return m_listLevelSelectable;}
+    inline QList<int>& getLevelsSelectable(){return m_listLevelSelectable;}
     /** If the game is a quiz
      * @brief isQuiz
      * @return True if is a quiz, else return false
@@ -54,10 +54,11 @@ signals:
     /** When number propositions changed */
     void numberPropositionsChanged();
     /** When the list selectable level changed */
-    void levelSelectableChanged();
+    void levelsSelectableChanged();
 
 public slots:
     virtual void launchGame() = 0;
+    void initLevelsSelectable();
     void initLevelGame(int indexLevel);
 
 };

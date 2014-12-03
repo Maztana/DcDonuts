@@ -5,26 +5,25 @@ Item{
     anchors.fill:parent
     Component.onCompleted: createImages()
 
-    function createImages() {
-
+    function createImages()
+    {
         var obj='import QtQuick 2.0; import Sailfish.Silica 1.0; Image {source:"'+image+'"; height:Theme.iconSizeSmall; width:Theme.iconSizeSmall}';
 
         for(var i=0; i<indexLevel;i++)
         {
             Qt.createQmlObject(obj,row, "dynamicImages");
         }
-
     }
 
     property string image
     property int indexLevel
     property alias text : levelLabel.text
+    property alias color: levelLabel.color
 
     Row{
-        anchors.centerIn: parent
         id:row
+        anchors.centerIn: parent
         spacing: Theme.paddingMedium
-
 
         Label{
             id:levelLabel

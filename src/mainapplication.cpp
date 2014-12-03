@@ -7,7 +7,7 @@
 #include <QTextStream>
 
 QQuickView* MainApplication::s_view = nullptr;
-Profile* MainApplication::s_defaultProfile = new Profile(-1, "Aucun profil", 0);
+Profile* MainApplication::s_defaultProfile = new Profile(-1, "", 0);
 
 /** Default constructor
  * @brief MainApplication::MainApplication
@@ -26,8 +26,6 @@ MainApplication::MainApplication(QQuickView *q_view) :
     }
 
     loadCurrentProfile();
-
-    time.start();
 }
 
 /** Default destructor
@@ -147,11 +145,20 @@ void MainApplication::changeCurrentProfile(Profile *newProfilActif)
     m_currentProfile->profileChanged();
 }
 
+/** Change current profile
+ * @brief MainApplication::changeCurrentProfile
+ * @param id the id of new current profile
+ */
 void MainApplication::changeCurrentProfile(int id){
 
     changeCurrentProfile(getProfileById(id));
 }
 
+/** Getter of profile by identifiant
+ * @brief MainApplication::getProfileById
+ * @param id the identifiant of profile
+ * @return the profile
+ */
 Profile* MainApplication::getProfileById(int id)
 {
     Profile* p=nullptr;
@@ -163,7 +170,6 @@ Profile* MainApplication::getProfileById(int id)
     }
     return p;
 }
-
 
 /**
  * @brief MainApplication::getNameProfileById
@@ -196,7 +202,6 @@ int MainApplication::getScoreProfileById(int id)
             p = m_profiles.value(i);
         }
     }
-
     return p->getScore();
 }
 

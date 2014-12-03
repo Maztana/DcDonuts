@@ -1,8 +1,6 @@
 #include "calcul.h"
 #include <QDateTime>
 
-#include <QTextStream>
-
 // Déclaration statique
 QList<int> Calcul::s_min_values = {0};
 QList<int> Calcul::s_max_values = {0};
@@ -73,4 +71,5 @@ void Calcul::setLevelsSelectable()
             m_listLevelSelectable.append(1+indexLevel);
         }
     }
+    emit levelsSelectableChanged();
 }
