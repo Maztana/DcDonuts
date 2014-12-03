@@ -42,8 +42,8 @@ void Game::setTypeGame(GameType *typeGame)
     }
 }
 
-/** Launcher of game type
- * @brief Game::launchTypeGame
+/** Init the game type
+ * @brief Game::initGameType
  * @param nameTypeGame the game type
  */
 void Game::initGameType(QList<int> identifiantsGameType)

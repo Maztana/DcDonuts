@@ -5,7 +5,6 @@ int GameType::s_incremental_score = 1;
 
 /** Constructor complete of game type
  * @brief GameType::GameType
- * @param gameLevel the level of game
  */
 GameType::GameType():
     QObject(0), m_levelGame(nullptr)
@@ -47,7 +46,7 @@ void GameType::setLevelGame(Level *levelGame)
     delete(m_levelGame);
     m_levelGame = levelGame;
     setNumberPropositions(m_levelGame->getIndex());
-    emit levelChanged();
+    //emit levelChanged();
 }
 
 /** Initialise levels selectable for this game

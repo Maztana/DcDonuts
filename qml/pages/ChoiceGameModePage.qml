@@ -21,14 +21,10 @@ Page {
             delegate: ListItem {
                 id: listItem
 
-                //property alias colorLevel: levelItem.color
-
                 enabled: model.isLevelSelectable
                 onEnabledChanged: {
-                    console.log("je suis rien")
                     if(!enabled)
                     {
-                        console.log("je suis pas enable")
                         levelItem.opacity = 0.4
                         levelItem.color = Theme.highlightColor
                     }
@@ -263,26 +259,33 @@ Page {
         listModel.append({"indexLevel": 1, "text": qsTr("Easy"), "image":"qrc:///qml/images/star.png", "isLevelSelectable": contains(educationQuiz.levelsSelectable, 1)})
         listModel.append({"indexLevel": 2, "text": qsTr("Medium"), "image":"qrc:///qml/images/star.png", "isLevelSelectable": contains(educationQuiz.levelsSelectable, 2)})
         listModel.append({"indexLevel": 3, "text": qsTr("Hard"), "image":"qrc:///qml/images/star.png", "isLevelSelectable": contains(educationQuiz.levelsSelectable, 3)})
+        listModel.append({"indexLevel": 4, "text": qsTr("Auto"), "image":"qrc:///qml/images/auto.png", "isLevelSelectable": contains(educationQuiz.levelsSelectable, 4)})
     }
 
     function initGameCalcul()
     {
+        //listType
         if(switchSignPlus.checked)
         {
+            //listType += [1]
             game.initGameType([1])
         }
         else if(switchSignMoins.checked)
         {
+            //listType += [2]
             game.initGameType([2])
         }
         else if(switchSignMult.checked)
         {
+            //listType += [3]
             game.initGameType([3])
         }
         else if(switchSignDiv.checked)
         {
+            //listType += [4]
             game.initGameType([4])
         }
+        //game.initGameType(listType)
     }
 
     function buttonGroupChanged(switchClicked)

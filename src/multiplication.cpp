@@ -4,7 +4,6 @@
 
 /** Constructor
  * @brief Multiplication::Multiplication
- * @param gameLevel the level of game
  */
 Multiplication::Multiplication():
     Calcul()
@@ -28,6 +27,10 @@ Multiplication::~Multiplication()
 {
 }
 
+/** Build a multiplication's question
+ * @brief Multiplication::buildQuestion
+ * @return  multiplication question
+ */
 Question* Multiplication::buildQuestion()
 {
     //Générer question
@@ -102,9 +105,9 @@ const QString Multiplication::getResult()const
     return QString::number(result);
 }
 
-/** Getter of question description
- * @brief Addition::getDescription
- * @return the description of question
+/** Getter of question text
+ * @brief Addition::getTextQuestion
+ * @return the text of question
  */
 const QString Multiplication::getTextQuestion()const
 {

@@ -36,12 +36,7 @@ public:
     static QQuickView *s_view;
     /** Default profile application */
     static Profile* s_defaultProfile;
-
     const QList<int> getAllId() const;
-
-    ///////////////////////////////////////
-    //Profile* getCurrentProfile(){return m_currentProfile;}
-    ///////////////////////////////////////
 
 private:
     const QString getNameProfile()const;

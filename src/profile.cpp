@@ -39,6 +39,10 @@ int Profile::getScore()const
     return m_score;
 }
 
+/** Set score
+ * @brief Profile::setScore
+ * @param nbPoint
+ */
 void Profile::setScore(int nbPoint)
 {
     m_score = nbPoint;

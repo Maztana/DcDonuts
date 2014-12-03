@@ -6,6 +6,10 @@
 #include "multiplicationgamefactory.h"
 #include "divisiongamefactory.h"
 
+/** Default constructor
+ * @brief GameTypeFactory::GameTypeFactory
+ * @param parent
+ */
 GameTypeFactory::GameTypeFactory(QObject *parent) :
     QObject(parent)
 {
@@ -25,7 +29,7 @@ GameType* GameTypeFactory::makeGameType(QList<int> identifiantsGameType)
         gameType = MixedGameFactory::makeSpecificGameType();
         for(int identifiant : identifiantsGameType)
         {
-            mixedGame.addGameType(GameTypeFactory::makeGameType(identifiant));
+            gameType.addGameType(GameTypeFactory::makeGameType(identifiant));
         }
     }
     else

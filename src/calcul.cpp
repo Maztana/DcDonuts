@@ -8,7 +8,6 @@ QList<int> Calcul::s_max_values = {0};
 
 /** Constructor
  * @brief Calcul::Calcul
- * @param gameLevel level of the game
  */
 Calcul::Calcul() :
     EducationalQuiz()
@@ -36,6 +35,27 @@ int Calcul::rollDice(int nbMin, int nbMax)const
     return qrand() % (((nbMax) + 1) - nbMin) + nbMin;
 }
 
+/** Treat response for classic quiz (no flascard)
+ * @brief Calcul::treatmentAnswer
+ * @param indexAnswer the index of answer
+ */
+void Calcul::treatmentAnswer(const int indexAnswer)
+{
+    if(m_listPropositions.at(indexAnswer-1).toInt() == getResult().toInt())
+    {
+        //Réponse correcte
+        emit answerRight(indexAnswer);
+        //add point au profil
+        emit incrementScore(this->s_incremental_score * 2);
+    }
+    else
+    {
+        //Réponse fausse
+        emit answerWrong(indexAnswer);
+        emit decrementScore(this->s_incremental_score);
+    }
+}
+
 /** Setter for the number of propositions also level
  * @brief Calcul::setNumberPropositions
  * @param indexLevel the index of the level
@@ -44,10 +64,10 @@ void Calcul::setNumberPropositions(int indexLevel)
 {
     switch (indexLevel) {
     case 1:
-        m_numberPropositions = 2;
+        m_numberPropositions = 4;
         break;
     case 2:
-        m_numberPropositions = 3;
+        m_numberPropositions = 4;
         break;
     case 3:
         m_numberPropositions = 4;
@@ -62,13 +82,13 @@ void Calcul::setNumberPropositions(int indexLevel)
  */
 void Calcul::setLevelsSelectable()
 {
-    m_listLevelSelectable.clear();
+    m_listLevelsSelectable.clear();
 
     for(int indexLevel = 0; indexLevel < s_min_values.size(); indexLevel++)
     {
         if(s_max_values[indexLevel] != s_min_values[indexLevel])
         {
-            m_listLevelSelectable.append(1+indexLevel);
+            m_listLevelsSelectable.append(1+indexLevel);
         }
     }
     emit levelsSelectableChanged();

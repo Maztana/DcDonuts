@@ -66,6 +66,10 @@
         <source>Flashcard</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Auto</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CreationProfilePage</name>
