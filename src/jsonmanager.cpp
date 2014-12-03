@@ -28,7 +28,6 @@ JsonManager::~JsonManager()
  */
 void JsonManager::loadConfig()
 {
-
     QFile file("config.json");
 
     if(file.open(QIODevice::ReadOnly))
@@ -40,7 +39,7 @@ void JsonManager::loadConfig()
             QJsonObject config = jdoc.object();
 
             m_idProfile = config["profile"].toDouble();
-            m_language = QString::number(config["language"].toDouble());
+            m_language = config["language"].toString();
         }
     }
 }
@@ -68,9 +67,8 @@ void JsonManager::saveConfig(int idProfile,QString language)
     config["language"] = language;
     config["sound"] = false;
 
+
     QFile file("config.json");
-
-
 
     if (file.open(QIODevice::WriteOnly | QIODevice::Text))
     {

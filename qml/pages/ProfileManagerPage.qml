@@ -28,7 +28,12 @@ Page{
             }
 
             MenuItem {
-                text: qsTr("Importer un joueur")
+                text: qsTr("Importer des joueurs")
+                enabled: false
+            }
+
+            MenuItem {
+                text: qsTr("Exporter les joueurs")
                 enabled: false
             }
         }
@@ -83,10 +88,6 @@ Page{
                         onClicked:{
                             remove()
                         }
-                    }
-                    MenuItem {
-                        text: qsTr("Exporter")
-                        enabled: false
                     }
                 }
             }

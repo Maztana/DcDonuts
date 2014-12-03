@@ -1,8 +1,6 @@
 #include "subtraction.h"
 #include "ressources.h"
 
-#include <QTextStream>
-
 /** Constructor
  * @brief Subtraction::Subtraction
  */

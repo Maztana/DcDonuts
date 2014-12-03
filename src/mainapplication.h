@@ -6,19 +6,12 @@
 #include <QQuickView>
 #include <QGuiApplication>
 
-#include <QTime>
-
 class MainApplication : public QObject
 {
     Q_OBJECT
 
-
-    QTime time;
-
-
     /** List of all profile's id */
     Q_PROPERTY(QList<int> allId READ getAllId)
-
 
     /** List all profiles */
     QList<Profile*> m_profiles;
@@ -43,12 +36,7 @@ public:
     static QQuickView *s_view;
     /** Default profile application */
     static Profile* s_defaultProfile;
-
     const QList<int> getAllId() const;
-
-    ///////////////////////////////////////
-    Profile* getCurrentProfile(){return m_currentProfile;}
-    ///////////////////////////////////////
 
 private:
     const QString getNameProfile()const;

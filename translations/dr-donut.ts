@@ -170,10 +170,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Importer un joueur</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Suppression</source>
         <translation type="unfinished"></translation>
     </message>
@@ -186,15 +182,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Exporter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source> Donut(s)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>R��initialisation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Importer des joueurs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exporter les joueurs</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

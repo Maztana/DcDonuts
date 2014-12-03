@@ -17,8 +17,6 @@ class EducationalQuiz : public GameType
     Q_PROPERTY(QString proposition3 READ getProposition3 NOTIFY proposition3Changed)
     Q_PROPERTY(QString proposition4 READ getProposition4 NOTIFY proposition4Changed)
 
-    /** List of propositions */
-    QList<QString> m_listPropositions;
     /** List of questions asked in this game */
     QList<Question*> m_questionsAsked;
     /** list of response who must be reset */
@@ -40,18 +38,19 @@ public:
      * @return a new question build
      */
     virtual Question* buildQuestion() = 0;
-
-protected:
-    /** current question asked */
-    Question* m_currentQuestion;
-
     virtual const QString getProposition()const = 0;
     virtual const QString getResult()const = 0;
     virtual const QString getTextQuestion()const = 0;
+    virtual void treatmentAnswer(const int indexAnswer) = 0;
+
+protected:
+    /** List of propositions */
+    QList<QString> m_listPropositions;
+    /** current question asked */
+    Question* m_currentQuestion;
 
 private:
     void setListPropositions();
-    virtual void treatmentAnswer(const int indexAnswer);
 
 signals:
     /** When text question changed */

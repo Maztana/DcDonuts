@@ -19,6 +19,7 @@ protected:
     static QList<int> s_max_values;
 
     int rollDice(int nbMin, int nbMax)const;
+    virtual void treatmentAnswer(const int indexAnswer);
 
 private:
     virtual void setNumberPropositions(int indexLevel);

@@ -130,31 +130,6 @@ void EducationalQuiz::treatAnswer(const int indexAnswer)
 
     treatmentAnswer(indexAnswer);
 }
-
-/** Treat response for classic quiz (no flascard)
- * @brief EducationalQuiz::treatmentAnswer
- * @param indexAnswer the index of answer
- */
-void EducationalQuiz::treatmentAnswer(const int indexAnswer)
-{
-    int result = getResult().toInt();
-
-    //Gestion du résultat
-    if(m_listPropositions.at(indexAnswer-1).toInt() == result)
-    {
-        //Réponse correcte
-        emit answerRight(indexAnswer);
-        //add point au profil
-        emit incrementScore(this->s_incremental_score * 2);
-    }
-    else
-    {
-        //Réponse fausse
-        emit answerWrong(indexAnswer);
-        emit decrementScore(this->s_incremental_score);
-    }
-    //add stat question
-}
 /*******************************************************************************************************/
 
 /** Method for emit correct answers
@@ -162,8 +137,7 @@ void EducationalQuiz::treatmentAnswer(const int indexAnswer)
  */
 void EducationalQuiz::answersCorrected()
 {
-    int indexResult = m_listPropositions.indexOf(getResult());
-    emit correctedAnswer(indexResult + 1);
+    emit correctedAnswer(m_listPropositions.indexOf(getResult()) + 1);
 }
 
 /** Method for emit reset answers
