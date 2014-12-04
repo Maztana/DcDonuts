@@ -12,23 +12,23 @@ Page{
         anchors.fill: parent
         model: listModel
 
-        header: PageHeader{ title:qsTr("Joueurs") }
+        header: PageHeader{ title:qsTr("Players") }
 
         ViewPlaceholder {
             enabled: profilesList.count == 0
-            text: qsTr("Aucun profil")
-            hintText: qsTr("Pull down pour ajouter")
+            text: qsTr("No existing players")
+            hintText: qsTr("Pull down to add")
         }
 
         PullDownMenu {
 
             MenuItem {
-                text: qsTr("Créer un joueur")
+                text: qsTr("Create a new player")
                 onClicked: pageStack.push(Qt.resolvedUrl("CreationProfilePage.qml"))
             }
 
             MenuItem {
-                text: qsTr("Importer un joueur")
+                text: qsTr("Import a player")
                 enabled: false
             }
         }
@@ -46,7 +46,7 @@ Page{
             }
 
             function remove() {
-                remorseAction(qsTr("Suppression"), function()
+                remorseAction(qsTr("Deleting"), function()
                 {
                     listModel.remove(index)
                     application.deleteProfile(itemprofile.ident)
@@ -54,7 +54,7 @@ Page{
             }
 
             function reset() {
-                remorseAction(qsTr("Réinitialisation"), function()
+                remorseAction(qsTr("Reinitialization"), function()
                 {
                     application.resetProfile(itemprofile.ident)
                     addItems()
@@ -73,24 +73,29 @@ Page{
                 id: profileOptionsMenu
                 ContextMenu {
                     MenuItem {
-                        text: qsTr("Réinitialiser")
+                        text: qsTr("Reinitialize")
                         onClicked: {
                             reset()
                         }
                     }
                     MenuItem {
-                        text: qsTr("Supprimer")
+                        text: qsTr("Delete")
                         onClicked:{
                             remove()
                         }
                     }
                     MenuItem {
-                        text: qsTr("Exporter")
+                        text: qsTr("Export")
                         enabled: false
                     }
                 }
             }
         }
+    }
+
+    InfoBanner{
+        id:infoBanner
+        anchors.verticalCenter: parent.verticalCenter;
     }
 
     ListModel {
@@ -108,7 +113,9 @@ Page{
             var id = application.allId[i];
             var name = application.getNameProfileById(id)
             var score = application.getScoreProfileById(id)
-            listModel.append({"ident": id, "name": name, "score":score + qsTr(" Donut(s)")})
+            listModel.append({"ident": id, "name": name, "score":score + " Donut(s)"})
         }
     }
+
+    Component.onCompleted: infoBanner.displayMsg(qsTr("msgNoProfile"))
 }

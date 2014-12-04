@@ -94,7 +94,7 @@ Page {
 
                         Button{
                             id: btCalcul
-                            text:qsTr("Calcul")
+                            text:qsTr("Calculation")
                             z: 100
                             onClicked: {
                                 launchCalculGame()
@@ -166,7 +166,7 @@ Page {
                     anchors.horizontalCenter: parent.horizontalCenter
 
                     Button{
-                        text:qsTr("Denombrement")
+                        text:qsTr("Counting")
                         enabled:false
                         onClicked:
                         {
@@ -181,7 +181,7 @@ Page {
                     anchors.horizontalCenter: parent.horizontalCenter
 
                     Button{
-                        text:qsTr("Couleur")
+                        text:qsTr("Color")
                         enabled:false
                         onClicked:
                         {
@@ -196,7 +196,7 @@ Page {
                     anchors.horizontalCenter: parent.horizontalCenter
 
                     Button{
-                        text:qsTr("Mele")
+                        text:qsTr("Mixed")
                         enabled:false
                         onClicked:
                         {

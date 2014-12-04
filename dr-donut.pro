@@ -34,7 +34,8 @@ SOURCES += src/dr-donut.cpp \
     src/subtractiongamefactory.cpp \
     src/multiplicationgamefactory.cpp \
     src/divisiongamefactory.cpp \
-    src/jsonmanager.cpp
+    src/jsonmanager.cpp \
+    src/language.cpp
 
 OTHER_FILES += qml/dr-donut.qml \
     rpm/dr-donut.changes.in \
@@ -54,7 +55,7 @@ OTHER_FILES += qml/dr-donut.qml \
     qml/templatesReponses/Seizure.qml \
     qml/homepage/Homepage.qml \
     qml/homepage/Title.qml \
-	qml/templatesAnswers/Seizure.qml \
+    qml/templatesAnswers/Seizure.qml \
     qml/templatesAnswers/ItemAnswer.qml \
     qml/pages/ProfileManagerPage.qml \
     qml/pages/ChoiceGameModePage.qml \
@@ -65,12 +66,15 @@ OTHER_FILES += qml/dr-donut.qml \
     qml/pages/ItemProfile.qml \
     qml/pages/AboutPage.qml \
     qml/pages/HowToPlay.qml \
-    qml/pages/LevelItem.qml
+    qml/pages/LevelItem.qml \
+    qml/pages/OptionPage.qml \
+    qml/pages/InfoBanner.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line
 CONFIG += sailfishapp_i18n
-TRANSLATIONS += translations/dr-donut-de.ts
+TRANSLATIONS += translations/dr-donut-fr.ts \
+                translations/dr-donut-en.ts
 
 HEADERS += \
     src/mainapplication.h \
@@ -79,7 +83,7 @@ HEADERS += \
     src/multiplication.h \
     src/division.h \
     src/managerbdd.h \
-	src/ressources.h \
+    src/ressources.h \
     src/profile.h \
     src/game.h \
     src/level.h \
@@ -92,7 +96,8 @@ HEADERS += \
     src/additiongamefactory.h \
     src/subtractiongamefactory.h \
     src/multiplicationgamefactory.h \
-    src/divisiongamefactory.h
+    src/divisiongamefactory.h \
+    src/language.h
 
 RESOURCES += \
     resources.qrc

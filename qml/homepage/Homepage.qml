@@ -10,12 +10,12 @@ Page{
 
         PullDownMenu{
             MenuItem{
-                text: qsTr("A propos")
+                text: qsTr("About")
                 onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutPage.qml"))
 
             }
             MenuItem{
-                text: qsTr("Règles du Jeu")
+                text: qsTr("Game rules")
                 onClicked: pageStack.push(Qt.resolvedUrl("../pages/HowToPlay.qml"))
             }
         }
@@ -66,7 +66,7 @@ Page{
             }
 
             Text{
-                text: qsTr("Profils")
+                text: qsTr("Profiles")
                 anchors.top: parent.icon.bottom
                 anchors.horizontalCenter: parent.horizontalCenter
                 font.family: Theme.fontFamilyHeading
@@ -96,7 +96,7 @@ Page{
         Button
         {
             id:buttonPlay
-            text: qsTr("Jouer")
+            text: qsTr("Play")
             anchors{
                 top: iconDrDonut.bottom
                 horizontalCenter: parent.horizontalCenter
@@ -124,7 +124,7 @@ Page{
                 horizontalCenter: parent.horizontalCenter
                 margins: Theme.paddingLarge * 2
             }
-            enabled: false
+            onClicked: pageStack.push(Qt.resolvedUrl("../pages/OptionPage.qml"))
         }
 
     }

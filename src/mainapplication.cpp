@@ -3,6 +3,8 @@
 #include "ressources.h"
 #include <QtQml>
 #include "jsonmanager.h"
+#include "language.h"
+#include "sailfishapp.h"
 
 #include <QTextStream>
 
@@ -14,7 +16,7 @@ Profile* MainApplication::s_defaultProfile = new Profile(-1, "Aucun profil", 0);
  * @param q_view the view of application
  */
 MainApplication::MainApplication(QQuickView *q_view) :
-    QObject(0), m_managerBDD(ManagerBdd::getInstance())
+    QObject(0), m_managerBDD(ManagerBdd::getInstance()), m_languagesModel()
 {
     this->s_view = q_view;
     changeCurrentProfile(s_defaultProfile);
@@ -26,6 +28,7 @@ MainApplication::MainApplication(QQuickView *q_view) :
     }
 
     loadCurrentProfile();
+    initLanguages();
 
     time.start();
 }
@@ -35,7 +38,7 @@ MainApplication::MainApplication(QQuickView *q_view) :
  */
 MainApplication::~MainApplication()
 {
-    JsonManager::getInstance().saveConfig(m_currentProfile->getId(),"fr");
+    JsonManager::getInstance().saveConfig(m_currentProfile->getId(), Language::getIsoCurrentLanguage());
     deleteGame();
     qDeleteAll(m_profiles);
     delete(s_view);
@@ -248,4 +251,38 @@ void MainApplication::deleteProfile(int id)
     {
         delete(profileDeleted);
     }
+}
+
+void MainApplication::loadLanguages()
+{
+    QStringList listFilter;
+    listFilter << "*.qm";
+
+    QDirIterator dirIte(SailfishApp::pathTo("translations").toLocalFile(), listFilter);
+    QRegExp regexp (".*dr-donut-(.*).qm");
+
+    while(dirIte.hasNext())
+    {
+        QString a (dirIte.next());
+
+        QTextStream(stdout) << a << endl;
+
+        regexp.indexIn(a);
+
+        QLocale q(regexp.cap(1));
+
+        m_languagesModel.append(new Language(q));
+    }
+}
+
+void MainApplication::initLanguages()
+{
+    loadLanguages();
+
+    MainApplication::s_view->rootContext()->setContextProperty("languagesListModel", QVariant::fromValue(m_languagesModel));
+}
+
+void MainApplication::changeLanguage(QString const & iso)
+{
+    Language::setIsoCurrentLanguage(iso);
 }
