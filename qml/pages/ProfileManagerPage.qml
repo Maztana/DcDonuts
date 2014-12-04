@@ -23,13 +23,18 @@ Page{
         PullDownMenu {
 
             MenuItem {
-                text: qsTr("Create a new player")
-                onClicked: pageStack.push(Qt.resolvedUrl("CreationProfilePage.qml"))
+                text: qsTr("Export players")
+                enabled: false
             }
 
             MenuItem {
                 text: qsTr("Import a player")
                 enabled: false
+            }
+
+            MenuItem {
+                text: qsTr("Create a new player")
+                onClicked: pageStack.push(Qt.resolvedUrl("CreationProfilePage.qml"))
             }
         }
 
@@ -84,10 +89,6 @@ Page{
                             remove()
                         }
                     }
-                    MenuItem {
-                        text: qsTr("Export")
-                        enabled: false
-                    }
                 }
             }
         }
@@ -117,5 +118,17 @@ Page{
         }
     }
 
-    Component.onCompleted: infoBanner.displayMsg(qsTr("msgNoProfile"))
+    Component.onCompleted:{
+        if(currentProfile.name === ""){
+            infoBanner.displayMsg(qsTr("msgNoProfile"))
+        }
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        enabled: infoBanner.open
+        onClicked: {
+            infoBanner.close();
+        }
+    }
 }

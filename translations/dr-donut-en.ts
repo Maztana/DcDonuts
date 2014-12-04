@@ -37,52 +37,52 @@
 <context>
     <name>ChoiceGameModePage</name>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="19"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="17"/>
         <source>Level</source>
         <translation>Level</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="97"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="104"/>
         <source>Calculation</source>
         <translation>Calculation</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="169"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="176"/>
         <source>Counting</source>
         <translation>Counting</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="184"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="191"/>
         <source>Color</source>
         <translation>Color</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="199"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="206"/>
         <source>Mixed</source>
         <translation>Mixed</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="214"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="221"/>
         <source>Flashcard</source>
         <translation>Flashcard</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="234"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="259"/>
         <source>Easy</source>
         <translation>Easy</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="235"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="260"/>
         <source>Medium</source>
         <translation>Medium</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="236"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="261"/>
         <source>Hard</source>
         <translation>Hard</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="237"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="262"/>
         <source>Auto</source>
         <translation>Auto</translation>
     </message>
@@ -121,10 +121,6 @@
 <context>
     <name>Homepage</name>
     <message>
-        <source>Jouer</source>
-        <translation type="obsolete">eeeeeeeeennnnnnnnnnn</translation>
-    </message>
-    <message>
         <location filename="../qml/homepage/Homepage.qml" line="13"/>
         <source>About</source>
         <translation>About</translation>
@@ -135,17 +131,17 @@
         <translation>Game rules</translation>
     </message>
     <message>
-        <location filename="../qml/homepage/Homepage.qml" line="69"/>
+        <location filename="../qml/homepage/Homepage.qml" line="77"/>
         <source>Profiles</source>
         <translation>Profiles</translation>
     </message>
     <message>
-        <location filename="../qml/homepage/Homepage.qml" line="99"/>
+        <location filename="../qml/homepage/Homepage.qml" line="107"/>
         <source>Play</source>
         <translation>Play</translation>
     </message>
     <message>
-        <location filename="../qml/homepage/Homepage.qml" line="120"/>
+        <location filename="../qml/homepage/Homepage.qml" line="128"/>
         <source>Options</source>
         <translation>Options</translation>
     </message>
@@ -224,7 +220,7 @@
         <translation>Pull down to add</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ProfileManagerPage.qml" line="26"/>
+        <location filename="../qml/pages/ProfileManagerPage.qml" line="36"/>
         <source>Create a new player</source>
         <translation>Create a new player</translation>
     </message>
@@ -234,32 +230,32 @@
         <translation>Import a player</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ProfileManagerPage.qml" line="49"/>
+        <location filename="../qml/pages/ProfileManagerPage.qml" line="26"/>
+        <source>Export players</source>
+        <translation>Export players</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProfileManagerPage.qml" line="54"/>
         <source>Deleting</source>
         <translation>Deleting</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ProfileManagerPage.qml" line="57"/>
+        <location filename="../qml/pages/ProfileManagerPage.qml" line="62"/>
         <source>Reinitialization</source>
         <translation>Reinitialization</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ProfileManagerPage.qml" line="76"/>
+        <location filename="../qml/pages/ProfileManagerPage.qml" line="81"/>
         <source>Reinitialize</source>
         <translation>Reinitialize</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ProfileManagerPage.qml" line="82"/>
+        <location filename="../qml/pages/ProfileManagerPage.qml" line="87"/>
         <source>Delete</source>
         <translation>Delete</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ProfileManagerPage.qml" line="88"/>
-        <source>Export</source>
-        <translation>Export</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/ProfileManagerPage.qml" line="120"/>
+        <location filename="../qml/pages/ProfileManagerPage.qml" line="123"/>
         <source>msgNoProfile</source>
         <translation>Choose a player to play.</translation>
     </message>

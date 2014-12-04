@@ -1,8 +1,6 @@
 #include "division.h"
 #include "ressources.h"
 
-#include <QTextStream>
-
 /** Constructor
  * @brief Division::Division
  */

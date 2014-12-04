@@ -13,7 +13,7 @@ class GameType : public QObject
     /** Number of propositions for level */
     Q_PROPERTY(int numberPropositions READ getNumberPropositions NOTIFY numberPropositionsChanged)
     /** List of index level selectable */
-    Q_PROPERTY(QList<int> levelSelectable READ getLevelSelectable NOTIFY levelSelectableChanged)
+    Q_PROPERTY(QList<int> levelsSelectable READ getLevelsSelectable NOTIFY levelsSelectableChanged)
 
 public:
     explicit GameType();
@@ -22,7 +22,7 @@ public:
     inline const QString getLevelName(){return m_levelGame->getName();}
     const Level& getLevel();
     int getNumberPropositions()const;
-    inline QList<int>& getLevelSelectable(){return m_listLevelSelectable;}
+    inline QList<int>& getLevelsSelectable(){return m_listLevelsSelectable;}
     /** If the game is a quiz
      * @brief isQuiz
      * @return True if is a quiz, else return false
@@ -33,15 +33,16 @@ protected:
     /** the value of incremental score*/
     static int s_incremental_score;
     /** Current level game */
-    Level *m_levelGame;
+    const Level *m_levelGame;
     /** Number propositions also level */
     int m_numberPropositions;
     /** List level selectable */
-    QList<int> m_listLevelSelectable;
+    QList<int> m_listLevelsSelectable;
+
+    virtual void setNumberPropositions(int indexLevel) = 0;
 
 private:
     void setLevelGame(Level *levelGame);
-    virtual void setNumberPropositions(int indexLevel) = 0;
     virtual void setLevelsSelectable() = 0;
 
 signals:
@@ -54,11 +55,12 @@ signals:
     /** When number propositions changed */
     void numberPropositionsChanged();
     /** When the list selectable level changed */
-    void levelSelectableChanged();
+    void levelsSelectableChanged();
 
 public slots:
     virtual void launchGame() = 0;
-    void initLevelGame(int indexLevel);
+    void initLevelsSelectable();
+    virtual void initLevelGame(int indexLevel);
 
 };
 

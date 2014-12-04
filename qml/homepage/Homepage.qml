@@ -44,6 +44,14 @@ Page{
                 top: nameProfile.bottom
                 left: nameProfile.left
             }
+
+            visible:{
+                if(currentProfile.name === "")
+                {
+                    return false
+                }
+                return true
+            }
         }
 
         IconButton {

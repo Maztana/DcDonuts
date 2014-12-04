@@ -74,4 +74,12 @@ Page {
             anchors.verticalCenter: parent.verticalCenter
         }
     }
+
+    MouseArea {
+        anchors.fill: parent
+        enabled: infoBanner.open
+        onClicked: {
+            infoBanner.close();
+        }
+    }
 }

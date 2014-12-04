@@ -16,7 +16,7 @@ DockedPanel {
         y: Theme.paddingSmall
 
         width: parent.width - 2*Theme.paddingSmall
-        height: Screen.height/3
+        height: Screen.height/4
 
         color: 'black';
         opacity: 0.85;
@@ -31,14 +31,6 @@ DockedPanel {
             anchors.centerIn: parent
             horizontalAlignment: Text.AlignHCenter
         }
-
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                root.hide()
-                autoClose.stop()
-            }
-        }
     }
 
     function displayMsg(msg) {
@@ -46,6 +38,12 @@ DockedPanel {
         root.visible = true
         root.show()
         autoClose.start()
+    }
+
+    function close()
+    {
+        root.hide()
+        autoClose.stop()
     }
 
     Timer {

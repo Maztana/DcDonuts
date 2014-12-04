@@ -6,10 +6,8 @@
 #include "language.h"
 #include "sailfishapp.h"
 
-#include <QTextStream>
-
 QQuickView* MainApplication::s_view = nullptr;
-Profile* MainApplication::s_defaultProfile = new Profile(-1, "Aucun profil", 0);
+Profile* MainApplication::s_defaultProfile = new Profile(-1, "", -1);
 
 /** Default constructor
  * @brief MainApplication::MainApplication
@@ -29,8 +27,6 @@ MainApplication::MainApplication(QQuickView *q_view) :
 
     loadCurrentProfile();
     initLanguages();
-
-    time.start();
 }
 
 /** Default destructor
@@ -176,7 +172,6 @@ Profile* MainApplication::getProfileById(int id)
     return p;
 }
 
-
 /**
  * @brief MainApplication::getNameProfileById
  * @param id of the profile
@@ -208,7 +203,6 @@ int MainApplication::getScoreProfileById(int id)
             p = m_profiles.value(i);
         }
     }
-
     return p->getScore();
 }
 

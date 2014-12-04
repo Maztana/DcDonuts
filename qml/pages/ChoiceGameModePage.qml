@@ -2,12 +2,10 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 Page {
-
     id: pageChoiceMode
 
     Drawer {
         id: drawerLevel
-        onOpenChanged: addItems()
 
         anchors.fill: parent
         dock: Dock.Top
@@ -18,26 +16,35 @@ Page {
 
             header: PageHeader { title: qsTr("Level") }
 
-
             VerticalScrollDecorator {}
 
             delegate: ListItem {
                 id: listItem
 
-                enabled: model.enabled
+                enabled: model.isLevelSelectable
+                onEnabledChanged: {
+                    if(!enabled)
+                    {
+                        levelItem.opacity = 0.4
+                        levelItem.color = Theme.highlightColor
+                    }
+                }
 
                 LevelItem{
+                    id: levelItem
                     indexLevel: model.indexLevel
                     text:model.text
                     image:model.image
+                    opacity: 1
+                    color: Theme.primaryColor
                 }
 
                 onClicked: {
                     educationQuiz.initLevelGame(model.indexLevel)
+                    educationQuiz.launchGame()
                     pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
                     drawerLevel.open = false
                 }
-
             }
         }
 
@@ -97,7 +104,7 @@ Page {
                             text:qsTr("Calculation")
                             z: 100
                             onClicked: {
-                                launchCalculGame()
+                                initGameCalcul()
                                 drawerLevel.open = true
                             }
                         }
@@ -170,7 +177,7 @@ Page {
                         enabled:false
                         onClicked:
                         {
-                            game.launchGameType([5])
+                            game.initGameType([5])
                             drawerLevel.open = true
                         }
                     }
@@ -185,7 +192,7 @@ Page {
                         enabled:false
                         onClicked:
                         {
-                            game.launchGameType([6])
+                            game.initGameType([6])
                             drawerLevel.open = true
                         }
                     }
@@ -200,7 +207,7 @@ Page {
                         enabled:false
                         onClicked:
                         {
-                            game.launchGameType([1,2,3,4,5,6,7])
+                            game.initGameType([1,2,3,4,5,6,7])
                             drawerLevel.open = true
                         }
                     }
@@ -215,7 +222,7 @@ Page {
                         enabled:false
                         onClicked:
                         {
-                            game.launchGameType([7])
+                            game.initGameType([7])
                             drawerLevel.open = true
                         }
                     }
@@ -229,32 +236,56 @@ Page {
         id: listModel
     }
 
-    function addItems() {
-        listModel.clear()
-        listModel.append({"indexLevel": 1, "text": qsTr("Easy"), "image":"qrc:///qml/images/star.png","enabled": true})
-        listModel.append({"indexLevel": 2, "text": qsTr("Medium"), "image":"qrc:///qml/images/star.png","enabled": true})
-        listModel.append({"indexLevel": 3, "text": qsTr("Hard"), "image":"qrc:///qml/images/star.png","enabled": true})
-        listModel.append({"indexLevel": 4, "text": qsTr("Auto"), "image":"qrc:///qml/images/auto.png","enabled": false})
+    Connections{
+        target: game
+        onGameTypeChanged: {
+            educationQuiz.initLevelsSelectable()
+            addItems()
+        }
     }
 
-    function launchCalculGame()
+    function contains(list, elementSearched) {
+        var index = list.length;
+        while (index--) {
+            if (list[index] === elementSearched) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function addItems() {
+        listModel.clear()
+        listModel.append({"indexLevel": 1, "text": qsTr("Easy"), "image":"qrc:///qml/images/star.png", "isLevelSelectable": contains(educationQuiz.levelsSelectable, 1)})
+        listModel.append({"indexLevel": 2, "text": qsTr("Medium"), "image":"qrc:///qml/images/star.png", "isLevelSelectable": contains(educationQuiz.levelsSelectable, 2)})
+        listModel.append({"indexLevel": 3, "text": qsTr("Hard"), "image":"qrc:///qml/images/star.png", "isLevelSelectable": contains(educationQuiz.levelsSelectable, 3)})
+        listModel.append({"indexLevel": 4, "text": qsTr("Auto"), "image":"qrc:///qml/images/auto.png", "isLevelSelectable": contains(educationQuiz.levelsSelectable, 4)})
+    }
+
+    function initGameCalcul()
     {
+        //listType
         if(switchSignPlus.checked)
         {
-            game.launchGameType([1])
+            //listType += [1]
+            game.initGameType([1])
         }
         else if(switchSignMoins.checked)
         {
-            game.launchGameType([2])
+            //listType += [2]
+            game.initGameType([2])
         }
         else if(switchSignMult.checked)
         {
-            game.launchGameType([3])
+            //listType += [3]
+            game.initGameType([3])
         }
         else if(switchSignDiv.checked)
         {
-            game.launchGameType([4])
+            //listType += [4]
+            game.initGameType([4])
         }
+        //game.initGameType(listType)
     }
 
     function buttonGroupChanged(switchClicked)

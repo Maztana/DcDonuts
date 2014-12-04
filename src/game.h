@@ -22,9 +22,11 @@ private:
     void setTypeGame(GameType *typeGame);
 
 signals:
+    /** When game type is modified */
+    void gameTypeChanged();
 
 public slots:
-    void launchGameType(QList<int> identifiantsGameType);
+    void initGameType(QList<int> identifiantsGameType);
 };
 
 #endif // GAME_H

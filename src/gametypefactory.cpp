@@ -29,7 +29,7 @@ GameType* GameTypeFactory::makeGameType(QList<int> identifiantsGameType)
         gameType = MixedGameFactory::makeSpecificGameType();
         for(int identifiant : identifiantsGameType)
         {
-            mixedGame.addGameType(GameTypeFactory::makeGameType(identifiant));
+            gameType.addGameType(GameTypeFactory::makeGameType(identifiant));
         }
     }
     else

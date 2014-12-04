@@ -29,7 +29,6 @@ Game::~Game()
  */
 void Game::setTypeGame(GameType *typeGame)
 {
-
     delete(m_currentGameType);
     m_currentGameType = typeGame;
 
@@ -43,20 +42,16 @@ void Game::setTypeGame(GameType *typeGame)
     }
 }
 
-/** Launcher of game type
- * @brief Game::launchTypeGame
+/** Init the game type
+ * @brief Game::initGameType
  * @param nameTypeGame the game type
  */
-void Game::launchGameType(QList<int> identifiantsGameType)
+void Game::initGameType(QList<int> identifiantsGameType)
 {
     setTypeGame(GameTypeFactory::makeGameType(identifiantsGameType));
-
-    //tant que pas de page de choix du niveau pas défini
-    //m_currentGameType->initLevelGame(1);
-    ////////////////////////////////////////////////////
 
     connect(m_currentGameType, SIGNAL(incrementScore(int)), m_currentProfile,SLOT(scoreIncrement(int)));
     connect(m_currentGameType, SIGNAL(decrementScore(int)), m_currentProfile,SLOT(scoreDecrement(int)));
 
-    //m_currentGameType->launchGame();
+    emit gameTypeChanged();
 }
