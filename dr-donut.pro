@@ -10,7 +10,7 @@
 #   - translation filenames have to be changed
 
 # The name of your application
-TARGET = dr-donut
+TARGET = harbour-dr-donut
 
 CONFIG += sailfishapp
 CONFIG += c++11
@@ -38,12 +38,8 @@ SOURCES += src/dr-donut.cpp \
     src/language.cpp \
     src/mixedgame.cpp
 
-OTHER_FILES += qml/dr-donut.qml \
-    rpm/dr-donut.changes.in \
-    rpm/dr-donut.spec \
-    rpm/dr-donut.yaml \
+OTHER_FILES += \
     translations/*.ts \
-    dr-donut.desktop \
     images/drDonut.png \
     qml/Accueil/Homepage.qml \
     qml/Accueil/Title.qml \
@@ -69,13 +65,18 @@ OTHER_FILES += qml/dr-donut.qml \
     qml/pages/HowToPlay.qml \
     qml/pages/LevelItem.qml \
     qml/pages/OptionPage.qml \
-    qml/pages/InfoBanner.qml
+    qml/pages/InfoBanner.qml \
+    harbour-dr-donut.desktop \
+    qml/harbour-dr-donut.qml \
+    rpm/harbour-dr-donut.changes.in \
+    rpm/harbour-dr-donut.yaml \
+    rpm/harbour-dr-donut.spec
 
 # to disable building translations every time, comment out the
 # following CONFIG line
 CONFIG += sailfishapp_i18n
-TRANSLATIONS += translations/dr-donut-fr.ts \
-                translations/dr-donut-en.ts
+TRANSLATIONS += translations/harbour-dr-donut-fr.ts \
+                translations/harbour-dr-donut-en.ts
 
 HEADERS += \
     src/mainapplication.h \

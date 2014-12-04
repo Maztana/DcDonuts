@@ -15,8 +15,6 @@ Language::Language(const QLocale qlocale) : QObject(0), m_iso(), m_label()
     QString labelOrig(qlocale.nativeLanguageName());
     m_label = (labelOrig.left(1).toUpper());
     m_label += labelOrig.right(labelOrig.size()-1);
-
-    QTextStream(stdout) << m_label << "_("<< m_iso << ")" << endl;
 }
 
 const QString Language::getIso() const

@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
 X-Nemo-Application-Type=silica-qt5
-Icon=dr-donut
-Exec=dr-donut
+Icon=harbour-dr-donut
+Exec=harbour-dr-donut
 Name=Doctor Donut
 # translation example:
 Name[fr]=Doctor Donut

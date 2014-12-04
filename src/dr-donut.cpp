@@ -50,16 +50,16 @@ int main(int argc, char *argv[])
     QString isoSavedLanguage(JsonManager::getInstance().getLanguage());
     if(isoSavedLanguage != "")
     {
-        translator.load(SailfishApp::pathTo("translations").toLocalFile() + "/dr-donut-" + isoSavedLanguage + ".qm");
+        translator.load(SailfishApp::pathTo("translations").toLocalFile() + "/harbour-dr-donut-" + isoSavedLanguage + ".qm");
         Language::setIsoCurrentLanguage(isoSavedLanguage);
     }
-    else if (translator.load(SailfishApp::pathTo("translations").toLocalFile() + "/dr-donut-" + QLocale::system().name().left(2) + ".qm"))
+    else if (translator.load(SailfishApp::pathTo("translations").toLocalFile() + "/harbour-dr-donut-" + QLocale::system().name().left(2) + ".qm"))
     {
         Language::setIsoCurrentLanguage(QLocale::system().name().left(2));
     }
     else
     {
-        translator.load(SailfishApp::pathTo("translations").toLocalFile() + "/dr-donut-" + Language::getIsoCurrentLanguage() + ".qm");
+        translator.load(SailfishApp::pathTo("translations").toLocalFile() + "/harbour-dr-donut-" + Language::getIsoCurrentLanguage() + ".qm");
     }
 
     q_application->installTranslator(&translator);
@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
     MainApplication application(q_view);
 
     q_view->rootContext()->setContextProperty("application", &application);
-    q_view->setSource(SailfishApp::pathTo("qml/dr-donut.qml"));
+    q_view->setSource(SailfishApp::pathTo("qml/harbour-dr-donut.qml"));
     q_view->showFullScreen();
 
     return q_application->exec();
