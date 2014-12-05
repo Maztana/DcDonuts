@@ -11,7 +11,7 @@ class Game : public QObject
 private:
     /** Current profile */
     Profile *m_currentProfile;
-    /** Current type game */
+    /** Current game type */
     GameType *m_currentGameType;
 
 public:

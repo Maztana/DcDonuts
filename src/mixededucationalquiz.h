@@ -6,8 +6,9 @@
 class MixedEducationalQuiz : public EducationalQuiz
 {
     Q_OBJECT
-
+    /** list of all edicational quiz */
     QList<EducationalQuiz*> m_listEducationalQuiz;
+    /** current game */
     EducationalQuiz* m_currentGameType;
 
 public:

@@ -33,12 +33,12 @@ Addition::~Addition()
 Question* Addition::buildQuestion()
 {
     //Générer question
-    int operande1 = rollDice(m_min_values[m_levelGame->getIndex()-1], m_max_values[m_levelGame->getIndex()-1]);
-    int operande2 = rollDice(m_min_values[m_levelGame->getIndex()-1], m_max_values[m_levelGame->getIndex()-1]);
+    int operand1 = rollDice(m_min_values[m_levelGame->getIndex()-1], m_max_values[m_levelGame->getIndex()-1]);
+    int operand2 = rollDice(m_min_values[m_levelGame->getIndex()-1], m_max_values[m_levelGame->getIndex()-1]);
 
     QList<QString> listValues;
-    listValues.append(QString::number(operande1));
-    listValues.append(QString::number(operande2));
+    listValues.append(QString::number(operand1));
+    listValues.append(QString::number(operand2));
 
     Question* maQuestion = new Question(listValues);
     return maQuestion;
@@ -95,9 +95,9 @@ const QString Addition::getResult()const
     return QString::number(result);
 }
 
-/** Getter of question description
+/** Getter of question text
  * @brief Addition::getTextQuestion
- * @return the description of question
+ * @return the text of question
  */
 const QString Addition::getTextQuestion()const
 {

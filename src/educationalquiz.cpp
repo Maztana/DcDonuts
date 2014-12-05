@@ -4,9 +4,8 @@
 #include "mainapplication.h"
 #include "ressources.h"
 
-/** Constructor with level game
+/** Constructor
  * @brief EducationalQuiz::EducationalQuiz
- * @param niveauDuJeu the level game
  */
 EducationalQuiz::EducationalQuiz():
     GameType(), m_isMixed(false)
@@ -19,7 +18,7 @@ EducationalQuiz::EducationalQuiz():
  */
 EducationalQuiz::~EducationalQuiz()
 {
-    m_currentQuestion = NULL;
+    m_currentQuestion = nullptr;
 
     if(!m_isMixed)
     {
@@ -147,7 +146,7 @@ void EducationalQuiz::treatAnswer(const int indexAnswer)
 }
 
 /** Method for emit correct answers
- * @brief EducationalQuiz::answersReset
+ * @brief EducationalQuiz::answersCorrected
  */
 void EducationalQuiz::answersCorrected()
 {
