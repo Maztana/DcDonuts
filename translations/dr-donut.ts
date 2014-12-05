@@ -197,7 +197,7 @@
         <translation>Options</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OptionPage.qml" line="65"/>
+        <location filename="../qml/pages/OptionPage.qml" line="72"/>
         <source>Language</source>
         <translation>Language</translation>
     </message>

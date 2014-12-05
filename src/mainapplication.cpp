@@ -259,8 +259,6 @@ void MainApplication::loadLanguages()
     {
         QString a (dirIte.next());
 
-        QTextStream(stdout) << a << endl;
-
         regexp.indexIn(a);
 
         QLocale q(regexp.cap(1));
