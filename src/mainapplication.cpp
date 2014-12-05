@@ -248,6 +248,19 @@ void MainApplication::deleteProfile(int id)
     }
 }
 
+/** Initialize the translation system
+ * @brief MainApplication::initLanguages
+ */
+void MainApplication::initLanguages()
+{
+    loadLanguages();
+
+    MainApplication::s_view->rootContext()->setContextProperty("languagesListModel", QVariant::fromValue(m_languagesModel));
+}
+
+/** Load all the supported languages
+ * @brief MainApplication::loadLanguages
+ */
 void MainApplication::loadLanguages()
 {
     QStringList listFilter;
@@ -268,13 +281,10 @@ void MainApplication::loadLanguages()
     }
 }
 
-void MainApplication::initLanguages()
-{
-    loadLanguages();
-
-    MainApplication::s_view->rootContext()->setContextProperty("languagesListModel", QVariant::fromValue(m_languagesModel));
-}
-
+/** Change the language of the application. It will be efficient at the next start of the application.
+ * @brief MainApplication::changeLanguage
+ * @param iso
+ */
 void MainApplication::changeLanguage(QString const & iso)
 {
     Language::setIsoCurrentLanguage(iso);

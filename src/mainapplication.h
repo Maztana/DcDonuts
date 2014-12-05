@@ -38,6 +38,7 @@ public:
     static Profile* s_defaultProfile;
     /** List of all registered languages */
     QList<QObject*> m_languagesModel;
+
     const QList<int> getAllId() const;
 
 private:
