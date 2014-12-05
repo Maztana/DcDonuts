@@ -35,7 +35,8 @@ SOURCES += src/dr-donut.cpp \
     src/multiplicationgamefactory.cpp \
     src/divisiongamefactory.cpp \
     src/jsonmanager.cpp \
-    src/mixedgame.cpp
+    src/mixedgamefactory.cpp \
+    src/mixededucationalquiz.cpp
 
 OTHER_FILES += qml/dr-donut.qml \
     rpm/dr-donut.changes.in \
@@ -94,7 +95,8 @@ HEADERS += \
     src/subtractiongamefactory.h \
     src/multiplicationgamefactory.h \
     src/divisiongamefactory.h \
-    src/mixedgame.h
+    src/mixedgamefactory.h \
+    src/mixededucationalquiz.h
 
 RESOURCES += \
     resources.qrc
