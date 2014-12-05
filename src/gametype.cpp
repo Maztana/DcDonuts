@@ -1,8 +1,6 @@
 #include "gametype.h"
 #include "ressources.h"
 
-int GameType::s_incremental_score = 1;
-
 /** Constructor complete of game type
  * @brief GameType::GameType
  */
@@ -46,7 +44,6 @@ void GameType::setLevelGame(Level *levelGame)
     delete(m_levelGame);
     m_levelGame = levelGame;
     setNumberPropositions(m_levelGame->getIndex());
-    //emit levelChanged();
 }
 
 /** Initialise levels selectable for this game

@@ -7,16 +7,16 @@
 Division::Division():
     Calcul()
 {
-    s_incremental_score = INCREMENTAL_DIVISION_SCORE;
+    m_incremental_score = INCREMENTAL_DIVISION_SCORE;
     /** Easy */
-    s_min_values.append(0);
-    s_max_values.append(0);
+    m_min_values.append(0);
+    m_max_values.append(0);
     /** Medium */
-    s_min_values.append(0);
-    s_max_values.append(9);
+    m_min_values.append(0);
+    m_max_values.append(9);
     /** Hard */
-    s_min_values.append(0);
-    s_max_values.append(99);
+    m_min_values.append(0);
+    m_max_values.append(99);
 }
 
 /** Destructor
@@ -38,8 +38,8 @@ Question* Division::buildQuestion()
     int mod = 1;
     while(mod != 0)
     {
-        operand1 = rollDice(s_min_values[m_levelGame->getIndex()-1], s_max_values[m_levelGame->getIndex()-1]);
-        operand2 = rollDice(s_min_values[m_levelGame->getIndex()-1], s_max_values[m_levelGame->getIndex()-1]);
+        operand1 = rollDice(m_min_values[m_levelGame->getIndex()-1], m_max_values[m_levelGame->getIndex()-1]);
+        operand2 = rollDice(m_min_values[m_levelGame->getIndex()-1], m_max_values[m_levelGame->getIndex()-1]);
 
         if(operand1 == 0 && operand2 == 0)
         {

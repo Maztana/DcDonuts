@@ -1,10 +1,6 @@
 #include "calcul.h"
 #include <QDateTime>
 
-// Déclaration statique
-QList<int> Calcul::s_min_values = {0};
-QList<int> Calcul::s_max_values = {0};
-///////////////////////
 
 /** Constructor
  * @brief Calcul::Calcul
@@ -12,8 +8,8 @@ QList<int> Calcul::s_max_values = {0};
 Calcul::Calcul() :
     EducationalQuiz()
 {
-    s_min_values.clear();
-    s_max_values.clear();
+    m_min_values.clear();
+    m_max_values.clear();
 }
 
 /** Destructor
@@ -43,16 +39,13 @@ void Calcul::treatmentAnswer(const int indexAnswer)
 {
     if(m_listPropositions.at(indexAnswer-1).toInt() == getResult().toInt())
     {
-        //Réponse correcte
         emit answerRight(indexAnswer);
-        //add point au profil
-        emit incrementScore(this->s_incremental_score * 2);
+        emit incrementScore(this->m_incremental_score * 2);
     }
     else
     {
-        //Réponse fausse
         emit answerWrong(indexAnswer);
-        emit decrementScore(this->s_incremental_score);
+        emit decrementScore(this->m_incremental_score);
     }
 }
 
@@ -73,7 +66,6 @@ void Calcul::setNumberPropositions(int indexLevel)
         m_numberPropositions = 4;
         break;
     }
-
     emit numberPropositionsChanged();
 }
 
@@ -84,9 +76,9 @@ void Calcul::setLevelsSelectable()
 {
     m_listLevelsSelectable.clear();
 
-    for(int indexLevel = 0; indexLevel < s_min_values.size(); indexLevel++)
+    for(int indexLevel = 0; indexLevel < m_min_values.size(); indexLevel++)
     {
-        if(s_max_values[indexLevel] != s_min_values[indexLevel])
+        if(m_max_values[indexLevel] != m_min_values[indexLevel])
         {
             m_listLevelsSelectable.append(1+indexLevel);
         }

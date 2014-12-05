@@ -36,7 +36,8 @@ SOURCES += src/dr-donut.cpp \
     src/divisiongamefactory.cpp \
     src/jsonmanager.cpp \
     src/language.cpp \
-    src/mixedgame.cpp
+    src/mixedgamefactory.cpp \
+    src/mixededucationalquiz.cpp
 
 OTHER_FILES += \
     translations/*.ts \
@@ -99,8 +100,9 @@ HEADERS += \
     src/multiplicationgamefactory.h \
     src/divisiongamefactory.h \
     src/language.h \
-    src/mixedgame.h \
-    src/jsonmanager.h
+    src/jsonmanager.h \
+    src/mixedgamefactory.h \
+    src/mixededucationalquiz.h
 
 RESOURCES += \
     resources.qrc

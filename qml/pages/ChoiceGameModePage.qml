@@ -104,8 +104,10 @@ Page {
                             text:qsTr("Calculation")
                             z: 100
                             onClicked: {
-                                initGameCalcul()
-                                drawerLevel.open = true
+                                if(initGameCalcul())
+                                {
+                                    drawerLevel.open = true
+                                }
                             }
                         }
 
@@ -133,36 +135,24 @@ Page {
                                 icon.source: "qrc:///qml/images/signePlus.png"
                                 width:60
                                 checked: true
-                                onClicked: {
-                                    buttonGroupChanged(switchSignPlus)
-                                }
                             }
 
                             Switch{
                                 id: switchSignMoins
                                 icon.source: "qrc:///qml/images/signeMoins.png"
                                 width:60
-                                onClicked: {
-                                    buttonGroupChanged(switchSignMoins)
-                                }
                             }
 
                             Switch{
                                 id: switchSignMult
                                 icon.source: "qrc:///qml/images/signeMult.png"
                                 width:60
-                                onClicked: {
-                                    buttonGroupChanged(switchSignMult)
-                                }
                             }
 
                             Switch{
                                 id: switchSignDiv
                                 icon.source: "qrc:///qml/images/signeDiv.png"
                                 width:60
-                                onClicked: {
-                                    buttonGroupChanged(switchSignDiv)
-                                }
                             }
                         }
                     }
@@ -204,10 +194,9 @@ Page {
 
                     Button{
                         text:qsTr("Mixed")
-                        enabled:false
                         onClicked:
                         {
-                            game.initGameType([1,2,3,4,5,6,7])
+                            game.initGameType([1,2,3,4]/*,5,6,7]*/)
                             drawerLevel.open = true
                         }
                     }
@@ -264,48 +253,29 @@ Page {
 
     function initGameCalcul()
     {
-        //listType
+        var listType = []
         if(switchSignPlus.checked)
         {
-            //listType += [1]
-            game.initGameType([1])
+            listType.push(1)
         }
-        else if(switchSignMoins.checked)
+        if(switchSignMoins.checked)
         {
-            //listType += [2]
-            game.initGameType([2])
+            listType.push(2)
         }
-        else if(switchSignMult.checked)
+        if(switchSignMult.checked)
         {
-            //listType += [3]
-            game.initGameType([3])
+            listType.push(3)
         }
-        else if(switchSignDiv.checked)
+        if(switchSignDiv.checked)
         {
-            //listType += [4]
-            game.initGameType([4])
+            listType.push(4)
         }
-        //game.initGameType(listType)
-    }
 
-    function buttonGroupChanged(switchClicked)
-    {
-        if(switchClicked !== switchSignPlus)
+        if(listType.length > 0)
         {
-            switchSignPlus.checked = false
+            game.initGameType(listType)
+            return true
         }
-        if(switchClicked !== switchSignMoins)
-        {
-            switchSignMoins.checked = false
-        }
-        if(switchClicked !== switchSignMult)
-        {
-            switchSignMult.checked = false
-        }
-        if(switchClicked !== switchSignDiv)
-        {
-            switchSignDiv.checked = false
-        }
-        switchClicked.checked = true
+        return false;
     }
 }

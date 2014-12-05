@@ -31,7 +31,7 @@ public:
 
 protected:
     /** the value of incremental score*/
-    static int s_incremental_score;
+    int m_incremental_score;
     /** Current level game */
     const Level *m_levelGame;
     /** Number propositions also level */

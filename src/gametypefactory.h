@@ -3,15 +3,16 @@
 
 #include <QObject>
 
-#include "gametype.h"
+#include "educationalquiz.h"
 
-class GameTypeFactory : public QObject
+class EducationalQuizFactory : public QObject
 {
     Q_OBJECT
 public:
-    explicit GameTypeFactory(QObject *parent = 0);
+    explicit EducationalQuizFactory(QObject *parent = 0);
 
-    static GameType* makeGameType(QList<int> identifiantGameType);
+    static EducationalQuiz* makeGames(QList<int> identifiantsGameType);
+    static EducationalQuiz* makeGameType(int identifiantGameType);
 
 signals:
 

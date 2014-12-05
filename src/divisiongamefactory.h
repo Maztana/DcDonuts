@@ -4,7 +4,7 @@
 #include "gametypefactory.h"
 #include "division.h"
 
-class DivisionGameFactory : public GameTypeFactory
+class DivisionGameFactory : public EducationalQuizFactory
 {
 public:
     DivisionGameFactory();

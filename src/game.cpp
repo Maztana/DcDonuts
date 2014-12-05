@@ -27,7 +27,7 @@ Game::~Game()
  * @brief Game::setTypeGame
  * @param typeGame the game type
  */
-void Game::setTypeGame(GameType *typeGame)
+void Game::setTypeGame(GameType* typeGame)
 {
     delete(m_currentGameType);
     m_currentGameType = typeGame;
@@ -48,7 +48,7 @@ void Game::setTypeGame(GameType *typeGame)
  */
 void Game::initGameType(QList<int> identifiantsGameType)
 {
-    setTypeGame(GameTypeFactory::makeGameType(identifiantsGameType));
+    setTypeGame(EducationalQuizFactory::makeGames(identifiantsGameType));
 
     connect(m_currentGameType, SIGNAL(incrementScore(int)), m_currentProfile,SLOT(scoreIncrement(int)));
     connect(m_currentGameType, SIGNAL(decrementScore(int)), m_currentProfile,SLOT(scoreDecrement(int)));
