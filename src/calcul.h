@@ -14,9 +14,9 @@ public:
 
 protected:
     /** Min values list */
-    static QList<int> s_min_values;
+    QList<int> m_min_values;
     /** Max values list */
-    static QList<int> s_max_values;
+    QList<int> m_max_values;
 
     int rollDice(int nbMin, int nbMax)const;
     virtual void treatmentAnswer(const int indexAnswer);

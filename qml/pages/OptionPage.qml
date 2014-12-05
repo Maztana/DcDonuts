@@ -55,11 +55,18 @@ Page {
 
             Column {
                 id: column
-                spacing: Theme.paddingLarge
+                spacing: Theme.paddingLarge * 2
                 width: parent.width
                 enabled: !drawer.opened
 
                 PageHeader { title: qsTr("Options") }
+
+                Switch{
+                    icon.source:"qrc:///qml/images/sound.png"
+                    checked:true
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    enabled: false
+                }
 
                 Button {
                     text: qsTr("Language")

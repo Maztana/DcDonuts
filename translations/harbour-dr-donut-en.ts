@@ -47,42 +47,42 @@
         <translation>Calculation</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="176"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="166"/>
         <source>Counting</source>
         <translation>Counting</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="191"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="181"/>
         <source>Color</source>
         <translation>Color</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="206"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="196"/>
         <source>Mixed</source>
         <translation>Mixed</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="221"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="210"/>
         <source>Flashcard</source>
         <translation>Flashcard</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="259"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="248"/>
         <source>Easy</source>
         <translation>Easy</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="260"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="249"/>
         <source>Medium</source>
         <translation>Medium</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="261"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="250"/>
         <source>Hard</source>
         <translation>Hard</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="262"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="251"/>
         <source>Auto</source>
         <translation>Auto</translation>
     </message>
@@ -197,7 +197,7 @@
         <translation>Options</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OptionPage.qml" line="65"/>
+        <location filename="../qml/pages/OptionPage.qml" line="72"/>
         <source>Language</source>
         <translation>Language</translation>
     </message>

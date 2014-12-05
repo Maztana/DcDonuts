@@ -17,40 +17,44 @@ class EducationalQuiz : public GameType
     Q_PROPERTY(QString proposition3 READ getProposition3 NOTIFY proposition3Changed)
     Q_PROPERTY(QString proposition4 READ getProposition4 NOTIFY proposition4Changed)
 
-    /** List of questions asked in this game */
-    QList<Question*> m_questionsAsked;
-    /** list of response who must be reset */
-    QList<int> m_listResetAnswers;
-
 public:
     explicit EducationalQuiz();
     virtual ~EducationalQuiz();
 
     virtual inline bool isQuiz()const{return true;}
 
+
     const QString getProposition1();
     const QString getProposition2();
     const QString getProposition3();
     const QString getProposition4();
+    const QList<QString> getPropositions();
 
     /** Build a new question, according to the game mode.
      * @brief buildQuestion
      * @return a new question build
      */
     virtual Question* buildQuestion() = 0;
+
     virtual const QString getProposition()const = 0;
     virtual const QString getResult()const = 0;
     virtual const QString getTextQuestion()const = 0;
-    virtual void treatmentAnswer(const int indexAnswer) = 0;
+
 
 protected:
     /** List of propositions */
     QList<QString> m_listPropositions;
     /** current question asked */
     Question* m_currentQuestion;
+    /** List of questions asked in this game */
+    QList<Question*> m_questionsAsked;
+    /** if the game type is mixed */
+    bool m_isMixed;
 
 private:
-    void setListPropositions();
+    virtual void treatmentAnswer(const int indexAnswer) = 0;
+    virtual void setListPropositions();
+    virtual void setQuestion(Question* question);
 
 signals:
     /** When text question changed */
@@ -76,7 +80,7 @@ signals:
 
 public slots:
     virtual void launchGame();
-    void launchQuestion();
+    virtual void launchQuestion();
     void newQuestion();
     void treatAnswer(const int indexAnswer);
     void answersCorrected();

@@ -8,16 +8,16 @@
 Multiplication::Multiplication():
     Calcul()
 {
-    s_incremental_score = INCREMENTAL_MULTIPLICATION_SCORE;
+    m_incremental_score = INCREMENTAL_MULTIPLICATION_SCORE;
     /** Easy */
-    s_min_values.append(0);
-    s_max_values.append(0);
+    m_min_values.append(0);
+    m_max_values.append(0);
     /** Medium */
-    s_min_values.append(0);
-    s_max_values.append(9);
+    m_min_values.append(0);
+    m_max_values.append(9);
     /** Hard */
-    s_min_values.append(0);
-    s_max_values.append(99);
+    m_min_values.append(0);
+    m_max_values.append(99);
 }
 
 /** Destructor
@@ -34,8 +34,8 @@ Multiplication::~Multiplication()
 Question* Multiplication::buildQuestion()
 {
     //Générer question
-    int operande1 = rollDice(s_min_values[m_levelGame->getIndex()-1], s_max_values[m_levelGame->getIndex()-1]);
-    int operande2 = rollDice(s_min_values[m_levelGame->getIndex()-1], s_max_values[m_levelGame->getIndex()-1]);
+    int operande1 = rollDice(m_min_values[m_levelGame->getIndex()-1], m_max_values[m_levelGame->getIndex()-1]);
+    int operande2 = rollDice(m_min_values[m_levelGame->getIndex()-1], m_max_values[m_levelGame->getIndex()-1]);
 
     QList<QString> listValues;
     listValues.append(QString::number(operande1));

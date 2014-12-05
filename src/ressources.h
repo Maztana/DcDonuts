@@ -2,6 +2,7 @@
 #define RESSOURCES_H
 
 #include <QString>
+#include <QTextStream>
 
 // Data base
 const QString PATH_DATA_BASE = "drdonut.db.sqlite";
