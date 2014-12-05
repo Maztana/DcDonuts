@@ -11,5 +11,6 @@
         <file>qml/images/auto.png</file>
         <file>qml/images/star.png</file>
         <file>harbour-dr-donut.png</file>
+        <file>qml/images/sound.png</file>
     </qresource>
 </RCC>
