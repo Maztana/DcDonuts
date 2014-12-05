@@ -49,7 +49,7 @@ void GameType::setLevelGame(Level *levelGame)
     //emit levelChanged();
 }
 
-/** Initialise levels selectable for this game
+/** Initialize levels selectable for this game
  * @brief GameType::initLevelsSelectable
  */
 void GameType::initLevelsSelectable()
@@ -57,7 +57,7 @@ void GameType::initLevelsSelectable()
     setLevelsSelectable();
 }
 
-/** Initialisation of level game
+/** Initialization of level game
  * @brief Game::initLevelGame
  * @param nameLevel the name of level
  */

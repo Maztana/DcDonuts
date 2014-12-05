@@ -41,28 +41,36 @@
 #include "jsonmanager.h"
 #include "language.h"
 
-int main(int argc, char *argv[])
+QTranslator* setStartLanguage()
 {
-    QGuiApplication *q_application = SailfishApp::application( argc, argv);
-
-    QTranslator translator;
+    QTranslator *translator;
+    QString url(SailfishApp::pathTo("translations").toLocalFile() + "/harbour-dr-donut-");
 
     QString isoSavedLanguage(JsonManager::getInstance().getLanguage());
     if(isoSavedLanguage != "")
     {
-        translator.load(SailfishApp::pathTo("translations").toLocalFile() + "/harbour-dr-donut-" + isoSavedLanguage + ".qm");
+        translator->load( url + isoSavedLanguage + ".qm");
         Language::setIsoCurrentLanguage(isoSavedLanguage);
     }
-    else if (translator.load(SailfishApp::pathTo("translations").toLocalFile() + "/harbour-dr-donut-" + QLocale::system().name().left(2) + ".qm"))
+    else if (translator->load( url + QLocale::system().name().left(2) + ".qm"))
     {
         Language::setIsoCurrentLanguage(QLocale::system().name().left(2));
     }
     else
     {
-        translator.load(SailfishApp::pathTo("translations").toLocalFile() + "/harbour-dr-donut-" + Language::getIsoCurrentLanguage() + ".qm");
+        translator->load( url + Language::getIsoCurrentLanguage() + ".qm");
     }
 
-    q_application->installTranslator(&translator);
+    return translator;
+}
+
+int main(int argc, char *argv[])
+{
+    QGuiApplication *q_application = SailfishApp::application( argc, argv);
+
+
+
+    q_application->installTranslator(setStartLanguage());
 
     QQuickView* q_view = SailfishApp::createView();
     MainApplication application(q_view);

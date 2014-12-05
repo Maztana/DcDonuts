@@ -15,11 +15,12 @@ public:
     static void setIsoCurrentLanguage(const QString iso);
 
 private:
-    /** ISO-639 Representation of the language (ex: "fr") */
+    /** ISO-639 Representation of the language (ex: "en" for English) */
     QString m_iso;
     /** Entire name of the language*/
     QString m_label;
 
+    /** ISO-639 Representation of the language (ex: "en" for English) */
     static QString s_isoCurrentLanguage;
 
 public slots:
