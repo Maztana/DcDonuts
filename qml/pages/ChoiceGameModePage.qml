@@ -101,7 +101,7 @@ Page {
 
                         Button{
                             id: btCalcul
-                            text:qsTr("Calcul")
+                            text:qsTr("Calculation")
                             z: 100
                             onClicked: {
                                 if(initGameCalcul())
@@ -163,7 +163,7 @@ Page {
                     anchors.horizontalCenter: parent.horizontalCenter
 
                     Button{
-                        text:qsTr("Denombrement")
+                        text:qsTr("Counting")
                         enabled:false
                         onClicked:
                         {
@@ -178,7 +178,7 @@ Page {
                     anchors.horizontalCenter: parent.horizontalCenter
 
                     Button{
-                        text:qsTr("Couleur")
+                        text:qsTr("Color")
                         enabled:false
                         onClicked:
                         {
@@ -193,7 +193,7 @@ Page {
                     anchors.horizontalCenter: parent.horizontalCenter
 
                     Button{
-                        text:qsTr("Mele")
+                        text:qsTr("Mixed")
                         onClicked:
                         {
                             game.initGameType([1,2,3,4]/*,5,6,7]*/)

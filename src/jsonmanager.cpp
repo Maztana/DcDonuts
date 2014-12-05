@@ -39,7 +39,7 @@ void JsonManager::loadConfig()
             QJsonObject config = jdoc.object();
 
             m_idProfile = config["profile"].toDouble();
-            m_language = QString::number(config["language"].toDouble());
+            m_language = config["language"].toString();
         }
     }
 }

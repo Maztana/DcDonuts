@@ -10,7 +10,7 @@ Item
 
     Label{
         id: letterD
-        text:qsTr("D")
+        text:"D"
         font.pixelSize: Theme.fontSizeHuge * 2.5
         font.family: fontDonut.name
     }
@@ -20,7 +20,7 @@ Item
         anchors.left: letterD.right
         anchors.bottom: letterD.bottom
         anchors.bottomMargin: Theme.paddingSmall
-        text:qsTr("onut")
+        text:"onut"
         font.pixelSize: letterD.font.pixelSize / 2
         font.family: fontDonut.name
     }
@@ -30,7 +30,7 @@ Item
         anchors.left: letterD.right
         anchors.bottom: secondPiece.top
         anchors.bottomMargin: Theme.paddingSmall
-        text:qsTr("octor")
+        text:"octor"
         font.pixelSize: secondPiece.font.pixelSize / (firstPiece.text.length + 1) * secondPiece.text.length
         font.family: fontDonut.name
     }

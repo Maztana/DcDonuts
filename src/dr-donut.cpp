@@ -35,21 +35,41 @@
 #include <QQuickView>
 #include <QGuiApplication>
 #include <QtQml>
-
 #include <sailfishapp.h>
-#include "mainapplication.h"
 
+#include "mainapplication.h"
+#include "jsonmanager.h"
+#include "language.h"
 
 int main(int argc, char *argv[])
 {
     QGuiApplication *q_application = SailfishApp::application( argc, argv);
+
+    QTranslator translator;
+
+    QString isoSavedLanguage(JsonManager::getInstance().getLanguage());
+    if(isoSavedLanguage != "")
+    {
+        translator.load(SailfishApp::pathTo("translations").toLocalFile() + "/harbour-dr-donut-" + isoSavedLanguage + ".qm");
+        Language::setIsoCurrentLanguage(isoSavedLanguage);
+    }
+    else if (translator.load(SailfishApp::pathTo("translations").toLocalFile() + "/harbour-dr-donut-" + QLocale::system().name().left(2) + ".qm"))
+    {
+        Language::setIsoCurrentLanguage(QLocale::system().name().left(2));
+    }
+    else
+    {
+        translator.load(SailfishApp::pathTo("translations").toLocalFile() + "/harbour-dr-donut-" + Language::getIsoCurrentLanguage() + ".qm");
+    }
+
+    q_application->installTranslator(&translator);
+
     QQuickView* q_view = SailfishApp::createView();
     MainApplication application(q_view);
 
     q_view->rootContext()->setContextProperty("application", &application);
-    q_view->setSource(SailfishApp::pathTo("qml/dr-donut.qml"));
+    q_view->setSource(SailfishApp::pathTo("qml/harbour-dr-donut.qml"));
     q_view->showFullScreen();
 
     return q_application->exec();
 }
-

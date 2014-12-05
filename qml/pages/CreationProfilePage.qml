@@ -10,8 +10,8 @@ Dialog {
     }
 
     DialogHeader {
-        defaultAcceptText: qsTr("Valider")
-        cancelText: qsTr("Annuler")
+        defaultAcceptText: qsTr("Accept")
+        cancelText: qsTr("Cancel")
     }
 
     Column{
@@ -26,8 +26,8 @@ Dialog {
             TextField{
                 id:nameInput
                 width:parent.width
-                label: qsTr("Nom")
-                placeholderText: qsTr("Tapez votre nom")
+                label: qsTr("Name")
+                placeholderText: qsTr("Enter your name")
                 validator: RegExpValidator { regExp: /^([a-zA-ZÀ-ÿ]+((-|\ )?[a-zA-ZÀ-ÿ]+)+)$/ }
                 inputMethodHints: Qt.ImhNoPredictiveText
                 EnterKey.text : "OK"

@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="en">
+<TS version="2.0">
 <context>
     <name>AboutPage</name>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="14"/>
         <source>About</source>
-        <translation>About</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="21"/>
         <source>aboutDescText</source>
-        <translation>Dr Donut is an educative game for childrens. The purpose is to make them progress in common domains, with fun !</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="33"/>
         <source>aboutIUTText</source>
-        <translation>This project was realised at the </translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="33"/>
         <source>FRANCE</source>
-        <translation>FRANCE</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="48"/>
         <source>Project Manager</source>
-        <translation>Project Manager</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="60"/>
         <source>Developers</source>
-        <translation>Developers</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -39,52 +39,52 @@
     <message>
         <location filename="../qml/pages/ChoiceGameModePage.qml" line="17"/>
         <source>Level</source>
-        <translation>Level</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/ChoiceGameModePage.qml" line="104"/>
         <source>Calculation</source>
-        <translation>Calculation</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="176"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="166"/>
         <source>Counting</source>
-        <translation>Counting</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="191"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="181"/>
         <source>Color</source>
-        <translation>Color</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="206"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="196"/>
         <source>Mixed</source>
-        <translation>Mixed</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="221"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="210"/>
         <source>Flashcard</source>
-        <translation>Flashcard</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="259"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="248"/>
         <source>Easy</source>
-        <translation>Easy</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="260"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="249"/>
         <source>Medium</source>
-        <translation>Medium</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="261"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="250"/>
         <source>Hard</source>
-        <translation>Hard</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="262"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="251"/>
         <source>Auto</source>
-        <translation>Auto</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -92,22 +92,22 @@
     <message>
         <location filename="../qml/pages/CreationProfilePage.qml" line="13"/>
         <source>Accept</source>
-        <translation>Accept</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/CreationProfilePage.qml" line="14"/>
         <source>Cancel</source>
-        <translation>Cancel</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/CreationProfilePage.qml" line="29"/>
         <source>Name</source>
-        <translation>Name</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/CreationProfilePage.qml" line="30"/>
         <source>Enter your name</source>
-        <translation>Enter your name</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -115,7 +115,7 @@
     <message>
         <location filename="../qml/pages/GameQuizPage.qml" line="44"/>
         <source>Level : </source>
-        <translation>Level : </translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -123,65 +123,65 @@
     <message>
         <location filename="../qml/homepage/Homepage.qml" line="13"/>
         <source>About</source>
-        <translation>About</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/homepage/Homepage.qml" line="18"/>
         <source>Game rules</source>
-        <translation>Game rules</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/homepage/Homepage.qml" line="77"/>
         <source>Profiles</source>
-        <translation>Profiles</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/homepage/Homepage.qml" line="107"/>
         <source>Play</source>
-        <translation>Play</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/homepage/Homepage.qml" line="128"/>
         <source>Options</source>
-        <translation>Options</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>HowToPlay</name>
     <message>
-        <location filename="../qml/pages/HowToPlay.qml" line="29"/>
-        <source>htpIntroText</source>
-        <translation>A group of educative games which allows to learn by having fun.To play, choose a game mode (Calculation, Color, etc...), then a difficulty*.</translation>
-    </message>
-    <message>
         <location filename="../qml/pages/HowToPlay.qml" line="19"/>
         <source>Game rules</source>
-        <translation>Game rules</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/HowToPlay.qml" line="29"/>
+        <source>htpIntroText</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/HowToPlay.qml" line="41"/>
         <source>htpExpDifficultiesText</source>
-        <translation>* Difficulty : 4 difficulties are availables : Easy, Medium, Hard and Automatic. Automatic is adjusts according to the results of the player to be the most adapted to his level.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/HowToPlay.qml" line="47"/>
         <source>Calculation</source>
-        <translation>Calculation</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/HowToPlay.qml" line="58"/>
         <source>htpCalculationRulesText</source>
-        <translation>Select which operations you wish to progress. A question will be asked with a set of proposals. Tap the right answer. The correction will be shown. If you give a right answer you will accumulate donuts, else you will loose some of them.</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/HowToPlay.qml" line="75"/>
-        <source>htpFlashcardRulesText</source>
-        <translation>Select the series of flashcard you want. A question will be asked ; once you think you got the answer (or if you don&apos;t know it), touch the screen to show the answer. you will have to self-assess with  the appeared proposals. Choose the one which seems to be the most adapted to you. This game type doesn&apos;t allows you to win donuts.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/HowToPlay.qml" line="64"/>
         <source>Flashcard</source>
-        <translation>Flashcard</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/HowToPlay.qml" line="75"/>
+        <source>htpFlashcardRulesText</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -189,17 +189,17 @@
     <message>
         <location filename="../qml/pages/OptionPage.qml" line="32"/>
         <source>languageChangedMessage</source>
-        <translation>Language will change at the next starting of the application.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/OptionPage.qml" line="62"/>
         <source>Options</source>
-        <translation>Options</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OptionPage.qml" line="65"/>
+        <location filename="../qml/pages/OptionPage.qml" line="72"/>
         <source>Language</source>
-        <translation>Language</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -207,57 +207,57 @@
     <message>
         <location filename="../qml/pages/ProfileManagerPage.qml" line="15"/>
         <source>Players</source>
-        <translation>Players</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/ProfileManagerPage.qml" line="19"/>
         <source>No existing players</source>
-        <translation>No existing players</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/ProfileManagerPage.qml" line="20"/>
         <source>Pull down to add</source>
-        <translation>Pull down to add</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/ProfileManagerPage.qml" line="36"/>
-        <source>Create a new player</source>
-        <translation>Create a new player</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/ProfileManagerPage.qml" line="31"/>
-        <source>Import a player</source>
-        <translation>Import a player</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/ProfileManagerPage.qml" line="26"/>
         <source>Export players</source>
-        <translation>Export players</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProfileManagerPage.qml" line="31"/>
+        <source>Import a player</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ProfileManagerPage.qml" line="36"/>
+        <source>Create a new player</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/ProfileManagerPage.qml" line="54"/>
         <source>Deleting</source>
-        <translation>Deleting</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/ProfileManagerPage.qml" line="62"/>
         <source>Reinitialization</source>
-        <translation>Reinitialization</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/ProfileManagerPage.qml" line="81"/>
         <source>Reinitialize</source>
-        <translation>Reinitialize</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/ProfileManagerPage.qml" line="87"/>
         <source>Delete</source>
-        <translation>Delete</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/ProfileManagerPage.qml" line="123"/>
         <source>msgNoProfile</source>
-        <translation>Choose a player to play.</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -265,7 +265,7 @@
     <message>
         <location filename="../qml/templatesAnswers/Seizure.qml" line="14"/>
         <source>Enter your answer</source>
-        <translation>Enter your answer</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

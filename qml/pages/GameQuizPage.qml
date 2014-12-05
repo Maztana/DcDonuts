@@ -41,7 +41,7 @@ Page {
 
         Label {
             id: level
-            text: qsTr("Niveau : ") + educationQuiz.level
+            text: qsTr("Level : ") + educationQuiz.level
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.topMargin: Theme.paddingLarge * 4
             anchors.top: parent.top

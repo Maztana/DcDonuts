@@ -36,6 +36,8 @@ public:
     static QQuickView *s_view;
     /** Default profile application */
     static Profile* s_defaultProfile;
+    /** List of all registered languages */
+    QList<QObject*> m_languagesModel;
     const QList<int> getAllId() const;
 
 private:
@@ -43,6 +45,8 @@ private:
     void loadProfiles();
     void deleteGame();
     void loadCurrentProfile();
+    void initLanguages();
+    void loadLanguages();
 
 signals:
 
@@ -58,6 +62,8 @@ public slots:
     int getNbProfiles();
     void resetProfile(int id);
     void deleteProfile(int id);
+
+    void changeLanguage(QString const &iso);
 
 };
 

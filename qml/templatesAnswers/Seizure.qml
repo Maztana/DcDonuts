@@ -11,7 +11,7 @@ Item{
         focus:true
         width: parent.width
         inputMethodHints: Qt.ImhDigitsOnly
-        placeholderText: qsTr("Entrez votre réponse")
+        placeholderText: qsTr("Enter your answer")
         placeholderColor: Theme.highlightColor
         cursorColor: Theme.highlightColor
 

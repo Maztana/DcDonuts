@@ -10,7 +10,6 @@ Item{
     Label {
         id: nameLabel
         x:Theme.paddingLarge
-        font.capitalization: Font.Capitalize
         font.pixelSize: Theme.fontSizeLarge
     }
 

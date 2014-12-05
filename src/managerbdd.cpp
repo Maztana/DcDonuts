@@ -49,6 +49,7 @@ bool ManagerBdd::openDB()
     path.append(QDir::separator()).append(PATH_DATA_BASE);
     path = QDir::toNativeSeparators(path);
     m_db.setDatabaseName(path);
+
 #else
     m_db.setDatabaseName(PATH_DATA_BASE);
 #endif
