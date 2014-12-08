@@ -21,6 +21,16 @@ Language::Language(const QLocale qlocale) : QObject(0), m_iso(), m_label()
     m_label += labelOrig.right(labelOrig.size()-1);
 }
 
+/** Constructor of Language, a representation of a language
+ * @brief Language::Language
+ * @param iso
+ * @param label
+ */
+Language::Language(const QString iso, const QString label) : QObject(0), m_iso(iso), m_label(label)
+{
+
+}
+
 /** Getter of the iso code of the language (ex : "en" for English)
  * @brief Language::getIso
  * @return the iso code of the language
@@ -56,4 +66,21 @@ const QString Language::getIsoCurrentLanguage()
 void Language::setIsoCurrentLanguage(const QString iso)
 {
     s_isoCurrentLanguage = iso;
+}
+
+/** Getter of the default language of the device.
+ * @brief Language::getDefaultLanguage
+ * @return If the translation of the default language of the device exist, return the iso code of the language. Else return "en".
+ */
+const QString Language::getDefaultLanguage()
+{
+    QTranslator translator;
+    QString locale (QLocale::system().name().left(2));
+
+    if(translator.load(SailfishApp::pathTo("translations").toLocalFile() + "/harbour-dr-donut-" + locale + ".qm"))
+    {
+        return locale;
+    }
+
+    return "en";
 }
