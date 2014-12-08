@@ -187,7 +187,7 @@
 <context>
     <name>MainApplication</name>
     <message>
-        <location filename="../src/mainapplication.cpp" line="256"/>
+        <location filename="../src/mainapplication.cpp" line="257"/>
         <source>Default language</source>
         <translation>Default language</translation>
     </message>
@@ -200,12 +200,12 @@
         <translation>Language will change at the next starting of the application.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OptionPage.qml" line="62"/>
+        <location filename="../qml/pages/OptionPage.qml" line="63"/>
         <source>Options</source>
         <translation>Options</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OptionPage.qml" line="72"/>
+        <location filename="../qml/pages/OptionPage.qml" line="73"/>
         <source>Language</source>
         <translation>Language</translation>
     </message>

@@ -68,8 +68,6 @@ int main(int argc, char *argv[])
 {
     QGuiApplication *q_application = SailfishApp::application( argc, argv);
 
-
-
     q_application->installTranslator(setStartLanguage());
 
     QQuickView* q_view = SailfishApp::createView();
