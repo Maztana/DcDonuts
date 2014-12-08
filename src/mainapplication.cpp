@@ -48,6 +48,7 @@ void MainApplication::loadProfiles()
 {
     m_profiles = m_managerBDD.selectAllProfiles();
 }
+
 /** Save profile and delete currentGame after
  * @brief MainApplication::deleteGame
  */
@@ -58,7 +59,7 @@ void MainApplication::deleteGame()
 }
 
 
-/** Load all configurations which are save in a json file
+/** Load all configurations which are saved in a json file
  * @brief MainApplication::loadConfigurations
  */
 void MainApplication::loadCurrentProfile()
@@ -136,12 +137,12 @@ void MainApplication::createProfile(QString name,int score)
 }
 
 /** Change active profile by the profile in parameter
- * @brief MainApplication::changeActifProfil
- * @param newProfilActif the new actif profil
+ * @brief MainApplication::changeCurrentProfile
+ * @param newProfilActif the new current profil
  */
-void MainApplication::changeCurrentProfile(Profile *newProfilActif)
+void MainApplication::changeCurrentProfile(Profile *newCurrentProfile)
 {
-    m_currentProfile = newProfilActif;
+    m_currentProfile = newCurrentProfile;
     s_view->rootContext()->setContextProperty("currentProfile", m_currentProfile);
     m_currentProfile->profileChanged();
 }

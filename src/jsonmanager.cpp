@@ -54,7 +54,7 @@ JsonManager& JsonManager::getInstance()
 }
 
 
-/** Save appli's config
+/** Save configurations off the appli
  * @brief JsonManager::saveConfig
  * @param idProfile last profle used
  * @param language last language used
@@ -77,9 +77,9 @@ void JsonManager::saveConfig(int idProfile,QString language)
     }
 }
 
-/** Return profile saved
+/** Return id of profile saved
  * @brief JsonManager::getIdProfile
- * @return last profile saved
+ * @return id of last profile saved
  */
 int JsonManager::getIdProfile()
 {

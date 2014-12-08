@@ -1,6 +1,6 @@
 #include "profile.h"
 
-/** Constructor complet
+/** Complete Constructor
  * @brief Profile::Profile
  * @param id Identifiant in data base
  * @param name name for profile
@@ -59,7 +59,7 @@ int Profile::getId()const
 }
 
 /** Method for increment score
- * @brief Profile::incrementScore
+ * @brief Profile::scoreIncrement
  * @param nbPoints the number of increment score
  */
 void Profile::scoreIncrement(int nbPoints)
@@ -69,7 +69,7 @@ void Profile::scoreIncrement(int nbPoints)
 }
 
 /** Method for decrement score
- * @brief Profile::decrementScore
+ * @brief Profile::scoreDecrement
  * @param nbPoints the number of decrement score
  */
 void Profile::scoreDecrement(int nbPoints)
@@ -90,7 +90,10 @@ void Profile::resetScore()
     setScore(0);
 }
 
-/** When current profile changed, we emit name and score changed */
+
+/** When current profile changed, we emit name and score changed
+ * @brief Profile::profileChanged
+ */
 void Profile::profileChanged()
 {
     emit nameChanged();

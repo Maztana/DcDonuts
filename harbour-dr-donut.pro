@@ -68,11 +68,11 @@ OTHER_FILES += \
     qml/pages/LevelItem.qml \
     qml/pages/OptionPage.qml \
     qml/pages/InfoBanner.qml \
-    harbour-dr-donut.desktop \
     qml/harbour-dr-donut.qml \
     rpm/harbour-dr-donut.changes.in \
     rpm/harbour-dr-donut.yaml \
-    rpm/harbour-dr-donut.spec
+    rpm/harbour-dr-donut.spec \
+    harbour-dr-donut.desktop
 
 # to disable building translations every time, comment out the
 # following CONFIG line

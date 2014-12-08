@@ -8,8 +8,9 @@
 #include "divisiongamefactory.h"
 
 
+
 /** Default constructor
- * @brief GameTypeFactory::GameTypeFactory
+ * @brief EducationalQuizFactory::EducationalQuizFactory
  * @param parent
  */
 EducationalQuizFactory::EducationalQuizFactory(QObject *parent) :
@@ -18,7 +19,7 @@ EducationalQuizFactory::EducationalQuizFactory(QObject *parent) :
 }
 
 /** Creator of different game type
- * @brief makeGames
+ * @brief EducationalQuizFactory::makeGames
  * @param identifiantsGameType
  * @return the specific game type
  */

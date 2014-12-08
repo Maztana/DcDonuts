@@ -1,7 +1,7 @@
 #include "level.h"
 
 
-/** Complete constructor level whith name
+/** Complete constructor level
  * @brief Level::Level
  * @param indexNiveau index of level
  */
@@ -29,6 +29,9 @@ const QString& Level::getName()const
     return m_name;
 }
 
+/** Initialize level name
+ * @brief Level::initLevel
+ */
 void Level::initLevel()
 {
     switch (m_indexLevel) {
