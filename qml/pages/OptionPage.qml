@@ -67,7 +67,6 @@ Page {
                     anchors.horizontalCenter: parent.horizontalCenter
                     onClicked: {
                         application.setSoundState(checked)
-                        console.log(checked)
                     }
                 }
 

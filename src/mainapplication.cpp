@@ -255,6 +255,7 @@ void MainApplication::deleteProfile(int id)
 void MainApplication::initLanguages()
 {
     QString locale = Language::getDefaultLanguage();
+
     m_languagesModel.append(new Language(locale, tr("Default language")));
 
     loadLanguages();

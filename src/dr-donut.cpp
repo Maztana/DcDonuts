@@ -44,21 +44,28 @@
 QTranslator* setStartLanguage()
 {
     QTranslator *translator = new QTranslator();
-    QString url(SailfishApp::pathTo("translations").toLocalFile() + "/harbour-dr-donut-");
+    QString url(SailfishApp::pathTo("translations").toLocalFile() + "/harbour-dr-donut");
 
     QString isoSavedLanguage(JsonManager::getInstance().getLanguage());
     if(isoSavedLanguage != "")
     {
-        translator->load( url + isoSavedLanguage + ".qm");
-        Language::setIsoCurrentLanguage(isoSavedLanguage);
+        if(isoSavedLanguage == "en")
+        {
+            translator->load(url + ".qm");
+        }
+        else
+        {
+            translator->load(url + "-" + isoSavedLanguage + ".qm");
+            Language::setIsoCurrentLanguage(isoSavedLanguage);
+        }
     }
-    else if (translator->load( url + QLocale::system().name().left(2) + ".qm"))
+    else if (translator->load( url + "-" + QLocale::system().name().left(2) + ".qm"))
     {
         Language::setIsoCurrentLanguage(QLocale::system().name().left(2));
     }
     else
     {
-        translator->load( url + Language::getIsoCurrentLanguage() + ".qm");
+        translator->load( url + ".qm");
     }
 
     return translator;
