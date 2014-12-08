@@ -252,6 +252,9 @@ void MainApplication::deleteProfile(int id)
  */
 void MainApplication::initLanguages()
 {
+    QString locale = Language::getDefaultLanguage();
+    m_languagesModel.append(new Language(locale, tr("Default language")));
+
     loadLanguages();
 
     MainApplication::s_view->rootContext()->setContextProperty("languagesListModel", QVariant::fromValue(m_languagesModel));
@@ -266,13 +269,11 @@ void MainApplication::loadLanguages()
     listFilter << "*.qm";
 
     QDirIterator dirIte(SailfishApp::pathTo("translations").toLocalFile(), listFilter);
-    QRegExp regexp (".*dr-donut-(.*).qm");
+    QRegExp regexp (".*harbour-dr-donut-(.*).qm");
 
     while(dirIte.hasNext())
     {
         QString a (dirIte.next());
-
-        QTextStream(stdout) << a << endl;
 
         regexp.indexIn(a);
 

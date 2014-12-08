@@ -185,6 +185,14 @@
     </message>
 </context>
 <context>
+    <name>MainApplication</name>
+    <message>
+        <location filename="../src/mainapplication.cpp" line="256"/>
+        <source>Default language</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>OptionPage</name>
     <message>
         <location filename="../qml/pages/OptionPage.qml" line="32"/>

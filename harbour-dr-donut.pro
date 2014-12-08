@@ -15,7 +15,7 @@ TARGET = harbour-dr-donut
 CONFIG += sailfishapp
 CONFIG += c++11
 
-SOURCES += src/dr-donut.cpp \
+SOURCES += \
     src/mainapplication.cpp \
     src/question.cpp \
     src/addition.cpp \
@@ -37,7 +37,8 @@ SOURCES += src/dr-donut.cpp \
     src/jsonmanager.cpp \
     src/language.cpp \
     src/mixedgamefactory.cpp \
-    src/mixededucationalquiz.cpp
+    src/mixededucationalquiz.cpp \
+    src/dr-donut.cpp
 
 OTHER_FILES += \
     translations/*.ts \

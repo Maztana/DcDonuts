@@ -9,10 +9,12 @@ class Language : public QObject
 
 public:
     Language(const QLocale qlocale);
+    Language(const QString iso, const QString label);
 
     static void changeLanguage(QString const &iso);
     static const QString getIsoCurrentLanguage();
     static void setIsoCurrentLanguage(const QString iso);
+    static const QString getDefaultLanguage();
 
 private:
     /** ISO-639 Representation of the language (ex: "en" for English) */
