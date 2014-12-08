@@ -3,6 +3,7 @@
 #include <QJsonParseError>
 #include <QTextStream>
 #include <QJsonObject>
+#include <QDir>
 
 //Variable statique
 JsonManager JsonManager::s_instance= JsonManager();
@@ -28,7 +29,14 @@ JsonManager::~JsonManager()
  */
 void JsonManager::loadConfig()
 {
-    QFile file("config.json");
+
+    QString path(QDir::home().path());
+    path.append(QDir::separator()).append(".config");
+    path.append(QDir::separator()).append("harbour-dr-donut");
+    path.append(QDir::separator()).append("config.json");
+    path = QDir::toNativeSeparators(path);
+
+    QFile file(path);
 
     if(file.open(QIODevice::ReadOnly))
     {
@@ -54,7 +62,7 @@ JsonManager& JsonManager::getInstance()
 }
 
 
-/** Save configurations off the appli
+/** Save configurations of the appli in /home/nemo/.config/harbour-dr-donut/config.json
  * @brief JsonManager::saveConfig
  * @param idProfile last profle used
  * @param language last language used
@@ -67,8 +75,18 @@ void JsonManager::saveConfig(int idProfile,QString language)
     config["language"] = language;
     config["sound"] = false;
 
+    QString path(QDir::home().path());
+    path.append(QDir::separator()).append(".config");
+    path.append(QDir::separator()).append("harbour-dr-donut");
+    path = QDir::toNativeSeparators(path);
 
-    QFile file("config.json");
+    QDir dir;
+    dir.mkpath(path);
+
+    path.append(QDir::separator()).append("config.json");
+    path = QDir::toNativeSeparators(path);
+
+    QFile file(path);
 
     if (file.open(QIODevice::WriteOnly | QIODevice::Text))
     {

@@ -43,7 +43,7 @@
 
 QTranslator* setStartLanguage()
 {
-    QTranslator *translator;
+    QTranslator *translator = new QTranslator();
     QString url(SailfishApp::pathTo("translations").toLocalFile() + "/harbour-dr-donut-");
 
     QString isoSavedLanguage(JsonManager::getInstance().getLanguage());

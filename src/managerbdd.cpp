@@ -35,7 +35,7 @@ ManagerBdd& ManagerBdd::getInstance()
     return s_instance;
 }
 
-/** Create and open sqlite database
+/** Create and open sqlite database in /home/nemo/.local/share/harbour-dr-donut/
  * @brief ManagerBdd::openDB
  * @return true if database is open, else return false
  */
@@ -46,6 +46,14 @@ bool ManagerBdd::openDB()
 
 #ifdef Q_OS_LINUX
     QString path(QDir::home().path());
+    path.append(QDir::separator()).append(".local");
+    path.append(QDir::separator()).append("share");
+    path.append(QDir::separator()).append("harbour-dr-donut");
+    path = QDir::toNativeSeparators(path);
+
+    QDir dir;
+    dir.mkpath(path);
+
     path.append(QDir::separator()).append(PATH_DATA_BASE);
     path = QDir::toNativeSeparators(path);
     m_db.setDatabaseName(path);
@@ -68,6 +76,9 @@ bool ManagerBdd::deleteDB()
 
 #ifdef Q_OS_LINUX
     QString path(QDir::home().path());
+    path.append(QDir::separator()).append(".local");
+    path.append(QDir::separator()).append("share");
+    path.append(QDir::separator()).append("harbour-dr-donut");
     path.append(QDir::separator()).append(PATH_DATA_BASE);
     path = QDir::toNativeSeparators(path);
     return QFile::remove(path);
