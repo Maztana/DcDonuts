@@ -21,6 +21,8 @@ class MainApplication : public QObject
     Game *m_currentGame;
     /** Data base manager */
     ManagerBdd &m_managerBDD;
+    /** Sound state */
+    bool m_soundState;
 
 public:
     explicit MainApplication(QQuickView *q_view);
@@ -66,6 +68,8 @@ public slots:
 
     void changeLanguage(QString const &iso);
 
+    inline bool isSoundActive(){return m_soundState;}
+    inline void setSoundState(const bool &state){m_soundState = state;}
 };
 
 #endif // MAINAPPLICATION_H

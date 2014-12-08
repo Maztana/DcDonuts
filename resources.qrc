@@ -12,5 +12,7 @@
         <file>qml/images/star.png</file>
         <file>harbour-dr-donut.png</file>
         <file>qml/images/sound.png</file>
+        <file>qml/sounds/soundRight.wav</file>
+        <file>qml/sounds/soundWrong.wav</file>
     </qresource>
 </RCC>

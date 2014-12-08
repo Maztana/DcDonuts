@@ -14,7 +14,8 @@ Profile* MainApplication::s_defaultProfile = new Profile(-1, "", -1);
  * @param q_view the view of application
  */
 MainApplication::MainApplication(QQuickView *q_view) :
-    QObject(0), m_managerBDD(ManagerBdd::getInstance()), m_languagesModel()
+    QObject(0), m_managerBDD(ManagerBdd::getInstance()),
+    m_soundState(JsonManager::getInstance().getSoundState()), m_languagesModel()
 {
     this->s_view = q_view;
     changeCurrentProfile(s_defaultProfile);
@@ -34,7 +35,7 @@ MainApplication::MainApplication(QQuickView *q_view) :
  */
 MainApplication::~MainApplication()
 {
-    JsonManager::getInstance().saveConfig(m_currentProfile->getId(), Language::getIsoCurrentLanguage());
+    JsonManager::getInstance().saveConfig(m_currentProfile->getId(), Language::getIsoCurrentLanguage(), m_soundState);
     deleteGame();
     qDeleteAll(m_profiles);
     delete(s_view);
@@ -270,17 +271,26 @@ void MainApplication::loadLanguages()
     listFilter << "*.qm";
 
     QDirIterator dirIte(SailfishApp::pathTo("translations").toLocalFile(), listFilter);
-    QRegExp regexp (".*harbour-dr-donut-(.*).qm");
+    QRegExp regexp (".*translations/harbour-dr-donut(.*).qm$");
 
     while(dirIte.hasNext())
     {
-        QString a (dirIte.next());
+        QString url (dirIte.next());
 
-        regexp.indexIn(a);
+        regexp.indexIn(url);
 
-        QLocale q(regexp.cap(1));
+        QLocale *qlocale;
 
-        m_languagesModel.append(new Language(q));
+        if(regexp.cap(1) == "")
+        {
+            qlocale = new QLocale("en");
+        }
+        else
+        {
+            qlocale = new QLocale(regexp.cap(1).right(2));
+        }
+
+        m_languagesModel.append(new Language(*qlocale));
     }
 }
 

@@ -63,9 +63,12 @@ Page {
 
                 Switch{
                     icon.source:"qrc:///qml/images/sound.png"
-                    checked:true
+                    checked: application.isSoundActive()
                     anchors.horizontalCenter: parent.horizontalCenter
-                    enabled: false
+                    onClicked: {
+                        application.setSoundState(checked)
+                        console.log(checked)
+                    }
                 }
 
                 Button {

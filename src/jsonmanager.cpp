@@ -29,7 +29,6 @@ JsonManager::~JsonManager()
  */
 void JsonManager::loadConfig()
 {
-
     QString path(QDir::home().path());
     path.append(QDir::separator()).append(".config");
     path.append(QDir::separator()).append("harbour-dr-donut");
@@ -48,6 +47,7 @@ void JsonManager::loadConfig()
 
             m_idProfile = config["profile"].toDouble();
             m_language = config["language"].toString();
+            m_soundState = config["sound"].toBool();
         }
     }
 }
@@ -67,13 +67,13 @@ JsonManager& JsonManager::getInstance()
  * @param idProfile last profle used
  * @param language last language used
  */
-void JsonManager::saveConfig(int idProfile,QString language)
+void JsonManager::saveConfig(int idProfile,QString language, bool soundState)
 {
     QJsonObject config;
 
     config["profile"] = idProfile ;
     config["language"] = language;
-    config["sound"] = false;
+    config["sound"] = soundState;
 
     QString path(QDir::home().path());
     path.append(QDir::separator()).append(".config");
@@ -111,4 +111,9 @@ int JsonManager::getIdProfile()
 QString JsonManager::getLanguage()
 {
     return m_language;
+}
+
+bool JsonManager::getSoundState()
+{
+    return m_soundState;
 }

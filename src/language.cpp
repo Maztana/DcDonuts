@@ -10,7 +10,7 @@ QString Language::s_isoCurrentLanguage = "en";
 
 /** Constructor of Language, a representation of a language
  * @brief Language::Language
- * @param qlocale
+ * @param qlocale the language to be created
  */
 Language::Language(const QLocale qlocale) : QObject(0), m_iso(), m_label()
 {
@@ -23,8 +23,8 @@ Language::Language(const QLocale qlocale) : QObject(0), m_iso(), m_label()
 
 /** Constructor of Language, a representation of a language
  * @brief Language::Language
- * @param iso
- * @param label
+ * @param iso the iso of the language to be created
+ * @param label the label of the language to be created
  */
 Language::Language(const QString iso, const QString label) : QObject(0), m_iso(iso), m_label(label)
 {

@@ -30,8 +30,6 @@ public:
     int getScore()const;
     int getId()const;
 
-
-
     void resetScore();
 
 private:
@@ -44,9 +42,6 @@ signals:
 public slots:
     void scoreIncrement(int nbPoints);
     void scoreDecrement(int nbPoints);
-
-
-
 };
 
 #endif // PROFILE_H
