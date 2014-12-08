@@ -2,7 +2,7 @@
 #include "mainapplication.h"
 #include "educationalquiz.h"
 #include "ressources.h"
-#include "gametypefactory.h"
+#include "educationalquizfactory.h"
 #include <QtQml>
 
 /** Constructor of game with current profile

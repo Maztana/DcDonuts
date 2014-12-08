@@ -26,42 +26,6 @@ EducationalQuiz::~EducationalQuiz()
     }
 }
 
-/**  Getter proposition1
- * @brief EducationalQuiz::getProposition1
- * @return the proposition1 in the m_listPropositions.
- */
-const QString EducationalQuiz::getProposition1()
-{
-    return m_listPropositions.at(0);
-}
-
-/**  Getter proposition2
- * @brief EducationalQuiz::getProposition2
- * @return the proposition2 in the m_listPropositions.
- */
-const QString EducationalQuiz::getProposition2()
-{
-    return m_listPropositions.at(1);
-}
-
-/**  Getter proposition3
- * @brief EducationalQuiz::getProposition3
- * @return the proposition3 in the m_listPropositions.
- */
-const QString EducationalQuiz::getProposition3()
-{
-    return m_listPropositions.at(2);
-}
-
-/**  Getter proposition4
- * @brief EducationalQuiz::getProposition4
- * @return the proposition4 in the m_listPropositions.
- */
-const QString EducationalQuiz::getProposition4()
-{
-    return m_listPropositions.at(3);
-}
-
 /**  Getter propositions
  * @brief EducationalQuiz::getPropositions
  * @return the m_listPropositions.
@@ -127,10 +91,7 @@ void EducationalQuiz::launchQuestion()
  */
 void EducationalQuiz::newQuestion()
 {
-    emit proposition1Changed();
-    emit proposition2Changed();
-    emit proposition3Changed();
-    emit proposition4Changed();
+    emit propositionsChanged();
     emit textQuestionChanged();
     emit questionChanged();
 }

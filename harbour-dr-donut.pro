@@ -29,7 +29,6 @@ SOURCES += \
     src/educationalquiz.cpp \
     src/subtraction.cpp \
     src/calcul.cpp \
-    src/gametypefactory.cpp \
     src/additiongamefactory.cpp \
     src/subtractiongamefactory.cpp \
     src/multiplicationgamefactory.cpp \
@@ -38,7 +37,8 @@ SOURCES += \
     src/language.cpp \
     src/mixedgamefactory.cpp \
     src/mixededucationalquiz.cpp \
-    src/dr-donut.cpp
+    src/dr-donut.cpp \
+    src/educationalquizfactory.cpp
 
 OTHER_FILES += \
     translations/*.ts \
@@ -95,7 +95,6 @@ HEADERS += \
     src/educationalquiz.h \
     src/subtraction.h \
     src/calcul.h \
-    src/gametypefactory.h \
     src/additiongamefactory.h \
     src/subtractiongamefactory.h \
     src/multiplicationgamefactory.h \
@@ -103,7 +102,8 @@ HEADERS += \
     src/language.h \
     src/jsonmanager.h \
     src/mixedgamefactory.h \
-    src/mixededucationalquiz.h
+    src/mixededucationalquiz.h \
+    src/educationalquizfactory.h
 
 RESOURCES += \
     resources.qrc

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="fr_FR">
+<TS version="2.0" language="en">
 <context>
     <name>AboutPage</name>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="14"/>
         <source>About</source>
-        <translation>A propos</translation>
+        <translation>About</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="21"/>
         <source>aboutDescText</source>
-        <translation>L’application Dr Donut est un jeu éducatif destiné aux enfants. Il a pour but de les faire progresser dans des domaines courants, tout en s’amusant !</translation>
+        <translation>Dr Donut is an educative game for childrens. The purpose is to make them progress in common domains, with fun !</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="33"/>
         <source>aboutIUTText</source>
-        <translation>Projet réalisé à l&apos;</translation>
+        <translation>This project was realised at the </translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="33"/>
@@ -24,14 +24,14 @@
         <translation>FRANCE</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="60"/>
-        <source>Developers</source>
-        <translation>Développeurs</translation>
-    </message>
-    <message>
         <location filename="../qml/pages/AboutPage.qml" line="48"/>
         <source>Project Manager</source>
-        <translation>Chef de Projet</translation>
+        <translation>Project Manager</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="60"/>
+        <source>Developers</source>
+        <translation>Developers</translation>
     </message>
 </context>
 <context>
@@ -39,27 +39,27 @@
     <message>
         <location filename="../qml/pages/ChoiceGameModePage.qml" line="17"/>
         <source>Level</source>
-        <translation>Niveau</translation>
+        <translation>Level</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChoiceGameModePage.qml" line="104"/>
         <source>Calculation</source>
-        <translation>Calcul</translation>
+        <translation>Calculation</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChoiceGameModePage.qml" line="166"/>
         <source>Counting</source>
-        <translation>Dénombrement</translation>
+        <translation>Counting</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChoiceGameModePage.qml" line="181"/>
         <source>Color</source>
-        <translation>Couleur</translation>
+        <translation>Color</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChoiceGameModePage.qml" line="196"/>
         <source>Mixed</source>
-        <translation>Mêlé</translation>
+        <translation>Mixed</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChoiceGameModePage.qml" line="210"/>
@@ -69,17 +69,17 @@
     <message>
         <location filename="../qml/pages/ChoiceGameModePage.qml" line="248"/>
         <source>Easy</source>
-        <translation>Facile</translation>
+        <translation>Easy</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChoiceGameModePage.qml" line="249"/>
         <source>Medium</source>
-        <translation>Moyen</translation>
+        <translation>Medium</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChoiceGameModePage.qml" line="250"/>
         <source>Hard</source>
-        <translation>Difficile</translation>
+        <translation>Hard</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChoiceGameModePage.qml" line="251"/>
@@ -92,22 +92,22 @@
     <message>
         <location filename="../qml/pages/CreationProfilePage.qml" line="13"/>
         <source>Accept</source>
-        <translation>Valider</translation>
+        <translation>Accept</translation>
     </message>
     <message>
         <location filename="../qml/pages/CreationProfilePage.qml" line="14"/>
         <source>Cancel</source>
-        <translation>Annuler</translation>
+        <translation>Cancel</translation>
     </message>
     <message>
         <location filename="../qml/pages/CreationProfilePage.qml" line="29"/>
         <source>Name</source>
-        <translation>Nom</translation>
+        <translation>Name</translation>
     </message>
     <message>
         <location filename="../qml/pages/CreationProfilePage.qml" line="30"/>
         <source>Enter your name</source>
-        <translation>Entre votre nom</translation>
+        <translation>Enter your name</translation>
     </message>
 </context>
 <context>
@@ -115,7 +115,7 @@
     <message>
         <location filename="../qml/pages/GameQuizPage.qml" line="44"/>
         <source>Level : </source>
-        <translation>Niveau : </translation>
+        <translation>Level : </translation>
     </message>
 </context>
 <context>
@@ -123,22 +123,22 @@
     <message>
         <location filename="../qml/homepage/Homepage.qml" line="13"/>
         <source>About</source>
-        <translation>A propos</translation>
+        <translation>About</translation>
     </message>
     <message>
         <location filename="../qml/homepage/Homepage.qml" line="18"/>
         <source>Game rules</source>
-        <translation>Règles du jeu</translation>
+        <translation>Game rules</translation>
     </message>
     <message>
         <location filename="../qml/homepage/Homepage.qml" line="77"/>
         <source>Profiles</source>
-        <translation>Profils</translation>
+        <translation>Profiles</translation>
     </message>
     <message>
         <location filename="../qml/homepage/Homepage.qml" line="107"/>
         <source>Play</source>
-        <translation>Jouer</translation>
+        <translation>Play</translation>
     </message>
     <message>
         <location filename="../qml/homepage/Homepage.qml" line="128"/>
@@ -149,51 +149,47 @@
 <context>
     <name>HowToPlay</name>
     <message>
-        <location filename="../qml/pages/HowToPlay.qml" line="19"/>
-        <source>Game rules</source>
-        <translation>Règles du jeu</translation>
-    </message>
-    <message>
         <location filename="../qml/pages/HowToPlay.qml" line="29"/>
         <source>htpIntroText</source>
-        <translation>Ensemble de jeux éducatifs permettant d&apos;apprendre en s&apos;amusant. Afin d&apos;y jouer, choisissez un mode de jeu (Calcul, Couleur, etc. ...), puis votre difficulté*.</translation>
+        <translation>A group of educative games which allows to learn by having fun.To play, choose a game mode (Calculation, Color, etc...), then a difficulty*.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/HowToPlay.qml" line="19"/>
+        <source>Game rules</source>
+        <translation>Game rules</translation>
     </message>
     <message>
         <location filename="../qml/pages/HowToPlay.qml" line="41"/>
         <source>htpExpDifficultiesText</source>
-        <translation>* Difficulté : 4 difficultés sont disponibles : Facile, Moyen, Difficile et Automatique. Automatique se règle en fonction des résultats du joueur pour être le plus adapté possible à son niveau.</translation>
+        <translation>* Difficulty : 4 difficulties are availables : Easy, Medium, Hard and Automatic. Automatic is adjusts according to the results of the player to be the most adapted to his level.</translation>
     </message>
     <message>
         <location filename="../qml/pages/HowToPlay.qml" line="47"/>
         <source>Calculation</source>
-        <translation>Calcul</translation>
+        <translation>Calculation</translation>
     </message>
     <message>
         <location filename="../qml/pages/HowToPlay.qml" line="58"/>
         <source>htpCalculationRulesText</source>
-        <translation>Sélectionnez les opérations sur lesquelles vous souhaitez progresser. Une question sera posée avec un ensemble de propositions de réponses. Appuyez sur la réponse qui vous semble juste. La correction sera affichée. Si vous donnez une bonne réponse vous cumulerez des donuts, si vous en donnez une mauvaise vous en perdrez.</translation>
+        <translation>Select which operations you wish to progress. A question will be asked with a set of proposals. Tap the right answer. The correction will be shown. If you give a right answer you will accumulate donuts, else you will loose some of them.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/HowToPlay.qml" line="75"/>
+        <source>htpFlashcardRulesText</source>
+        <translation>Select the series of flashcard you want. A question will be asked ; once you think you got the answer (or if you don&apos;t know it), touch the screen to show the answer. you will have to self-assess with  the appeared proposals. Choose the one which seems to be the most adapted to you. This game type doesn&apos;t allows you to win donuts.</translation>
     </message>
     <message>
         <location filename="../qml/pages/HowToPlay.qml" line="64"/>
         <source>Flashcard</source>
         <translation>Flashcard</translation>
     </message>
-    <message>
-        <location filename="../qml/pages/HowToPlay.qml" line="75"/>
-        <source>htpFlashcardRulesText</source>
-        <translation>Sélectionnez la série de flashcard que vous souhaitez. Une question sera posée ; une fois que vous pensez avoir la réponse (ou si vous ne trouvez pas), appuyez sur l&apos;écran afin d&apos;afficher la réponse. Vous devrez ensuite vous auto-évaluer avec les propositions apparues. Choisissez celle qui vous semble la plus adaptée à votre cas. En revanche, ce type de jeu ne permet pas de cumuler des donuts.</translation>
-    </message>
 </context>
 <context>
     <name>MainApplication</name>
     <message>
-<<<<<<< HEAD
-        <location filename="../src/mainapplication.cpp" line="259"/>
-=======
         <location filename="../src/mainapplication.cpp" line="257"/>
->>>>>>> 70bbe6cd66d83be8200e6bd58d8370c59a9a68fa
         <source>Default language</source>
-        <translation>Langue par défaut</translation>
+        <translation>Default language</translation>
     </message>
 </context>
 <context>
@@ -201,7 +197,7 @@
     <message>
         <location filename="../qml/pages/OptionPage.qml" line="32"/>
         <source>languageChangedMessage</source>
-        <translation>La langue changera au prochain démarrage de l&apos;application.</translation>
+        <translation>Language will change at the next starting of the application.</translation>
     </message>
     <message>
         <location filename="../qml/pages/OptionPage.qml" line="63"/>
@@ -209,13 +205,9 @@
         <translation>Options</translation>
     </message>
     <message>
-<<<<<<< HEAD
-        <location filename="../qml/pages/OptionPage.qml" line="74"/>
-=======
         <location filename="../qml/pages/OptionPage.qml" line="73"/>
->>>>>>> 70bbe6cd66d83be8200e6bd58d8370c59a9a68fa
         <source>Language</source>
-        <translation>Langue</translation>
+        <translation>Language</translation>
     </message>
 </context>
 <context>
@@ -223,57 +215,57 @@
     <message>
         <location filename="../qml/pages/ProfileManagerPage.qml" line="15"/>
         <source>Players</source>
-        <translation>Joueurs</translation>
+        <translation>Players</translation>
     </message>
     <message>
         <location filename="../qml/pages/ProfileManagerPage.qml" line="19"/>
         <source>No existing players</source>
-        <translation>Aucun joueur existant</translation>
+        <translation>No existing players</translation>
     </message>
     <message>
         <location filename="../qml/pages/ProfileManagerPage.qml" line="20"/>
         <source>Pull down to add</source>
-        <translation>Abaisser pour ajouter</translation>
+        <translation>Pull down to add</translation>
     </message>
     <message>
         <location filename="../qml/pages/ProfileManagerPage.qml" line="36"/>
         <source>Create a new player</source>
-        <translation>Créer un nouveau joueur</translation>
+        <translation>Create a new player</translation>
     </message>
     <message>
         <location filename="../qml/pages/ProfileManagerPage.qml" line="31"/>
         <source>Import a player</source>
-        <translation>Importer un joueur</translation>
+        <translation>Import a player</translation>
     </message>
     <message>
         <location filename="../qml/pages/ProfileManagerPage.qml" line="26"/>
         <source>Export players</source>
-        <translation>Expoter les joueurs</translation>
+        <translation>Export players</translation>
     </message>
     <message>
         <location filename="../qml/pages/ProfileManagerPage.qml" line="54"/>
         <source>Deleting</source>
-        <translation>Suppression</translation>
+        <translation>Deleting</translation>
     </message>
     <message>
         <location filename="../qml/pages/ProfileManagerPage.qml" line="62"/>
         <source>Reinitialization</source>
-        <translation>Réinitialisation</translation>
+        <translation>Reinitialization</translation>
     </message>
     <message>
         <location filename="../qml/pages/ProfileManagerPage.qml" line="81"/>
         <source>Reinitialize</source>
-        <translation>Réinitialiser</translation>
+        <translation>Reinitialize</translation>
     </message>
     <message>
         <location filename="../qml/pages/ProfileManagerPage.qml" line="87"/>
         <source>Delete</source>
-        <translation>Supprimer</translation>
+        <translation>Delete</translation>
     </message>
     <message>
         <location filename="../qml/pages/ProfileManagerPage.qml" line="123"/>
         <source>msgNoProfile</source>
-        <translation>Choisissez un joueur pour jouer.</translation>
+        <translation>Choose a player to play.</translation>
     </message>
 </context>
 <context>
@@ -281,7 +273,7 @@
     <message>
         <location filename="../qml/templatesAnswers/Seizure.qml" line="14"/>
         <source>Enter your answer</source>
-        <translation>Entrer votre réponse</translation>
+        <translation>Enter your answer</translation>
     </message>
 </context>
 </TS>

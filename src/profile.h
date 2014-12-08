@@ -36,7 +36,9 @@ private:
     void setScore(int nbPoints);
 
 signals:
+    /** When the name profile changed */
     void nameChanged();
+    /** When the score changed */
     void scoreChanged();
 
 public slots:

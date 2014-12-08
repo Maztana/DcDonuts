@@ -1,7 +1,7 @@
 #ifndef MULTIPLICATIONGAMEFACTORY_H
 #define MULTIPLICATIONGAMEFACTORY_H
 
-#include "gametypefactory.h"
+#include "educationalquizfactory.h"
 #include "multiplication.h"
 
 class MultiplicationGameFactory : public EducationalQuizFactory

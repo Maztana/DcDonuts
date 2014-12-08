@@ -1,7 +1,7 @@
 #ifndef MIXEDGAMEFACTORY_H
 #define MIXEDGAMEFACTORY_H
 
-#include "gametypefactory.h"
+#include "educationalquizfactory.h"
 #include "mixededucationalquiz.h"
 
 class MixedGameFactory : public EducationalQuizFactory

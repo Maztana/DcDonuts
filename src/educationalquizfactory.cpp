@@ -1,4 +1,4 @@
-#include "gametypefactory.h"
+#include "educationalquizfactory.h"
 #include "ressources.h"
 
 #include "mixedgamefactory.h"
