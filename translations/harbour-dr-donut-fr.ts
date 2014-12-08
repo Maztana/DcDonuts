@@ -187,11 +187,7 @@
 <context>
     <name>MainApplication</name>
     <message>
-<<<<<<< HEAD
         <location filename="../src/mainapplication.cpp" line="259"/>
-=======
-        <location filename="../src/mainapplication.cpp" line="257"/>
->>>>>>> 70bbe6cd66d83be8200e6bd58d8370c59a9a68fa
         <source>Default language</source>
         <translation>Langue par défaut</translation>
     </message>
@@ -209,11 +205,7 @@
         <translation>Options</translation>
     </message>
     <message>
-<<<<<<< HEAD
         <location filename="../qml/pages/OptionPage.qml" line="74"/>
-=======
-        <location filename="../qml/pages/OptionPage.qml" line="73"/>
->>>>>>> 70bbe6cd66d83be8200e6bd58d8370c59a9a68fa
         <source>Language</source>
         <translation>Langue</translation>
     </message>
