@@ -306,6 +306,9 @@ void MainApplication::changeLanguage(QString const & iso)
     Language::setIsoCurrentLanguage(iso);
 }
 
+/** Load all the available flashcards databases.
+ * @brief MainApplication::loadFlashcardsDatabases
+ */
 void MainApplication::loadFlashcardsDatabases()
 {
     QStringList listFilter;

@@ -28,7 +28,7 @@ Page{
             }
 
             MenuItem {
-                text: qsTr("Import a player")
+                text: qsTr("Import players")
                 enabled: false
             }
 

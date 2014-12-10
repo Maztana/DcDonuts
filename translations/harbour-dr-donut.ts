@@ -238,18 +238,14 @@
         <translation>Create a new player</translation>
     </message>
     <message>
+        <location filename="../qml/pages/ProfileManagerPage.qml" line="31"/>
         <source>Import players</source>
-        <translation type="obsolete">Import players</translation>
+        <translation>Import players</translation>
     </message>
     <message>
         <location filename="../qml/pages/ProfileManagerPage.qml" line="26"/>
         <source>Export players</source>
         <translation>Export players</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/ProfileManagerPage.qml" line="31"/>
-        <source>Import a player</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/ProfileManagerPage.qml" line="54"/>
