@@ -15,7 +15,7 @@ class Profile : public QObject
     /** Profile identifiant */
     int m_id;
     /** Profile name */
-    QString m_nom;
+    QString m_name;
     /** Profile score */
     int m_score;
 

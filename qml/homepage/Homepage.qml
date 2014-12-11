@@ -24,6 +24,8 @@ Page{
             id: nameProfile
             text: currentProfile.name
             color: Theme.highlightColor
+            truncationMode: TruncationMode.Fade
+            width: parent.width / 2
             font.family: Theme.fontFamilyHeading
             font.pixelSize: Theme.fontSizeLarge
             anchors{
@@ -37,6 +39,8 @@ Page{
         Label{
             id: scoreProfile
             text: currentProfile.score + " Donut(s)"
+            truncationMode: TruncationMode.Fade
+            width: parent.width / 2
             color: Theme.secondaryHighlightColor
             font.family: Theme.fontFamilyHeading
             font.pixelSize: Theme.fontSizeMedium

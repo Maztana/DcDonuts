@@ -5,8 +5,9 @@ import Sailfish.Silica 1.0
 Item{
     property variant textAnswer
     property bool isTreat : false
-    property string textLabel : "???"
+    property string textLabel : qsTr("Show the answer")
 
+    id: item
     height: parent.height / 3
     width: parent.width
     anchors.fill: parent
@@ -14,10 +15,17 @@ Item{
     Label{
         id: labelFlashcard
         text: textLabel
-        anchors.bottom: evaluationPanel.top
-        font.pixelSize: evaluationPanel.open ? Theme.fontSizeMedium : Theme.fontSizeHuge
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.margins: evaluationPanel.open ? Theme.paddingSmall : parent.parent.height / 4
+        anchors.bottom: evaluationPanel.top
+        anchors.margins: Theme.paddingSmall
+        height: evaluationPanel.open ? Theme.fontSizeHuge : item.height - evaluationPanel.height - Theme.paddingLarge * 5
+        width: item.width - Theme.paddingLarge * 2
+
+        font.pixelSize: Theme.fontSizeLarge
+        fontSizeMode: Text.Fit
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
     }
 
     MouseArea{
@@ -36,7 +44,7 @@ Item{
     DockedPanel {
         id: evaluationPanel
         width: parent.width
-        height: columnButtons.height + Theme.paddingLarge * 2
+        height: columnButtons.height + Theme.paddingLarge
         open: false
         dock: Dock.Bottom
 

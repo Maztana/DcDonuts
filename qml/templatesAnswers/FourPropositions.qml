@@ -57,5 +57,12 @@ Item{
         anchors.horizontalCenter: parent.horizontalCenter
         font.pixelSize: Theme.fontSizeExtraLarge
         text: "Score: "+ currentProfile.score + " Donut(s)"
+
+        height: Theme.fontSizeLarge
+        width: item.width - Theme.paddingLarge * 2
+        fontSizeMode: Text.Fit
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
     }
 }

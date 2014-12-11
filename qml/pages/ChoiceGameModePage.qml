@@ -56,6 +56,7 @@ Page {
                 }
             }
         }
+        backgroundSize: parent.height / 2.8
 
         Drawer {
             id: drawerFlashcard
@@ -88,14 +89,15 @@ Page {
                     onClicked: {
                         //Init name of BDD
                         //gameType.initLevelGame(modelData)
-                        gameType.launchGame()
 
+                        gameType.launchGame()
                         pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
 
                         drawerFlashcard.open = false
                     }
                 }
             }
+            backgroundSize: pageChoiceMode.height / 3
 
             SilicaFlickable {
 
@@ -132,6 +134,13 @@ Page {
                         Label {
                             id: nameProfile
                             text: currentProfile.name
+                            truncationMode: TruncationMode.Fade
+                            width: {
+                                if(text.width > parent.width / 2)
+                                {
+                                    parent.width / 2
+                                }
+                            }
                             font.pixelSize: Theme.fontSizeLarge
                             color: Theme.highlightColor
                             anchors.right: parent.right
@@ -141,6 +150,13 @@ Page {
                         Label{
                             id: scoreProfile
                             text: currentProfile.score + " Donut(s)"
+                            truncationMode: TruncationMode.Fade
+                            width: {
+                                if(text.width > parent.width / 2)
+                                {
+                                    parent.width / 2
+                                }
+                            }
                             color: Theme.secondaryHighlightColor
                             font.family: Theme.fontFamilyHeading
                             font.pixelSize: Theme.fontSizeMedium
@@ -322,7 +338,7 @@ Page {
         listModel.append({"indexLevel": 1, "text": qsTr("Easy"), "image":"qrc:///qml/images/star.png", "isLevelSelectable": contains(gameType.levelsSelectable, 1)})
         listModel.append({"indexLevel": 2, "text": qsTr("Medium"), "image":"qrc:///qml/images/star.png", "isLevelSelectable": contains(gameType.levelsSelectable, 2)})
         listModel.append({"indexLevel": 3, "text": qsTr("Hard"), "image":"qrc:///qml/images/star.png", "isLevelSelectable": contains(gameType.levelsSelectable, 3)})
-        listModel.append({"indexLevel": 4, "text": qsTr("Auto"), "image":"qrc:///qml/images/auto.png", "isLevelSelectable": contains(gameType.levelsSelectable, 4)})
+        //listModel.append({"indexLevel": 4, "text": qsTr("Auto"), "image":"qrc:///qml/images/auto.png", "isLevelSelectable": contains(gameType.levelsSelectable, 4)})
     }
 
     function initGameCalcul()
