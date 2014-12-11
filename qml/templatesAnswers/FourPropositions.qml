@@ -5,6 +5,7 @@ import Sailfish.Silica 1.0
 Item{
     property variant textAnswer
 
+    id: item
     anchors.horizontalCenter: parent.horizontalCenter
     width: line1.width
     height: line1.height + line2.height + scoreLabel.height
