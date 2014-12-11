@@ -40,6 +40,8 @@ public:
     static Profile* s_defaultProfile;
     /** List of all registered languages */
     QList<QObject*> m_languagesModel;
+    /** List of all registered flaschards databases */
+    QStringList m_flashcardsModel;
 
     const QList<int> getAllId() const;
 
@@ -50,6 +52,7 @@ private:
     void loadCurrentProfile();
     void initLanguages();
     void loadLanguages();
+    void loadFlashcardsDatabases();
 
 signals:
 

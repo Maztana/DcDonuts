@@ -62,7 +62,7 @@ Item{
 
                     icon{
                         width: Theme.iconSizeLarge
-                        height: iconButtonForgotten.icon.width * 0.8
+                        height: width
                         source: "../images/forgotten.png"
                     }
 
@@ -89,7 +89,7 @@ Item{
 
                     icon{
                         width: Theme.iconSizeLarge
-                        height: iconButtonInAcquisition.icon.width * 0.8
+                        height: width
                         source: "../images/inAcquisition.png"
                     }
 
@@ -121,7 +121,7 @@ Item{
 
                     icon{
                         width: Theme.iconSizeLarge
-                        height: iconButtonKnown.icon.width * 0.8
+                        height: width
                         source: "../images/known.png"
                     }
 
@@ -148,7 +148,7 @@ Item{
 
                     icon{
                         width: Theme.iconSizeLarge
-                        height: iconButtonPerfect.icon.width * 0.8
+                        height: width
                         source: "../images/perfect.png"
                     }
 

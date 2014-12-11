@@ -72,7 +72,8 @@ OTHER_FILES += \
     rpm/harbour-dr-donut.yaml \
     rpm/harbour-dr-donut.spec \
     harbour-dr-donut.desktop \
-    qml/templatesAnswers/Flashcard.qml
+    qml/templatesAnswers/Flashcard.qml \
+    db/*.db
 
 # to disable building translations every time, comment out the
 # following CONFIG line
@@ -112,3 +113,7 @@ RESOURCES += \
 
 QT += sql
 
+db_flashcard.path = /home/nemo/.local/share/harbour-dr-donut
+db_flashcard.files = db/*.db
+
+INSTALLS += db_flashcard

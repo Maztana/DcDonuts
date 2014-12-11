@@ -15,7 +15,8 @@ Profile* MainApplication::s_defaultProfile = new Profile(-1, "", -1);
  */
 MainApplication::MainApplication(QQuickView *q_view) :
     QObject(0), m_managerBDD(ManagerBdd::getInstance()),
-    m_soundState(JsonManager::getInstance().getSoundState()), m_languagesModel()
+    m_soundState(JsonManager::getInstance().getSoundState()),
+    m_languagesModel(), m_flashcardsModel()
 {
     this->s_view = q_view;
     changeCurrentProfile(s_defaultProfile);
@@ -28,6 +29,7 @@ MainApplication::MainApplication(QQuickView *q_view) :
 
     loadCurrentProfile();
     initLanguages();
+    loadFlashcardsDatabases();
 }
 
 /** Default destructor
@@ -260,7 +262,7 @@ void MainApplication::initLanguages()
 
     loadLanguages();
 
-    MainApplication::s_view->rootContext()->setContextProperty("languagesListModel", QVariant::fromValue(m_languagesModel));
+    s_view->rootContext()->setContextProperty("languagesListModel", QVariant::fromValue(m_languagesModel));
 }
 
 /** Load all the supported languages
@@ -302,4 +304,28 @@ void MainApplication::loadLanguages()
 void MainApplication::changeLanguage(QString const & iso)
 {
     Language::setIsoCurrentLanguage(iso);
+}
+
+/** Load all the available flashcards databases.
+ * @brief MainApplication::loadFlashcardsDatabases
+ */
+void MainApplication::loadFlashcardsDatabases()
+{
+    QStringList listFilter;
+    listFilter << "*.db";
+
+    QDirIterator dirIte("/home/nemo/.local/share/harbour-dr-donut", listFilter);
+
+    QRegExp regexp (".*/harbour-dr-donut/(.*).db$");
+
+    while(dirIte.hasNext())
+    {
+        QString url (dirIte.next());
+        regexp.indexIn(url);
+        m_flashcardsModel.append(regexp.cap(1));
+    }
+
+    m_flashcardsModel.sort(Qt::CaseInsensitive);
+
+    s_view->rootContext()->setContextProperty("flashcardsListModel", QVariant::fromValue(m_flashcardsModel));
 }

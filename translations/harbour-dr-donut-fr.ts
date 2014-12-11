@@ -37,54 +37,59 @@
 <context>
     <name>ChoiceGameModePage</name>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="17"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="18"/>
         <source>Level</source>
-        <translation>Niveau</translation>
+        <translation type="unfinished">Niveau</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="112"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="69"/>
+        <source>Flashcards</source>
+        <translation type="unfinished">Flashcards</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="164"/>
         <source>Calculation</source>
-        <translation>Calcul</translation>
+        <translation type="unfinished">Calcul</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="174"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="226"/>
         <source>Counting</source>
-        <translation>Dénombrement</translation>
+        <translation type="unfinished">Dénombrement</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="189"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="241"/>
         <source>Color</source>
-        <translation>Couleur</translation>
+        <translation type="unfinished">Couleur</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="204"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="256"/>
         <source>Mixed</source>
-        <translation>Mêlé</translation>
+        <translation type="unfinished">Mêlé</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="218"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="270"/>
         <source>Flashcard</source>
-        <translation>Flashcard</translation>
+        <translation type="unfinished">Flashcard</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="265"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="322"/>
         <source>Easy</source>
-        <translation>Facile</translation>
+        <translation type="unfinished">Facile</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="266"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="323"/>
         <source>Medium</source>
-        <translation>Moyen</translation>
+        <translation type="unfinished">Moyen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="267"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="324"/>
         <source>Hard</source>
-        <translation>Difficile</translation>
+        <translation type="unfinished">Difficile</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="268"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="325"/>
         <source>Auto</source>
-        <translation>Auto</translation>
+        <translation type="unfinished">Auto</translation>
     </message>
 </context>
 <context>
@@ -107,7 +112,7 @@
     <message>
         <location filename="../qml/pages/CreationProfilePage.qml" line="30"/>
         <source>Enter your name</source>
-        <translation>Entre votre nom</translation>
+        <translation>Entrez votre nom</translation>
     </message>
 </context>
 <context>
@@ -115,22 +120,22 @@
     <message>
         <location filename="../qml/templatesAnswers/Flashcard.qml" line="71"/>
         <source>Forgotten</source>
-        <translation type="unfinished"></translation>
+        <translation>Oublié</translation>
     </message>
     <message>
         <location filename="../qml/templatesAnswers/Flashcard.qml" line="98"/>
         <source>In acquisition</source>
-        <translation type="unfinished"></translation>
+        <translation>En acquisition</translation>
     </message>
     <message>
         <location filename="../qml/templatesAnswers/Flashcard.qml" line="130"/>
         <source>Known</source>
-        <translation type="unfinished"></translation>
+        <translation>Su</translation>
     </message>
     <message>
         <location filename="../qml/templatesAnswers/Flashcard.qml" line="157"/>
         <source>Perfect</source>
-        <translation type="unfinished"></translation>
+        <translation>Parfait</translation>
     </message>
 </context>
 <context>
@@ -234,7 +239,7 @@
 <context>
     <name>MainApplication</name>
     <message>
-        <location filename="../src/mainapplication.cpp" line="259"/>
+        <location filename="../src/mainapplication.cpp" line="261"/>
         <source>Default language</source>
         <translation>Langue par défaut</translation>
     </message>
@@ -281,8 +286,8 @@
     </message>
     <message>
         <location filename="../qml/pages/ProfileManagerPage.qml" line="31"/>
-        <source>Import a player</source>
-        <translation>Importer un joueur</translation>
+        <source>Import players</source>
+        <translation>Importer des joueurs</translation>
     </message>
     <message>
         <location filename="../qml/pages/ProfileManagerPage.qml" line="26"/>
