@@ -35,61 +35,64 @@
     </message>
 </context>
 <context>
+    <name>ChoiceFlashcardPage</name>
+    <message>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="9"/>
+        <source>Flashcard</source>
+        <translation>Flashcard</translation>
+    </message>
+</context>
+<context>
     <name>ChoiceGameModePage</name>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="18"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="17"/>
         <source>Level</source>
-        <translation type="unfinished">Level</translation>
+        <translation>Level</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="69"/>
-        <source>Flashcards</source>
-        <translation type="unfinished">Flashcards</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="164"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="116"/>
         <source>Calculation</source>
-        <translation type="unfinished">Calculation</translation>
+        <translation>Calculation</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="226"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="178"/>
         <source>Counting</source>
-        <translation type="unfinished">Counting</translation>
+        <translation>Counting</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="241"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="193"/>
         <source>Color</source>
-        <translation type="unfinished">Color</translation>
+        <translation>Color</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="256"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="208"/>
         <source>Mixed</source>
-        <translation type="unfinished">Mixed</translation>
+        <translation>Mixed</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="270"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="222"/>
         <source>Flashcard</source>
-        <translation type="unfinished">Flashcard</translation>
+        <translation>Flashcard</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="322"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="264"/>
         <source>Easy</source>
-        <translation type="unfinished">Easy</translation>
+        <translation>Easy</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="323"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="265"/>
         <source>Medium</source>
-        <translation type="unfinished">Medium</translation>
+        <translation>Medium</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="324"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="266"/>
         <source>Hard</source>
-        <translation type="unfinished">Hard</translation>
+        <translation>Hard</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="325"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="267"/>
         <source>Auto</source>
-        <translation type="unfinished">Auto</translation>
+        <translation>Auto</translation>
     </message>
 </context>
 <context>
@@ -120,22 +123,22 @@
     <message>
         <location filename="../qml/templatesAnswers/Flashcard.qml" line="71"/>
         <source>Forgotten</source>
-        <translation type="unfinished"></translation>
+        <translation>Forgotten</translation>
     </message>
     <message>
         <location filename="../qml/templatesAnswers/Flashcard.qml" line="98"/>
         <source>In acquisition</source>
-        <translation type="unfinished"></translation>
+        <translation>In acquisition</translation>
     </message>
     <message>
         <location filename="../qml/templatesAnswers/Flashcard.qml" line="130"/>
         <source>Known</source>
-        <translation type="unfinished"></translation>
+        <translation>Known</translation>
     </message>
     <message>
         <location filename="../qml/templatesAnswers/Flashcard.qml" line="157"/>
         <source>Perfect</source>
-        <translation type="unfinished"></translation>
+        <translation>Perfect</translation>
     </message>
 </context>
 <context>
@@ -218,22 +221,22 @@
     <message>
         <location filename="../src/level.cpp" line="39"/>
         <source>Easy</source>
-        <translation type="unfinished">Easy</translation>
+        <translation>Easy</translation>
     </message>
     <message>
         <location filename="../src/level.cpp" line="42"/>
         <source>Medium</source>
-        <translation type="unfinished">Medium</translation>
+        <translation>Medium</translation>
     </message>
     <message>
         <location filename="../src/level.cpp" line="45"/>
         <source>Hard</source>
-        <translation type="unfinished">Hard</translation>
+        <translation>Hard</translation>
     </message>
     <message>
         <location filename="../src/level.cpp" line="48"/>
         <source>Auto</source>
-        <translation type="unfinished">Auto</translation>
+        <translation>Auto</translation>
     </message>
 </context>
 <context>
@@ -318,13 +321,6 @@
         <location filename="../qml/pages/ProfileManagerPage.qml" line="123"/>
         <source>msgNoProfile</source>
         <translation>Choose a player to play.</translation>
-    </message>
-</context>
-<context>
-    <name>Seizure</name>
-    <message>
-        <source>Enter your answer</source>
-        <translation type="obsolete">Enter your answer</translation>
     </message>
 </context>
 </TS>

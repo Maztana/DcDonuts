@@ -53,7 +53,6 @@ OTHER_FILES += \
     qml/templatesReponses/TwoProposals.qml \
     qml/templatesReponses/ThreeProposals.qml \
     qml/templatesReponses/FourProposals.qml \
-    qml/templatesReponses/Seizure.qml \
     qml/homepage/Homepage.qml \
     qml/homepage/Title.qml \
     qml/templatesAnswers/ItemAnswer.qml \
@@ -73,7 +72,8 @@ OTHER_FILES += \
     rpm/harbour-dr-donut.spec \
     harbour-dr-donut.desktop \
     qml/templatesAnswers/Flashcard.qml \
-    db/*.db
+    db/*.db \
+    qml/pages/ChoiceFlashcardPage.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line
