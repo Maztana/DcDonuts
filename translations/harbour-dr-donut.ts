@@ -44,7 +44,7 @@
     <message>
         <location filename="../qml/pages/ChoiceGameModePage.qml" line="61"/>
         <source>Flashcards</source>
-        <translation type="unfinished"></translation>
+        <translation>Flashcards</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChoiceGameModePage.qml" line="146"/>
@@ -200,17 +200,16 @@
 <context>
     <name>OptionPage</name>
     <message>
-        <location filename="../qml/pages/OptionPage.qml" line="32"/>
         <source>languageChangedMessage</source>
         <translation>Language will change at the next starting of the application.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OptionPage.qml" line="62"/>
+        <location filename="../qml/pages/OptionPage.qml" line="63"/>
         <source>Options</source>
         <translation>Options</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OptionPage.qml" line="74"/>
+        <location filename="../qml/pages/OptionPage.qml" line="75"/>
         <source>Language</source>
         <translation>Language</translation>
     </message>
