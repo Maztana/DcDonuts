@@ -40,9 +40,17 @@ Page {
                 }
 
                 onClicked: {
-                    educationQuiz.initLevelGame(model.indexLevel)
-                    educationQuiz.launchGame()
-                    pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
+                    gameType.initLevelGame(model.indexLevel)
+                    gameType.launchGame()
+
+                    if(gameType.isQuiz())
+                    {
+                        pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
+                    }
+                    else
+                    {
+                        //not quiz game type
+                    }
                     drawerLevel.open = false
                 }
             }
@@ -196,7 +204,7 @@ Page {
                         text:qsTr("Mixed")
                         onClicked:
                         {
-                            game.initGameType([1,2,3,4]/*,5,6,7]*/)
+                            game.initGameType([1,2,3,4]/*,5,6]*/)
                             drawerLevel.open = true
                         }
                     }
@@ -208,15 +216,13 @@ Page {
 
                     Button{
                         text:qsTr("Flashcard")
-                        enabled:false
                         onClicked:
                         {
                             game.initGameType([7])
-                            drawerLevel.open = true
+                            //No level for this game
                         }
                     }
                 }
-
             }
         }
     }
@@ -228,8 +234,19 @@ Page {
     Connections{
         target: game
         onGameTypeChanged: {
-            educationQuiz.initLevelsSelectable()
-            addItems()
+            if(gameType.isQuiz())
+            {
+                if(!gameType.isFlashcard())
+                {
+                    gameType.initLevelsSelectable()
+                    addItems()
+                }
+                else
+                {
+                    gameType.launchGame()
+                    pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
+                }
+            }
         }
     }
 
@@ -245,10 +262,10 @@ Page {
 
     function addItems() {
         listModel.clear()
-        listModel.append({"indexLevel": 1, "text": qsTr("Easy"), "image":"qrc:///qml/images/star.png", "isLevelSelectable": contains(educationQuiz.levelsSelectable, 1)})
-        listModel.append({"indexLevel": 2, "text": qsTr("Medium"), "image":"qrc:///qml/images/star.png", "isLevelSelectable": contains(educationQuiz.levelsSelectable, 2)})
-        listModel.append({"indexLevel": 3, "text": qsTr("Hard"), "image":"qrc:///qml/images/star.png", "isLevelSelectable": contains(educationQuiz.levelsSelectable, 3)})
-        listModel.append({"indexLevel": 4, "text": qsTr("Auto"), "image":"qrc:///qml/images/auto.png", "isLevelSelectable": contains(educationQuiz.levelsSelectable, 4)})
+        listModel.append({"indexLevel": 1, "text": qsTr("Easy"), "image":"qrc:///qml/images/star.png", "isLevelSelectable": contains(gameType.levelsSelectable, 1)})
+        listModel.append({"indexLevel": 2, "text": qsTr("Medium"), "image":"qrc:///qml/images/star.png", "isLevelSelectable": contains(gameType.levelsSelectable, 2)})
+        listModel.append({"indexLevel": 3, "text": qsTr("Hard"), "image":"qrc:///qml/images/star.png", "isLevelSelectable": contains(gameType.levelsSelectable, 3)})
+        listModel.append({"indexLevel": 4, "text": qsTr("Auto"), "image":"qrc:///qml/images/auto.png", "isLevelSelectable": contains(gameType.levelsSelectable, 4)})
     }
 
     function initGameCalcul()

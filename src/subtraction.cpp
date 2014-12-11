@@ -47,8 +47,8 @@ Question* Subtraction::buildQuestion()
     listValues.append(QString::number(operande1));
     listValues.append(QString::number(operande2));
 
-    Question* maQuestion = new Question(listValues);
-    return maQuestion;
+    Question* myQuestion = new Question(listValues);
+    return myQuestion;
 }
 
 /** Getter of proposition

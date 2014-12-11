@@ -51,21 +51,10 @@ void Calcul::treatmentAnswer(const int indexAnswer)
 
 /** Setter for the number of propositions also level
  * @brief Calcul::setNumberPropositions
- * @param indexLevel the index of the level
  */
-void Calcul::setNumberPropositions(int indexLevel)
+void Calcul::setNumberPropositions()
 {
-    switch (indexLevel) {
-    case 1:
-        m_numberPropositions = 4;
-        break;
-    case 2:
-        m_numberPropositions = 4;
-        break;
-    case 3:
-        m_numberPropositions = 4;
-        break;
-    }
+    m_numberPropositions = 4;
     emit numberPropositionsChanged();
 }
 

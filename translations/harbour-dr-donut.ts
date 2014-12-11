@@ -42,47 +42,47 @@
         <translation>Level</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="104"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="112"/>
         <source>Calculation</source>
         <translation>Calculation</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="166"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="174"/>
         <source>Counting</source>
         <translation>Counting</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="181"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="189"/>
         <source>Color</source>
         <translation>Color</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="196"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="204"/>
         <source>Mixed</source>
         <translation>Mixed</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="210"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="218"/>
         <source>Flashcard</source>
         <translation>Flashcard</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="248"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="265"/>
         <source>Easy</source>
         <translation>Easy</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="249"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="266"/>
         <source>Medium</source>
         <translation>Medium</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="250"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="267"/>
         <source>Hard</source>
         <translation>Hard</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="251"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="268"/>
         <source>Auto</source>
         <translation>Auto</translation>
     </message>
@@ -111,9 +111,33 @@
     </message>
 </context>
 <context>
+    <name>Flashcard</name>
+    <message>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="71"/>
+        <source>Forgotten</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="98"/>
+        <source>In acquisition</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="130"/>
+        <source>Known</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="157"/>
+        <source>Perfect</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>GameQuizPage</name>
     <message>
-        <location filename="../qml/pages/GameQuizPage.qml" line="44"/>
+        <location filename="../qml/pages/GameQuizPage.qml" line="42"/>
+        <location filename="../qml/pages/GameQuizPage.qml" line="51"/>
         <source>Level : </source>
         <translation>Level : </translation>
     </message>
@@ -182,6 +206,29 @@
         <location filename="../qml/pages/HowToPlay.qml" line="64"/>
         <source>Flashcard</source>
         <translation>Flashcard</translation>
+    </message>
+</context>
+<context>
+    <name>Level</name>
+    <message>
+        <location filename="../src/level.cpp" line="39"/>
+        <source>Easy</source>
+        <translation type="unfinished">Easy</translation>
+    </message>
+    <message>
+        <location filename="../src/level.cpp" line="42"/>
+        <source>Medium</source>
+        <translation type="unfinished">Medium</translation>
+    </message>
+    <message>
+        <location filename="../src/level.cpp" line="45"/>
+        <source>Hard</source>
+        <translation type="unfinished">Hard</translation>
+    </message>
+    <message>
+        <location filename="../src/level.cpp" line="48"/>
+        <source>Auto</source>
+        <translation type="unfinished">Auto</translation>
     </message>
 </context>
 <context>
@@ -271,9 +318,8 @@
 <context>
     <name>Seizure</name>
     <message>
-        <location filename="../qml/templatesAnswers/Seizure.qml" line="14"/>
         <source>Enter your answer</source>
-        <translation>Enter your answer</translation>
+        <translation type="obsolete">Enter your answer</translation>
     </message>
 </context>
 </TS>

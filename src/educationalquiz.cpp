@@ -26,6 +26,16 @@ EducationalQuiz::~EducationalQuiz()
     }
 }
 
+/** Method to emit new question
+ * @brief EducationalQuiz::newQuestion
+ */
+void EducationalQuiz::newQuestion()
+{
+    emit propositionsChanged();
+    emit textQuestionChanged();
+    emit questionChanged();
+}
+
 /**  Getter propositions
  * @brief EducationalQuiz::getPropositions
  * @return the m_listPropositions.
@@ -81,19 +91,11 @@ void EducationalQuiz::launchGame()
  */
 void EducationalQuiz::launchQuestion()
 {
+    setNumberPropositions();
+
     setQuestion(this->buildQuestion());
     setListPropositions();
     newQuestion();
-}
-
-/** Method to emit new question
- * @brief EducationalQuiz::newQuestion
- */
-void EducationalQuiz::newQuestion()
-{
-    emit propositionsChanged();
-    emit textQuestionChanged();
-    emit questionChanged();
 }
 
 /** Treat response if right or wrong
@@ -112,12 +114,4 @@ void EducationalQuiz::treatAnswer(const int indexAnswer)
 void EducationalQuiz::answersCorrected()
 {
     emit correctedAnswer(m_listPropositions.indexOf(getResult()) + 1);
-}
-
-/** Method for emit reset answers
- * @brief EducationalQuiz::answersReset
- */
-void EducationalQuiz::answersReset()
-{
-    emit resetAnswer();
 }

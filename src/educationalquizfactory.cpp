@@ -6,7 +6,7 @@
 #include "subtractiongamefactory.h"
 #include "multiplicationgamefactory.h"
 #include "divisiongamefactory.h"
-
+#include "flashcardfactory.h"
 
 
 /** Default constructor
@@ -68,16 +68,15 @@ EducationalQuiz* EducationalQuizFactory::makeGameType(int identifiantGameType)
         ////////////////////////////////////////////////////////////
         /*
       case COUNTING_MODE:
-        gameType = CountingGameFactory::makeSpecificGameType();
+        educationalQuiz = CountingGameFactory::makeSpecificGameType();
         break;
     case COLOR_MODE:
-        gameType = ColorGameFactory::makeSpecificGameType();
-        break;
-    case FLASHCARD_MODE:
-        gameType = FlashcardGameFactory::makeSpecificGameType();
-        break;
-        */
+        educationalQuiz = ColorGameFactory::makeSpecificGameType();
+        break;*/
         //////////////////////////////////////////////////
+    case FLASHCARD_MODE:
+        educationalQuiz = FlashcardFactory::makeSpecificGameType();
+        break;
     }
     return educationalQuiz;
 }

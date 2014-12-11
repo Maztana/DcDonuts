@@ -22,7 +22,7 @@ protected:
     virtual void treatmentAnswer(const int indexAnswer);
 
 private:
-    virtual void setNumberPropositions(int indexLevel);
+    virtual void setNumberPropositions();
     virtual void setLevelsSelectable();
 
 signals:

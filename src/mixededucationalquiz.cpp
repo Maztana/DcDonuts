@@ -8,6 +8,7 @@ MixedEducationalQuiz::MixedEducationalQuiz()
     :EducationalQuiz()
 {
     m_isMixed = true;
+    m_currentGameType = nullptr;
 }
 
 /** Destructor
@@ -108,12 +109,14 @@ void MixedEducationalQuiz::setLevelsSelectable()
 
 /** Setter for the number of propositions also level
  * @brief MixedEducationalQuiz::setNumberPropositions
- * @param indexLevel the index of the level
  */
-void MixedEducationalQuiz::setNumberPropositions(int)
+void MixedEducationalQuiz::setNumberPropositions()
 {
-    m_numberPropositions = m_currentGameType->getNumberPropositions();
-    emit numberPropositionsChanged();
+    if(m_currentGameType != nullptr)
+    {
+        m_numberPropositions = m_currentGameType->getNumberPropositions();
+        emit numberPropositionsChanged();
+    }
 }
 
 /** Treat response for classic quiz (no flascard)
@@ -148,10 +151,8 @@ void MixedEducationalQuiz::launchQuestion()
 {
     m_currentGameType = m_listEducationalQuiz.at(qrand() % (m_listEducationalQuiz.size()));
 
-    setNumberPropositions(m_currentGameType->getLevel().getIndex());
     m_currentGameType->launchQuestion();
     setListPropositions();
-
     newQuestion();
 }
 

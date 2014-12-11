@@ -10,6 +10,13 @@ Question::Question(QList<QString> listValues) :
 {
 }
 
+/** Destructor
+ * @brief Question::~Question
+ */
+Question::~Question()
+{
+}
+
 /** Getter of list values for this questions
  * @brief Question::getValues
  * @return the list of values

@@ -26,14 +26,17 @@ Item {
         MouseArea{
             anchors.fill: parent
             onClicked: {
-                educationQuiz.treatAnswer(indexAnswers)
+                gameType.treatAnswer(indexAnswers)
             }
         }
     }
 
     Connections{
-        target: educationQuiz
-        onQuestionChanged: answer.enabled = true
+        target: gameType
+        onQuestionChanged: {
+            reset()
+            answer.enabled = true
+        }
         onAnswerGiven: answer.enabled = false;
 
         onAnswerRight:{
@@ -80,9 +83,6 @@ Item {
                 answer.opacity = 0.8
             }
         }
-        onResetAnswer:{
-                reset()
-        }
     }
 
     function notSelected()
@@ -101,11 +101,13 @@ Item {
     {
         id: soundRight
         source: "qrc:///qml/sounds/soundRight.wav"
+        volume: 1
     }
 
     SoundEffect
     {
         id: soundWrong
         source: "qrc:///qml/sounds/soundWrong.wav"
+        volume: 1
     }
 }

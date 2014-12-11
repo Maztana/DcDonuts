@@ -12,8 +12,8 @@ class Question : public QObject
 
 public:
     explicit Question(QList<QString> listValues);
+    ~Question();
 
-    const QString getTextQuestion()const;
     const QList<QString> getValues()const;
 
 signals:

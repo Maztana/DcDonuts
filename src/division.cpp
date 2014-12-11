@@ -65,8 +65,8 @@ Question* Division::buildQuestion()
     listValues.append(QString::number(operand1));
     listValues.append(QString::number(operand2));
 
-    Question* maQuestion = new Question(listValues);
-    return maQuestion;
+    Question* myQuestion = new Question(listValues);
+    return myQuestion;
 }
 
 /** Getter of proposition
