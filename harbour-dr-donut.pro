@@ -40,7 +40,9 @@ SOURCES += \
     src/dr-donut.cpp \
     src/educationalquizfactory.cpp \
     src/flashcard.cpp \
-    src/flashcardfactory.cpp
+    src/flashcardfactory.cpp \
+    src/countingmode.cpp \
+    src/countinggamefactory.cpp
 
 OTHER_FILES += \
     translations/*.ts \
@@ -106,7 +108,9 @@ HEADERS += \
     src/mixededucationalquiz.h \
     src/educationalquizfactory.h \
     src/flashcard.h \
-    src/flashcardfactory.h
+    src/flashcardfactory.h \
+    src/countingmode.h \
+    src/countinggamefactory.h
 
 RESOURCES += \
     resources.qrc

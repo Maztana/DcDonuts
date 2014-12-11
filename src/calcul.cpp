@@ -20,17 +20,6 @@ Calcul::~Calcul()
 
 }
 
-/** Roll a dice between nbMin and nbMax
- * @brief Question::rollDice
- * @param nbMax number max
- * @param nbMin number min
- * @return a random number between nbMin and nbMax
- */
-int Calcul::rollDice(int nbMin, int nbMax)const
-{
-    return qrand() % (((nbMax) + 1) - nbMin) + nbMin;
-}
-
 /** Treat response for classic quiz (no flascard)
  * @brief Calcul::treatmentAnswer
  * @param indexAnswer the index of answer

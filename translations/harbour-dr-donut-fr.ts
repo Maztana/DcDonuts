@@ -64,38 +64,46 @@
         <translation>Dénombrement</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="209"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="208"/>
         <source>Color</source>
         <translation>Couleur</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="224"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="223"/>
         <source>Mixed</source>
         <translation>Mêlé</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="238"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="237"/>
         <source>Flashcard</source>
         <translation>Flashcard</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="280"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="279"/>
         <source>Easy</source>
         <translation>Facile</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="281"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="280"/>
         <source>Medium</source>
         <translation>Moyen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="282"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="281"/>
         <source>Hard</source>
         <translation>Difficile</translation>
     </message>
     <message>
         <source>Auto</source>
         <translation type="obsolete">Auto</translation>
+    </message>
+</context>
+<context>
+    <name>CountingMode</name>
+    <message>
+        <location filename="../src/countingmode.cpp" line="88"/>
+        <source>Combien y a t&apos;il de donuts?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -250,7 +258,7 @@
 <context>
     <name>MainApplication</name>
     <message>
-        <location filename="../src/mainapplication.cpp" line="261"/>
+        <location filename="../src/mainapplication.cpp" line="260"/>
         <source>Default language</source>
         <translation>Langue par défaut</translation>
     </message>

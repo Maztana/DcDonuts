@@ -192,7 +192,6 @@ Page {
 
                     Button{
                         text:qsTr("Counting")
-                        enabled:false
                         onClicked:
                         {
                             game.initGameType([5])
@@ -224,7 +223,7 @@ Page {
                         text:qsTr("Mixed")
                         onClicked:
                         {
-                            game.initGameType([1,2,3,4]/*,5,6]*/)
+                            game.initGameType([1,2,3,4,5]/*,6]*/)
                             drawerLevel.open = true
                         }
                     }

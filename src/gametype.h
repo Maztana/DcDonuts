@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include "level.h"
+#include "ressources.h"
 
 class GameType : public QObject
 {

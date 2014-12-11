@@ -29,7 +29,7 @@ public:
      * @brief Flashcard::getTextQuestion
      * @return the text of question
      */
-    virtual inline const QString getTextQuestion()const{return m_textQuestion;}
+    virtual inline const QString makeTextQuestion(QList<QString>)const{return m_textQuestion;}///////faire le chargement en bdd de la question
 
 private:
     /** Text question dowload */

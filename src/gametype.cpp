@@ -1,5 +1,4 @@
 #include "gametype.h"
-#include "ressources.h"
 
 /** Constructor complete of game type
  * @brief GameType::GameType

@@ -1,6 +1,5 @@
 #include "mainapplication.h"
 #include "educationalquiz.h"
-#include "ressources.h"
 #include <QtQml>
 #include "jsonmanager.h"
 #include "language.h"
