@@ -20,17 +20,6 @@ Calcul::~Calcul()
 
 }
 
-/** Roll a dice between nbMin and nbMax
- * @brief Question::rollDice
- * @param nbMax number max
- * @param nbMin number min
- * @return a random number between nbMin and nbMax
- */
-int Calcul::rollDice(int nbMin, int nbMax)const
-{
-    return qrand() % (((nbMax) + 1) - nbMin) + nbMin;
-}
-
 /** Treat response for classic quiz (no flascard)
  * @brief Calcul::treatmentAnswer
  * @param indexAnswer the index of answer
@@ -51,21 +40,10 @@ void Calcul::treatmentAnswer(const int indexAnswer)
 
 /** Setter for the number of propositions also level
  * @brief Calcul::setNumberPropositions
- * @param indexLevel the index of the level
  */
-void Calcul::setNumberPropositions(int indexLevel)
+void Calcul::setNumberPropositions()
 {
-    switch (indexLevel) {
-    case 1:
-        m_numberPropositions = 4;
-        break;
-    case 2:
-        m_numberPropositions = 4;
-        break;
-    case 3:
-        m_numberPropositions = 4;
-        break;
-    }
+    m_numberPropositions = 4;
     emit numberPropositionsChanged();
 }
 

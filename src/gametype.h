@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include "level.h"
+#include "ressources.h"
 
 class GameType : public QObject
 {
@@ -23,11 +24,6 @@ public:
     const Level& getLevel();
     int getNumberPropositions()const;
     inline QList<int>& getLevelsSelectable(){return m_listLevelsSelectable;}
-    /** If the game is a quiz
-     * @brief isQuiz
-     * @return True if is a quiz, else return false
-     */
-    virtual inline bool isQuiz()const{return false;}
 
 protected:
     /** the value of incremental score*/
@@ -39,7 +35,7 @@ protected:
     /** List level selectable */
     QList<int> m_listLevelsSelectable;
 
-    virtual void setNumberPropositions(int indexLevel) = 0;
+    virtual void setNumberPropositions() = 0;
 
 private:
     void setLevelGame(Level *levelGame);
@@ -58,9 +54,15 @@ signals:
     void levelsSelectableChanged();
 
 public slots:
+    /** If the game is a quiz
+     * @brief isQuiz
+     * @return True if is a quiz, else return false
+     */
+    virtual inline bool isQuiz()const{return false;}
     virtual void launchGame() = 0;
     void initLevelsSelectable();
     virtual void initLevelGame(int indexLevel);
+    virtual void initDB(QString){}
 
 };
 

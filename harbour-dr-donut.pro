@@ -38,7 +38,11 @@ SOURCES += \
     src/mixedgamefactory.cpp \
     src/mixededucationalquiz.cpp \
     src/dr-donut.cpp \
-    src/educationalquizfactory.cpp
+    src/educationalquizfactory.cpp \
+    src/flashcard.cpp \
+    src/flashcardfactory.cpp \
+    src/countingmode.cpp \
+    src/countinggamefactory.cpp
 
 OTHER_FILES += \
     translations/*.ts \
@@ -51,16 +55,12 @@ OTHER_FILES += \
     qml/templatesReponses/TwoProposals.qml \
     qml/templatesReponses/ThreeProposals.qml \
     qml/templatesReponses/FourProposals.qml \
-    qml/templatesReponses/Seizure.qml \
     qml/homepage/Homepage.qml \
     qml/homepage/Title.qml \
-    qml/templatesAnswers/Seizure.qml \
     qml/templatesAnswers/ItemAnswer.qml \
     qml/pages/ProfileManagerPage.qml \
     qml/pages/ChoiceGameModePage.qml \
     qml/templatesAnswers/FourPropositions.qml \
-    qml/templatesAnswers/ThreePropositions.qml \
-    qml/templatesAnswers/TwoPropositions.qml \
     qml/pages/CreationProfilePage.qml \
     qml/pages/ItemProfile.qml \
     qml/pages/AboutPage.qml \
@@ -73,7 +73,9 @@ OTHER_FILES += \
     rpm/harbour-dr-donut.yaml \
     rpm/harbour-dr-donut.spec \
     harbour-dr-donut.desktop \
-    db/*.db
+    qml/templatesAnswers/Flashcard.qml \
+    db/*.db \
+    qml/pages/ChoiceFlashcardPage.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line
@@ -104,7 +106,11 @@ HEADERS += \
     src/jsonmanager.h \
     src/mixedgamefactory.h \
     src/mixededucationalquiz.h \
-    src/educationalquizfactory.h
+    src/educationalquizfactory.h \
+    src/flashcard.h \
+    src/flashcardfactory.h \
+    src/countingmode.h \
+    src/countinggamefactory.h
 
 RESOURCES += \
     resources.qrc

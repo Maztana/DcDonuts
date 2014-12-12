@@ -2,6 +2,7 @@
 #define MANAGERBDD_H
 #include "profile.h"
 #include <QSqlDatabase>
+#include "question.h"
 
 class ManagerBdd
 {
@@ -11,15 +12,18 @@ private:
     QSqlDatabase m_db;
     /** ManagerBdd instance */
     static ManagerBdd s_instance;
+    /** DataBase flashcard */
+    QSqlDatabase m_dbFlashcard;
 
     explicit ManagerBdd();
+    bool openDBFlashcard(QString fileName);
+    void closeDBFlashcard();
 
 public:
     ~ManagerBdd();
     static ManagerBdd& getInstance();
 
     bool openDB();
-    bool deleteDB();
     void closeDB();
 
 
@@ -31,9 +35,7 @@ public:
 
     QList<Profile*> selectAllProfiles();
 
-    //////////////////////////////////////////
-    bool openDBFlashcard(QString nomfichier);
-    /////////////////////////////////////////
+    QList<Question*> loadDbFlashcard(QString fileName);
 };
 
 #endif // MANAGERBDD_H

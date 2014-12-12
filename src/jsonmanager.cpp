@@ -4,6 +4,7 @@
 #include <QTextStream>
 #include <QJsonObject>
 #include <QDir>
+#include "ressources.h"
 
 //Variable statique
 JsonManager JsonManager::s_instance= JsonManager();
@@ -29,9 +30,7 @@ JsonManager::~JsonManager()
  */
 void JsonManager::loadConfig()
 {
-    QString path(QDir::home().path());
-    path.append(QDir::separator()).append(".config");
-    path.append(QDir::separator()).append("harbour-dr-donut");
+    QString path(PATH_CONFIG);
     path.append(QDir::separator()).append("config.json");
     path = QDir::toNativeSeparators(path);
 
@@ -75,9 +74,7 @@ void JsonManager::saveConfig(int idProfile,QString language, bool soundState)
     config["language"] = language;
     config["sound"] = soundState;
 
-    QString path(QDir::home().path());
-    path.append(QDir::separator()).append(".config");
-    path.append(QDir::separator()).append("harbour-dr-donut");
+    QString path(PATH_CONFIG);
     path = QDir::toNativeSeparators(path);
 
     QDir dir;

@@ -20,13 +20,14 @@ public:
 
     virtual const QString getProposition()const;
     virtual const QString getResult()const;
-    virtual const QString getTextQuestion()const;
+    virtual const QString getTextQuestion(){return m_currentGameType->getTextQuestion();}
+    virtual const QString makeTextQuestion(QList<QString> values)const;
 
 
 protected:
     virtual void setListPropositions();
     virtual void setLevelsSelectable();
-    virtual void setNumberPropositions(int);
+    virtual void setNumberPropositions();
 
 private:
     virtual void treatmentAnswer(const int indexAnswer);

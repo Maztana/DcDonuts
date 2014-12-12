@@ -5,29 +5,22 @@ import "../templatesAnswers"
 Page {
     id: pageJeu
 
-
-    function loadAnswers(nbPropositions) {
-
-        var obj;
-
-        switch(nbPropositions) {
-
-        case 2:
-            obj ='import "../templatesAnswers"; import Sailfish.Silica 1.0; TwoPropositions {id: answers; anchors.bottom: scoreLabel.top; anchors.bottomMargin: Theme.paddingLarge * 3; textAnswer: educationQuiz.propositions}';
-            break;
-        case 3:
-            obj ='import "../templatesAnswers"; import Sailfish.Silica 1.0; ThreePropositions {id: answers; anchors.bottom: scoreLabel.top; anchors.bottomMargin: Theme.paddingLarge * 3; textAnswer: educationQuiz.propositions}';
-            break;
-        case 4:
-            obj ='import "../templatesAnswers"; import Sailfish.Silica 1.0; FourPropositions {id: answers; anchors.bottom: scoreLabel.top; anchors.bottomMargin: Theme.paddingLarge * 3; textAnswer: educationQuiz.propositions}';
-            break;
-
+    function loadAnswers(nbPropositions)
+    {
+        if(gameType.isQuiz())
+        {
+            var obj
+            if(gameType.isFlashcard())
+            {
+                obj = 'import "../templatesAnswers"; import Sailfish.Silica 1.0; Flashcard {id: answers; anchors.bottom: parent.bottom; textAnswer: gameType.propositions}';
+            }
+            else
+            {
+                obj = 'import "../templatesAnswers"; import Sailfish.Silica 1.0; FourPropositions {id: answers; anchors.bottom: parent.bottom; textAnswer: gameType.propositions}';
+            }
+            Qt.createQmlObject(obj, pageJeu, "dynamicAnswers");
         }
-
-        Qt.createQmlObject(obj,scoreLabel, "dynamicAnswers");
-
     }
-
 
     SilicaFlickable {
         anchors.fill: parent
@@ -41,7 +34,23 @@ Page {
 
         Label {
             id: level
-            text: qsTr("Level : ") + educationQuiz.level
+            text: {
+                if(gameType.isQuiz())
+                {
+                    if(!gameType.isFlashcard())
+                    {
+                        qsTr("Level : ") + gameType.level
+                    }
+                    else
+                    {
+                        ""
+                    }
+                }
+                else
+                {
+                    qsTr("Level : ") + gameType.level
+                }
+            }
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.topMargin: Theme.paddingLarge * 4
             anchors.top: parent.top
@@ -63,10 +72,16 @@ Page {
 
             Text {
                 id: descriptionQuestion
-                text: educationQuiz.textQuestion + " ?"
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.verticalCenter : parent.verticalCenter
+                text: gameType.textQuestion + " ?"
+                anchors.centerIn: parent
+                height: rectangleQuestion.height - Theme.paddingLarge * 2
+                width: rectangleQuestion.width - Theme.paddingLarge * 2
+
                 font.pixelSize: Theme.fontSizeHuge
+                fontSizeMode: Text.Fit
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 font.bold: true
             }
         }
@@ -162,7 +177,7 @@ Page {
                     SequentialAnimation{
                         NumberAnimation{ property: "rotation"; duration: 1200; easing.type: Easing.OutQuad  }
                         ScriptAction{
-                            script:{educationQuiz.answersCorrected()}
+                            script:{gameType.answersCorrected()}
                         }
                     }
                 },
@@ -172,7 +187,7 @@ Page {
                     SequentialAnimation{
                         NumberAnimation{ property: "rotation"; duration: 1200; easing.type: Easing.OutQuad  }
                         ScriptAction{
-                            script:{educationQuiz.answersReset()}
+                            script:{imgreponse.state = "default"}
                         }
                     }
                 },
@@ -182,7 +197,7 @@ Page {
                     SequentialAnimation{
                         NumberAnimation{ property: "rotation"; duration: 1200; easing.type: Easing.OutQuad  }
                         ScriptAction{
-                            script:{educationQuiz.answersReset()}
+                            script:{imgreponse.state = "default"}
                         }
                     }
                 },
@@ -191,7 +206,7 @@ Page {
                     to: "default"
                     SequentialAnimation{
                         ScriptAction{
-                            script:{educationQuiz.launchQuestion()}
+                            script:{gameType.launchQuestion()}
                         }
                     }
                 }
@@ -199,29 +214,18 @@ Page {
         }
         /*----------------------------------------------------------------------------------------------------*/
 
-
-        /*----------------------- Score -----------------------*/
-        Label{
-            id: scoreLabel
-            anchors.bottom: parent.bottom
-            anchors.margins: Theme.paddingLarge
-            anchors.horizontalCenter: parent.horizontalCenter
-            font.pixelSize: Theme.fontSizeExtraLarge
-            text: "Score: "+ currentProfile.score + " Donut(s)"
-        }
-
-
         /*------------------- Réponses --------------------*/
-        Component.onCompleted: loadAnswers(educationQuiz.numberPropositions);
+        Component.onCompleted: {
+            loadAnswers(gameType.numberPropositions);
+        }
         /*-------------------------------------------------*/
     }
 
     Connections{
-        target: educationQuiz
+        target: gameType
         onAnswerRight: imgreponse.state = "right"
         onAnswerWrong: imgreponse.state = "wrong"
         onCorrectedAnswer: imgreponse.state = "right"
-        onResetAnswer: imgreponse.state = "default"
     }
 }
 

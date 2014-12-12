@@ -40,224 +40,207 @@ Page {
                 }
 
                 onClicked: {
-                    educationQuiz.initLevelGame(model.indexLevel)
-                    educationQuiz.launchGame()
-                    pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
+                    gameType.initLevelGame(model.indexLevel)
+                    gameType.launchGame()
+
+                    if(gameType.isQuiz())
+                    {
+                        pageStack.push(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
+                    }
+                    else
+                    {
+                        //not quiz game type
+                    }
                     drawerLevel.open = false
                 }
             }
         }
+        backgroundSize: parent.height / 2.8
 
-        Drawer {
-            id: drawerFlashcard
+        SilicaFlickable {
 
             anchors.fill: parent
-            dock: Dock.Bottom
+            contentHeight: columnGamesMode.height
+            contentWidth: parent.width
 
-            background: SilicaListView {
-                anchors.fill: parent
-                model: flashcardsListModel
+            VerticalScrollDecorator {}
 
-                header: PageHeader { title: qsTr("Flashcards") }
+            MouseArea {
+                enabled: drawerLevel.open
+                z:100
 
-                VerticalScrollDecorator {}
-
-                delegate: ListItem {
-                    id: flashcardListItem
-                    Label
-                    {
-                        text: modelData
-                        anchors.verticalCenter: parent.verticalCenter
-                    }
-
-                    anchors
-                    {
-                        left: parent.left
-                        right: parent.right
-                        margins: Theme.paddingLarge
-                    }
+                anchors.fill: columnGamesMode
+                onClicked: {
+                    drawerLevel.open = false
                 }
             }
 
-            SilicaFlickable {
+            Column {
+                id: columnGamesMode
+                spacing: Theme.paddingLarge * 2
+                width: parent.width
+                enabled: !drawerLevel.opened
 
-                anchors.fill: parent
-                contentHeight: columnGamesMode.height
-                contentWidth: parent.width
-
-                VerticalScrollDecorator {}
-
-                MouseArea {
-                    enabled: isDrawerOpen()
-                    z:100
-
-                    anchors.fill: columnGamesMode
-                    onClicked: {
-                        if(drawerLevel.open)
-                        {
-                            drawerLevel.open = false
+                PageHeader {
+                    Label {
+                        id: nameProfile
+                        text: currentProfile.name
+                        truncationMode: TruncationMode.Fade
+                        width: {
+                            if(text.width > parent.width / 2)
+                            {
+                                parent.width / 2
+                            }
                         }
-                        if(drawerFlashcard.open)
-                        {
-                            drawerFlashcard.open = false
+                        font.pixelSize: Theme.fontSizeLarge
+                        color: Theme.highlightColor
+                        anchors.right: parent.right
+                        anchors.top: parent.top
+                        anchors.margins: Theme.paddingLarge
+                    }
+
+                    Label{
+                        id: scoreProfile
+                        text: currentProfile.score + " Donut(s)"
+                        truncationMode: TruncationMode.Fade
+                        width: {
+                            if(text.width > parent.width / 2)
+                            {
+                                parent.width / 2
+                            }
+                        }
+                        color: Theme.secondaryHighlightColor
+                        font.family: Theme.fontFamilyHeading
+                        font.pixelSize: Theme.fontSizeMedium
+                        anchors{
+                            top: nameProfile.bottom
+                            right: nameProfile.right
                         }
                     }
                 }
 
-                Column {
-                    id: columnGamesMode
-                    spacing: Theme.paddingLarge * 2
-                    width: parent.width
-                    enabled: !drawerLevel.opened
+                Row {
+                    id: lineCalcul
+                    anchors.horizontalCenter: parent.horizontalCenter
 
-                    PageHeader {
-                        Label {
-                            id: nameProfile
-                            text: currentProfile.name
-                            font.pixelSize: Theme.fontSizeLarge
-                            color: Theme.highlightColor
-                            anchors.right: parent.right
-                            anchors.top: parent.top
-                            anchors.margins: Theme.paddingLarge
-                        }
-                        Label{
-                            id: scoreProfile
-                            text: currentProfile.score + " Donut(s)"
-                            color: Theme.secondaryHighlightColor
-                            font.family: Theme.fontFamilyHeading
-                            font.pixelSize: Theme.fontSizeMedium
-                            anchors{
-                                top: nameProfile.bottom
-                                right: nameProfile.right
-                            }
-                        }
-                    }
-
-                    Row {
-                        id: lineCalcul
-                        anchors.horizontalCenter: parent.horizontalCenter
-
-                        Item{
-                            width: btCalcul.width
-                            height: btCalcul.height + (rowCalculOperations.height / 2)
-
-                            Button{
-                                id: btCalcul
-                                text:qsTr("Calculation")
-                                z: 100
-                                onClicked: {
-                                    if(initGameCalcul())
-                                    {
-                                        drawerLevel.open = true
-                                    }
-                                }
-                            }
-
-                            Rectangle{
-                                id:rectangleBackground
-                                color:Theme.secondaryColor
-                                opacity: 0.15
-                                height: rowCalculOperations.height - 30
-                                width: rowCalculOperations.width
-                                anchors.top: btCalcul.bottom
-                                anchors.topMargin: -Theme.paddingMedium
-                                anchors.horizontalCenter: parent.horizontalCenter
-                                radius: 20
-                            }
-
-                            Row
-                            {
-                                id: rowCalculOperations
-                                anchors.bottom: rectangleBackground.bottom
-                                anchors.horizontalCenter: parent.horizontalCenter
-                                anchors.bottomMargin: Theme.paddingSmall
-
-                                Switch{
-                                    id: switchSignPlus
-                                    icon.source: "qrc:///qml/images/signePlus.png"
-                                    width:60
-                                    checked: true
-                                }
-
-                                Switch{
-                                    id: switchSignMoins
-                                    icon.source: "qrc:///qml/images/signeMoins.png"
-                                    width:60
-                                }
-
-                                Switch{
-                                    id: switchSignMult
-                                    icon.source: "qrc:///qml/images/signeMult.png"
-                                    width:60
-                                }
-
-                                Switch{
-                                    id: switchSignDiv
-                                    icon.source: "qrc:///qml/images/signeDiv.png"
-                                    width:60
-                                }
-                            }
-                        }
-                    }
-
-                    Row {
-                        id: lineCounting
-                        anchors.horizontalCenter: parent.horizontalCenter
+                    Item{
+                        width: btCalcul.width
+                        height: btCalcul.height + (rowCalculOperations.height / 2)
 
                         Button{
-                            text:qsTr("Counting")
-                            enabled:false
-                            onClicked:
-                            {
-                                game.initGameType([5])
-                                drawerLevel.open = true
+                            id: btCalcul
+                            text:qsTr("Calculation")
+                            z: 100
+                            onClicked: {
+                                if(initGameCalcul())
+                                {
+                                    drawerLevel.open = true
+                                }
+                            }
+                        }
+
+                        Rectangle{
+                            id:rectangleBackground
+                            color:Theme.secondaryColor
+                            opacity: 0.15
+                            height: rowCalculOperations.height - 30
+                            width: rowCalculOperations.width
+                            anchors.top: btCalcul.bottom
+                            anchors.topMargin: -Theme.paddingMedium
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            radius: 20
+                        }
+
+                        Row
+                        {
+                            id: rowCalculOperations
+                            anchors.bottom: rectangleBackground.bottom
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.bottomMargin: Theme.paddingSmall
+
+                            Switch{
+                                id: switchSignPlus
+                                icon.source: "qrc:///qml/images/signePlus.png"
+                                width:60
+                                checked: true
+                            }
+
+                            Switch{
+                                id: switchSignMoins
+                                icon.source: "qrc:///qml/images/signeMoins.png"
+                                width:60
+                            }
+
+                            Switch{
+                                id: switchSignMult
+                                icon.source: "qrc:///qml/images/signeMult.png"
+                                width:60
+                            }
+
+                            Switch{
+                                id: switchSignDiv
+                                icon.source: "qrc:///qml/images/signeDiv.png"
+                                width:60
                             }
                         }
                     }
+                }
 
-                    Row {
-                        id: lineColor
-                        anchors.horizontalCenter: parent.horizontalCenter
+                Row {
+                    id: lineCounting
+                    anchors.horizontalCenter: parent.horizontalCenter
 
-                        Button{
-                            text:qsTr("Color")
-                            enabled:false
-                            onClicked:
-                            {
-                                game.initGameType([6])
-                                drawerLevel.open = true
-                            }
+                    Button{
+                        text:qsTr("Counting")
+                        onClicked:
+                        {
+                            game.initGameType([5])
+                            drawerLevel.open = true
                         }
                     }
+                }
 
-                    Row {
-                        id: lineMele
-                        anchors.horizontalCenter: parent.horizontalCenter
+                Row {
+                    id: lineColor
+                    anchors.horizontalCenter: parent.horizontalCenter
 
-                        Button{
-                            text:qsTr("Mixed")
-                            onClicked:
-                            {
-                                game.initGameType([1,2,3,4]/*,5,6,7]*/)
-                                drawerLevel.open = true
-                            }
+                    Button{
+                        text:qsTr("Color")
+                        enabled:false
+                        onClicked:
+                        {
+                            game.initGameType([6])
+                            drawerLevel.open = true
                         }
                     }
+                }
 
-                    Row {
-                        id: lineFlashcard
-                        anchors.horizontalCenter: parent.horizontalCenter
+                Row {
+                    id: lineMele
+                    anchors.horizontalCenter: parent.horizontalCenter
 
-                        Button{
-                            text:qsTr("Flashcard")
-                            onClicked:
-                            {
-                                //                                game.initGameType([7])
-                                drawerFlashcard.open = true
-                            }
+                    Button{
+                        text:qsTr("Mixed")
+                        onClicked:
+                        {
+                            game.initGameType([1,2,3,4,5]/*,6]*/)
+                            drawerLevel.open = true
                         }
                     }
+                }
 
+                Row {
+                    id: lineFlashcard
+                    anchors.horizontalCenter: parent.horizontalCenter
+
+                    Button{
+                        text:qsTr("Flashcard")
+                        onClicked:
+                        {
+                            game.initGameType([7])
+                            pageStack.push(Qt.resolvedUrl("../pages/ChoiceFlashcardPage.qml"))
+                        }
+                    }
                 }
             }
         }
@@ -270,18 +253,15 @@ Page {
     Connections{
         target: game
         onGameTypeChanged: {
-            educationQuiz.initLevelsSelectable()
-            addItems()
+            if(gameType.isQuiz())
+            {
+                if(!gameType.isFlashcard())
+                {
+                    gameType.initLevelsSelectable()
+                    addItems()
+                }
+            }
         }
-    }
-
-    function isDrawerOpen()
-    {
-        if(drawerLevel.open || drawerFlashcard.open)
-        {
-            return true;
-        }
-        return false;
     }
 
     function contains(list, elementSearched) {
@@ -296,10 +276,10 @@ Page {
 
     function addItems() {
         listModel.clear()
-        listModel.append({"indexLevel": 1, "text": qsTr("Easy"), "image":"qrc:///qml/images/star.png", "isLevelSelectable": contains(educationQuiz.levelsSelectable, 1)})
-        listModel.append({"indexLevel": 2, "text": qsTr("Medium"), "image":"qrc:///qml/images/star.png", "isLevelSelectable": contains(educationQuiz.levelsSelectable, 2)})
-        listModel.append({"indexLevel": 3, "text": qsTr("Hard"), "image":"qrc:///qml/images/star.png", "isLevelSelectable": contains(educationQuiz.levelsSelectable, 3)})
-        listModel.append({"indexLevel": 4, "text": qsTr("Auto"), "image":"qrc:///qml/images/auto.png", "isLevelSelectable": contains(educationQuiz.levelsSelectable, 4)})
+        listModel.append({"indexLevel": 1, "text": qsTr("Easy"), "image":"qrc:///qml/images/star.png", "isLevelSelectable": contains(gameType.levelsSelectable, 1)})
+        listModel.append({"indexLevel": 2, "text": qsTr("Medium"), "image":"qrc:///qml/images/star.png", "isLevelSelectable": contains(gameType.levelsSelectable, 2)})
+        listModel.append({"indexLevel": 3, "text": qsTr("Hard"), "image":"qrc:///qml/images/star.png", "isLevelSelectable": contains(gameType.levelsSelectable, 3)})
+        //listModel.append({"indexLevel": 4, "text": qsTr("Auto"), "image":"qrc:///qml/images/auto.png", "isLevelSelectable": contains(gameType.levelsSelectable, 4)})
     }
 
     function initGameCalcul()

@@ -1,5 +1,4 @@
 #include "division.h"
-#include "ressources.h"
 
 /** Constructor
  * @brief Division::Division
@@ -65,8 +64,8 @@ Question* Division::buildQuestion()
     listValues.append(QString::number(operand1));
     listValues.append(QString::number(operand2));
 
-    Question* maQuestion = new Question(listValues);
-    return maQuestion;
+    Question* myQuestion = new Question(listValues, makeTextQuestion(listValues));
+    return myQuestion;
 }
 
 /** Getter of proposition
@@ -124,12 +123,12 @@ const QString Division::getResult()const
  * @brief Addition::getTextQuestion
  * @return the text of question
  */
-const QString Division::getTextQuestion()const
+const QString Division::makeTextQuestion(QList<QString> values)const
 {
     QString question;
     bool isFirstValue = true;
 
-    for(QString value : m_currentQuestion->getValues())
+    for(QString value : values)
     {
         if(isFirstValue)
         {

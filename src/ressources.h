@@ -3,9 +3,14 @@
 
 #include <QString>
 #include <QTextStream>
+#include <QDir>
 
 // Data base
-const QString PATH_DATA_BASE = "drdonut.db.sqlite";
+const QString NAME_DATA_BASE = "drdonut.db.sqlite";
+const QString PATH_CONFIG = QDir::home().path() + "/.config/harbour-dr-donut";
+const QString PATH_LOCAL = QDir::home().path() + "/.local/share/harbour-dr-donut";
+
+
 
 
 // Game Mode
@@ -32,5 +37,6 @@ const int INCREMENTAL_ADDITION_SCORE = 1;
 const int INCREMENTAL_SUBTRACTION_SCORE = 1;
 const int INCREMENTAL_MULTIPLICATION_SCORE = 2;
 const int INCREMENTAL_DIVISION_SCORE = 2;
+const int INCREMENTAL_COUNTING_SCORE = 3;
 
 #endif // RESSOURCES_H

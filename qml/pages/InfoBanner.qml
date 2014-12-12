@@ -15,7 +15,7 @@ DockedPanel {
         x: Theme.paddingSmall
         y: Theme.paddingSmall
 
-        width: parent.width - 2*Theme.paddingSmall
+        width: parent.width - Theme.paddingSmall * 2
         height: Screen.height/4
 
         color: 'black';
@@ -24,14 +24,16 @@ DockedPanel {
         Label {
             id: infoLabel
             color: Theme.highlightColor
-            font.family: Theme.fontFamily
-            font.pixelSize: Theme.fontSizeLarge
-            fontSizeMode: Text.Fit
-            width: parent.width - 2*Screen.width/6
-            height: parent.height - 2*Screen.width/6
-            wrapMode: Text.WrapAtWordBoundaryOrAnywhere
             anchors.centerIn: parent
+            width: parent.width - Theme.paddingLarge * 4
+            height: parent.height / 2
+
+            font.family: Theme.fontFamily
+            font.pixelSize: Theme.fontSizeHuge
+            fontSizeMode: Text.Fit
+            wrapMode: Text.WrapAtWordBoundaryOrAnywhere
             horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
         }
     }
 

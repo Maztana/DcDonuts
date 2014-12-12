@@ -64,6 +64,13 @@ CoverBackground {
     Label{
         anchors.margins: Theme.paddingLarge
         text: currentProfile.name
+        width: {
+            if(text.width > parent.width  - Theme.paddingSmall * 2)
+            {
+                parent.width / 2
+            }
+        }
+        truncationMode: TruncationMode.Fade
         anchors.bottom: imgDrDonut.top
         anchors.horizontalCenter: parent.horizontalCenter
         font.pixelSize: Theme.fontSizeLarge

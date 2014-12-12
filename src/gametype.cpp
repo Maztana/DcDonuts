@@ -1,5 +1,4 @@
 #include "gametype.h"
-#include "ressources.h"
 
 /** Constructor complete of game type
  * @brief GameType::GameType
@@ -43,7 +42,6 @@ void GameType::setLevelGame(Level *levelGame)
 {
     delete(m_levelGame);
     m_levelGame = levelGame;
-    setNumberPropositions(m_levelGame->getIndex());
 }
 
 /** Initialize levels selectable for this game

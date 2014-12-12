@@ -1,7 +1,6 @@
 #include "game.h"
 #include "mainapplication.h"
 #include "educationalquiz.h"
-#include "ressources.h"
 #include "educationalquizfactory.h"
 #include <QtQml>
 
@@ -34,7 +33,7 @@ void Game::setTypeGame(GameType* typeGame)
 
     if(m_currentGameType->isQuiz())
     {
-        MainApplication::s_view->rootContext()->setContextProperty("educationQuiz", (EducationalQuiz*)m_currentGameType);
+        MainApplication::s_view->rootContext()->setContextProperty("gameType", (EducationalQuiz*)m_currentGameType);
     }
     else
     {

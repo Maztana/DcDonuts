@@ -1,6 +1,5 @@
 #include "mainapplication.h"
 #include "educationalquiz.h"
-#include "ressources.h"
 #include <QtQml>
 #include "jsonmanager.h"
 #include "language.h"
@@ -26,9 +25,6 @@ MainApplication::MainApplication(QQuickView *q_view) :
     {
         loadProfiles();
     }
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    m_managerBDD.openDBFlashcard("french-body_parts.xml.db");
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     loadCurrentProfile();
     initLanguages();
@@ -325,7 +321,6 @@ void MainApplication::loadFlashcardsDatabases()
     {
         QString url (dirIte.next());
         regexp.indexIn(url);
-
         m_flashcardsModel.append(regexp.cap(1));
     }
 

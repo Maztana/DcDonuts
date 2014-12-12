@@ -14,5 +14,9 @@
         <file>qml/images/sound.png</file>
         <file>qml/sounds/soundRight.wav</file>
         <file>qml/sounds/soundWrong.wav</file>
+        <file>qml/images/forgotten.png</file>
+        <file>qml/images/inAcquisition.png</file>
+        <file>qml/images/perfect.png</file>
+        <file>qml/images/known.png</file>
     </qresource>
 </RCC>

@@ -35,61 +35,75 @@
     </message>
 </context>
 <context>
+    <name>ChoiceFlashcardPage</name>
+    <message>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="9"/>
+        <source>Flashcard</source>
+        <translation>Flashcard</translation>
+    </message>
+</context>
+<context>
     <name>ChoiceGameModePage</name>
+    <message>
+        <source>Flashcards</source>
+        <translation type="obsolete">Flashcards</translation>
+    </message>
     <message>
         <location filename="../qml/pages/ChoiceGameModePage.qml" line="17"/>
         <source>Level</source>
         <translation>Niveau</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="61"/>
-        <source>Flashcards</source>
-        <translation>Flashcards</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="146"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="132"/>
         <source>Calculation</source>
         <translation>Calcul</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="208"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="194"/>
         <source>Counting</source>
         <translation>Dénombrement</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="223"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="208"/>
         <source>Color</source>
         <translation>Couleur</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="238"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="223"/>
         <source>Mixed</source>
         <translation>Mêlé</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="252"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="237"/>
         <source>Flashcard</source>
         <translation>Flashcard</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="299"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="279"/>
         <source>Easy</source>
         <translation>Facile</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="300"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="280"/>
         <source>Medium</source>
         <translation>Moyen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="301"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="281"/>
         <source>Hard</source>
         <translation>Difficile</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="302"/>
         <source>Auto</source>
-        <translation>Auto</translation>
+        <translation type="obsolete">Auto</translation>
+    </message>
+</context>
+<context>
+    <name>CountingMode</name>
+    <message>
+        <location filename="../src/countingmode.cpp" line="88"/>
+        <source>Combien y a t&apos;il de donuts?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -116,9 +130,38 @@
     </message>
 </context>
 <context>
+    <name>Flashcard</name>
+    <message>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="8"/>
+        <source>Show the answer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="79"/>
+        <source>Forgotten</source>
+        <translation>Oublié</translation>
+    </message>
+    <message>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="106"/>
+        <source>In acquisition</source>
+        <translation>En acquisition</translation>
+    </message>
+    <message>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="138"/>
+        <source>Known</source>
+        <translation>Su</translation>
+    </message>
+    <message>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="165"/>
+        <source>Perfect</source>
+        <translation>Parfait</translation>
+    </message>
+</context>
+<context>
     <name>GameQuizPage</name>
     <message>
-        <location filename="../qml/pages/GameQuizPage.qml" line="44"/>
+        <location filename="../qml/pages/GameQuizPage.qml" line="42"/>
+        <location filename="../qml/pages/GameQuizPage.qml" line="51"/>
         <source>Level : </source>
         <translation>Niveau : </translation>
     </message>
@@ -136,17 +179,17 @@
         <translation>Règles du jeu</translation>
     </message>
     <message>
-        <location filename="../qml/homepage/Homepage.qml" line="77"/>
+        <location filename="../qml/homepage/Homepage.qml" line="81"/>
         <source>Profiles</source>
         <translation>Profils</translation>
     </message>
     <message>
-        <location filename="../qml/homepage/Homepage.qml" line="107"/>
+        <location filename="../qml/homepage/Homepage.qml" line="111"/>
         <source>Play</source>
         <translation>Jouer</translation>
     </message>
     <message>
-        <location filename="../qml/homepage/Homepage.qml" line="128"/>
+        <location filename="../qml/homepage/Homepage.qml" line="132"/>
         <source>Options</source>
         <translation>Options</translation>
     </message>
@@ -190,13 +233,32 @@
     </message>
 </context>
 <context>
+    <name>Level</name>
+    <message>
+        <location filename="../src/level.cpp" line="39"/>
+        <source>Easy</source>
+        <translation>Facile</translation>
+    </message>
+    <message>
+        <location filename="../src/level.cpp" line="42"/>
+        <source>Medium</source>
+        <translation>Moyen</translation>
+    </message>
+    <message>
+        <location filename="../src/level.cpp" line="45"/>
+        <source>Hard</source>
+        <translation>Difficile</translation>
+    </message>
+    <message>
+        <location filename="../src/level.cpp" line="48"/>
+        <source>Auto</source>
+        <translation type="unfinished">Auto</translation>
+    </message>
+</context>
+<context>
     <name>MainApplication</name>
     <message>
-<<<<<<< HEAD
-        <location filename="../src/mainapplication.cpp" line="257"/>
-=======
-        <location filename="../src/mainapplication.cpp" line="261"/>
->>>>>>> 1b1031cae1448775dce6eda5e06912aa22ce4bbc
+        <location filename="../src/mainapplication.cpp" line="260"/>
         <source>Default language</source>
         <translation>Langue par défaut</translation>
     </message>
@@ -204,16 +266,17 @@
 <context>
     <name>OptionPage</name>
     <message>
+        <location filename="../qml/pages/OptionPage.qml" line="32"/>
         <source>languageChangedMessage</source>
         <translation>La langue changera au prochain démarrage de l&apos;application.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OptionPage.qml" line="63"/>
+        <location filename="../qml/pages/OptionPage.qml" line="62"/>
         <source>Options</source>
         <translation>Options</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OptionPage.qml" line="75"/>
+        <location filename="../qml/pages/OptionPage.qml" line="74"/>
         <source>Language</source>
         <translation>Langue</translation>
     </message>
@@ -274,14 +337,6 @@
         <location filename="../qml/pages/ProfileManagerPage.qml" line="123"/>
         <source>msgNoProfile</source>
         <translation>Choisissez un joueur pour jouer.</translation>
-    </message>
-</context>
-<context>
-    <name>Seizure</name>
-    <message>
-        <location filename="../qml/templatesAnswers/Seizure.qml" line="14"/>
-        <source>Enter your answer</source>
-        <translation>Entrer votre réponse</translation>
     </message>
 </context>
 </TS>

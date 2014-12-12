@@ -1,20 +1,20 @@
 import QtQuick 2.0
-import QtMultimedia 5.0
 import Sailfish.Silica 1.0
 
 
 Item{
     property variant textAnswer
 
+    id: item
     anchors.horizontalCenter: parent.horizontalCenter
     width: line1.width
-    height: line1.height + line2.height
-    anchors.margins: Theme.paddingLarge * 2
+    height: line1.height + line2.height + scoreLabel.height
 
     Row{
 
         id:line1
-        anchors.top : parent.top
+        anchors.bottom : line2.top
+        anchors.margins: Theme.paddingLarge
         spacing: Theme.paddingLarge
 
         ItemAnswer{
@@ -32,8 +32,8 @@ Item{
 
     Row{
         id: line2
-        anchors.top : line1.bottom
-        anchors.margins: Theme.paddingLarge
+        anchors.bottom : scoreLabel.top
+        anchors.bottomMargin: Theme.paddingLarge * 1.5
 
         spacing: Theme.paddingLarge
 
@@ -48,5 +48,22 @@ Item{
             indexAnswers: 4
             answer: textAnswer[3]
         }
+    }
+
+    /*----------------------- Score -----------------------*/
+    Label{
+        id: scoreLabel
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: Theme.paddingLarge
+        anchors.horizontalCenter: parent.horizontalCenter
+        font.pixelSize: Theme.fontSizeExtraLarge
+        text: "Score: "+ currentProfile.score + " Donut(s)"
+
+        height: Theme.fontSizeLarge
+        width: item.width - Theme.paddingLarge * 2
+        fontSizeMode: Text.Fit
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
     }
 }
