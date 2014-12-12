@@ -1,5 +1,4 @@
 #include "subtraction.h"
-#include "ressources.h"
 
 /** Constructor
  * @brief Subtraction::Subtraction
@@ -47,7 +46,7 @@ Question* Subtraction::buildQuestion()
     listValues.append(QString::number(operande1));
     listValues.append(QString::number(operande2));
 
-    Question* myQuestion = new Question(listValues);
+    Question* myQuestion = new Question(listValues, makeTextQuestion(listValues));
     return myQuestion;
 }
 
@@ -106,12 +105,12 @@ const QString Subtraction::getResult()const
  * @brief Addition::getTextQuestion
  * @return the text of question
  */
-const QString Subtraction::getTextQuestion()const
+const QString Subtraction::makeTextQuestion(QList<QString> values)const
 {
     QString question;
     bool isFirstValue = true;
 
-    for(QString value : m_currentQuestion->getValues())
+    for(QString value : values)
     {
         if(isFirstValue)
         {

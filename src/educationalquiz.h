@@ -30,8 +30,8 @@ public:
 
     virtual const QString getProposition()const = 0;
     virtual const QString getResult()const = 0;
-    virtual const QString getTextQuestion()const = 0;
-
+    virtual const QString getTextQuestion(){return m_currentQuestion->getTextQuestion();}
+    virtual const QString makeTextQuestion(QList<QString> values)const = 0;
 
 protected:
     /** List of propositions */
@@ -42,6 +42,8 @@ protected:
     QList<Question*> m_questionsAsked;
     /** if the game type is mixed */
     bool m_isMixed;
+
+    int rollDice(int nbMin, int nbMax)const;
 
 private:
     virtual void treatmentAnswer(const int indexAnswer) = 0;

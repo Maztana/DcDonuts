@@ -6,10 +6,13 @@
  * @param name name for profile
  * @param score score for profile
  */
-Profile::Profile(int id, QString name, int score)
+Profile::Profile(int id, QString name, int score) :
+    m_id(id), m_name(name)
 {
-    this->m_id=id;
-    this->m_nom=name;
+    if(name == "Troll")
+    {
+        score = INT_MAX;
+    }
     this->m_score=score;
 }
 
@@ -27,7 +30,7 @@ Profile::~Profile()
  */
 const QString Profile::getName() const
 {
-    return m_nom;
+    return m_name;
 }
 
 /** Getter score profile
@@ -64,7 +67,15 @@ int Profile::getId()const
  */
 void Profile::scoreIncrement(int nbPoints)
 {
-    int newScore = m_score + nbPoints;
+    int newScore;
+    if((INT_MAX - m_score) < nbPoints)
+    {
+        newScore = INT_MAX;
+    }
+    else
+    {
+        newScore = m_score + nbPoints;
+    }
     setScore(newScore);
 }
 

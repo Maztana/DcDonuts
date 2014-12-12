@@ -5,8 +5,8 @@
  * @brief Question::Question
  * @param listValues list of values
  */
-Question::Question(QList<QString> listValues) :
-    QObject(0), m_listValues(listValues)
+Question::Question(QList<QString> listValues, QString textQuestion) :
+    QObject(0), m_listValues(listValues), m_textQuestion(textQuestion)
 {
 }
 
@@ -15,13 +15,4 @@ Question::Question(QList<QString> listValues) :
  */
 Question::~Question()
 {
-}
-
-/** Getter of list values for this questions
- * @brief Question::getValues
- * @return the list of values
- */
-const QList<QString> Question::getValues()const
-{
-    return m_listValues;
 }

@@ -1,7 +1,6 @@
 #include "game.h"
 #include "mainapplication.h"
 #include "educationalquiz.h"
-#include "ressources.h"
 #include "educationalquizfactory.h"
 #include <QtQml>
 

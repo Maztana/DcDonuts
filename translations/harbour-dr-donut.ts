@@ -45,54 +45,65 @@
 <context>
     <name>ChoiceGameModePage</name>
     <message>
+        <source>Flashcards</source>
+        <translation type="obsolete">Flashcards</translation>
+    </message>
+    <message>
         <location filename="../qml/pages/ChoiceGameModePage.qml" line="17"/>
         <source>Level</source>
         <translation>Level</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="116"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="132"/>
         <source>Calculation</source>
         <translation>Calculation</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="178"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="194"/>
         <source>Counting</source>
         <translation>Counting</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="193"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="208"/>
         <source>Color</source>
         <translation>Color</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="208"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="223"/>
         <source>Mixed</source>
         <translation>Mixed</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="222"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="237"/>
         <source>Flashcard</source>
         <translation>Flashcard</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="264"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="279"/>
         <source>Easy</source>
         <translation>Easy</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="265"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="280"/>
         <source>Medium</source>
         <translation>Medium</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="266"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="281"/>
         <source>Hard</source>
         <translation>Hard</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="267"/>
-        <source>Auto</source>
-        <translation>Auto</translation>
+        <source></source>
+        <translation></translation>
+    </message>
+</context>
+<context>
+    <name>CountingMode</name>
+    <message>
+        <location filename="../src/countingmode.cpp" line="88"/>
+        <source>Combien y a t&apos;il de donuts?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -121,22 +132,27 @@
 <context>
     <name>Flashcard</name>
     <message>
-        <location filename="../qml/templatesAnswers/Flashcard.qml" line="71"/>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="8"/>
+        <source>Show the answer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="79"/>
         <source>Forgotten</source>
         <translation>Forgotten</translation>
     </message>
     <message>
-        <location filename="../qml/templatesAnswers/Flashcard.qml" line="98"/>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="106"/>
         <source>In acquisition</source>
         <translation>In acquisition</translation>
     </message>
     <message>
-        <location filename="../qml/templatesAnswers/Flashcard.qml" line="130"/>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="138"/>
         <source>Known</source>
         <translation>Known</translation>
     </message>
     <message>
-        <location filename="../qml/templatesAnswers/Flashcard.qml" line="157"/>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="165"/>
         <source>Perfect</source>
         <translation>Perfect</translation>
     </message>
@@ -163,17 +179,17 @@
         <translation>Game rules</translation>
     </message>
     <message>
-        <location filename="../qml/homepage/Homepage.qml" line="77"/>
+        <location filename="../qml/homepage/Homepage.qml" line="81"/>
         <source>Profiles</source>
         <translation>Profiles</translation>
     </message>
     <message>
-        <location filename="../qml/homepage/Homepage.qml" line="107"/>
+        <location filename="../qml/homepage/Homepage.qml" line="111"/>
         <source>Play</source>
         <translation>Play</translation>
     </message>
     <message>
-        <location filename="../qml/homepage/Homepage.qml" line="128"/>
+        <location filename="../qml/homepage/Homepage.qml" line="132"/>
         <source>Options</source>
         <translation>Options</translation>
     </message>
@@ -242,7 +258,7 @@
 <context>
     <name>MainApplication</name>
     <message>
-        <location filename="../src/mainapplication.cpp" line="261"/>
+        <location filename="../src/mainapplication.cpp" line="260"/>
         <source>Default language</source>
         <translation>Default language</translation>
     </message>

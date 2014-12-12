@@ -1,5 +1,4 @@
 #include "addition.h"
-#include "ressources.h"
 
 /** Constructor
  * @brief Addition::Addition
@@ -40,7 +39,7 @@ Question* Addition::buildQuestion()
     listValues.append(QString::number(operand1));
     listValues.append(QString::number(operand2));
 
-    Question* myQuestion = new Question(listValues);
+    Question* myQuestion = new Question(listValues, makeTextQuestion(listValues));
     return myQuestion;
 }
 
@@ -99,12 +98,12 @@ const QString Addition::getResult()const
  * @brief Addition::getTextQuestion
  * @return the text of question
  */
-const QString Addition::getTextQuestion()const
+const QString Addition::makeTextQuestion(QList<QString> values)const
 {
     QString question;
     bool isFirstValue = true;
 
-    for(QString value : m_currentQuestion->getValues())
+    for(QString value : values)
     {
         if(isFirstValue)
         {

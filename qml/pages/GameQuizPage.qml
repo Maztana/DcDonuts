@@ -73,18 +73,15 @@ Page {
             Text {
                 id: descriptionQuestion
                 text: gameType.textQuestion + " ?"
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.verticalCenter : parent.verticalCenter
-                font.pixelSize: {
-                    if(gameType.isFlashcard())
-                    {
-                        Theme.fontSizeMedium
-                    }
-                    else
-                    {
-                        Theme.fontSizeHuge
-                    }
-                }
+                anchors.centerIn: parent
+                height: rectangleQuestion.height - Theme.paddingLarge * 2
+                width: rectangleQuestion.width - Theme.paddingLarge * 2
+
+                font.pixelSize: Theme.fontSizeHuge
+                fontSizeMode: Text.Fit
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 font.bold: true
             }
         }

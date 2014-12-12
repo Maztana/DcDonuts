@@ -1,5 +1,4 @@
 #include "educationalquizfactory.h"
-#include "ressources.h"
 
 #include "mixedgamefactory.h"
 #include "additiongamefactory.h"
@@ -7,6 +6,7 @@
 #include "multiplicationgamefactory.h"
 #include "divisiongamefactory.h"
 #include "flashcardfactory.h"
+#include "countinggamefactory.h"
 
 
 /** Default constructor
@@ -65,14 +65,15 @@ EducationalQuiz* EducationalQuizFactory::makeGameType(int identifiantGameType)
     case DIVISION_MODE:
         educationalQuiz = DivisionGameFactory::makeSpecificGameType();
         break;
-        ////////////////////////////////////////////////////////////
-        /*
       case COUNTING_MODE:
         educationalQuiz = CountingGameFactory::makeSpecificGameType();
         break;
+        ////////////////////////////////////////////////////////////
+        /*
     case COLOR_MODE:
         educationalQuiz = ColorGameFactory::makeSpecificGameType();
-        break;*/
+        break;
+        */
         //////////////////////////////////////////////////
     case FLASHCARD_MODE:
         educationalQuiz = FlashcardFactory::makeSpecificGameType();

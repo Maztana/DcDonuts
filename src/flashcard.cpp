@@ -29,7 +29,7 @@ Question* Flashcard::buildQuestion()
     QString result = "result flashcard";
     m_textQuestion = "Type flascard test!";
 
-    Question* myQuestion = new Question({result});
+    Question* myQuestion = new Question({result}, makeTextQuestion({}));
     return myQuestion;
 }
 
