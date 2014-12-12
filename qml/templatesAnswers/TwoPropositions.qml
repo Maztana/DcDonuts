@@ -4,8 +4,7 @@ import Sailfish.Silica 1.0
 
 
 Item{
-    property alias textAnswer1 : ans1.answer
-    property alias textAnswer2 : ans2.answer
+    property variant textAnswer
 
     anchors.horizontalCenter: parent.horizontalCenter
     width: line.width
@@ -21,12 +20,14 @@ Item{
             id: ans1
             indexAnswers: 1
             height:200
+            answer: textAnswer[0]
         }
 
         ItemAnswer{
             id: ans2
             indexAnswers: 2
             height: 200
+            answer: textAnswer[1]
         }
     }
 }

@@ -5,6 +5,10 @@
 #include <QSqlError>
 #include <QVariant>
 
+/////////////////////////
+#include<QTextStream>
+////////////////////////
+
 // les ifdef proviennent du site http://developer.nokia.com/community/wiki/Creating_an_SQLite_database_in_Qt
 
 //Variable statique
@@ -192,3 +196,42 @@ QList<Profile*> ManagerBdd::selectAllProfiles()
     return listProfiles;
 }
 
+
+
+
+
+//////////////////////////////////////
+
+bool ManagerBdd::openDBFlashcard(QString nomfichier)
+{
+    m_db = QSqlDatabase::addDatabase("QSQLITE");
+
+    QString path(QDir::home().path());
+    path.append(QDir::separator()).append(".local");
+    path.append(QDir::separator()).append("share");
+    path.append(QDir::separator()).append("harbour-dr-donut");
+    path = QDir::toNativeSeparators(path);
+
+    path.append(QDir::separator()).append(nomfichier);
+    path = QDir::toNativeSeparators(path);
+    m_db.setDatabaseName(path);
+
+    bool ok = m_db.open();
+
+    QStringList listeTables = m_db.tables();
+
+    for(int i=0; i<listeTables.count(); i++){
+        QTextStream(stdout) << listeTables.value(i) << endl;
+    }
+
+    QSqlQuery query(m_db);
+    query.exec("SELECT _id, question, answer FROM dict_tbl");
+
+    while(query.next()){
+        QTextStream(stdout) << query.value(0).toInt() << "  " << query.value(1).toString() << "  " << query.value(2).toString() << endl;
+    }
+
+    return ok;
+}
+
+//////////////////////////////////////

@@ -31,6 +31,9 @@ public:
 
     QList<Profile*> selectAllProfiles();
 
+    //////////////////////////////////////////
+    bool openDBFlashcard(QString nomfichier);
+    /////////////////////////////////////////
 };
 
 #endif // MANAGERBDD_H

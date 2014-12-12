@@ -13,13 +13,13 @@ Page {
         switch(nbPropositions) {
 
         case 2:
-            obj ='import "../templatesAnswers"; import Sailfish.Silica 1.0; TwoPropositions {id: answers; anchors.bottom: scoreLabel.top; anchors.bottomMargin: Theme.paddingLarge * 3; textAnswer1: educationQuiz.proposition1; textAnswer2: educationQuiz.proposition2}';
+            obj ='import "../templatesAnswers"; import Sailfish.Silica 1.0; TwoPropositions {id: answers; anchors.bottom: scoreLabel.top; anchors.bottomMargin: Theme.paddingLarge * 3; textAnswer: educationQuiz.propositions}';
             break;
         case 3:
-            obj ='import "../templatesAnswers"; import Sailfish.Silica 1.0; ThreePropositions {id: answers; anchors.bottom: scoreLabel.top; anchors.bottomMargin: Theme.paddingLarge * 3; textAnswer1: educationQuiz.proposition1; textAnswer2: educationQuiz.proposition2; textAnswer3: educationQuiz.proposition3}';
+            obj ='import "../templatesAnswers"; import Sailfish.Silica 1.0; ThreePropositions {id: answers; anchors.bottom: scoreLabel.top; anchors.bottomMargin: Theme.paddingLarge * 3; textAnswer: educationQuiz.propositions}';
             break;
         case 4:
-            obj ='import "../templatesAnswers"; import Sailfish.Silica 1.0; FourPropositions {id: answers; anchors.bottom: scoreLabel.top; anchors.bottomMargin: Theme.paddingLarge * 3; textAnswer1: educationQuiz.proposition1; textAnswer2: educationQuiz.proposition2; textAnswer3: educationQuiz.proposition3; textAnswer4: educationQuiz.proposition4}';
+            obj ='import "../templatesAnswers"; import Sailfish.Silica 1.0; FourPropositions {id: answers; anchors.bottom: scoreLabel.top; anchors.bottomMargin: Theme.paddingLarge * 3; textAnswer: educationQuiz.propositions}';
             break;
 
         }

@@ -30,23 +30,20 @@ public:
     int getScore()const;
     int getId()const;
 
-
-
     void resetScore();
 
 private:
     void setScore(int nbPoints);
 
 signals:
+    /** When the name profile changed */
     void nameChanged();
+    /** When the score changed */
     void scoreChanged();
 
 public slots:
     void scoreIncrement(int nbPoints);
     void scoreDecrement(int nbPoints);
-
-
-
 };
 
 #endif // PROFILE_H

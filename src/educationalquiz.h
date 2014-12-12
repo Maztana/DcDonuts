@@ -12,10 +12,7 @@ class EducationalQuiz : public GameType
     Q_PROPERTY(QString textQuestion READ getTextQuestion NOTIFY textQuestionChanged)
 
     /** Proposition give to interface */
-    Q_PROPERTY(QString proposition1 READ getProposition1 NOTIFY proposition1Changed)
-    Q_PROPERTY(QString proposition2 READ getProposition2 NOTIFY proposition2Changed)
-    Q_PROPERTY(QString proposition3 READ getProposition3 NOTIFY proposition3Changed)
-    Q_PROPERTY(QString proposition4 READ getProposition4 NOTIFY proposition4Changed)
+    Q_PROPERTY(QList<QString> propositions READ getPropositions NOTIFY propositionsChanged)
 
 public:
     explicit EducationalQuiz();
@@ -23,11 +20,6 @@ public:
 
     virtual inline bool isQuiz()const{return true;}
 
-
-    const QString getProposition1();
-    const QString getProposition2();
-    const QString getProposition3();
-    const QString getProposition4();
     const QList<QString> getPropositions();
 
     /** Build a new question, according to the game mode.
@@ -60,10 +52,7 @@ signals:
     /** When text question changed */
     void textQuestionChanged();
     /** When proposition changed */
-    void proposition1Changed();
-    void proposition2Changed();
-    void proposition3Changed();
-    void proposition4Changed();
+    void propositionsChanged();
 
     /** When new question */
     void questionChanged();

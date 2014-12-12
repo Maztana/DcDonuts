@@ -21,6 +21,8 @@ class MainApplication : public QObject
     Game *m_currentGame;
     /** Data base manager */
     ManagerBdd &m_managerBDD;
+    /** Sound state */
+    bool m_soundState;
 
 public:
     explicit MainApplication(QQuickView *q_view);
@@ -38,6 +40,8 @@ public:
     static Profile* s_defaultProfile;
     /** List of all registered languages */
     QList<QObject*> m_languagesModel;
+    /** List of all registered flaschards databases */
+    QStringList m_flashcardsModel;
 
     const QList<int> getAllId() const;
 
@@ -48,6 +52,7 @@ private:
     void loadCurrentProfile();
     void initLanguages();
     void loadLanguages();
+    void loadFlashcardsDatabases();
 
 signals:
 
@@ -66,6 +71,8 @@ public slots:
 
     void changeLanguage(QString const &iso);
 
+    inline bool isSoundActive(){return m_soundState;}
+    inline void setSoundState(const bool &state){m_soundState = state;}
 };
 
 #endif // MAINAPPLICATION_H

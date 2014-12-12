@@ -32,7 +32,6 @@ Dialog {
                 inputMethodHints: Qt.ImhNoPredictiveText
                 EnterKey.text : "OK"
                 EnterKey.onClicked: parent.focus = true
-
             }
         }
     }

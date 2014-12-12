@@ -14,7 +14,9 @@ Profile* MainApplication::s_defaultProfile = new Profile(-1, "", -1);
  * @param q_view the view of application
  */
 MainApplication::MainApplication(QQuickView *q_view) :
-    QObject(0), m_managerBDD(ManagerBdd::getInstance()), m_languagesModel()
+    QObject(0), m_managerBDD(ManagerBdd::getInstance()),
+    m_soundState(JsonManager::getInstance().getSoundState()),
+    m_languagesModel(), m_flashcardsModel()
 {
     this->s_view = q_view;
     changeCurrentProfile(s_defaultProfile);
@@ -24,9 +26,13 @@ MainApplication::MainApplication(QQuickView *q_view) :
     {
         loadProfiles();
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    m_managerBDD.openDBFlashcard("french-body_parts.xml.db");
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     loadCurrentProfile();
     initLanguages();
+    loadFlashcardsDatabases();
 }
 
 /** Default destructor
@@ -34,7 +40,7 @@ MainApplication::MainApplication(QQuickView *q_view) :
  */
 MainApplication::~MainApplication()
 {
-    JsonManager::getInstance().saveConfig(m_currentProfile->getId(), Language::getIsoCurrentLanguage());
+    JsonManager::getInstance().saveConfig(m_currentProfile->getId(), Language::getIsoCurrentLanguage(), m_soundState);
     deleteGame();
     qDeleteAll(m_profiles);
     delete(s_view);
@@ -254,11 +260,12 @@ void MainApplication::deleteProfile(int id)
 void MainApplication::initLanguages()
 {
     QString locale = Language::getDefaultLanguage();
+
     m_languagesModel.append(new Language(locale, tr("Default language")));
 
     loadLanguages();
 
-    MainApplication::s_view->rootContext()->setContextProperty("languagesListModel", QVariant::fromValue(m_languagesModel));
+    s_view->rootContext()->setContextProperty("languagesListModel", QVariant::fromValue(m_languagesModel));
 }
 
 /** Load all the supported languages
@@ -270,17 +277,26 @@ void MainApplication::loadLanguages()
     listFilter << "*.qm";
 
     QDirIterator dirIte(SailfishApp::pathTo("translations").toLocalFile(), listFilter);
-    QRegExp regexp (".*harbour-dr-donut-(.*).qm");
+    QRegExp regexp (".*translations/harbour-dr-donut(.*).qm$");
 
     while(dirIte.hasNext())
     {
-        QString a (dirIte.next());
+        QString url (dirIte.next());
 
-        regexp.indexIn(a);
+        regexp.indexIn(url);
 
-        QLocale q(regexp.cap(1));
+        QLocale *qlocale;
 
-        m_languagesModel.append(new Language(q));
+        if(regexp.cap(1) == "")
+        {
+            qlocale = new QLocale("en");
+        }
+        else
+        {
+            qlocale = new QLocale(regexp.cap(1).right(2));
+        }
+
+        m_languagesModel.append(new Language(*qlocale));
     }
 }
 
@@ -291,4 +307,29 @@ void MainApplication::loadLanguages()
 void MainApplication::changeLanguage(QString const & iso)
 {
     Language::setIsoCurrentLanguage(iso);
+}
+
+/** Load all the available flashcards databases.
+ * @brief MainApplication::loadFlashcardsDatabases
+ */
+void MainApplication::loadFlashcardsDatabases()
+{
+    QStringList listFilter;
+    listFilter << "*.db";
+
+    QDirIterator dirIte("/home/nemo/.local/share/harbour-dr-donut", listFilter);
+
+    QRegExp regexp (".*/harbour-dr-donut/(.*).db$");
+
+    while(dirIte.hasNext())
+    {
+        QString url (dirIte.next());
+        regexp.indexIn(url);
+
+        m_flashcardsModel.append(regexp.cap(1));
+    }
+
+    m_flashcardsModel.sort(Qt::CaseInsensitive);
+
+    s_view->rootContext()->setContextProperty("flashcardsListModel", QVariant::fromValue(m_flashcardsModel));
 }

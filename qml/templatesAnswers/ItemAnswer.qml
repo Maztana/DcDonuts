@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtMultimedia 5.0
 import Sailfish.Silica 1.0
 
 Item {
@@ -44,6 +45,11 @@ Item {
             {
                 answer.color = "Lime"
                 answer.opacity = 0.8
+
+                if(application.isSoundActive())
+                {
+                    soundRight.play()
+                }
             }
         }
         onAnswerWrong:{
@@ -55,6 +61,11 @@ Item {
             {
                 answer.color = "OrangeRed"
                 answer.opacity = 0.8
+
+                if(application.isSoundActive())
+                {
+                    soundWrong.play();
+                }
             }
         }
         onCorrectedAnswer:{
@@ -84,5 +95,17 @@ Item {
     {
         answer.color = "white"
         answer.opacity = 1
+    }
+
+    SoundEffect
+    {
+        id: soundRight
+        source: "qrc:///qml/sounds/soundRight.wav"
+    }
+
+    SoundEffect
+    {
+        id: soundWrong
+        source: "qrc:///qml/sounds/soundWrong.wav"
     }
 }

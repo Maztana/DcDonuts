@@ -14,6 +14,8 @@ private:
     int m_idProfile;
     /** last language saved */
     QString m_language;
+    /** sound state saved */
+    bool m_soundState;
 
     explicit JsonManager();
 
@@ -23,9 +25,11 @@ public:
     ~JsonManager();
     static JsonManager& getInstance();
 
-    void saveConfig(int m_idProfile,QString m_language);
+    void saveConfig(int m_idProfile, QString m_language, bool m_soundState);
+
     int getIdProfile();
     QString getLanguage();
+    bool getSoundState();
 
 };
 
