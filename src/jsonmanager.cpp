@@ -25,13 +25,13 @@ JsonManager::~JsonManager()
 
 }
 
-/** Load all config
+/** Load all config by JSON
  * @brief JsonManager::loadConfig
  */
 void JsonManager::loadConfig()
 {
     QString path(PATH_CONFIG);
-    path.append(QDir::separator()).append("config.json");
+    path.append(QDir::separator()).append(NAME_FILE_CONFIG + ".json");
     path = QDir::toNativeSeparators(path);
 
     QFile file(path);
@@ -80,7 +80,7 @@ void JsonManager::saveConfig(int idProfile,QString language, bool soundState)
     QDir dir;
     dir.mkpath(path);
 
-    path.append(QDir::separator()).append("config.json");
+    path.append(QDir::separator()).append(NAME_FILE_CONFIG + ".json");
     path = QDir::toNativeSeparators(path);
 
     QFile file(path);

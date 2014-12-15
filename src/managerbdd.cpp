@@ -6,8 +6,6 @@
 #include <QVariant>
 
 // les ifdef proviennent du site http://developer.nokia.com/community/wiki/Creating_an_SQLite_database_in_Qt
-
-//Variable statique
 ManagerBdd ManagerBdd::s_instance= ManagerBdd();
 
 /** Default constructor
@@ -40,7 +38,14 @@ ManagerBdd& ManagerBdd::getInstance()
 bool ManagerBdd::openDB()
 {
     // Find QSLite driver
-    m_db = QSqlDatabase::addDatabase("QSQLITE", "profiles");
+    if(QSqlDatabase::contains(CONNECTION_NAME_PROFILES))
+    {
+        m_db = QSqlDatabase::database(CONNECTION_NAME_PROFILES);
+    }
+    else
+    {
+        m_db = QSqlDatabase::addDatabase("QSQLITE", CONNECTION_NAME_PROFILES);
+    }
 
 #ifdef Q_OS_LINUX
     QString path(PATH_CONFIG);
@@ -175,6 +180,8 @@ QList<Profile*> ManagerBdd::selectAllProfiles()
  */
 QList<Question*> ManagerBdd::loadDbFlashcard(QString fileName)
 {
+    closeDBFlashcard();
+
     QList<Question*> listCards;
     openDBFlashcard(fileName);
     QSqlQuery query(m_dbFlashcard);
@@ -182,10 +189,10 @@ QList<Question*> ManagerBdd::loadDbFlashcard(QString fileName)
 
     while(query.next()){
         listCards.append(new Question({query.value("answer").toString()},
-                                      query.value("question").toString(), query.value("_id").toInt()));
+                                      query.value("question").toString(),
+                                      query.value("_id").toInt()));
     }
 
-    closeDBFlashcard();
     return listCards;
 }
 
@@ -197,7 +204,14 @@ QList<Question*> ManagerBdd::loadDbFlashcard(QString fileName)
  */
 bool ManagerBdd::openDBFlashcard(QString fileName)
 {
-    m_dbFlashcard = QSqlDatabase::addDatabase("QSQLITE", "flashcards");
+    if(QSqlDatabase::contains(CONNECTION_NAME_FLASHCARDS))
+    {
+        m_dbFlashcard = QSqlDatabase::database(CONNECTION_NAME_FLASHCARDS);
+    }
+    else
+    {
+        m_dbFlashcard = QSqlDatabase::addDatabase("QSQLITE", CONNECTION_NAME_FLASHCARDS);
+    }
 
     QString path(PATH_LOCAL);
     path = QDir::toNativeSeparators(path);
@@ -219,5 +233,3 @@ void ManagerBdd::closeDBFlashcard()
     m_dbFlashcard = QSqlDatabase();
     QSqlDatabase::removeDatabase(m_dbFlashcard.connectionName());
 }
-
-

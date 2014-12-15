@@ -28,7 +28,7 @@ void MixedEducationalQuiz::addGameType(EducationalQuiz* typeQuiz)
 {
     m_listEducationalQuiz.append(typeQuiz);
 
-    /** connection signaux*/
+    /** connection signals*/
     connect(typeQuiz, SIGNAL(answerRight(int)), this, SLOT(rightAnswer(int)));
     connect(typeQuiz, SIGNAL(incrementScore(int)), this, SLOT(scoreIncrement(int)));
     connect(typeQuiz, SIGNAL(answerWrong(int)), this, SLOT(wrongAnswer(int)));
