@@ -101,7 +101,7 @@
 <context>
     <name>CountingMode</name>
     <message>
-        <location filename="../src/countingmode.cpp" line="83"/>
+        <location filename="../src/countingmode.cpp" line="87"/>
         <source>How many forms</source>
         <translation>How many forms</translation>
     </message>
