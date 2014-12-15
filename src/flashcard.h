@@ -7,11 +7,8 @@ class Flashcard : public EducationalQuiz
 {
     Q_OBJECT
 
-
-    /** Name data base download */
-    //QString m_dbName;
-    /** List of cards */
-    QList<Question*> m_listCards;
+    /** id of current question */
+     int m_idQuestion;
 
 public:
     explicit Flashcard();

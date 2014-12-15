@@ -15,32 +15,34 @@ Flashcard::Flashcard() :
  */
 Flashcard::~Flashcard()
 {
-    qDeleteAll(m_listCards);
+    ManagerBdd::getInstance().closeDBFlashcard();
 }
 
-/** Build a question of addition
+/** Build a flashcard question
  * @brief Flashcard::buildQuestion
- * @return addition's question
+ * @return flashcard's question
  */
 Question* Flashcard::buildQuestion()
 {
-    return m_listCards.at(rollDice(0, m_listCards.size()-1));
+    QList<Question*> firstCards = ManagerBdd::getInstance().getFirstCards();
+
+    int randomIndex = rollDice(0, firstCards.size()-1);
+    m_idQuestion = firstCards.at(randomIndex)->getId();
+
+    return firstCards.at(randomIndex);
 }
 
-/** Treat response for classic quiz (no flascard)
+/** Treat response for flashcard
  * @brief Flashcard::treatmentAnswer
  * @param indexAnswer the index of answer
  */
-void Flashcard::treatmentAnswer(const int)
+void Flashcard::treatmentAnswer(const int answer)
 {
     emit answerGiven();
-    // treat auto evaluation of the child
-        // 0 forgotten
-        // 1 in acquisition
-        // 2 known
-        // 3 perfect
 
+    ManagerBdd::getInstance().saveResultFlashcard(m_idQuestion, answer);
     launchQuestion();
+
 }
 
 /** Init and load the Db cards
@@ -49,8 +51,7 @@ void Flashcard::treatmentAnswer(const int)
  */
 void Flashcard::initDB(QString nameDataBase)
 {
-    //init the DB
-    qDeleteAll(m_listCards);
     m_levelGame = new Level(nameDataBase);
-    m_listCards = ManagerBdd::getInstance().loadDbFlashcard(nameDataBase);
+    ManagerBdd::getInstance().openDBFlashcard(nameDataBase);
+    ManagerBdd::getInstance().initLearnTable();
 }
