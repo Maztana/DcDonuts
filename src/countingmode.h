@@ -5,6 +5,8 @@
 
 class CountingMode : public EducationalQuiz
 {
+    Q_OBJECT
+
 public:
     explicit CountingMode();
     virtual ~CountingMode();
