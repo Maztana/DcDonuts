@@ -138,18 +138,18 @@
     </message>
     <message>
         <location filename="../qml/templatesAnswers/Flashcard.qml" line="82"/>
-        <source>Forgotten</source>
-        <translation>Forgotten</translation>
+        <source>Not at all</source>
+        <translation>Not at all</translation>
     </message>
     <message>
         <location filename="../qml/templatesAnswers/Flashcard.qml" line="109"/>
-        <source>In acquisition</source>
-        <translation>In acquisition</translation>
+        <source>Not still</source>
+        <translation>Not still</translation>
     </message>
     <message>
         <location filename="../qml/templatesAnswers/Flashcard.qml" line="141"/>
-        <source>Known</source>
-        <translation>Known</translation>
+        <source>Almost</source>
+        <translation>Almost</translation>
     </message>
     <message>
         <location filename="../qml/templatesAnswers/Flashcard.qml" line="168"/>
@@ -247,11 +247,6 @@
         <location filename="../src/level.cpp" line="54"/>
         <source>Hard</source>
         <translation>Hard</translation>
-    </message>
-    <message>
-        <location filename="../src/level.cpp" line="57"/>
-        <source>Auto</source>
-        <translation>Auto</translation>
     </message>
 </context>
 <context>

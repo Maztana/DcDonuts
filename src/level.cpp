@@ -53,8 +53,5 @@ void Level::initLevel()
     case 3:
         m_name = tr("Hard");
         break;
-    case 4:
-        m_name = tr("Auto");
-        break;
     }
 }

@@ -79,7 +79,7 @@ Item{
 
                     Text{
                         id: textForgotten
-                        text: qsTr("Forgotten")
+                        text: qsTr("Not at all")
                         anchors.top: parent.icon.bottom
                         anchors.horizontalCenter: parent.horizontalCenter
                         font.family: Theme.fontFamilyHeading
@@ -106,7 +106,7 @@ Item{
 
                     Text{
                         id: textInAcquisition
-                        text: qsTr("In acquisition")
+                        text: qsTr("Not still")
                         anchors.top: parent.icon.bottom
                         anchors.horizontalCenter: parent.horizontalCenter
                         font.family: Theme.fontFamilyHeading
@@ -138,7 +138,7 @@ Item{
 
                     Text{
                         id: textKnown
-                        text: qsTr("Known")
+                        text: qsTr("Almost")
                         anchors.top: parent.icon.bottom
                         anchors.horizontalCenter: parent.horizontalCenter
                         font.family: Theme.fontFamilyHeading
