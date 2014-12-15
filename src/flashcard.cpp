@@ -51,5 +51,6 @@ void Flashcard::initDB(QString nameDataBase)
 {
     //init the DB
     qDeleteAll(m_listCards);
+    m_levelGame = new Level(nameDataBase);
     m_listCards = ManagerBdd::getInstance().loadDbFlashcard(nameDataBase);
 }

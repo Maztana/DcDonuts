@@ -95,7 +95,7 @@ const QString Addition::getResult()const
 }
 
 /** Getter of question text
- * @brief Addition::getTextQuestion
+ * @brief Addition::makeTextQuestion
  * @return the text of question
  */
 const QString Addition::makeTextQuestion(QList<QString> values)const

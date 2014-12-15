@@ -8,8 +8,8 @@ class Flashcard : public EducationalQuiz
     Q_OBJECT
 
 
-    /** Text question dowload */
-    QString m_textQuestion;
+    /** Name data base download */
+    //QString m_dbName;
     /** List of cards */
     QList<Question*> m_listCards;
 
@@ -32,10 +32,10 @@ public:
      */
     virtual inline const QString getResult()const{return m_currentQuestion->getValues().first();}
     /** Getter of question text
-     * @brief Flashcard::getTextQuestion
+     * @brief Flashcard::makeTextQuestion
      * @return the text of question
      */
-    virtual inline const QString makeTextQuestion(QList<QString>)const{return m_textQuestion;}///////faire le chargement en bdd de la question
+    virtual inline const QString makeTextQuestion(QList<QString>)const{return "";}
 
 private:
     virtual inline void setLevelsSelectable(){}

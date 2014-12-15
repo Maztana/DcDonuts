@@ -35,16 +35,9 @@ Page {
         Label {
             id: level
             text: {
-                if(gameType.isQuiz())
+                if(gameType.isFlashcard())
                 {
-                    if(!gameType.isFlashcard())
-                    {
-                        qsTr("Level : ") + gameType.level
-                    }
-                    else
-                    {
-                        ""
-                    }
+                    gameType.level
                 }
                 else
                 {

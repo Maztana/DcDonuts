@@ -33,13 +33,8 @@ Question* CountingMode::buildQuestion()
 {
     //Générer question
     int operand1 = rollDice(m_min_values[m_levelGame->getIndex()-1], m_max_values[m_levelGame->getIndex()-1]);
-    int operand2 = rollDice(m_min_values[m_levelGame->getIndex()-1], m_max_values[m_levelGame->getIndex()-1]);
 
-    QList<QString> listValues;
-    listValues.append(QString::number(operand1));
-    listValues.append(QString::number(operand2));
-
-    Question* myQuestion = new Question(listValues, makeTextQuestion(listValues));
+    Question* myQuestion = new Question({QString::number(operand1)}, makeTextQuestion({QString::number(operand1)}));
     return myQuestion;
 }
 
@@ -80,12 +75,12 @@ const QString CountingMode::getResult()const
 }
 
 /** Getter of question text
- * @brief CountingMode::getTextQuestion
+ * @brief CountingMode::makeTextQuestion
  * @return the text of question
  */
 const QString CountingMode::makeTextQuestion(QList<QString>)const
 {
-    return tr("Combien y a t'il de donuts?");
+    return tr("How many forms");
 }
 
 /** Setter for the number of propositions also level

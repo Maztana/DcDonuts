@@ -102,7 +102,7 @@ const QString Subtraction::getResult()const
 }
 
 /** Getter of question text
- * @brief Addition::getTextQuestion
+ * @brief Subtraction::makeTextQuestion
  * @return the text of question
  */
 const QString Subtraction::makeTextQuestion(QList<QString> values)const

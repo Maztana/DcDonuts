@@ -18,10 +18,11 @@ Item{
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: evaluationPanel.top
         anchors.margins: Theme.paddingSmall
-        height: evaluationPanel.open ? Theme.fontSizeHuge : item.height - evaluationPanel.height - Theme.paddingLarge * 5
+        height: evaluationPanel.open ? Theme.fontSizeHuge + Theme.paddingMedium : item.height - evaluationPanel.height - Theme.paddingLarge * 5
         width: item.width - Theme.paddingLarge * 2
 
-        font.pixelSize: Theme.fontSizeLarge
+        color: Theme.secondaryHighlightColor
+        font.pixelSize: Theme.fontSizeHuge
         fontSizeMode: Text.Fit
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
@@ -34,6 +35,8 @@ Item{
         onClicked:{
             if(!isTreat)
             {
+                labelFlashcard.color = Theme.primaryColor
+                labelFlashcard.font.bold = true
                 labelFlashcard.text = textAnswer[0]
                 evaluationPanel.open = true
                 isTreat = true
@@ -52,11 +55,11 @@ Item{
             id: columnButtons
             width: parent.width
             anchors.horizontalCenter: parent.horizontalCenter
-            spacing: Theme.paddingLarge
+            spacing: Theme.paddingMedium
 
             Row{
                 anchors.horizontalCenter: parent.horizontalCenter
-                spacing: Theme.paddingLarge * 4
+                spacing: Theme.paddingLarge * 5
 
                 IconButton {
                     id: iconButtonForgotten
@@ -115,7 +118,7 @@ Item{
 
             Row{
                 anchors.horizontalCenter: parent.horizontalCenter
-                spacing: Theme.paddingLarge * 4
+                spacing: Theme.paddingLarge * 5
 
                 IconButton {
                     id: iconButtonKnown
@@ -174,11 +177,12 @@ Item{
         }
     }
 
-
     Connections{
         target: gameType
         onQuestionChanged: {
             mouseArea.enabled = true
+            labelFlashcard.color = Theme.secondaryHighlightColor
+            labelFlashcard.font.bold = false
             labelFlashcard.text = textLabel
             evaluationPanel.open = false
             isTreat = false

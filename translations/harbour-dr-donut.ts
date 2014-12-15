@@ -101,9 +101,9 @@
 <context>
     <name>CountingMode</name>
     <message>
-        <location filename="../src/countingmode.cpp" line="88"/>
-        <source>Combien y a t&apos;il de donuts?</source>
-        <translation type="unfinished"></translation>
+        <location filename="../src/countingmode.cpp" line="83"/>
+        <source>How many forms</source>
+        <translation>How many forms</translation>
     </message>
 </context>
 <context>
@@ -137,22 +137,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/templatesAnswers/Flashcard.qml" line="79"/>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="82"/>
         <source>Forgotten</source>
         <translation>Forgotten</translation>
     </message>
     <message>
-        <location filename="../qml/templatesAnswers/Flashcard.qml" line="106"/>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="109"/>
         <source>In acquisition</source>
         <translation>In acquisition</translation>
     </message>
     <message>
-        <location filename="../qml/templatesAnswers/Flashcard.qml" line="138"/>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="141"/>
         <source>Known</source>
         <translation>Known</translation>
     </message>
     <message>
-        <location filename="../qml/templatesAnswers/Flashcard.qml" line="165"/>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="168"/>
         <source>Perfect</source>
         <translation>Perfect</translation>
     </message>
@@ -160,8 +160,7 @@
 <context>
     <name>GameQuizPage</name>
     <message>
-        <location filename="../qml/pages/GameQuizPage.qml" line="42"/>
-        <location filename="../qml/pages/GameQuizPage.qml" line="51"/>
+        <location filename="../qml/pages/GameQuizPage.qml" line="44"/>
         <source>Level : </source>
         <translation>Level : </translation>
     </message>
@@ -235,22 +234,22 @@
 <context>
     <name>Level</name>
     <message>
-        <location filename="../src/level.cpp" line="39"/>
+        <location filename="../src/level.cpp" line="48"/>
         <source>Easy</source>
         <translation>Easy</translation>
     </message>
     <message>
-        <location filename="../src/level.cpp" line="42"/>
+        <location filename="../src/level.cpp" line="51"/>
         <source>Medium</source>
         <translation>Medium</translation>
     </message>
     <message>
-        <location filename="../src/level.cpp" line="45"/>
+        <location filename="../src/level.cpp" line="54"/>
         <source>Hard</source>
         <translation>Hard</translation>
     </message>
     <message>
-        <location filename="../src/level.cpp" line="48"/>
+        <location filename="../src/level.cpp" line="57"/>
         <source>Auto</source>
         <translation>Auto</translation>
     </message>
