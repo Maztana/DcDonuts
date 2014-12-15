@@ -74,8 +74,11 @@ OTHER_FILES += \
     rpm/harbour-dr-donut.spec \
     harbour-dr-donut.desktop \
     qml/templatesAnswers/Flashcard.qml \
+    qml/pages/ChoiceFlashcardPage.qml \
+    qml/pages/FormDisplay.qml \
     db/*.db \
-    qml/pages/ChoiceFlashcardPage.qml
+    *.js
+
 
 # to disable building translations every time, comment out the
 # following CONFIG line

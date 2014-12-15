@@ -27,6 +27,8 @@ private:
     virtual void treatmentAnswer(const int indexAnswer);
     virtual void setLevelsSelectable();
 
+public slots:
+    virtual inline bool isCounting(){return true;}
 };
 
 #endif // COUNTINGMODE_H

@@ -85,7 +85,7 @@ const QString CountingMode::getResult()const
  */
 const QString CountingMode::makeTextQuestion(QList<QString>)const
 {
-    return tr("Combien y a t'il de donuts?");
+    return tr("Combien y a t'il de donuts");
 }
 
 /** Setter for the number of propositions also level

@@ -102,7 +102,7 @@
     <name>CountingMode</name>
     <message>
         <location filename="../src/countingmode.cpp" line="88"/>
-        <source>Combien y a t&apos;il de donuts?</source>
+        <source>Combien y a t&apos;il de donuts</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -119,12 +119,12 @@
         <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="../qml/pages/CreationProfilePage.qml" line="29"/>
+        <location filename="../qml/pages/CreationProfilePage.qml" line="30"/>
         <source>Name</source>
         <translation>Nom</translation>
     </message>
     <message>
-        <location filename="../qml/pages/CreationProfilePage.qml" line="30"/>
+        <location filename="../qml/pages/CreationProfilePage.qml" line="31"/>
         <source>Enter your name</source>
         <translation>Entrez votre nom</translation>
     </message>
@@ -160,8 +160,8 @@
 <context>
     <name>GameQuizPage</name>
     <message>
-        <location filename="../qml/pages/GameQuizPage.qml" line="42"/>
-        <location filename="../qml/pages/GameQuizPage.qml" line="51"/>
+        <location filename="../qml/pages/GameQuizPage.qml" line="55"/>
+        <location filename="../qml/pages/GameQuizPage.qml" line="64"/>
         <source>Level : </source>
         <translation>Niveau : </translation>
     </message>
@@ -258,7 +258,7 @@
 <context>
     <name>MainApplication</name>
     <message>
-        <location filename="../src/mainapplication.cpp" line="260"/>
+        <location filename="../src/mainapplication.cpp" line="264"/>
         <source>Default language</source>
         <translation>Langue par défaut</translation>
     </message>

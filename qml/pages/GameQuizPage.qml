@@ -22,6 +22,19 @@ Page {
         }
     }
 
+    function loadQuestion()
+    {
+        if(gameType.isCounting())
+        {
+            formsDisplay.visible = true;
+
+        }
+        else
+        {
+            formsDisplay.visible = false;
+        }
+    }
+
     SilicaFlickable {
         anchors.fill: parent
         id:sf
@@ -82,7 +95,13 @@ Page {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                font.bold: true
+                font.bold: truew
+            }
+
+            Item{
+                id: formsDisplay
+                anchors.top: descriptionQuestion.bottom
+                width: rectangleQuestion.width - Theme.paddingLarge * 2
             }
         }
         /*---------------------------------------------------------*/
@@ -217,6 +236,7 @@ Page {
         /*------------------- Réponses --------------------*/
         Component.onCompleted: {
             loadAnswers(gameType.numberPropositions);
+            loadQuestion();
         }
         /*-------------------------------------------------*/
     }

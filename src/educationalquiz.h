@@ -69,6 +69,7 @@ signals:
 public slots:
     virtual inline bool isQuiz()const{return true;}
     virtual inline bool isFlashcard(){return false;}
+    virtual inline bool isCounting(){return false;}
     virtual void launchGame();
     virtual void launchQuestion();
     void treatAnswer(const int indexAnswer);
