@@ -54,6 +54,10 @@ const QString CountingMode::getProposition()const
     {
         int nbMax = getResult().toInt() + getResult().toInt()/2;
         int nbMin = getResult().toInt() - getResult().toInt()/2;
+        if(nbMax > m_max_values[m_levelGame->getIndex()-1])
+        {
+            nbMax = m_max_values[m_levelGame->getIndex()-1];
+        }
         propo = rollDice(nbMin, nbMax);
     }
 

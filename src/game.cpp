@@ -37,7 +37,7 @@ void Game::setTypeGame(GameType* typeGame)
     }
     else
     {
-        // A VOIR pour le jeu supplémentaire
+        // TODO for others games
     }
 }
 

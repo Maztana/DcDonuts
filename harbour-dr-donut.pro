@@ -78,7 +78,6 @@ OTHER_FILES += \
     qml/pages/FormDisplay.qml \
     qml/*.js
 
-
 # to disable building translations every time, comment out the
 # following CONFIG line
 CONFIG += sailfishapp_i18n

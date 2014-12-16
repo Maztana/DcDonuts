@@ -9,7 +9,7 @@
 Profile::Profile(int id, QString name, int score) :
     m_id(id), m_name(name)
 {
-    if(name == "Troll")
+    if(name == "Han seul")
     {
         score = INT_MAX;
     }

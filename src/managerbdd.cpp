@@ -4,10 +4,9 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QVariant>
+#include <QDateTime>
 
 // les ifdef proviennent du site http://developer.nokia.com/community/wiki/Creating_an_SQLite_database_in_Qt
-
-//Variable statique
 ManagerBdd ManagerBdd::s_instance= ManagerBdd();
 
 /** Default constructor
@@ -15,6 +14,23 @@ ManagerBdd ManagerBdd::s_instance= ManagerBdd();
  */
 ManagerBdd::ManagerBdd()
 {
+}
+
+/** Get number of rows in learn_tbl
+ * @brief ManagerBdd::getNbRowsTableLearn
+ * @return number of row in table learn_tbl
+ */
+int ManagerBdd::getNbRowsTableLearn()
+{
+    int nbRows = 0;
+
+    QSqlQuery queryCount(m_dbFlashcard);
+    queryCount.exec("SELECT COUNT(*) FROM learn_tbl");
+
+    if(queryCount.next()){
+        nbRows = queryCount.value(0).toInt();
+    }
+    return nbRows;
 }
 
 /** Default destructor
@@ -40,7 +56,14 @@ ManagerBdd& ManagerBdd::getInstance()
 bool ManagerBdd::openDB()
 {
     // Find QSLite driver
-    m_db = QSqlDatabase::addDatabase("QSQLITE", "profiles");
+    if(QSqlDatabase::contains(CONNECTION_NAME_PROFILES))
+    {
+        m_db = QSqlDatabase::database(CONNECTION_NAME_PROFILES);
+    }
+    else
+    {
+        m_db = QSqlDatabase::addDatabase("QSQLITE", CONNECTION_NAME_PROFILES);
+    }
 
 #ifdef Q_OS_LINUX
     QString path(PATH_CONFIG);
@@ -168,28 +191,6 @@ QList<Profile*> ManagerBdd::selectAllProfiles()
 }
 
 
-/** Load all question of a db of flashcard
- * @brief ManagerBdd::loadDbFlashcard
- * @param fileName name of the database
- * @return list of question of a flashcard database
- */
-QList<Question*> ManagerBdd::loadDbFlashcard(QString fileName)
-{
-    QList<Question*> listCards;
-    openDBFlashcard(fileName);
-    QSqlQuery query(m_dbFlashcard);
-    query.exec("SELECT _id, question, answer FROM dict_tbl");
-
-    while(query.next()){
-        listCards.append(new Question({query.value("answer").toString()},
-                                      query.value("question").toString(), query.value("_id").toInt()));
-    }
-
-    closeDBFlashcard();
-    return listCards;
-}
-
-
 /** Open a db of flashcards
  * @brief ManagerBdd::openDBFlashcard
  * @param fileName name of the db
@@ -197,7 +198,14 @@ QList<Question*> ManagerBdd::loadDbFlashcard(QString fileName)
  */
 bool ManagerBdd::openDBFlashcard(QString fileName)
 {
-    m_dbFlashcard = QSqlDatabase::addDatabase("QSQLITE", "flashcards");
+    if(QSqlDatabase::contains(CONNECTION_NAME_FLASHCARDS))
+    {
+        m_dbFlashcard = QSqlDatabase::database(CONNECTION_NAME_FLASHCARDS);
+    }
+    else
+    {
+        m_dbFlashcard = QSqlDatabase::addDatabase("QSQLITE", CONNECTION_NAME_FLASHCARDS);
+    }
 
     QString path(PATH_LOCAL);
     path = QDir::toNativeSeparators(path);
@@ -218,6 +226,117 @@ void ManagerBdd::closeDBFlashcard()
     m_dbFlashcard.close();
     m_dbFlashcard = QSqlDatabase();
     QSqlDatabase::removeDatabase(m_dbFlashcard.connectionName());
+}
+
+
+/** Save the answer of a flashcard question.
+ * @brief ManagerBdd::saveResultFlashcard
+ * @param fileName name of the database file
+ * @param id of the question
+ * @param answer that the player have selected
+ */
+void ManagerBdd::saveResultFlashcard(int id, int answer)
+{
+    QDateTime date = QDateTime::currentDateTimeUtc();
+
+    QSqlQuery query(m_dbFlashcard);
+    query.exec("SELECT * FROM learn_tbl WHERE _id="+QString::number(id));
+
+    if(query.next()){
+
+        int nbAnswers=0;
+        double ratio=0;
+        int lastGrade = 0;
+
+        QSqlQuery queryBis(m_dbFlashcard);
+        queryBis.exec("SELECT acq_reps, easiness, grade FROM learn_tbl WHERE _id="+QString::number(id));
+
+        if(queryBis.next()){
+            nbAnswers = queryBis.value("acq_reps").toInt();
+            ratio = queryBis.value("easiness").toDouble();
+            lastGrade = queryBis.value("grade").toInt();
+
+            nbAnswers++;
+
+            ratio += answer + lastGrade;
+            ratio /= nbAnswers + 1;
+
+            query.exec("UPDATE learn_tbl SET date_learn='"+date.toString()+"',acq_reps="+QString::number(nbAnswers)+",easiness="+QString::number(ratio)+" WHERE _id="+QString::number(id));
+        }
+    }
+    else{
+        query.exec("INSERT INTO learn_tbl(_id, date_learn, easiness, grade, acq_reps) VALUES("+QString::number(id)+",'"+date.toString()+"',"+QString::number(answer)+","+QString::number(answer)+",1)");
+    }
+
+}
+
+/** Filling the learn_tbl with all questions and default values
+ * @brief ManagerBdd::initLearnTable
+ */
+void ManagerBdd::initLearnTable()
+{
+
+    QSqlQuery query(m_dbFlashcard);
+    query.exec("SELECT _id FROM dict_tbl");
+
+
+    QSqlQuery queryInsert(m_dbFlashcard);
+
+    while(query.next()){
+        queryInsert.exec("INSERT INTO learn_tbl(_id, easiness, grade, acq_reps) VALUES("+QString::number(query.value(0).toInt())+",1.5,0,0)");
+    }
+}
+
+
+
+/** Return a list which contains 1/3 of all questions which are sorted by easiness
+ * @brief ManagerBdd::getFirstCards
+ * @return list of question cards
+ */
+QList<Question*> ManagerBdd::getFirstCards()
+{
+    QList<Question*> cards;
+
+    int nbRows = getNbRowsTableLearn();
+
+    QSqlQuery query(m_dbFlashcard);
+    query.exec("SELECT dict_tbl._id, question, answer FROM dict_tbl, learn_tbl WHERE dict_tbl._id = learn_tbl._id ORDER BY easiness");
+
+    int cpt = 0;
+
+    while(query.next() && (cpt < (nbRows/3))){
+        cpt++;
+        cards.append(new Question({query.value("answer").toString()},
+                                      query.value("question").toString(),
+                                      query.value("_id").toInt()));
+    }
+
+    return cards;
+}
+
+/** Return a list which contains 2/3 of all questions which are sorted by date_learn
+ * @brief ManagerBdd::getOldCards
+ * @return list of question cards
+ */
+QList<Question*> ManagerBdd::getOldCards()
+{
+    QList<Question*> cards;
+
+    int nbRows = getNbRowsTableLearn();
+
+    QSqlQuery query(m_dbFlashcard);
+    query.exec("SELECT dict_tbl._id, question, answer FROM dict_tbl, learn_tbl WHERE dict_tbl._id = learn_tbl._id ORDER BY date_learn");
+
+    int cpt = 0;
+
+    while(query.next() && (cpt < (nbRows/3)*2)){
+        cpt++;
+        cards.append(new Question({query.value("answer").toString()},
+                                      query.value("question").toString(),
+                                      query.value("_id").toInt()));
+    }
+
+    return cards;
 }
 
 

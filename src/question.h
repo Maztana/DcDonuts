@@ -20,6 +20,7 @@ public:
 
     const QList<QString> getValues()const{return m_listValues;}
     const QString getTextQuestion()const{return m_textQuestion;}
+    int getId()const{return m_id;}
 
 signals:
 

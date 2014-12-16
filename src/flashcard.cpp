@@ -1,6 +1,8 @@
 #include "flashcard.h"
 #include "managerbdd.h"
 
+int Flashcard::s_cpt = 1;
+
 /** Constructor
  * @brief Flashcard::Flashcard
  * @param parent
@@ -15,31 +17,49 @@ Flashcard::Flashcard() :
  */
 Flashcard::~Flashcard()
 {
-    qDeleteAll(m_listCards);
+    ManagerBdd::getInstance().closeDBFlashcard();
 }
 
-/** Build a question of addition
+/** Build a flashcard question
  * @brief Flashcard::buildQuestion
- * @return addition's question
+ * @return flashcard's question
  */
 Question* Flashcard::buildQuestion()
 {
-    return m_listCards.at(rollDice(0, m_listCards.size()-1));
+    QList<Question*> cards;
+    int randomIndex;
+
+    if(s_cpt != 5){
+
+        cards = ManagerBdd::getInstance().getFirstCards();
+
+        randomIndex = rollDice(0, cards.size()-1);
+        m_idQuestion = cards.at(randomIndex)->getId();
+
+        s_cpt++;
+
+    } else{
+
+        cards = ManagerBdd::getInstance().getOldCards();
+
+        randomIndex = rollDice(0, cards.size()-1);
+        m_idQuestion = cards.at(randomIndex)->getId();
+
+        s_cpt = 1;
+    }
+
+    return cards.at(randomIndex);
 }
 
-/** Treat response for classic quiz (no flascard)
+/** Treat response for flashcard
  * @brief Flashcard::treatmentAnswer
  * @param indexAnswer the index of answer
  */
-void Flashcard::treatmentAnswer(const int)
+void Flashcard::treatmentAnswer(const int answer)
 {
     emit answerGiven();
-    // treat auto evaluation of the child
-        // 0 forgotten
-        // 1 in acquisition
-        // 2 known
-        // 3 perfect
 
+    ManagerBdd::getInstance().saveResultFlashcard(m_idQuestion, answer);
     launchQuestion();
 }
 
@@ -49,8 +69,7 @@ void Flashcard::treatmentAnswer(const int)
  */
 void Flashcard::initDB(QString nameDataBase)
 {
-    //init the DB
-    qDeleteAll(m_listCards);
     m_levelGame = new Level(nameDataBase);
-    m_listCards = ManagerBdd::getInstance().loadDbFlashcard(nameDataBase);
+    ManagerBdd::getInstance().openDBFlashcard(nameDataBase);
+    ManagerBdd::getInstance().initLearnTable();
 }

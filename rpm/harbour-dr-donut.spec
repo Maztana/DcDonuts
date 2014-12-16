@@ -13,7 +13,7 @@ Name:       harbour-dr-donut
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    My SailfishOS Application
-Version:    0.1
+Version:    0.5
 Release:    1
 Group:      Qt/Qt
 License:    LICENSE
@@ -67,6 +67,8 @@ desktop-file-install --delete-original       \
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/86x86/apps/%{name}.png
+# install bdd packages
+%defattr(-,nemo,nemo,-)
 /home/nemo/.local/share/%{name}/*.db
 # >> files
 # << files
