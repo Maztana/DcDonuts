@@ -230,7 +230,7 @@ void MainApplication::resetProfile(int id)
 }
 
 
-/** Delete one profile and after put the first profile in current profile
+/** Delete one profile and his stats and after put the first profile in current profile
  * @brief MainApplication::deleteProfile
  * @param id of the profile to delete
  */
@@ -238,6 +238,12 @@ void MainApplication::deleteProfile(int id)
 {
     Profile* profileDeleted = m_profiles.takeAt(m_profiles.indexOf(getProfileById(id)));
     m_managerBDD.deleteProfile(*profileDeleted);
+
+
+    for(int i=0; i<m_flashcardsModel.size();i++){
+        m_managerBDD.deleteStatsFlashcardByProfile(profileDeleted->getId(), m_flashcardsModel.value(i)+".db");
+    }
+
 
     if(profileDeleted == m_currentProfile)
     {

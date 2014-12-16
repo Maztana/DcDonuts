@@ -252,7 +252,7 @@
 <context>
     <name>MainApplication</name>
     <message>
-        <location filename="../src/mainapplication.cpp" line="260"/>
+        <location filename="../src/mainapplication.cpp" line="266"/>
         <source>Default language</source>
         <translation>Default language</translation>
     </message>

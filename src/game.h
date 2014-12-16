@@ -10,13 +10,14 @@ class Game : public QObject
 
 private:
     /** Current profile */
-    Profile *m_currentProfile;
+    static Profile *m_currentProfile;
     /** Current game type */
     GameType *m_currentGameType;
 
 public:
     explicit Game(Profile* profileGame);
     ~Game();
+    static int getIdCurrentProfile();
 
 private:
     void setTypeGame(GameType *typeGame);

@@ -207,6 +207,7 @@ bool ManagerBdd::openDBFlashcard(QString fileName)
         m_dbFlashcard = QSqlDatabase::addDatabase("QSQLITE", CONNECTION_NAME_FLASHCARDS);
     }
 
+
     QString path(PATH_LOCAL);
     path = QDir::toNativeSeparators(path);
 
@@ -235,12 +236,12 @@ void ManagerBdd::closeDBFlashcard()
  * @param id of the question
  * @param answer that the player have selected
  */
-void ManagerBdd::saveResultFlashcard(int id, int answer)
+void ManagerBdd::saveResultFlashcard(int id, int answer,int idProfile)
 {
     QDateTime date = QDateTime::currentDateTimeUtc();
 
     QSqlQuery query(m_dbFlashcard);
-    query.exec("SELECT * FROM learn_tbl WHERE _id="+QString::number(id));
+    query.exec("SELECT * FROM learn_tbl WHERE id_question="+QString::number(id)+" AND profile="+QString::number(idProfile));
 
     if(query.next()){
 
@@ -249,7 +250,7 @@ void ManagerBdd::saveResultFlashcard(int id, int answer)
         int lastGrade = 0;
 
         QSqlQuery queryBis(m_dbFlashcard);
-        queryBis.exec("SELECT acq_reps, easiness, grade FROM learn_tbl WHERE _id="+QString::number(id));
+        queryBis.exec("SELECT acq_reps, easiness, grade FROM learn_tbl WHERE id_question="+QString::number(id)+" AND profile="+QString::number(idProfile));
 
         if(queryBis.next()){
             nbAnswers = queryBis.value("acq_reps").toInt();
@@ -261,11 +262,11 @@ void ManagerBdd::saveResultFlashcard(int id, int answer)
             ratio += answer + lastGrade;
             ratio /= nbAnswers + 1;
 
-            query.exec("UPDATE learn_tbl SET date_learn='"+date.toString()+"',acq_reps="+QString::number(nbAnswers)+",easiness="+QString::number(ratio)+" WHERE _id="+QString::number(id));
+            query.exec("UPDATE learn_tbl SET date_learn='"+date.toString()+"',acq_reps="+QString::number(nbAnswers)+",easiness="+QString::number(ratio)+", grade="+QString::number(answer)+" WHERE id_question="+QString::number(id)+" AND profile="+QString::number(idProfile));
         }
     }
     else{
-        query.exec("INSERT INTO learn_tbl(_id, date_learn, easiness, grade, acq_reps) VALUES("+QString::number(id)+",'"+date.toString()+"',"+QString::number(answer)+","+QString::number(answer)+",1)");
+        query.exec("INSERT INTO learn_tbl(id_question, date_learn, easiness, grade, acq_reps, profile) VALUES("+QString::number(id)+",'"+date.toString()+"',"+QString::number(answer)+","+QString::number(answer)+",1,"+QString::number(idProfile)+")");
     }
 
 }
@@ -273,18 +274,25 @@ void ManagerBdd::saveResultFlashcard(int id, int answer)
 /** Filling the learn_tbl with all questions and default values
  * @brief ManagerBdd::initLearnTable
  */
-void ManagerBdd::initLearnTable()
+void ManagerBdd::initLearnTable(int idProfile)
 {
-
     QSqlQuery query(m_dbFlashcard);
-    query.exec("SELECT _id FROM dict_tbl");
 
+    query.exec("ALTER TABLE learn_tbl ADD profile INTEGER");
+    query.exec("ALTER TABLE learn_tbl ADD id_question INTEGER");
 
-    QSqlQuery queryInsert(m_dbFlashcard);
+    query.exec("SELECT * from learn_tbl WHERE profile="+QString::number(idProfile));
 
-    while(query.next()){
-        queryInsert.exec("INSERT INTO learn_tbl(_id, easiness, grade, acq_reps) VALUES("+QString::number(query.value(0).toInt())+",1.5,0,0)");
+    if(!query.next()){
+
+        query.exec("SELECT _id FROM dict_tbl");
+        QSqlQuery queryInsert(m_dbFlashcard);
+
+        while(query.next()){
+            queryInsert.exec("INSERT INTO learn_tbl(id_question, easiness, grade, acq_reps, profile) VALUES("+QString::number(query.value("_id").toInt())+",1.5,0,0,"+QString::number(idProfile)+")");
+        }
     }
+
 }
 
 
@@ -293,22 +301,22 @@ void ManagerBdd::initLearnTable()
  * @brief ManagerBdd::getFirstCards
  * @return list of question cards
  */
-QList<Question*> ManagerBdd::getFirstCards()
+QList<Question*> ManagerBdd::getFirstCards(int idProfile)
 {
     QList<Question*> cards;
 
     int nbRows = getNbRowsTableLearn();
 
     QSqlQuery query(m_dbFlashcard);
-    query.exec("SELECT dict_tbl._id, question, answer FROM dict_tbl, learn_tbl WHERE dict_tbl._id = learn_tbl._id ORDER BY easiness");
+    query.exec("SELECT dict_tbl._id, question, answer FROM dict_tbl, learn_tbl WHERE dict_tbl._id = learn_tbl.id_question AND profile="+QString::number(idProfile)+" ORDER BY easiness");
 
     int cpt = 0;
 
     while(query.next() && (cpt < (nbRows/3))){
         cpt++;
         cards.append(new Question({query.value("answer").toString()},
-                                      query.value("question").toString(),
-                                      query.value("_id").toInt()));
+                                  query.value("question").toString(),
+                                  query.value("_id").toInt()));
     }
 
     return cards;
@@ -318,25 +326,40 @@ QList<Question*> ManagerBdd::getFirstCards()
  * @brief ManagerBdd::getOldCards
  * @return list of question cards
  */
-QList<Question*> ManagerBdd::getOldCards()
+QList<Question*> ManagerBdd::getOldCards(int idProfile)
 {
     QList<Question*> cards;
 
     int nbRows = getNbRowsTableLearn();
 
     QSqlQuery query(m_dbFlashcard);
-    query.exec("SELECT dict_tbl._id, question, answer FROM dict_tbl, learn_tbl WHERE dict_tbl._id = learn_tbl._id ORDER BY date_learn");
+    query.exec("SELECT dict_tbl._id, question, answer FROM dict_tbl, learn_tbl WHERE dict_tbl._id = learn_tbl.id_question AND profile="+QString::number(idProfile)+" ORDER BY date_learn");
 
     int cpt = 0;
 
     while(query.next() && (cpt < (nbRows/3)*2)){
         cpt++;
         cards.append(new Question({query.value("answer").toString()},
-                                      query.value("question").toString(),
-                                      query.value("_id").toInt()));
+                                  query.value("question").toString(),
+                                  query.value("_id").toInt()));
     }
 
     return cards;
 }
 
+
+/** Delete stats of a profile in a flashcard file
+ * @brief ManagerBdd::deleteStatsFlashcardByProfile
+ * @param idProfile profile to delete stats
+ * @param fileName name of the flashcard file to where delete stats
+ */
+void ManagerBdd::deleteStatsFlashcardByProfile(int idProfile, QString fileName)
+{
+    openDBFlashcard(fileName);
+
+    QSqlQuery query(m_dbFlashcard);
+    query.exec("DELETE FROM learn_tbl WHERE profile="+QString::number(idProfile));
+
+    closeDBFlashcard();
+}
 
