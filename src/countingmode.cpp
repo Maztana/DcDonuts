@@ -96,24 +96,6 @@ void CountingMode::setNumberPropositions()
     emit numberPropositionsChanged();
 }
 
-/** Treat response for classic quiz (no flascard)
- * @brief CountingMode::treatmentAnswer
- * @param indexAnswer the index of answer
- */
-void CountingMode::treatmentAnswer(const int indexAnswer)
-{
-    if(m_listPropositions.at(indexAnswer-1).toInt() == getResult().toInt())
-    {
-        emit answerRight(indexAnswer);
-        emit incrementScore(this->m_incremental_score * 2);
-    }
-    else
-    {
-        emit answerWrong(indexAnswer);
-        emit decrementScore(this->m_incremental_score);
-    }
-}
-
 /** Setter of list levels selectable
  * @brief CountingMode::setLevelsSelectable
  */

@@ -200,6 +200,7 @@ Page {
                     }
                 }
 
+                // No activated Color game mode
                 Row {
                     id: lineColor
                     anchors.horizontalCenter: parent.horizontalCenter
@@ -207,6 +208,7 @@ Page {
                     Button{
                         text:qsTr("Color")
                         enabled:false
+                        visible: false
                         onClicked:
                         {
                             game.initGameType([6])

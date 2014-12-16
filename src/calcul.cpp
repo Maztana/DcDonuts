@@ -20,24 +20,6 @@ Calcul::~Calcul()
 
 }
 
-/** Treat response for classic quiz (no flascard)
- * @brief Calcul::treatmentAnswer
- * @param indexAnswer the index of answer
- */
-void Calcul::treatmentAnswer(const int indexAnswer)
-{
-    if(m_listPropositions.at(indexAnswer-1).toInt() == getResult().toInt())
-    {
-        emit answerRight(indexAnswer);
-        emit incrementScore(this->m_incremental_score * 2);
-    }
-    else
-    {
-        emit answerWrong(indexAnswer);
-        emit decrementScore(this->m_incremental_score);
-    }
-}
-
 /** Setter for the number of propositions also level
  * @brief Calcul::setNumberPropositions
  */

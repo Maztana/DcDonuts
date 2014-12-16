@@ -18,8 +18,6 @@ protected:
     /** Max values list */
     QList<int> m_max_values;
 
-    virtual void treatmentAnswer(const int indexAnswer);
-
 private:
     virtual void setNumberPropositions();
     virtual void setLevelsSelectable();

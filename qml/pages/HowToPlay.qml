@@ -60,6 +60,40 @@ Page {
             }
 
             SectionHeader {
+                id:countingSection
+                text: qsTr("Counting")
+                font.pixelSize: Theme.fontSizeMedium
+            }
+
+            TextEdit{
+                id:countingRules
+                x: Theme.paddingLarge
+                font.pixelSize: Theme.fontSizeSmall
+                color:Theme.secondaryColor
+                wrapMode: TextEdit.WordWrap
+                width: parent.width - 2 * Theme.paddingLarge
+                text: qsTr("htpCountingRulesText")
+                readOnly: true
+            }
+
+            SectionHeader {
+                id:mixedSection
+                text: qsTr("Mixed")
+                font.pixelSize: Theme.fontSizeMedium
+            }
+
+            TextEdit{
+                id:mixedRules
+                x: Theme.paddingLarge
+                font.pixelSize: Theme.fontSizeSmall
+                color:Theme.secondaryColor
+                wrapMode: TextEdit.WordWrap
+                width: parent.width - 2 * Theme.paddingLarge
+                text: qsTr("htpMixedRulesText")
+                readOnly: true
+            }
+
+            SectionHeader {
                 id:flashcardSection
                 text: qsTr("Flashcard")
                 font.pixelSize: Theme.fontSizeMedium
@@ -75,8 +109,6 @@ Page {
                 text: qsTr("htpFlashcardRulesText")
                 readOnly: true
             }
-
-
         }
     }
 }

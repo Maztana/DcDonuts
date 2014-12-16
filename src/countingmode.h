@@ -26,7 +26,6 @@ protected:
     virtual void setNumberPropositions();
 
 private:
-    virtual void treatmentAnswer(const int indexAnswer);
     virtual void setLevelsSelectable();
 
 };

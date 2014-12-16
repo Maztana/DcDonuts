@@ -44,7 +44,7 @@ protected:
     int rollDice(int nbMin, int nbMax)const;
 
 private:
-    virtual void treatmentAnswer(const int indexAnswer) = 0;
+    virtual void treatmentAnswer(const int indexAnswer);
     virtual void setListPropositions();
     virtual void setQuestion(Question* question);
 

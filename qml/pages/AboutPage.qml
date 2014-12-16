@@ -57,7 +57,7 @@ Page{
             x: Theme.paddingLarge
             anchors.topMargin: Theme.paddingLarge
             anchors.top: projectmanager.bottom
-            text: qsTr("Developers") + ": MIZOULE-THABOURIN Etienne, BEUVELET Quentin, MACAISNE Mélanie."
+            text: qsTr("Developers") + ": BEUVELET Quentin, MACAISNE Mélanie, MIZOULE-THABOURIN Etienne."
             color: Theme.highlightColor
             wrapMode: TextEdit.WordWrap
             width:parent.width - 2 * Theme.paddingLarge
