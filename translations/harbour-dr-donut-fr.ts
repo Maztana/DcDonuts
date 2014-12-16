@@ -35,9 +35,32 @@
     </message>
 </context>
 <context>
+    <name>AddFlashcardPage</name>
+    <message>
+        <location filename="../qml/pages/AddFlashcardPage.qml" line="7"/>
+        <source>Add flashcard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AddFlashcardPage.qml" line="17"/>
+        <source>txtAddFlashcard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AddFlashcardPage.qml" line="28"/>
+        <source>Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ChoiceFlashcardPage</name>
     <message>
-        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="9"/>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="11"/>
+        <source>Add flashcard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="16"/>
         <source>Flashcard</source>
         <translation>Flashcard</translation>
     </message>
@@ -157,8 +180,8 @@
     <name>GameQuizPage</name>
     <message>
         <location filename="../qml/pages/GameQuizPage.qml" line="65"/>
-        <source>Level : </source>
-        <translation>Niveau : </translation>
+        <source>Level</source>
+        <translation>Niveau</translation>
     </message>
 </context>
 <context>
@@ -224,7 +247,7 @@
     <message>
         <location filename="../qml/pages/HowToPlay.qml" line="75"/>
         <source>htpCountingRulesText</source>
-        <translation>Vous devez compter le nombre de formes affichées, pour cela un ensemble de propositions de réponses vous seras donné. Appuyez sur la réponse qui vous semble juste. La correction sera affichée. Si vous donnez une bonne réponse vous cumulerez des donuts, si vous en donnez une mauvaise vous en perdrez.</translation>
+        <translation>Vous devez compter le nombre de formes affichées, pour cela un ensemble de propositions de réponses vous sera donné. Appuyez sur la réponse qui vous semble juste. La correction sera affichée. Si vous donnez une bonne réponse vous cumulerez des donuts, si vous en donnez une mauvaise vous en perdrez.</translation>
     </message>
     <message>
         <location filename="../qml/pages/HowToPlay.qml" line="81"/>
@@ -234,7 +257,7 @@
     <message>
         <location filename="../qml/pages/HowToPlay.qml" line="92"/>
         <source>htpMixedRulesText</source>
-        <translation>Ce mode de jeu regroupe tous les autres modes de jeux, sauf le mode de jeu Flashcards. Les jeux sont proposés les uns après les autres de façon aléatoire. Le niveau facile n&apos;est pas accéssible dans ce jeu.</translation>
+        <translation>Ce mode de jeu regroupe tous les autres modes de jeux, sauf le mode de jeu Flashcards. Les jeux sont proposés les uns après les autres de façon aléatoire. Le niveau facile n&apos;est pas accessible dans ce mode.</translation>
     </message>
     <message>
         <location filename="../qml/pages/HowToPlay.qml" line="98"/>

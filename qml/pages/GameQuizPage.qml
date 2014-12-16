@@ -62,7 +62,7 @@ Page {
                 }
                 else
                 {
-                    qsTr("Level : ") + gameType.level
+                    qsTr("Level") + " : " + gameType.level
                 }
             }
             anchors.horizontalCenter: parent.horizontalCenter

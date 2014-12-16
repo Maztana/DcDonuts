@@ -76,7 +76,8 @@ OTHER_FILES += \
     qml/templatesAnswers/Flashcard.qml \
     qml/pages/ChoiceFlashcardPage.qml \
     qml/pages/FormDisplay.qml \
-    qml/*.js
+    qml/*.js \
+    qml/pages/AddFlashcardPage.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line

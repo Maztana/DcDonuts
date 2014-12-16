@@ -6,6 +6,13 @@ Page{
         anchors.fill: parent
         model: flashcardsListModel
 
+        PullDownMenu {
+            MenuItem {
+                text: qsTr("Add flashcard")
+                onClicked: pageStack.push(Qt.resolvedUrl("../pages/AddFlashcardPage.qml"))
+            }
+        }
+
         header: PageHeader { title: qsTr("Flashcard") }
 
         VerticalScrollDecorator {}

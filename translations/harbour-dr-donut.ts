@@ -35,9 +35,32 @@
     </message>
 </context>
 <context>
+    <name>AddFlashcardPage</name>
+    <message>
+        <location filename="../qml/pages/AddFlashcardPage.qml" line="7"/>
+        <source>Add flashcard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AddFlashcardPage.qml" line="17"/>
+        <source>txtAddFlashcard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AddFlashcardPage.qml" line="28"/>
+        <source>Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ChoiceFlashcardPage</name>
     <message>
-        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="9"/>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="11"/>
+        <source>Add flashcard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="16"/>
         <source>Flashcard</source>
         <translation>Flashcard</translation>
     </message>
@@ -157,8 +180,8 @@
     <name>GameQuizPage</name>
     <message>
         <location filename="../qml/pages/GameQuizPage.qml" line="65"/>
-        <source>Level : </source>
-        <translation>Level : </translation>
+        <source>Level</source>
+        <translation>Level</translation>
     </message>
 </context>
 <context>
@@ -224,7 +247,7 @@
     <message>
         <location filename="../qml/pages/HowToPlay.qml" line="75"/>
         <source>htpCountingRulesText</source>
-        <translation type="unfinished"></translation>
+        <translation>You have to count the shown forms, for this it will be a set of proposals. If you give a right answer you will accumulate donuts, else you will loose some of them. Tap the right answer. The correction will be shown. If you give a right answer you will accumulate donuts, else you will loose some of them.</translation>
     </message>
     <message>
         <location filename="../qml/pages/HowToPlay.qml" line="81"/>
@@ -234,7 +257,7 @@
     <message>
         <location filename="../qml/pages/HowToPlay.qml" line="92"/>
         <source>htpMixedRulesText</source>
-        <translation type="unfinished"></translation>
+        <translation>This game mode regroup all the others game modes, except the Flashcard game. Games are randomly proposed one after another. The easy level isn&apos;t accessible in this game mode.</translation>
     </message>
     <message>
         <location filename="../qml/pages/HowToPlay.qml" line="109"/>
