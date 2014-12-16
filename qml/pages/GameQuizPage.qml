@@ -5,7 +5,7 @@ import "../templatesAnswers"
 Page {
     id: pageJeu
 
-    function loadAnswers(nbPropositions)
+    function loadItemAnswers(nbPropositions)
     {
         if(gameType.isQuiz())
         {
@@ -22,18 +22,26 @@ Page {
         }
     }
 
-    function loadQuestion()
+    function loadItemQuestion()
     {
         if(gameType.isCounting())
         {
+            descriptionQuestion.state = "descriptionQuestionStateCounting"
             formsDisplay.visible = true;
-
+            var component = Qt.createComponent("FormDisplay.qml");
+            if(component.status === Component.Ready)
+            {
+                component.createObject(formsDisplay, {"numberForms": parseInt(gameType.getResult())})
+            }
         }
         else
         {
+            descriptionQuestion.state = "descriptionQuestionStateNormal"
             formsDisplay.visible = false;
         }
     }
+
+
 
     SilicaFlickable {
         anchors.fill: parent
@@ -48,16 +56,9 @@ Page {
         Label {
             id: level
             text: {
-                if(gameType.isQuiz())
+                if(gameType.isFlashcard())
                 {
-                    if(!gameType.isFlashcard())
-                    {
-                        qsTr("Level : ") + gameType.level
-                    }
-                    else
-                    {
-                        ""
-                    }
+                    gameType.level
                 }
                 else
                 {
@@ -86,22 +87,56 @@ Page {
             Text {
                 id: descriptionQuestion
                 text: gameType.textQuestion + " ?"
-                anchors.centerIn: parent
-                height: rectangleQuestion.height - Theme.paddingLarge * 2
+                anchors.horizontalCenter: parent.horizontalCenter
                 width: rectangleQuestion.width - Theme.paddingLarge * 2
 
-                font.pixelSize: Theme.fontSizeHuge
+                state: "descriptionQuestionStateNormal"
+
                 fontSizeMode: Text.Fit
                 horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                font.bold: truew
+                font.bold: true
+
+                states: [
+                    State {
+                        name: "descriptionQuestionStateNormal"
+                        PropertyChanges{
+                            target: descriptionQuestion
+                            height: rectangleQuestion.height - Theme.paddingLarge;
+                            font.pixelSize: Theme.fontSizeHuge
+                            verticalAlignment: Text.AlignVCenter
+                        }
+                        AnchorChanges {
+                            target: descriptionQuestion
+                            anchors.top: undefined
+                            anchors.verticalCenter: rectangleQuestion.verticalCenter
+                        }
+                    },
+                    State {
+                        name: "descriptionQuestionStateCounting"
+
+                        PropertyChanges{
+                            target: descriptionQuestion
+                            height: (rectangleQuestion.height - Theme.paddingLarge)/3
+                            font.pixelSize: Theme.fontSizeMedium
+                            verticalAlignment: 0
+                            anchors.margins: Theme.paddingSmall
+                        }
+                        AnchorChanges {
+                            target: descriptionQuestion
+                            anchors.verticalCenter: undefined
+                            anchors.top:rectangleQuestion.top
+                        }
+                    }
+                ]
             }
 
             Item{
                 id: formsDisplay
                 anchors.top: descriptionQuestion.bottom
+                anchors.horizontalCenter: parent.horizontalCenter
                 width: rectangleQuestion.width - Theme.paddingLarge * 2
+                height: rectangleQuestion.height - descriptionQuestion.height - Theme.paddingMedium
             }
         }
         /*---------------------------------------------------------*/
@@ -235,8 +270,8 @@ Page {
 
         /*------------------- Réponses --------------------*/
         Component.onCompleted: {
-            loadAnswers(gameType.numberPropositions);
-            loadQuestion();
+            loadItemAnswers(gameType.numberPropositions);
+            loadItemQuestion();
         }
         /*-------------------------------------------------*/
     }
@@ -246,6 +281,13 @@ Page {
         onAnswerRight: imgreponse.state = "right"
         onAnswerWrong: imgreponse.state = "wrong"
         onCorrectedAnswer: imgreponse.state = "right"
+        onQuestionChanged: {
+            if(gameType.isCounting())
+            {
+                formsDisplay.children[0].destroy()
+                loadItemQuestion()
+            }
+        }
     }
 }
 

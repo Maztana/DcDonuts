@@ -1,14 +1,23 @@
 #include "level.h"
 
 
-/** Complete constructor level
+/** Constructor level for classic level
  * @brief Level::Level
- * @param indexNiveau index of level
+ * @param indexLevel index of level
  */
-Level::Level(int indexNiveau) :
-    QObject(0), m_indexLevel(indexNiveau)
+Level::Level(int indexLevel) :
+    QObject(0), m_indexLevel(indexLevel)
 {
     initLevel();
+}
+
+/** Constructor level for flashcard
+ * @brief Level::Level
+ * @param nameLevel name of data base flashcard
+ */
+Level::Level(QString nameLevel) :
+    QObject(0), m_indexLevel(0), m_name(nameLevel)
+{
 }
 
 /** Getter of level index
@@ -43,9 +52,6 @@ void Level::initLevel()
         break;
     case 3:
         m_name = tr("Hard");
-        break;
-    case 4:
-        m_name = tr("Auto");
         break;
     }
 }

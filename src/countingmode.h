@@ -12,7 +12,6 @@ public:
     virtual Question* buildQuestion();
 
     virtual const QString getProposition()const;
-    virtual const QString getResult()const;
     virtual const QString makeTextQuestion(QList<QString> values)const;
 
 protected:
@@ -28,6 +27,7 @@ private:
     virtual void setLevelsSelectable();
 
 public slots:
+    virtual const QString getResult()const;
     virtual inline bool isCounting(){return true;}
 };
 

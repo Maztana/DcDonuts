@@ -21,7 +21,7 @@ MixedEducationalQuiz::~MixedEducationalQuiz()
 }
 
 /** Add type Quiz in the mixed mode
- * @brief MixedGame::addGameType
+ * @brief MixedEducationalQuiz::addGameType
  * @param typeQuiz the new quiz type
  */
 void MixedEducationalQuiz::addGameType(EducationalQuiz* typeQuiz)
@@ -37,7 +37,7 @@ void MixedEducationalQuiz::addGameType(EducationalQuiz* typeQuiz)
 }
 
 /** Build question with current type game
- * @brief MixedGame::buildQuestion
+ * @brief MixedEducationalQuiz::buildQuestion
  * @return the new current question
  */
 Question* MixedEducationalQuiz::buildQuestion()
@@ -46,7 +46,7 @@ Question* MixedEducationalQuiz::buildQuestion()
 }
 
 /** Getter of the proposition of current question of current type game
- * @brief MixedGame::getProposition
+ * @brief MixedEducationalQuiz::getProposition
  * @return the proposition question
  */
 const QString MixedEducationalQuiz::getProposition()const
@@ -55,7 +55,7 @@ const QString MixedEducationalQuiz::getProposition()const
 }
 
 /** Getter of the result of current question of current type game
- * @brief MixedGame::getResult
+ * @brief MixedEducationalQuiz::getResult
  * @return the result question
  */
 const QString MixedEducationalQuiz::getResult()const
@@ -64,7 +64,7 @@ const QString MixedEducationalQuiz::getResult()const
 }
 
 /** Getter of the text of current question of current type game
- * @brief MixedGame::getTextQuestion
+ * @brief MixedEducationalQuiz::makeTextQuestion
  * @return the text question
  */
 const QString MixedEducationalQuiz::makeTextQuestion(QList<QString> values)const
@@ -81,7 +81,7 @@ void MixedEducationalQuiz::setListPropositions()
 }
 
 /** Setter of list levels selectable
- * @brief MixedGame::setLevelsSelectable
+ * @brief MixedEducationalQuiz::setLevelsSelectable
  */
 void MixedEducationalQuiz::setLevelsSelectable()
 {
@@ -121,7 +121,7 @@ void MixedEducationalQuiz::setNumberPropositions()
 }
 
 /** Treat response for classic quiz (no flascard)
- * @brief MixedGame::treatmentAnswer
+ * @brief MixedEducationalQuiz::treatmentAnswer
  * @param indexAnswer the index of answer
  */
 void MixedEducationalQuiz::treatmentAnswer(const int indexAnswer)
@@ -130,7 +130,7 @@ void MixedEducationalQuiz::treatmentAnswer(const int indexAnswer)
 }
 
 /** Setter for the level game
- * @brief MixedGame::initLevelGame
+ * @brief MixedEducationalQuiz::initLevelGame
  * @param indexLevel the level game index
  */
 void MixedEducationalQuiz::initLevelGame(int indexLevel)
@@ -186,6 +186,10 @@ void MixedEducationalQuiz::wrongAnswer(int indexAnswer)
     emit answerWrong(indexAnswer);
 }
 
+/** emit scoreDecrement
+ * @brief MixedEducationalQuiz::scoreDecrement
+ * @param decrementalScore
+ */
 void MixedEducationalQuiz::scoreDecrement(int decrementalScore)
 {
 

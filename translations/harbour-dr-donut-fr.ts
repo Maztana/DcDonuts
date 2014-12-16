@@ -101,9 +101,9 @@
 <context>
     <name>CountingMode</name>
     <message>
-        <location filename="../src/countingmode.cpp" line="88"/>
-        <source>Combien y a t&apos;il de donuts</source>
-        <translation type="unfinished"></translation>
+        <location filename="../src/countingmode.cpp" line="83"/>
+        <source>How many forms</source>
+        <translation>Combien de formes</translation>
     </message>
 </context>
 <context>
@@ -137,22 +137,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/templatesAnswers/Flashcard.qml" line="79"/>
-        <source>Forgotten</source>
-        <translation>Oublié</translation>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="82"/>
+        <source>Not at all</source>
+        <translation>Pas du tout</translation>
     </message>
     <message>
-        <location filename="../qml/templatesAnswers/Flashcard.qml" line="106"/>
-        <source>In acquisition</source>
-        <translation>En acquisition</translation>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="109"/>
+        <source>Not still</source>
+        <translation>Pas encore</translation>
     </message>
     <message>
-        <location filename="../qml/templatesAnswers/Flashcard.qml" line="138"/>
-        <source>Known</source>
-        <translation>Su</translation>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="141"/>
+        <source>Almost</source>
+        <translation>Presque</translation>
     </message>
     <message>
-        <location filename="../qml/templatesAnswers/Flashcard.qml" line="165"/>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="168"/>
         <source>Perfect</source>
         <translation>Parfait</translation>
     </message>
@@ -160,8 +160,7 @@
 <context>
     <name>GameQuizPage</name>
     <message>
-        <location filename="../qml/pages/GameQuizPage.qml" line="55"/>
-        <location filename="../qml/pages/GameQuizPage.qml" line="64"/>
+        <location filename="../qml/pages/GameQuizPage.qml" line="65"/>
         <source>Level : </source>
         <translation>Niveau : </translation>
     </message>
@@ -235,24 +234,23 @@
 <context>
     <name>Level</name>
     <message>
-        <location filename="../src/level.cpp" line="39"/>
+        <location filename="../src/level.cpp" line="48"/>
         <source>Easy</source>
         <translation>Facile</translation>
     </message>
     <message>
-        <location filename="../src/level.cpp" line="42"/>
+        <location filename="../src/level.cpp" line="51"/>
         <source>Medium</source>
         <translation>Moyen</translation>
     </message>
     <message>
-        <location filename="../src/level.cpp" line="45"/>
+        <location filename="../src/level.cpp" line="54"/>
         <source>Hard</source>
         <translation>Difficile</translation>
     </message>
     <message>
-        <location filename="../src/level.cpp" line="48"/>
         <source>Auto</source>
-        <translation type="unfinished">Auto</translation>
+        <translation type="obsolete">Auto</translation>
     </message>
 </context>
 <context>

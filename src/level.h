@@ -14,6 +14,7 @@ class Level : public QObject
 
 public:
     explicit Level(int indexNiveau);
+    explicit Level(QString nameLevel);
 
     int getIndex()const;
     const QString& getName()const;

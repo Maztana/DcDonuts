@@ -3,9 +3,14 @@
 
 #include <QString>
 #include <QTextStream>
+#include <QDir>
 
 // Data base
-const QString PATH_DATA_BASE = "drdonut.db.sqlite";
+const QString NAME_DATA_BASE = "drdonut.db.sqlite";
+const QString PATH_CONFIG = QDir::home().path() + "/.config/harbour-dr-donut";
+const QString PATH_LOCAL = QDir::home().path() + "/.local/share/harbour-dr-donut";
+
+
 
 
 // Game Mode

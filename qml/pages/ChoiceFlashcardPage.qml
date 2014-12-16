@@ -27,7 +27,7 @@ Page{
 
             onClicked: {
                 //Init name of BDD
-                //gameType.initLevelGame(modelData)
+                gameType.initDB(modelData + ".db")
                 gameType.launchGame()
 
                 pageStack.replace(Qt.resolvedUrl("../pages/GameQuizPage.qml"))

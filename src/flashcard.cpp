@@ -1,4 +1,5 @@
 #include "flashcard.h"
+#include "managerbdd.h"
 
 /** Constructor
  * @brief Flashcard::Flashcard
@@ -7,7 +8,6 @@
 Flashcard::Flashcard() :
     EducationalQuiz()
 {
-    //setNumberPropositions();
 }
 
 /** Destructor
@@ -15,6 +15,7 @@ Flashcard::Flashcard() :
  */
 Flashcard::~Flashcard()
 {
+    qDeleteAll(m_listCards);
 }
 
 /** Build a question of addition
@@ -23,14 +24,7 @@ Flashcard::~Flashcard()
  */
 Question* Flashcard::buildQuestion()
 {
-    // Load question with bdd
-    //chargement de result et text question de flashcard
-    //loadQuestion();
-    QString result = "result flashcard";
-    m_textQuestion = "Type flascard test!";
-
-    Question* myQuestion = new Question({result}, makeTextQuestion({}));
-    return myQuestion;
+    return m_listCards.at(rollDice(0, m_listCards.size()-1));
 }
 
 /** Treat response for classic quiz (no flascard)
@@ -45,4 +39,18 @@ void Flashcard::treatmentAnswer(const int)
         // 1 in acquisition
         // 2 known
         // 3 perfect
+
+    launchQuestion();
+}
+
+/** Init and load the Db cards
+ * @brief Flashcard::initDB
+ * @param nameDataBase name of data base
+ */
+void Flashcard::initDB(QString nameDataBase)
+{
+    //init the DB
+    qDeleteAll(m_listCards);
+    m_levelGame = new Level(nameDataBase);
+    m_listCards = ManagerBdd::getInstance().loadDbFlashcard(nameDataBase);
 }

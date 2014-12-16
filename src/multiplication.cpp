@@ -104,7 +104,7 @@ const QString Multiplication::getResult()const
 }
 
 /** Getter of question text
- * @brief Addition::getTextQuestion
+ * @brief Multiplication::makeTextQuestion
  * @return the text of question
  */
 const QString Multiplication::makeTextQuestion(QList<QString> values)const

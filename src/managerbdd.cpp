@@ -15,7 +15,6 @@ ManagerBdd ManagerBdd::s_instance= ManagerBdd();
  */
 ManagerBdd::ManagerBdd()
 {
-
 }
 
 /** Default destructor
@@ -23,7 +22,6 @@ ManagerBdd::ManagerBdd()
  */
 ManagerBdd::~ManagerBdd()
 {
-
 }
 
 /** Return ManagerBDD's instance
@@ -35,56 +33,32 @@ ManagerBdd& ManagerBdd::getInstance()
     return s_instance;
 }
 
-/** Create and open sqlite database in /home/nemo/.local/share/harbour-dr-donut/
+/** Create and open sqlite database in /home/nemo/.config/harbour-dr-donut/
  * @brief ManagerBdd::openDB
  * @return true if database is open, else return false
  */
 bool ManagerBdd::openDB()
 {
     // Find QSLite driver
-    m_db = QSqlDatabase::addDatabase("QSQLITE");
+    m_db = QSqlDatabase::addDatabase("QSQLITE", "profiles");
 
 #ifdef Q_OS_LINUX
-    QString path(QDir::home().path());
-    path.append(QDir::separator()).append(".local");
-    path.append(QDir::separator()).append("share");
-    path.append(QDir::separator()).append("harbour-dr-donut");
+    QString path(PATH_CONFIG);
     path = QDir::toNativeSeparators(path);
 
     QDir dir;
     dir.mkpath(path);
 
-    path.append(QDir::separator()).append(PATH_DATA_BASE);
+    path.append(QDir::separator()).append(NAME_DATA_BASE);
     path = QDir::toNativeSeparators(path);
     m_db.setDatabaseName(path);
 
 #else
-    m_db.setDatabaseName(PATH_DATA_BASE);
+    m_db.setDatabaseName(NAME_DATA_BASE);
 #endif
 
     // Open database
     return m_db.open();
-}
-
-/** Close and Delete database
- * @brief ManagerBdd::deleteDB
- * @return true if database is delete, else return false
- */
-bool ManagerBdd::deleteDB()
-{
-    m_db.close();
-
-#ifdef Q_OS_LINUX
-    QString path(QDir::home().path());
-    path.append(QDir::separator()).append(".local");
-    path.append(QDir::separator()).append("share");
-    path.append(QDir::separator()).append("harbour-dr-donut");
-    path.append(QDir::separator()).append(PATH_DATA_BASE);
-    path = QDir::toNativeSeparators(path);
-    return QFile::remove(path);
-#else
-    return QFile::remove(PATH_DATA_BASE);
-#endif
 }
 
 /** Close database
@@ -93,6 +67,8 @@ bool ManagerBdd::deleteDB()
 void ManagerBdd::closeDB()
 {
     m_db.close();
+    m_db = QSqlDatabase();
+    QSqlDatabase::removeDatabase(m_db.connectionName());
 }
 
 /** Create tables of database
@@ -104,7 +80,6 @@ void ManagerBdd::createTables()const
     QSqlQuery query(m_db);
     query.exec("CREATE TABLE IF NOT EXISTS profile (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(20), score INTEGER)");
 
-    // AJOUTER TABLE QUESTION
 }
 
 /** Insert a new profile in database and return a profile object
@@ -191,4 +166,58 @@ QList<Profile*> ManagerBdd::selectAllProfiles()
 
     return listProfiles;
 }
+
+
+/** Load all question of a db of flashcard
+ * @brief ManagerBdd::loadDbFlashcard
+ * @param fileName name of the database
+ * @return list of question of a flashcard database
+ */
+QList<Question*> ManagerBdd::loadDbFlashcard(QString fileName)
+{
+    QList<Question*> listCards;
+    openDBFlashcard(fileName);
+    QSqlQuery query(m_dbFlashcard);
+    query.exec("SELECT _id, question, answer FROM dict_tbl");
+
+    while(query.next()){
+        listCards.append(new Question({query.value("answer").toString()},
+                                      query.value("question").toString(), query.value("_id").toInt()));
+    }
+
+    closeDBFlashcard();
+    return listCards;
+}
+
+
+/** Open a db of flashcards
+ * @brief ManagerBdd::openDBFlashcard
+ * @param fileName name of the db
+ * @return true is db is open else return false
+ */
+bool ManagerBdd::openDBFlashcard(QString fileName)
+{
+    m_dbFlashcard = QSqlDatabase::addDatabase("QSQLITE", "flashcards");
+
+    QString path(PATH_LOCAL);
+    path = QDir::toNativeSeparators(path);
+
+    path.append(QDir::separator()).append(fileName);
+    path = QDir::toNativeSeparators(path);
+    m_dbFlashcard.setDatabaseName(path);
+
+    return m_dbFlashcard.open();
+}
+
+
+/** Close Flashcard database
+ * @brief ManagerBdd::closeDBFlashcard
+ */
+void ManagerBdd::closeDBFlashcard()
+{
+    m_dbFlashcard.close();
+    m_dbFlashcard = QSqlDatabase();
+    QSqlDatabase::removeDatabase(m_dbFlashcard.connectionName());
+}
+
 

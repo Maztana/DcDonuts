@@ -9,7 +9,6 @@ Canvas {
     anchors.fill: parent
 
     onPaint: {
-        // Get drawing context
         var context = getContext("2d");
 
         context.beginPath();

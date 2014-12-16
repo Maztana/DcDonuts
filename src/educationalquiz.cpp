@@ -18,11 +18,6 @@ EducationalQuiz::EducationalQuiz():
 EducationalQuiz::~EducationalQuiz()
 {
     m_currentQuestion = nullptr;
-
-    if(!m_isMixed)
-    {
-        qDeleteAll(m_questionsAsked);
-    }
 }
 
 /** Method to emit new question
@@ -51,10 +46,9 @@ const QList<QString> EducationalQuiz::getPropositions()
 void EducationalQuiz::setQuestion(Question* question)
 {
     m_currentQuestion = question;
-    m_questionsAsked.append(m_currentQuestion);
 }
 
-/** Roll a dice between nbMin and nbMax
+/** Roll a dice between nbMin and nbMax include
  * @brief EducationalQuiz::rollDice
  * @param nbMax number max
  * @param nbMin number min

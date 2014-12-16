@@ -11,9 +11,11 @@ class Question : public QObject
     QList<QString> m_listValues;
     /** Text question */
     QString m_textQuestion;
+    /** Id */
+    int m_id;
 
 public:
-    explicit Question(QList<QString> listValues, QString textQuestion);
+    explicit Question(QList<QString> listValues, QString textQuestion, int id = 0);
     ~Question();
 
     const QList<QString> getValues()const{return m_listValues;}

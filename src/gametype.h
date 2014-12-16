@@ -62,6 +62,7 @@ public slots:
     virtual void launchGame() = 0;
     void initLevelsSelectable();
     virtual void initLevelGame(int indexLevel);
+    virtual void initDB(QString){}
 
 };
 

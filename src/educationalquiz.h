@@ -29,7 +29,6 @@ public:
     virtual Question* buildQuestion() = 0;
 
     virtual const QString getProposition()const = 0;
-    virtual const QString getResult()const = 0;
     virtual const QString getTextQuestion(){return m_currentQuestion->getTextQuestion();}
     virtual const QString makeTextQuestion(QList<QString> values)const = 0;
 
@@ -38,8 +37,6 @@ protected:
     QList<QString> m_listPropositions;
     /** current question asked */
     Question* m_currentQuestion;
-    /** List of questions asked in this game */
-    QList<Question*> m_questionsAsked;
     /** if the game type is mixed */
     bool m_isMixed;
 
@@ -67,6 +64,7 @@ signals:
     void correctedAnswer(int index);
 
 public slots:
+    virtual const QString getResult()const = 0;
     virtual inline bool isQuiz()const{return true;}
     virtual inline bool isFlashcard(){return false;}
     virtual inline bool isCounting(){return false;}
