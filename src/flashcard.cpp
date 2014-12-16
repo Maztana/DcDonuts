@@ -26,10 +26,6 @@ Flashcard::~Flashcard()
  */
 Question* Flashcard::buildQuestion()
 {
-    /*QTextStream(stdout)<< "dans le build" <<endl;
-
-    QTextStream(stdout)<< s_cpt <<endl;
-
     QList<Question*> cards;
     int randomIndex;
 
@@ -52,15 +48,7 @@ Question* Flashcard::buildQuestion()
         s_cpt = 1;
     }
 
-    return cards.at(randomIndex);*/
-
-    QTextStream(stdout)<< "dans le build" <<endl;
-
-    QList<Question*> cards = ManagerBdd::getInstance().getFirstCards();
-    int randomIndex = rollDice(0, cards.size()-1);
     return cards.at(randomIndex);
-
-
 }
 
 /** Treat response for flashcard
