@@ -22,20 +22,18 @@ public:
     virtual const QString getTextQuestion(){return m_currentGameType->getTextQuestion();}
     virtual const QString makeTextQuestion(QList<QString> values)const;
 
-
 protected:
-    virtual void setListPropositions();
     virtual void setLevelsSelectable();
     virtual void setNumberPropositions();
 
 private:
+    virtual void setListPropositions();
     virtual void treatmentAnswer(const int indexAnswer);
-    void initLevelGame(int indexLevel);
-
 
 public slots:
     virtual inline bool isCounting(){return m_currentGameType->isCounting();}
     virtual void launchQuestion();
+    void initLevelGame(int indexLevel);
     void rightAnswer(int indexAnswer);
     void scoreIncrement(int incrementalScore);
     void wrongAnswer(int indexAnswer);

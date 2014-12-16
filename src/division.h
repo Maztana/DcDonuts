@@ -11,13 +11,7 @@ public:
     ~Division();
 
     virtual Question* buildQuestion();
-
-protected:
     virtual const QString makeTextQuestion(QList<QString> values)const;
-
-private:
-
-signals:
 
 public slots:
     virtual const QString getResult()const;

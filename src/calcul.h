@@ -20,8 +20,9 @@ protected:
     /** Max values list */
     QList<int> m_max_values;
 
-private:
     virtual void setNumberPropositions();
+
+private:
     virtual void setLevelsSelectable();
 
 signals:

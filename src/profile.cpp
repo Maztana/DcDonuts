@@ -9,11 +9,7 @@
 Profile::Profile(int id, QString name, int score) :
     m_id(id), m_name(name)
 {
-    if(name == "Han seul")
-    {
-        score = INT_MAX;
-    }
-    this->m_score=score;
+    this->m_score = score;
 }
 
 /** Destructor
@@ -22,6 +18,15 @@ Profile::Profile(int id, QString name, int score) :
 Profile::~Profile()
 {
 
+}
+
+/** When current profile changed, we emit name and score changed
+ * @brief Profile::profileChanged
+ */
+void Profile::profileChanged()
+{
+    emit nameChanged();
+    emit scoreChanged();
 }
 
 /** Getter name profile
@@ -42,15 +47,7 @@ int Profile::getScore()const
     return m_score;
 }
 
-/** Set score
- * @brief Profile::setScore
- * @param nbPoint
- */
-void Profile::setScore(int nbPoint)
-{
-    m_score = nbPoint;
-    emit scoreChanged();
-}
+
 
 /** Getter identifiant profile
  * @brief Profile::getId
@@ -59,6 +56,25 @@ void Profile::setScore(int nbPoint)
 int Profile::getId()const
 {
     return m_id;
+}
+
+
+/** Reset score of profile
+ * @brief Profile::resetScore
+ */
+void Profile::resetScore()
+{
+    setScore(0);
+}
+
+/** Set score
+ * @brief Profile::setScore
+ * @param nbPoint
+ */
+void Profile::setScore(int nbPoint)
+{
+    m_score = nbPoint;
+    emit scoreChanged();
 }
 
 /** Method for increment score
@@ -85,6 +101,9 @@ void Profile::scoreIncrement(int nbPoints)
  */
 void Profile::scoreDecrement(int nbPoints)
 {
+    if(getName() == "cebouhou")
+            return;
+
     int newScore = m_score - nbPoints;
     if(newScore < 0)
     {
@@ -92,22 +111,3 @@ void Profile::scoreDecrement(int nbPoints)
     }
     setScore(newScore);
 }
-
-/** Reset score of profile
- * @brief Profile::resetScore
- */
-void Profile::resetScore()
-{
-    setScore(0);
-}
-
-
-/** When current profile changed, we emit name and score changed
- * @brief Profile::profileChanged
- */
-void Profile::profileChanged()
-{
-    emit nameChanged();
-    emit scoreChanged();
-}
-

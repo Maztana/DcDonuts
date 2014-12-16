@@ -7,6 +7,7 @@
 #include <QDateTime>
 
 // les ifdef proviennent du site http://developer.nokia.com/community/wiki/Creating_an_SQLite_database_in_Qt
+
 ManagerBdd ManagerBdd::s_instance= ManagerBdd();
 
 /** Default constructor
@@ -27,7 +28,8 @@ int ManagerBdd::getNbRowsTableLearn()
     QSqlQuery queryCount(m_dbFlashcard);
     queryCount.exec("SELECT COUNT(*) FROM learn_tbl");
 
-    if(queryCount.next()){
+    if(queryCount.next())
+    {
         nbRows = queryCount.value(0).toInt();
     }
     return nbRows;
@@ -99,10 +101,8 @@ void ManagerBdd::closeDB()
  */
 void ManagerBdd::createTables()const
 {
-
     QSqlQuery query(m_db);
     query.exec("CREATE TABLE IF NOT EXISTS profile (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(20), score INTEGER)");
-
 }
 
 /** Insert a new profile in database and return a profile object
@@ -121,14 +121,14 @@ Profile* ManagerBdd::insertProfile(QString name, int score) const
     query.exec("INSERT INTO profile(name,score) VALUES('"+name+"',"+QString::number(score)+")");
     query.exec("SELECT MAX(id) FROM profile");
 
-    if(query.next()){
+    if(query.next())
+    {
         lastId = query.value(0).toInt();
     }
 
     Profile* newProfile = new Profile(lastId,name,score);
 
     return newProfile;
-
 }
 
 /** Update a profile in database
@@ -156,11 +156,10 @@ void ManagerBdd::deleteProfile(Profile& profile) const
  * @brief resetProfile
  * @param profile to reset
  */
-void ManagerBdd::resetProfile(Profile& profile)const{
-
+void ManagerBdd::resetProfile(Profile& profile)const
+{
     QSqlQuery query(m_db);
     query.exec("UPDATE profile SET score=0 WHERE id="+QString::number(profile.getId()));
-
 }
 
 /** Select all profiles which are in database and return them in a list
@@ -178,15 +177,14 @@ QList<Profile*> ManagerBdd::selectAllProfiles()
     QSqlQuery query(m_db);
     query.exec("SELECT * FROM profile");
 
-    while(query.next()){
-
+    while(query.next())
+    {
         id = query.value(0).toInt();
         name = query.value(1).toString();
         score = query.value(2).toInt();
 
         listProfiles.append(new Profile(id,name,score));
     }
-
     return listProfiles;
 }
 
@@ -242,8 +240,8 @@ void ManagerBdd::saveResultFlashcard(int id, int answer)
     QSqlQuery query(m_dbFlashcard);
     query.exec("SELECT * FROM learn_tbl WHERE _id="+QString::number(id));
 
-    if(query.next()){
-
+    if(query.next())
+    {
         int nbAnswers=0;
         double ratio=0;
         int lastGrade = 0;
@@ -251,7 +249,8 @@ void ManagerBdd::saveResultFlashcard(int id, int answer)
         QSqlQuery queryBis(m_dbFlashcard);
         queryBis.exec("SELECT acq_reps, easiness, grade FROM learn_tbl WHERE _id="+QString::number(id));
 
-        if(queryBis.next()){
+        if(queryBis.next())
+        {
             nbAnswers = queryBis.value("acq_reps").toInt();
             ratio = queryBis.value("easiness").toDouble();
             lastGrade = queryBis.value("grade").toInt();
@@ -264,10 +263,10 @@ void ManagerBdd::saveResultFlashcard(int id, int answer)
             query.exec("UPDATE learn_tbl SET date_learn='"+date.toString()+"',acq_reps="+QString::number(nbAnswers)+",easiness="+QString::number(ratio)+" WHERE _id="+QString::number(id));
         }
     }
-    else{
+    else
+    {
         query.exec("INSERT INTO learn_tbl(_id, date_learn, easiness, grade, acq_reps) VALUES("+QString::number(id)+",'"+date.toString()+"',"+QString::number(answer)+","+QString::number(answer)+",1)");
     }
-
 }
 
 /** Filling the learn_tbl with all questions and default values
@@ -275,19 +274,16 @@ void ManagerBdd::saveResultFlashcard(int id, int answer)
  */
 void ManagerBdd::initLearnTable()
 {
-
     QSqlQuery query(m_dbFlashcard);
     query.exec("SELECT _id FROM dict_tbl");
 
-
     QSqlQuery queryInsert(m_dbFlashcard);
 
-    while(query.next()){
+    while(query.next())
+    {
         queryInsert.exec("INSERT INTO learn_tbl(_id, easiness, grade, acq_reps) VALUES("+QString::number(query.value(0).toInt())+",1.5,0,0)");
     }
 }
-
-
 
 /** Return a list which contains 1/3 of all questions which are sorted by easiness
  * @brief ManagerBdd::getFirstCards
@@ -304,13 +300,13 @@ QList<Question*> ManagerBdd::getFirstCards()
 
     int cpt = 0;
 
-    while(query.next() && (cpt < (nbRows/3))){
+    while(query.next() && (cpt < (nbRows/3)))
+    {
         cpt++;
         cards.append(new Question({query.value("answer").toString()},
                                       query.value("question").toString(),
                                       query.value("_id").toInt()));
     }
-
     return cards;
 }
 
@@ -329,14 +325,12 @@ QList<Question*> ManagerBdd::getOldCards()
 
     int cpt = 0;
 
-    while(query.next() && (cpt < (nbRows/3)*2)){
+    while(query.next() && (cpt < (nbRows/3)*2))
+    {
         cpt++;
         cards.append(new Question({query.value("answer").toString()},
                                       query.value("question").toString(),
                                       query.value("_id").toInt()));
     }
-
     return cards;
 }
-
-

@@ -28,25 +28,6 @@ Language::Language(const QLocale qlocale) : QObject(0), m_iso(), m_label()
  */
 Language::Language(const QString iso, const QString label) : QObject(0), m_iso(iso), m_label(label)
 {
-
-}
-
-/** Getter of the iso code of the language (ex : "en" for English)
- * @brief Language::getIso
- * @return the iso code of the language
- */
-const QString Language::getIso() const
-{
-    return m_iso;
-}
-
-/** Getter of the label of the language
- * @brief Language::getLabel
- * @return the label of the language
- */
-const QString Language::getLabel() const
-{
-    return m_label;
 }
 
 /** Getter of the iso code of the current language (ex : "en" for English)
@@ -83,4 +64,22 @@ const QString Language::getDefaultLanguage()
     }
 
     return "en";
+}
+
+/** Getter of the iso code of the language (ex : "en" for English)
+ * @brief Language::getIso
+ * @return the iso code of the language
+ */
+const QString Language::getIso() const
+{
+    return m_iso;
+}
+
+/** Getter of the label of the language
+ * @brief Language::getLabel
+ * @return the label of the language
+ */
+const QString Language::getLabel() const
+{
+    return m_label;
 }

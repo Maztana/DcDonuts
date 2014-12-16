@@ -9,7 +9,6 @@ class SubtractionGameFactory : public EducationalQuizFactory
 public:
     SubtractionGameFactory();
 
-
     static Subtraction* makeSpecificGameType();
 };
 

@@ -22,33 +22,6 @@ JsonManager::JsonManager()
  */
 JsonManager::~JsonManager()
 {
-
-}
-
-/** Load all config by JSON
- * @brief JsonManager::loadConfig
- */
-void JsonManager::loadConfig()
-{
-    QString path(PATH_CONFIG);
-    path.append(QDir::separator()).append(NAME_FILE_CONFIG + ".json");
-    path = QDir::toNativeSeparators(path);
-
-    QFile file(path);
-
-    if(file.open(QIODevice::ReadOnly))
-    {
-        QJsonParseError jerror;
-        QJsonDocument jdoc= QJsonDocument::fromJson(file.readAll(),&jerror);
-
-        if(!(jerror.error != QJsonParseError::NoError)){
-            QJsonObject config = jdoc.object();
-
-            m_idProfile = config["profile"].toDouble();
-            m_language = config["language"].toString();
-            m_soundState = config["sound"].toBool();
-        }
-    }
 }
 
 /** Return JsonManager's instance
@@ -110,7 +83,38 @@ QString JsonManager::getLanguage()
     return m_language;
 }
 
+/** Get sound state
+ * @brief JsonManager::getSoundState
+ * @return if sound is activate
+ */
 bool JsonManager::getSoundState()
 {
     return m_soundState;
+}
+
+/** Load all config by JSON
+ * @brief JsonManager::loadConfig
+ */
+void JsonManager::loadConfig()
+{
+    QString path(PATH_CONFIG);
+    path.append(QDir::separator()).append(NAME_FILE_CONFIG + ".json");
+    path = QDir::toNativeSeparators(path);
+
+    QFile file(path);
+
+    if(file.open(QIODevice::ReadOnly))
+    {
+        QJsonParseError jerror;
+        QJsonDocument jdoc= QJsonDocument::fromJson(file.readAll(),&jerror);
+
+        if(!(jerror.error != QJsonParseError::NoError))
+        {
+            QJsonObject config = jdoc.object();
+
+            m_idProfile = config["profile"].toDouble();
+            m_language = config["language"].toString();
+            m_soundState = config["sound"].toBool();
+        }
+    }
 }

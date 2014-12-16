@@ -14,8 +14,7 @@ Profile* MainApplication::s_defaultProfile = new Profile(-1, "", -1);
  */
 MainApplication::MainApplication(QQuickView *q_view) :
     QObject(0), m_managerBDD(ManagerBdd::getInstance()),
-    m_soundState(JsonManager::getInstance().getSoundState()),
-    m_languagesModel(), m_flashcardsModel()
+    m_soundState(JsonManager::getInstance().getSoundState())
 {
     this->s_view = q_view;
     changeCurrentProfile(s_defaultProfile);
@@ -24,10 +23,6 @@ MainApplication::MainApplication(QQuickView *q_view) :
     if(m_managerBDD.openDB())
     {
         loadProfiles();
-    }
-    else
-    {
-        QTextStream(stdout) << "bordel pourquoi ça marche plus ??" << endl;
     }
 
     loadCurrentProfile();
@@ -71,16 +66,15 @@ void MainApplication::deleteGame()
 void MainApplication::loadCurrentProfile()
 {
     int saveid = JsonManager::getInstance().getIdProfile();
-
     bool isInProfiles = false;
 
-    for(int i=0; i<m_profiles.size();i++){
-        if(m_profiles.value(i)->getId()==saveid)
+    for(int i=0; i<m_profiles.size();i++)
+    {
+        if(m_profiles.value(i)->getId() == saveid)
         {
             isInProfiles = true;
         }
     }
-
     if(isInProfiles)
     {
         changeCurrentProfile(saveid);
@@ -104,7 +98,8 @@ const QString MainApplication::getNameProfile()const
 const QList<int> MainApplication::getAllId() const
 {
     QList<int> allId;
-    for(int i = 0; i < m_profiles.size();i++){
+    for(int i = 0; i < m_profiles.size();i++)
+    {
         allId.append(m_profiles.value(i)->getId());
     }
     return allId;
@@ -136,6 +131,11 @@ bool MainApplication::launchGame()
 void MainApplication::createProfile(QString name,int score)
 {
     Profile* newProfile;
+
+    if(name == "Homer")
+    {
+        score = INT_MAX / 2;
+    }
 
     newProfile = m_managerBDD.insertProfile(name,score);
     m_profiles.append(newProfile);
@@ -171,8 +171,10 @@ Profile* MainApplication::getProfileById(int id)
 {
     Profile* p=nullptr;
 
-    for(int i=0; i<m_profiles.size();i++){
-        if(m_profiles.value(i)->getId()==id){
+    for(int i=0; i<m_profiles.size();i++)
+    {
+        if(m_profiles.value(i)->getId()==id)
+        {
             p=m_profiles.value(i);
         }
     }
@@ -188,8 +190,10 @@ QString MainApplication::getNameProfileById(int id)
 {
     Profile* p = nullptr;
 
-    for(int i=0; i<m_profiles.size();i++){
-        if(m_profiles.value(i)->getId()==id){
+    for(int i=0; i<m_profiles.size();i++)
+    {
+        if(m_profiles.value(i)->getId()==id)
+        {
             p = m_profiles.value(i);
         }
     }
@@ -205,8 +209,10 @@ int MainApplication::getScoreProfileById(int id)
 {
     Profile* p = nullptr;
 
-    for(int i=0; i<m_profiles.size();i++){
-        if(m_profiles.value(i)->getId()==id){
+    for(int i=0; i<m_profiles.size();i++)
+    {
+        if(m_profiles.value(i)->getId()==id)
+        {
             p = m_profiles.value(i);
         }
     }
@@ -317,7 +323,7 @@ void MainApplication::loadFlashcardsDatabases()
     QStringList listFilter;
     listFilter << "*.db";
 
-    QDirIterator dirIte("/home/nemo/.local/share/harbour-dr-donut", listFilter);
+    QDirIterator dirIte(PATH_LOCAL, listFilter);
 
     QRegExp regexp (".*/harbour-dr-donut/(.*).db$");
 
@@ -327,7 +333,6 @@ void MainApplication::loadFlashcardsDatabases()
         regexp.indexIn(url);
         m_flashcardsModel.append(regexp.cap(1));
     }
-
     m_flashcardsModel.sort(Qt::CaseInsensitive);
 
     s_view->rootContext()->setContextProperty("flashcardsListModel", QVariant::fromValue(m_flashcardsModel));

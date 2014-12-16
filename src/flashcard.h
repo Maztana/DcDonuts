@@ -32,12 +32,12 @@ public:
      */
     virtual inline const QString makeTextQuestion(QList<QString>)const{return "";}
 
+protected:
+    virtual void setNumberPropositions(){m_numberPropositions = 1; emit numberPropositionsChanged();}
+
 private:
     virtual inline void setLevelsSelectable(){}
-    virtual void setNumberPropositions(){m_numberPropositions = 1; emit numberPropositionsChanged();}
     virtual void treatmentAnswer(const int);
-
-signals:
 
 public slots:
     /** Getter result of question

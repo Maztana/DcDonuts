@@ -29,17 +29,17 @@ Question* Flashcard::buildQuestion()
     QList<Question*> cards;
     int randomIndex;
 
-    if(s_cpt != 5){
-
+    if(s_cpt != 5)
+    {
         cards = ManagerBdd::getInstance().getFirstCards();
 
         randomIndex = rollDice(0, cards.size()-1);
         m_idQuestion = cards.at(randomIndex)->getId();
 
         s_cpt++;
-
-    } else{
-
+    }
+    else
+    {
         cards = ManagerBdd::getInstance().getOldCards();
 
         randomIndex = rollDice(0, cards.size()-1);
@@ -47,7 +47,6 @@ Question* Flashcard::buildQuestion()
 
         s_cpt = 1;
     }
-
     return cards.at(randomIndex);
 }
 

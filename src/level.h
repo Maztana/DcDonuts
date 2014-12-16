@@ -18,14 +18,9 @@ public:
 
     int getIndex()const;
     const QString& getName()const;
-    int getNumberPropositions()const;
 
 private:
     void initLevel();
-
-signals:
-
-public slots:
 
 };
 

@@ -14,10 +14,6 @@ public:
     static EducationalQuiz* makeGames(QList<int> identifiantsGameType);
     static EducationalQuiz* makeGameType(int identifiantGameType);
 
-signals:
-
-public slots:
-
 };
 
 #endif // GAMETYPEFACTORY_H

@@ -5,8 +5,6 @@
 
 class JsonManager
 {
-private:
-
     /** JsonManager instance */
     static JsonManager s_instance;
 
@@ -19,8 +17,6 @@ private:
 
     explicit JsonManager();
 
-    void loadConfig();
-
 public:
     ~JsonManager();
     static JsonManager& getInstance();
@@ -30,6 +26,9 @@ public:
     int getIdProfile();
     QString getLanguage();
     bool getSoundState();
+
+private:
+    void loadConfig();
 
 };
 

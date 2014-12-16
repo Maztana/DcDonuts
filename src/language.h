@@ -11,7 +11,6 @@ public:
     Language(const QLocale qlocale);
     Language(const QString iso, const QString label);
 
-    static void changeLanguage(QString const &iso);
     static const QString getIsoCurrentLanguage();
     static void setIsoCurrentLanguage(const QString iso);
     static const QString getDefaultLanguage();

@@ -33,7 +33,7 @@ void Game::setTypeGame(GameType* typeGame)
 
     if(m_currentGameType->isQuiz())
     {
-        MainApplication::s_view->rootContext()->setContextProperty("gameType", (EducationalQuiz*)m_currentGameType);
+        MainApplication::getView().rootContext()->setContextProperty("gameType", (EducationalQuiz*)m_currentGameType);
     }
     else
     {

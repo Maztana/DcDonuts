@@ -43,7 +43,7 @@ const QString& Level::getName()const
  */
 void Level::initLevel()
 {
-    switch (m_indexLevel) {
+    switch (m_indexLevel){
     case 1:
         m_name = tr("Easy");
         break;

@@ -24,15 +24,6 @@ class MainApplication : public QObject
     /** Sound state */
     bool m_soundState;
 
-public:
-    explicit MainApplication(QQuickView *q_view);
-    ~MainApplication();
-
-    /** Getter of score profile
-     * @brief getScore
-     * @return the profile score
-     */
-    inline int getScore(){return m_currentProfile->getScore();}
 
     /** View of the application */
     static QQuickView *s_view;
@@ -42,6 +33,22 @@ public:
     QList<QObject*> m_languagesModel;
     /** List of all registered flaschards databases */
     QStringList m_flashcardsModel;
+
+public:
+    explicit MainApplication(QQuickView *q_view);
+    ~MainApplication();
+
+    /** Getter of score profile
+     * @brief getScore
+     * @return the profile score
+     */
+    inline int getScore(){return m_currentProfile->getScore();}
+    /** Getter of the view of application
+     * @brief getView
+     * @return the view
+     */
+    static inline const QQuickView& getView(){return *s_view;}
+
 
     const QList<int> getAllId() const;
 
