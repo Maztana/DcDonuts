@@ -1,5 +1,6 @@
 #include "flashcard.h"
 #include "managerbdd.h"
+#include "game.h"
 
 int Flashcard::s_cpt = 1;
 
@@ -30,17 +31,17 @@ Question* Flashcard::buildQuestion()
     int randomIndex;
 
     if(s_cpt != 5)
-    {
-        cards = ManagerBdd::getInstance().getFirstCards();
+	{
+        cards = ManagerBdd::getInstance().getFirstCards(Game::getIdCurrentProfile());
 
         randomIndex = rollDice(0, cards.size()-1);
         m_idQuestion = cards.at(randomIndex)->getId();
 
         s_cpt++;
-    }
-    else
-    {
-        cards = ManagerBdd::getInstance().getOldCards();
+    } 
+	else
+	{
+        cards = ManagerBdd::getInstance().getOldCards(Game::getIdCurrentProfile());
 
         randomIndex = rollDice(0, cards.size()-1);
         m_idQuestion = cards.at(randomIndex)->getId();
@@ -58,7 +59,7 @@ void Flashcard::treatmentAnswer(const int answer)
 {
     emit answerGiven();
 
-    ManagerBdd::getInstance().saveResultFlashcard(m_idQuestion, answer);
+    ManagerBdd::getInstance().saveResultFlashcard(m_idQuestion, answer, Game::getIdCurrentProfile());
     launchQuestion();
 }
 
@@ -70,5 +71,5 @@ void Flashcard::initDB(QString nameDataBase)
 {
     m_levelGame = new Level(nameDataBase);
     ManagerBdd::getInstance().openDBFlashcard(nameDataBase);
-    ManagerBdd::getInstance().initLearnTable();
+    ManagerBdd::getInstance().initLearnTable(Game::getIdCurrentProfile());
 }

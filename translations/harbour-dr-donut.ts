@@ -37,9 +37,18 @@
 <context>
     <name>ChoiceFlashcardPage</name>
     <message>
-        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="9"/>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="10"/>
         <source>Flashcard</source>
         <translation>Flashcard</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="43"/>
+        <source>Reinitialize</source>
+        <translation type="unfinished">Reinitialize</translation>
+    </message>
+    <message>
+        <source>Reinitialization</source>
+        <translation type="obsolete">Reinitialization</translation>
     </message>
 </context>
 <context>
@@ -268,7 +277,7 @@
 <context>
     <name>MainApplication</name>
     <message>
-        <location filename="../src/mainapplication.cpp" line="270"/>
+        <location filename="../src/mainapplication.cpp" line="276"/>
         <source>Default language</source>
         <translation>Default language</translation>
     </message>
