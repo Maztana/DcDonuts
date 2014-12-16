@@ -16,6 +16,23 @@ ManagerBdd::ManagerBdd()
 {
 }
 
+/** Get number of rows in learn_tbl
+ * @brief ManagerBdd::getNbRowsTableLearn
+ * @return number of row in table learn_tbl
+ */
+int ManagerBdd::getNbRowsTableLearn()
+{
+    int nbRows = 0;
+
+    QSqlQuery queryCount(m_dbFlashcard);
+    queryCount.exec("SELECT COUNT(*) FROM learn_tbl");
+
+    if(queryCount.next()){
+        nbRows = queryCount.value(0).toInt();
+    }
+    return nbRows;
+}
+
 /** Default destructor
  * @brief ManagerBdd::~ManagerBdd
  */
@@ -173,28 +190,6 @@ QList<Profile*> ManagerBdd::selectAllProfiles()
     return listProfiles;
 }
 
-////////////////////////////////////////////////////////////////////////////
-/** Load all question of a db of flashcard
- * @brief ManagerBdd::loadDbFlashcard
- * @param fileName name of the database
- * @return list of question of a flashcard database
- */
-QList<Question*> ManagerBdd::loadDbFlashcard()
-{
-    QList<Question*> listCards;
-    QSqlQuery query(m_dbFlashcard);
-    query.exec("SELECT _id, question, answer FROM dict_tbl");
-
-    while(query.next()){
-        listCards.append(new Question({query.value("answer").toString()},
-                                      query.value("question").toString(),
-                                      query.value("_id").toInt()));
-    }
-
-    return listCards;
-}
-////////////////////////////////////////////////////////////////////////////
-
 
 /** Open a db of flashcards
  * @brief ManagerBdd::openDBFlashcard
@@ -302,13 +297,7 @@ QList<Question*> ManagerBdd::getFirstCards()
 {
     QList<Question*> cards;
 
-    int nbRows = 0;
-
-    QSqlQuery queryCount(m_dbFlashcard);
-    queryCount.exec("SELECT COUNT(*) FROM learn_tbl");
-    if(queryCount.next()){
-        nbRows = queryCount.value(0).toInt();
-    }
+    int nbRows = getNbRowsTableLearn();
 
     QSqlQuery query(m_dbFlashcard);
     query.exec("SELECT dict_tbl._id, question, answer FROM dict_tbl, learn_tbl WHERE dict_tbl._id = learn_tbl._id ORDER BY easiness");
@@ -324,3 +313,30 @@ QList<Question*> ManagerBdd::getFirstCards()
 
     return cards;
 }
+
+/** Return a list which contains 2/3 of all questions which are sorted by date_learn
+ * @brief ManagerBdd::getOldCards
+ * @return list of question cards
+ */
+QList<Question*> ManagerBdd::getOldCards()
+{
+    QList<Question*> cards;
+
+    int nbRows = getNbRowsTableLearn();
+
+    QSqlQuery query(m_dbFlashcard);
+    query.exec("SELECT dict_tbl._id, question, answer FROM dict_tbl, learn_tbl WHERE dict_tbl._id = learn_tbl._id ORDER BY date_learn");
+
+    int cpt = 0;
+
+    while(query.next() && (cpt < (nbRows/3)*2)){
+        cpt++;
+        cards.append(new Question({query.value("answer").toString()},
+                                      query.value("question").toString(),
+                                      query.value("_id").toInt()));
+    }
+
+    return cards;
+}
+
+

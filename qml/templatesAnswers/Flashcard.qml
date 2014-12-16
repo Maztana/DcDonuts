@@ -68,7 +68,6 @@ Item{
                     smooth: true
                     onClicked: {
                         gameType.treatAnswer(0)
-                        gameType.launchQuestion()
                     }
 
                     icon{
@@ -95,7 +94,6 @@ Item{
                     smooth: true
                     onClicked: {
                         gameType.treatAnswer(1)
-                        gameType.launchQuestion()
                     }
 
                     icon{
@@ -127,7 +125,6 @@ Item{
                     smooth: true
                     onClicked: {
                         gameType.treatAnswer(2)
-                        gameType.launchQuestion()
                     }
 
                     icon{
@@ -154,7 +151,6 @@ Item{
                     smooth: true
                     onClicked: {
                         gameType.treatAnswer(3)
-                        gameType.launchQuestion()
                     }
 
                     icon{

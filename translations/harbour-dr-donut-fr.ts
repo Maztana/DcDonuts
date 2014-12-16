@@ -137,22 +137,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/templatesAnswers/Flashcard.qml" line="82"/>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="81"/>
         <source>Not at all</source>
         <translation>Pas du tout</translation>
     </message>
     <message>
-        <location filename="../qml/templatesAnswers/Flashcard.qml" line="109"/>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="107"/>
         <source>Not still</source>
         <translation>Pas encore</translation>
     </message>
     <message>
-        <location filename="../qml/templatesAnswers/Flashcard.qml" line="141"/>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="138"/>
         <source>Almost</source>
         <translation>Presque</translation>
     </message>
     <message>
-        <location filename="../qml/templatesAnswers/Flashcard.qml" line="168"/>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="164"/>
         <source>Perfect</source>
         <translation>Parfait</translation>
     </message>

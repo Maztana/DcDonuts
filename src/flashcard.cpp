@@ -1,6 +1,8 @@
 #include "flashcard.h"
 #include "managerbdd.h"
 
+int Flashcard::s_cpt = 1;
+
 /** Constructor
  * @brief Flashcard::Flashcard
  * @param parent
@@ -24,12 +26,41 @@ Flashcard::~Flashcard()
  */
 Question* Flashcard::buildQuestion()
 {
-    QList<Question*> firstCards = ManagerBdd::getInstance().getFirstCards();
+    /*QTextStream(stdout)<< "dans le build" <<endl;
 
-    int randomIndex = rollDice(0, firstCards.size()-1);
-    m_idQuestion = firstCards.at(randomIndex)->getId();
+    QTextStream(stdout)<< s_cpt <<endl;
 
-    return firstCards.at(randomIndex);
+    QList<Question*> cards;
+    int randomIndex;
+
+    if(s_cpt != 5){
+
+        cards = ManagerBdd::getInstance().getFirstCards();
+
+        randomIndex = rollDice(0, cards.size()-1);
+        m_idQuestion = cards.at(randomIndex)->getId();
+
+        s_cpt++;
+
+    } else{
+
+        cards = ManagerBdd::getInstance().getOldCards();
+
+        randomIndex = rollDice(0, cards.size()-1);
+        m_idQuestion = cards.at(randomIndex)->getId();
+
+        s_cpt = 1;
+    }
+
+    return cards.at(randomIndex);*/
+
+    QTextStream(stdout)<< "dans le build" <<endl;
+
+    QList<Question*> cards = ManagerBdd::getInstance().getFirstCards();
+    int randomIndex = rollDice(0, cards.size()-1);
+    return cards.at(randomIndex);
+
+
 }
 
 /** Treat response for flashcard
@@ -42,7 +73,6 @@ void Flashcard::treatmentAnswer(const int answer)
 
     ManagerBdd::getInstance().saveResultFlashcard(m_idQuestion, answer);
     launchQuestion();
-
 }
 
 /** Init and load the Db cards

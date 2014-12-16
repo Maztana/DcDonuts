@@ -9,6 +9,8 @@ class Flashcard : public EducationalQuiz
 
     /** id of current question */
      int m_idQuestion;
+    /** counter of questions */
+     static int s_cpt;
 
 public:
     explicit Flashcard();
