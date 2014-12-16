@@ -16,6 +16,7 @@ private:
     QSqlDatabase m_dbFlashcard;
 
     explicit ManagerBdd();
+    int getNbRowsTableLearn();
 
 
 public:
@@ -37,10 +38,11 @@ public:
 
     bool openDBFlashcard(QString fileName);
     void closeDBFlashcard();
-    QList<Question*> loadDbFlashcard();
     void saveResultFlashcard(int id, int answer);
     void initLearnTable();
     QList<Question*> getFirstCards();
+    QList<Question*> getOldCards();
+
 };
 
 #endif // MANAGERBDD_H

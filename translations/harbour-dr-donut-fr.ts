@@ -54,12 +54,12 @@
         <translation>Niveau</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="132"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="146"/>
         <source>Calculation</source>
         <translation>Calcul</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="194"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="127"/>
         <source>Counting</source>
         <translation>Dénombrement</translation>
     </message>
@@ -115,12 +115,12 @@
         <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="../qml/pages/CreationProfilePage.qml" line="29"/>
+        <location filename="../qml/pages/CreationProfilePage.qml" line="30"/>
         <source>Name</source>
         <translation>Nom</translation>
     </message>
     <message>
-        <location filename="../qml/pages/CreationProfilePage.qml" line="30"/>
+        <location filename="../qml/pages/CreationProfilePage.qml" line="31"/>
         <source>Enter your name</source>
         <translation>Entrez votre nom</translation>
     </message>
@@ -133,22 +133,22 @@
         <translation>Voir la réponse</translation>
     </message>
     <message>
-        <location filename="../qml/templatesAnswers/Flashcard.qml" line="82"/>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="81"/>
         <source>Not at all</source>
         <translation>Pas du tout</translation>
     </message>
     <message>
-        <location filename="../qml/templatesAnswers/Flashcard.qml" line="109"/>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="107"/>
         <source>Not still</source>
         <translation>Pas encore</translation>
     </message>
     <message>
-        <location filename="../qml/templatesAnswers/Flashcard.qml" line="141"/>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="138"/>
         <source>Almost</source>
         <translation>Presque</translation>
     </message>
     <message>
-        <location filename="../qml/templatesAnswers/Flashcard.qml" line="168"/>
+        <location filename="../qml/templatesAnswers/Flashcard.qml" line="164"/>
         <source>Perfect</source>
         <translation>Parfait</translation>
     </message>
@@ -156,7 +156,7 @@
 <context>
     <name>GameQuizPage</name>
     <message>
-        <location filename="../qml/pages/GameQuizPage.qml" line="44"/>
+        <location filename="../qml/pages/GameQuizPage.qml" line="65"/>
         <source>Level : </source>
         <translation>Niveau : </translation>
     </message>
@@ -272,7 +272,7 @@
 <context>
     <name>MainApplication</name>
     <message>
-        <location filename="../src/mainapplication.cpp" line="260"/>
+        <location filename="../src/mainapplication.cpp" line="264"/>
         <source>Default language</source>
         <translation>Langue par défaut</translation>
     </message>

@@ -120,6 +120,20 @@ Page {
                 }
 
                 Row {
+                    id: lineCounting
+                    anchors.horizontalCenter: parent.horizontalCenter
+
+                    Button{
+                        text:qsTr("Counting")
+                        onClicked:
+                        {
+                            game.initGameType([5])
+                            drawerLevel.open = true
+                        }
+                    }
+                }
+
+                Row {
                     id: lineCalcul
                     anchors.horizontalCenter: parent.horizontalCenter
 
@@ -182,20 +196,6 @@ Page {
                                 icon.source: "qrc:///qml/images/signeDiv.png"
                                 width:60
                             }
-                        }
-                    }
-                }
-
-                Row {
-                    id: lineCounting
-                    anchors.horizontalCenter: parent.horizontalCenter
-
-                    Button{
-                        text:qsTr("Counting")
-                        onClicked:
-                        {
-                            game.initGameType([5])
-                            drawerLevel.open = true
                         }
                     }
                 }

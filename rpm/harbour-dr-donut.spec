@@ -53,7 +53,6 @@ rm -rf %{buildroot}
 # >> install pre
 # << install pre
 %qmake5_install
-
 # >> install post
 # << install post
 
@@ -69,6 +68,6 @@ desktop-file-install --delete-original       \
 %{_datadir}/icons/hicolor/86x86/apps/%{name}.png
 # install bdd packages
 %defattr(-,nemo,nemo,-)
-/home/nemo/.local/share/%{name}/*.db
+/home/nemo/.local/share/%{name}/
 # >> files
 # << files

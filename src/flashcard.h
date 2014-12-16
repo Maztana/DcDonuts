@@ -9,6 +9,8 @@ class Flashcard : public EducationalQuiz
 
     /** id of current question */
      int m_idQuestion;
+    /** counter of questions */
+     static int s_cpt;
 
 public:
     explicit Flashcard();
@@ -23,11 +25,7 @@ public:
      * @return a posible proposition for this question
      */
     virtual inline const QString getProposition()const{return "";}
-    /** Getter result of question
-     * @brief Flashcard::getResult
-     * @return the result
-     */
-    virtual inline const QString getResult()const{return m_currentQuestion->getValues().first();}
+
     /** Getter of question text
      * @brief Flashcard::makeTextQuestion
      * @return the text of question
@@ -42,6 +40,11 @@ private:
 signals:
 
 public slots:
+    /** Getter result of question
+     * @brief Flashcard::getResult
+     * @return the result
+     */
+    virtual inline const QString getResult()const{return m_currentQuestion->getValues().first();}
     virtual inline bool isFlashcard(){return true;}
     virtual void initDB(QString nameDataBase);
 

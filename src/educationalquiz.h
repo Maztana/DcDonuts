@@ -29,7 +29,6 @@ public:
     virtual Question* buildQuestion() = 0;
 
     virtual const QString getProposition()const = 0;
-    virtual const QString getResult()const = 0;
     virtual const QString getTextQuestion(){return m_currentQuestion->getTextQuestion();}
     virtual const QString makeTextQuestion(QList<QString> values)const = 0;
 
@@ -65,8 +64,10 @@ signals:
     void correctedAnswer(int index);
 
 public slots:
+    virtual const QString getResult()const = 0;
     virtual inline bool isQuiz()const{return true;}
     virtual inline bool isFlashcard(){return false;}
+    virtual inline bool isCounting(){return false;}
     virtual void launchGame();
     virtual void launchQuestion();
     void treatAnswer(const int indexAnswer);

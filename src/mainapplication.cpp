@@ -25,6 +25,10 @@ MainApplication::MainApplication(QQuickView *q_view) :
     {
         loadProfiles();
     }
+    else
+    {
+        QTextStream(stdout) << "bordel pourquoi ça marche plus ??" << endl;
+    }
 
     loadCurrentProfile();
     initLanguages();
