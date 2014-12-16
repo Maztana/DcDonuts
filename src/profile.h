@@ -11,6 +11,8 @@ class Profile : public QObject
     Q_PROPERTY(QString name READ getName NOTIFY nameChanged)
     /** Score of current profile */
     Q_PROPERTY(int score READ getScore NOTIFY scoreChanged)
+    /** id of current profile */
+    Q_PROPERTY(int id READ getId)
 
     /** Profile identifiant */
     int m_id;

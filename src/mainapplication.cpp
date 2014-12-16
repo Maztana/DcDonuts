@@ -25,6 +25,10 @@ MainApplication::MainApplication(QQuickView *q_view) :
     {
         loadProfiles();
     }
+    else
+    {
+        QTextStream(stdout) << "bordel pourquoi ça marche plus ??" << endl;
+    }
 
     loadCurrentProfile();
     initLanguages();
@@ -333,4 +337,15 @@ void MainApplication::loadFlashcardsDatabases()
     m_flashcardsModel.sort(Qt::CaseInsensitive);
 
     s_view->rootContext()->setContextProperty("flashcardsListModel", QVariant::fromValue(m_flashcardsModel));
+}
+
+
+/** Reset stats of a profile in a flashcard file
+ * @brief MainApplication::resetStatsFlashcardProfile
+ * @param idProfile profile to reset stats
+ * @param fileName name of the flashcard file to where reset stats
+ */
+void MainApplication::resetStatsFlashcardProfile(QString fileName, int idProfile)
+{
+    m_managerBDD.resetStatsFlashcardByProfile(idProfile, fileName+".db");
 }

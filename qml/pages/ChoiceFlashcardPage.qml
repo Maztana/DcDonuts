@@ -2,6 +2,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 Page{
+
     SilicaListView {
         anchors.fill: parent
         model: flashcardsListModel
@@ -12,8 +13,10 @@ Page{
 
         delegate: ListItem {
             id: flashcardListItem
+            menu:flashcardOptionsMenu
             Label
             {
+                id: nameFlashcard
                 text: modelData
                 anchors.verticalCenter: parent.verticalCenter
             }
@@ -32,6 +35,21 @@ Page{
 
                 pageStack.replace(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
             }
+
+            Component {
+                id: flashcardOptionsMenu
+                ContextMenu {
+                    MenuItem {
+                        text: qsTr("Reinitialize")
+                        onClicked: {
+
+                            application.resetStatsFlashcardProfile(nameFlashcard.text, currentProfile.id)
+
+                        }
+                    }
+                }
+            }
         }
     }
 }
+

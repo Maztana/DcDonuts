@@ -44,6 +44,7 @@ public:
     QList<Question*> getOldCards(int idProfile);
 
     void deleteStatsFlashcardByProfile(int idProfile, QString fileName);
+    void resetStatsFlashcardByProfile(int idProfile, QString fileName);
 
 };
 

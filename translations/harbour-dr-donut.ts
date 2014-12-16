@@ -37,9 +37,19 @@
 <context>
     <name>ChoiceFlashcardPage</name>
     <message>
-        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="9"/>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="10"/>
         <source>Flashcard</source>
         <translation>Flashcard</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="43"/>
+        <source>Reinitialize</source>
+        <translation type="unfinished">Reinitialize</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="45"/>
+        <source>Reinitialization</source>
+        <translation type="unfinished">Reinitialization</translation>
     </message>
 </context>
 <context>
@@ -54,48 +64,44 @@
         <translation>Level</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="132"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="146"/>
         <source>Calculation</source>
         <translation>Calculation</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="194"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="127"/>
         <source>Counting</source>
         <translation>Counting</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="208"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="209"/>
         <source>Color</source>
         <translation>Color</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="223"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="225"/>
         <source>Mixed</source>
         <translation>Mixed</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="237"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="239"/>
         <source>Flashcard</source>
         <translation>Flashcard</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="279"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="281"/>
         <source>Easy</source>
         <translation>Easy</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="280"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="282"/>
         <source>Medium</source>
         <translation>Medium</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="281"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="283"/>
         <source>Hard</source>
         <translation>Hard</translation>
-    </message>
-    <message>
-        <source></source>
-        <translation></translation>
     </message>
 </context>
 <context>
@@ -119,12 +125,12 @@
         <translation>Cancel</translation>
     </message>
     <message>
-        <location filename="../qml/pages/CreationProfilePage.qml" line="29"/>
+        <location filename="../qml/pages/CreationProfilePage.qml" line="30"/>
         <source>Name</source>
         <translation>Name</translation>
     </message>
     <message>
-        <location filename="../qml/pages/CreationProfilePage.qml" line="30"/>
+        <location filename="../qml/pages/CreationProfilePage.qml" line="31"/>
         <source>Enter your name</source>
         <translation>Enter your name</translation>
     </message>
@@ -134,7 +140,7 @@
     <message>
         <location filename="../qml/templatesAnswers/Flashcard.qml" line="8"/>
         <source>Show the answer</source>
-        <translation type="unfinished"></translation>
+        <translation>Show the answer</translation>
     </message>
     <message>
         <location filename="../qml/templatesAnswers/Flashcard.qml" line="81"/>
@@ -160,7 +166,7 @@
 <context>
     <name>GameQuizPage</name>
     <message>
-        <location filename="../qml/pages/GameQuizPage.qml" line="44"/>
+        <location filename="../qml/pages/GameQuizPage.qml" line="65"/>
         <source>Level : </source>
         <translation>Level : </translation>
     </message>
@@ -221,12 +227,32 @@
         <translation>Select which operations you wish to progress. A question will be asked with a set of proposals. Tap the right answer. The correction will be shown. If you give a right answer you will accumulate donuts, else you will loose some of them.</translation>
     </message>
     <message>
+        <location filename="../qml/pages/HowToPlay.qml" line="64"/>
+        <source>Counting</source>
+        <translation>Counting</translation>
+    </message>
+    <message>
         <location filename="../qml/pages/HowToPlay.qml" line="75"/>
+        <source>htpCountingRulesText</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/HowToPlay.qml" line="81"/>
+        <source>Mixed</source>
+        <translation>Mixed</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/HowToPlay.qml" line="92"/>
+        <source>htpMixedRulesText</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/HowToPlay.qml" line="109"/>
         <source>htpFlashcardRulesText</source>
         <translation>Select the series of flashcard you want. A question will be asked ; once you think you got the answer (or if you don&apos;t know it), touch the screen to show the answer. you will have to self-assess with  the appeared proposals. Choose the one which seems to be the most adapted to you. This game type doesn&apos;t allows you to win donuts.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HowToPlay.qml" line="64"/>
+        <location filename="../qml/pages/HowToPlay.qml" line="98"/>
         <source>Flashcard</source>
         <translation>Flashcard</translation>
     </message>
@@ -252,7 +278,7 @@
 <context>
     <name>MainApplication</name>
     <message>
-        <location filename="../src/mainapplication.cpp" line="266"/>
+        <location filename="../src/mainapplication.cpp" line="270"/>
         <source>Default language</source>
         <translation>Default language</translation>
     </message>

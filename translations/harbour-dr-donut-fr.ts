@@ -37,9 +37,19 @@
 <context>
     <name>ChoiceFlashcardPage</name>
     <message>
-        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="9"/>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="10"/>
         <source>Flashcard</source>
         <translation>Flashcard</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="43"/>
+        <source>Reinitialize</source>
+        <translation type="unfinished">Réinitialiser</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="45"/>
+        <source>Reinitialization</source>
+        <translation type="unfinished">Réinitialisation</translation>
     </message>
 </context>
 <context>
@@ -54,48 +64,44 @@
         <translation>Niveau</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="132"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="146"/>
         <source>Calculation</source>
         <translation>Calcul</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="194"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="127"/>
         <source>Counting</source>
         <translation>Dénombrement</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="208"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="209"/>
         <source>Color</source>
         <translation>Couleur</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="223"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="225"/>
         <source>Mixed</source>
         <translation>Mêlé</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="237"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="239"/>
         <source>Flashcard</source>
         <translation>Flashcard</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="279"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="281"/>
         <source>Easy</source>
         <translation>Facile</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="280"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="282"/>
         <source>Medium</source>
         <translation>Moyen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceGameModePage.qml" line="281"/>
+        <location filename="../qml/pages/ChoiceGameModePage.qml" line="283"/>
         <source>Hard</source>
         <translation>Difficile</translation>
-    </message>
-    <message>
-        <source>Auto</source>
-        <translation type="obsolete">Auto</translation>
     </message>
 </context>
 <context>
@@ -119,12 +125,12 @@
         <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="../qml/pages/CreationProfilePage.qml" line="29"/>
+        <location filename="../qml/pages/CreationProfilePage.qml" line="30"/>
         <source>Name</source>
         <translation>Nom</translation>
     </message>
     <message>
-        <location filename="../qml/pages/CreationProfilePage.qml" line="30"/>
+        <location filename="../qml/pages/CreationProfilePage.qml" line="31"/>
         <source>Enter your name</source>
         <translation>Entrez votre nom</translation>
     </message>
@@ -134,7 +140,7 @@
     <message>
         <location filename="../qml/templatesAnswers/Flashcard.qml" line="8"/>
         <source>Show the answer</source>
-        <translation type="unfinished"></translation>
+        <translation>Voir la réponse</translation>
     </message>
     <message>
         <location filename="../qml/templatesAnswers/Flashcard.qml" line="81"/>
@@ -160,7 +166,7 @@
 <context>
     <name>GameQuizPage</name>
     <message>
-        <location filename="../qml/pages/GameQuizPage.qml" line="44"/>
+        <location filename="../qml/pages/GameQuizPage.qml" line="65"/>
         <source>Level : </source>
         <translation>Niveau : </translation>
     </message>
@@ -222,11 +228,31 @@
     </message>
     <message>
         <location filename="../qml/pages/HowToPlay.qml" line="64"/>
+        <source>Counting</source>
+        <translation>Dénombrement</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/HowToPlay.qml" line="75"/>
+        <source>htpCountingRulesText</source>
+        <translation>Vous devez compter le nombre de formes affichées, pour cela un ensemble de propositions de réponses vous seras donné. Appuyez sur la réponse qui vous semble juste. La correction sera affichée. Si vous donnez une bonne réponse vous cumulerez des donuts, si vous en donnez une mauvaise vous en perdrez.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/HowToPlay.qml" line="81"/>
+        <source>Mixed</source>
+        <translation>Mêlé</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/HowToPlay.qml" line="92"/>
+        <source>htpMixedRulesText</source>
+        <translation>Ce mode de jeu regroupe tous les autres modes de jeux, sauf le mode de jeu Flashcards. Les jeux sont proposés les uns après les autres de façon aléatoire. Le niveau facile n&apos;est pas accéssible dans ce jeu.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/HowToPlay.qml" line="98"/>
         <source>Flashcard</source>
         <translation>Flashcard</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HowToPlay.qml" line="75"/>
+        <location filename="../qml/pages/HowToPlay.qml" line="109"/>
         <source>htpFlashcardRulesText</source>
         <translation>Sélectionnez la série de flashcard que vous souhaitez. Une question sera posée ; une fois que vous pensez avoir la réponse (ou si vous ne trouvez pas), appuyez sur l&apos;écran afin d&apos;afficher la réponse. Vous devrez ensuite vous auto-évaluer avec les propositions apparues. Choisissez celle qui vous semble la plus adaptée à votre cas. En revanche, ce type de jeu ne permet pas de cumuler des donuts.</translation>
     </message>
@@ -256,7 +282,7 @@
 <context>
     <name>MainApplication</name>
     <message>
-        <location filename="../src/mainapplication.cpp" line="266"/>
+        <location filename="../src/mainapplication.cpp" line="270"/>
         <source>Default language</source>
         <translation>Langue par défaut</translation>
     </message>

@@ -43,32 +43,6 @@ Question* Addition::buildQuestion()
     return myQuestion;
 }
 
-/** Getter of proposition
- * @brief Addition::getProposition
- * @return a posible proposition for this question
- */
-const QString Addition::getProposition()const
-{
-    int propo = 0;
-
-    if(getResult().toInt() < 4)
-    {
-        propo = qrand() % 4;
-    }
-    else
-    {
-        int nbMax = getResult().toInt() + getResult().toInt()/2;
-        int nbMin = getResult().toInt() - getResult().toInt()/2;
-        propo = rollDice(nbMin, nbMax);
-    }
-
-    if(propo < 0)
-    {
-        propo = 0;
-    }
-    return QString::number(propo);
-}
-
 
 /** Getter result of question
  * @brief Addition::getResult

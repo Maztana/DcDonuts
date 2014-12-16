@@ -8,13 +8,13 @@ CountingMode::CountingMode():
 {
     m_incremental_score = INCREMENTAL_COUNTING_SCORE;
     /** Easy */
-    m_min_values.append(0);
+    m_min_values.append(1);
     m_max_values.append(7);
     /** Medium */
-    m_min_values.append(0);
+    m_min_values.append(1);
     m_max_values.append(10);
     /** Hard */
-    m_min_values.append(0);
+    m_min_values.append(1);
     m_max_values.append(15);
 }
 
@@ -44,11 +44,11 @@ Question* CountingMode::buildQuestion()
  */
 const QString CountingMode::getProposition()const
 {
-    int propo = 0;
+    int propo = m_min_values[m_levelGame->getIndex()-1];
 
-    if(getResult().toInt() < 4)
+    if(getResult().toInt() < (m_min_values[m_levelGame->getIndex()-1] + getNumberPropositions()))
     {
-        propo = qrand() % 4;
+        propo = qrand() % getNumberPropositions() + m_min_values[m_levelGame->getIndex()-1];
     }
     else
     {
@@ -61,9 +61,9 @@ const QString CountingMode::getProposition()const
         propo = rollDice(nbMin, nbMax);
     }
 
-    if(propo < 0)
+    if(propo < m_min_values[m_levelGame->getIndex()-1])
     {
-        propo = 0;
+        propo = m_min_values[m_levelGame->getIndex()-1];
     }
     return QString::number(propo);
 }
@@ -94,24 +94,6 @@ void CountingMode::setNumberPropositions()
 {
     m_numberPropositions = 4;
     emit numberPropositionsChanged();
-}
-
-/** Treat response for classic quiz (no flascard)
- * @brief CountingMode::treatmentAnswer
- * @param indexAnswer the index of answer
- */
-void CountingMode::treatmentAnswer(const int indexAnswer)
-{
-    if(m_listPropositions.at(indexAnswer-1).toInt() == getResult().toInt())
-    {
-        emit answerRight(indexAnswer);
-        emit incrementScore(this->m_incremental_score * 2);
-    }
-    else
-    {
-        emit answerWrong(indexAnswer);
-        emit decrementScore(this->m_incremental_score);
-    }
 }
 
 /** Setter of list levels selectable

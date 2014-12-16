@@ -73,6 +73,8 @@ public slots:
 
     inline bool isSoundActive(){return m_soundState;}
     inline void setSoundState(const bool &state){m_soundState = state;}
+
+    void resetStatsFlashcardProfile(QString fileName, int idProfile);
 };
 
 #endif // MAINAPPLICATION_H

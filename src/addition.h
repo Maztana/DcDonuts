@@ -13,8 +13,6 @@ public:
     virtual Question* buildQuestion();
 
 protected:
-    virtual const QString getProposition()const;
-    virtual const QString getResult()const;
     virtual const QString makeTextQuestion(QList<QString> values)const;
 
 private:
@@ -22,6 +20,7 @@ private:
 signals:
 
 public slots:
+    virtual const QString getResult()const;
 
 };
 

@@ -14,7 +14,6 @@ public:
     virtual Question* buildQuestion();
 
     virtual const QString getProposition()const;
-    virtual const QString getResult()const;
     virtual const QString makeTextQuestion(QList<QString> values)const;
 
 protected:
@@ -26,9 +25,11 @@ protected:
     virtual void setNumberPropositions();
 
 private:
-    virtual void treatmentAnswer(const int indexAnswer);
     virtual void setLevelsSelectable();
 
+public slots:
+    virtual const QString getResult()const;
+    virtual inline bool isCounting(){return true;}
 };
 
 #endif // COUNTINGMODE_H

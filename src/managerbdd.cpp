@@ -363,3 +363,19 @@ void ManagerBdd::deleteStatsFlashcardByProfile(int idProfile, QString fileName)
     closeDBFlashcard();
 }
 
+
+/** Reset stats of a profile in a flashcard file
+ * @brief ManagerBdd::resetStatsFlashcardByProfile
+ * @param idProfile profile to reset stats
+ * @param fileName name of the flashcard file to where reset stats
+ */
+void ManagerBdd::resetStatsFlashcardByProfile(int idProfile, QString fileName)
+{
+    openDBFlashcard(fileName);
+
+    QSqlQuery query(m_dbFlashcard);
+    query.exec("UPDATE learn_tbl SET date_learn=null,grade=0, easiness=1.5,acq_reps=0 WHERE profile="+QString::number(idProfile));
+
+    closeDBFlashcard();
+}
+

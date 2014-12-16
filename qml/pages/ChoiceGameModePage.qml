@@ -120,6 +120,20 @@ Page {
                 }
 
                 Row {
+                    id: lineCounting
+                    anchors.horizontalCenter: parent.horizontalCenter
+
+                    Button{
+                        text:qsTr("Counting")
+                        onClicked:
+                        {
+                            game.initGameType([5])
+                            drawerLevel.open = true
+                        }
+                    }
+                }
+
+                Row {
                     id: lineCalcul
                     anchors.horizontalCenter: parent.horizontalCenter
 
@@ -186,20 +200,7 @@ Page {
                     }
                 }
 
-                Row {
-                    id: lineCounting
-                    anchors.horizontalCenter: parent.horizontalCenter
-
-                    Button{
-                        text:qsTr("Counting")
-                        onClicked:
-                        {
-                            game.initGameType([5])
-                            drawerLevel.open = true
-                        }
-                    }
-                }
-
+                // No activated Color game mode
                 Row {
                     id: lineColor
                     anchors.horizontalCenter: parent.horizontalCenter
@@ -207,6 +208,7 @@ Page {
                     Button{
                         text:qsTr("Color")
                         enabled:false
+                        visible: false
                         onClicked:
                         {
                             game.initGameType([6])

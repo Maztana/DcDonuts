@@ -49,13 +49,13 @@ Question* Multiplication::buildQuestion()
  */
 const QString Multiplication::getProposition()const
 {
-    int propo = 0;
+    int propo = m_min_values[m_levelGame->getIndex()-1];
     bool isFirstValue = true;
     QList<int> values;
 
     for(QString value : m_currentQuestion->getValues())
     {
-        values.append(value.toInt() + rollDice(-2, 2));
+        values.append(value.toInt() + rollDice(-(getNumberPropositions()/2), getNumberPropositions()/2));
     }
 
     for(int value : values)
@@ -71,9 +71,9 @@ const QString Multiplication::getProposition()const
         }
     }
 
-    if(propo < 0)
+    if(propo < m_min_values[m_levelGame->getIndex()-1])
     {
-        propo = 0;
+        propo = m_min_values[m_levelGame->getIndex()-1];
     }
     return QString::number(propo);
 }

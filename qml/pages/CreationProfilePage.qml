@@ -15,13 +15,14 @@ Dialog {
     }
 
     Column{
-        anchors.fill : parent
+        anchors.margins: Theme.paddingLarge * 6
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        width: rowName.width
         Row{
             id:rowName
-            anchors.top: parent.top
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.margins: Theme.paddingLarge * 6
-            width:parent.width - Theme.paddingLarge * 2
+            width:Screen.width - Theme.paddingLarge * 2
 
             TextField{
                 id:nameInput
@@ -36,6 +37,3 @@ Dialog {
         }
     }
 }
-
-
-

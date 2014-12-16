@@ -12,13 +12,13 @@ public:
 
     virtual Question* buildQuestion() = 0;
 
+    const QString getProposition()const;
+
 protected:
     /** Min values list */
     QList<int> m_min_values;
     /** Max values list */
     QList<int> m_max_values;
-
-    virtual void treatmentAnswer(const int indexAnswer);
 
 private:
     virtual void setNumberPropositions();
