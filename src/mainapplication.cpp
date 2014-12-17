@@ -3,7 +3,6 @@
 #include <QtQml>
 #include "jsonmanager.h"
 #include "language.h"
-#include "urlitemmodel.h"
 #include "sailfishapp.h"
 
 QQuickView* MainApplication::s_view = nullptr;
@@ -343,10 +342,12 @@ void MainApplication::loadFlashcardsDatabases()
     {
         m_flashcardsModel.append(new UrlItemModel(dirIteDL.next()));
     }
-
-    s_view->rootContext()->setContextProperty("flashcardsListModel", QVariant::fromValue(m_flashcardsModel));
 }
 
+QList<QObject*> MainApplication::getListFlashcards()
+{
+    return m_flashcardsModel;
+}
 
 /** Reset stats of a profile in a flashcard file
  * @brief MainApplication::resetStatsFlashcardProfile
@@ -356,4 +357,16 @@ void MainApplication::loadFlashcardsDatabases()
 void MainApplication::resetStatsFlashcardProfile(QString fileName, int idProfile)
 {
     m_managerBDD.resetStatsFlashcardByProfile(idProfile, fileName+".db");
+}
+
+
+
+/** Delete a flashcard file
+ * @brief MainApplication::deleteFlashcardFile
+ * @param index of the file in the list
+ */
+void MainApplication::deleteFlashcardFile(int index)
+{
+    QFile::remove(((UrlItemModel*)m_flashcardsModel.value(index))->getUrl());
+    m_flashcardsModel.removeAt(index);
 }

@@ -16,7 +16,6 @@ private:
 public slots:
     const QString getUrl() const;
     const QString getName() const;
-
 };
 
 #endif // URLITEMMODEL_H

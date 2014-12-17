@@ -51,6 +51,15 @@
         <source>Reinitialize</source>
         <translation>Réinitialiser</translation>
     </message>
+    <message>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="56"/>
+        <source>Delete</source>
+        <translation type="unfinished">Supprimer</translation>
+    </message>
+    <message>
+        <source>Deleting</source>
+        <translation type="obsolete">Suppression</translation>
+    </message>
 </context>
 <context>
     <name>ChoiceGameModePage</name>
@@ -292,7 +301,7 @@
 <context>
     <name>MainApplication</name>
     <message>
-        <location filename="../src/mainapplication.cpp" line="278"/>
+        <location filename="../src/mainapplication.cpp" line="277"/>
         <source>Default language</source>
         <translation>Langue par défaut</translation>
     </message>

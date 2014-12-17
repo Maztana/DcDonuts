@@ -5,6 +5,7 @@
 #include "managerbdd.h"
 #include <QQuickView>
 #include <QGuiApplication>
+#include "urlitemmodel.h"
 
 class MainApplication : public QObject
 {
@@ -81,7 +82,9 @@ public slots:
     inline bool isSoundActive(){return m_soundState;}
     inline void setSoundState(const bool &state){m_soundState = state;}
 
+    QList<QObject*> getListFlashcards();
     void resetStatsFlashcardProfile(QString fileName, int idProfile);
+    void deleteFlashcardFile(int index);
 };
 
 #endif // MAINAPPLICATION_H

@@ -47,7 +47,7 @@ public slots:
      */
     virtual inline const QString getResult()const{return m_currentQuestion->getValues().first();}
     virtual inline bool isFlashcard(){return true;}
-    virtual void initDB(UrlItemModel* path);
+    virtual void initDB(QString url, QString name);
 
 };
 

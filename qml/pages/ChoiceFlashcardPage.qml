@@ -2,10 +2,10 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 Page{
-
+    onStatusChanged: addItems()
     SilicaListView {
         anchors.fill: parent
-        model: flashcardsListModel
+        model: listModel
 
         PullDownMenu {
             MenuItem {
@@ -24,7 +24,7 @@ Page{
             Label
             {
                 id: nameFlashcard
-                text: getName()
+                text: model.name
                 anchors.verticalCenter: parent.verticalCenter
             }
 
@@ -37,7 +37,7 @@ Page{
 
             onClicked: {
                 //Init name of BDD
-                gameType.initDB(modelData)
+                gameType.initDB(url, name)
                 gameType.launchGame()
 
                 pageStack.replace(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
@@ -49,13 +49,36 @@ Page{
                     MenuItem {
                         text: qsTr("Reinitialize")
                         onClicked: {
-
                             application.resetStatsFlashcardProfile(nameFlashcard.text, currentProfile.id)
-
+                        }
+                    }
+                    MenuItem {
+                        text: qsTr("Delete")
+                        onClicked: {
+                                application.deleteFlashcardFile(index)
+                                listModel.remove(index)
                         }
                     }
                 }
             }
+        }
+    }
+
+    ListModel {
+        id: listModel
+    }
+
+    function addItems() {
+
+        listModel.clear();
+
+        var flashcards = application.getListFlashcards();
+
+        for(var i = 0; i < flashcards.length; i++)
+        {
+            var url = flashcards[i].getUrl()
+            var name = flashcards[i].getName()
+            listModel.append({"url": url, "name": name})
         }
     }
 }

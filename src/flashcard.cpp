@@ -67,9 +67,9 @@ void Flashcard::treatmentAnswer(const int answer)
  * @brief Flashcard::initDB
  * @param nameDataBase name of data base
  */
-void Flashcard::initDB(UrlItemModel* path)
+void Flashcard::initDB(QString url, QString name)
 {
-    m_levelGame = new Level(path->getName());
-    ManagerBdd::getInstance().openDBFlashcard(path->getUrl());
+    m_levelGame = new Level(name);
+    ManagerBdd::getInstance().openDBFlashcard(url);
     ManagerBdd::getInstance().initLearnTable(Game::getIdCurrentProfile());
 }
