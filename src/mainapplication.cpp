@@ -252,9 +252,8 @@ void MainApplication::deleteProfile(int id)
 
     for(int i = 0; i < m_flashcardsModel.size(); i++)
     {
-        m_managerBDD.deleteStatsFlashcardByProfile(profileDeleted->getId(), ((UrlItemModel*)m_flashcardsModel.value(i))->getName()+".db");
+        m_managerBDD.deleteStatsFlashcardByProfile(profileDeleted->getId(), m_flashcardsModel.value(i)->getName()+".db");
     }
-
 
     if(profileDeleted == m_currentProfile)
     {
@@ -278,7 +277,8 @@ void MainApplication::initLanguages()
 
     loadLanguages();
 
-    s_view->rootContext()->setContextProperty("languagesListModel", QVariant::fromValue(m_languagesModel));
+    s_view->rootContext()->setContextProperty("languagesListModel",
+                         QVariant::fromValue((QList<QObject*>&)m_languagesModel));
 }
 
 /** Load all the supported languages
@@ -332,11 +332,11 @@ void MainApplication::loadFlashcardsDatabases()
 
     QDirIterator dirIteLocal(PATH_LOCAL, listFilter);
     QDirIterator dirIteDL(PATH_DOWNLOAD, listFilter);
+
     while(dirIteLocal.hasNext())
     {
         m_flashcardsModel.append(new UrlItemModel(dirIteLocal.next()));
     }
-
 
     while(dirIteDL.hasNext())
     {
@@ -344,9 +344,13 @@ void MainApplication::loadFlashcardsDatabases()
     }
 }
 
+/** Getter of list flashcards
+ * @brief MainApplication::getListFlashcards
+ * @return the list of flashcard
+ */
 QList<QObject*> MainApplication::getListFlashcards()
 {
-    return m_flashcardsModel;
+    return (QList<QObject*>&)m_flashcardsModel;
 }
 
 /** Reset stats of a profile in a flashcard file
@@ -359,14 +363,12 @@ void MainApplication::resetStatsFlashcardProfile(QString fileName, int idProfile
     m_managerBDD.resetStatsFlashcardByProfile(idProfile, fileName+".db");
 }
 
-
-
 /** Delete a flashcard file
  * @brief MainApplication::deleteFlashcardFile
  * @param index of the file in the list
  */
 void MainApplication::deleteFlashcardFile(int index)
 {
-    QFile::remove(((UrlItemModel*)m_flashcardsModel.value(index))->getUrl());
+    QFile::remove(m_flashcardsModel.value(index)->getUrl());
     m_flashcardsModel.removeAt(index);
 }

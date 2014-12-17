@@ -37,28 +37,44 @@
 <context>
     <name>ChoiceFlashcardPage</name>
     <message>
-        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="12"/>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="24"/>
         <source>Import flashcards</source>
         <translation>Importer des flashcards</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="17"/>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="14"/>
         <source>Flashcard</source>
         <translation>Flashcard</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="50"/>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="18"/>
+        <source>No existing flashcard base</source>
+        <translation>Aucune base de flashcard existante</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="19"/>
+        <source>Pull down to import</source>
+        <translation>Abaisser pour importer</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="81"/>
         <source>Reinitialize</source>
         <translation>Réinitialiser</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="56"/>
-        <source>Delete</source>
-        <translation type="unfinished">Supprimer</translation>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="54"/>
+        <source>Reinitialization</source>
+        <translation type="unfinished">Réinitialisation</translation>
     </message>
     <message>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="87"/>
+        <source>Delete</source>
+        <translation>Supprimer</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="62"/>
         <source>Deleting</source>
-        <translation type="obsolete">Suppression</translation>
+        <translation>Suppression</translation>
     </message>
 </context>
 <context>
@@ -120,22 +136,22 @@
 <context>
     <name>CreationProfilePage</name>
     <message>
-        <location filename="../qml/pages/CreationProfilePage.qml" line="13"/>
+        <location filename="../qml/pages/CreationProfilePage.qml" line="18"/>
         <source>Accept</source>
         <translation>Valider</translation>
     </message>
     <message>
-        <location filename="../qml/pages/CreationProfilePage.qml" line="14"/>
+        <location filename="../qml/pages/CreationProfilePage.qml" line="19"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="../qml/pages/CreationProfilePage.qml" line="30"/>
+        <location filename="../qml/pages/CreationProfilePage.qml" line="35"/>
         <source>Name</source>
         <translation>Nom</translation>
     </message>
     <message>
-        <location filename="../qml/pages/CreationProfilePage.qml" line="31"/>
+        <location filename="../qml/pages/CreationProfilePage.qml" line="36"/>
         <source>Enter your name</source>
         <translation>Entrez votre nom</translation>
     </message>
@@ -219,7 +235,7 @@
     <message>
         <location filename="../qml/pages/HowToPlay.qml" line="41"/>
         <source>htpExpDifficultiesText</source>
-        <translation>* Difficulté : 4 difficultés sont disponibles : Facile, Moyen, Difficile et Automatique. Automatique se règle en fonction des résultats du joueur pour être le plus adapté possible à son niveau.</translation>
+        <translation>Difficulté : 4 difficultés sont disponibles : Facile, Moyen, Difficile et Automatique. Automatique se règle en fonction des résultats du joueur pour être le plus adapté possible à son niveau.</translation>
     </message>
     <message>
         <location filename="../qml/pages/HowToPlay.qml" line="47"/>
@@ -301,7 +317,7 @@
 <context>
     <name>MainApplication</name>
     <message>
-        <location filename="../src/mainapplication.cpp" line="277"/>
+        <location filename="../src/mainapplication.cpp" line="276"/>
         <source>Default language</source>
         <translation>Langue par défaut</translation>
     </message>
@@ -327,57 +343,57 @@
 <context>
     <name>ProfileManagerPage</name>
     <message>
-        <location filename="../qml/pages/ProfileManagerPage.qml" line="15"/>
+        <location filename="../qml/pages/ProfileManagerPage.qml" line="14"/>
         <source>Players</source>
         <translation>Joueurs</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ProfileManagerPage.qml" line="19"/>
+        <location filename="../qml/pages/ProfileManagerPage.qml" line="18"/>
         <source>No existing players</source>
         <translation>Aucun joueur existant</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ProfileManagerPage.qml" line="20"/>
+        <location filename="../qml/pages/ProfileManagerPage.qml" line="19"/>
         <source>Pull down to add</source>
         <translation>Abaisser pour ajouter</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ProfileManagerPage.qml" line="36"/>
+        <location filename="../qml/pages/ProfileManagerPage.qml" line="35"/>
         <source>Create a new player</source>
         <translation>Créer un nouveau joueur</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ProfileManagerPage.qml" line="31"/>
+        <location filename="../qml/pages/ProfileManagerPage.qml" line="30"/>
         <source>Import players</source>
         <translation>Importer des joueurs</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ProfileManagerPage.qml" line="26"/>
+        <location filename="../qml/pages/ProfileManagerPage.qml" line="25"/>
         <source>Export players</source>
         <translation>Expoter les joueurs</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ProfileManagerPage.qml" line="54"/>
+        <location filename="../qml/pages/ProfileManagerPage.qml" line="53"/>
         <source>Deleting</source>
         <translation>Suppression</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ProfileManagerPage.qml" line="62"/>
+        <location filename="../qml/pages/ProfileManagerPage.qml" line="61"/>
         <source>Reinitialization</source>
         <translation>Réinitialisation</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ProfileManagerPage.qml" line="81"/>
+        <location filename="../qml/pages/ProfileManagerPage.qml" line="79"/>
         <source>Reinitialize</source>
         <translation>Réinitialiser</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ProfileManagerPage.qml" line="87"/>
+        <location filename="../qml/pages/ProfileManagerPage.qml" line="85"/>
         <source>Delete</source>
         <translation>Supprimer</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ProfileManagerPage.qml" line="123"/>
+        <location filename="../qml/pages/ProfileManagerPage.qml" line="122"/>
         <source>msgNoProfile</source>
         <translation>Choisissez un joueur pour jouer.</translation>
     </message>

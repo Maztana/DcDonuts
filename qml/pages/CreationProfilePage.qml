@@ -5,6 +5,11 @@ Dialog {
     id: dialog
     canAccept: !nameInput.errorHighlight
 
+    acceptDestination: Qt.resolvedUrl("../homepage/Homepage.qml")
+    acceptDestinationAction: PageStackAction.Replace
+    acceptDestinationReplaceTarget: acceptDestinationInstance
+
+
     onAccepted: {
         application.createProfile(nameInput.text)
     }

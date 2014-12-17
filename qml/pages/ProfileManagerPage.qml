@@ -1,7 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-
 Page{
     onStatusChanged: addItems()
     id:profileManager
@@ -66,7 +65,6 @@ Page{
                 })
             }
 
-
             ItemProfile{
                 id:itemprofile
                 ident: model.ident
@@ -119,7 +117,8 @@ Page{
     }
 
     Component.onCompleted:{
-        if(currentProfile.name === ""){
+        if(currentProfile.name === "")
+        {
             infoBanner.displayMsg(qsTr("msgNoProfile"))
         }
     }

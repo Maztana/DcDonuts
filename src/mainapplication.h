@@ -6,6 +6,7 @@
 #include <QQuickView>
 #include <QGuiApplication>
 #include "urlitemmodel.h"
+#include "language.h"
 
 class MainApplication : public QObject
 {
@@ -31,9 +32,9 @@ class MainApplication : public QObject
     /** Default profile application */
     static Profile* s_defaultProfile;
     /** List of all registered languages */
-    QList<QObject*> m_languagesModel;
+    QList<Language*> m_languagesModel;
     /** List of all registered flaschards databases */
-    QList<QObject*> m_flashcardsModel;
+    QList<UrlItemModel*> m_flashcardsModel;
 
 public:
     explicit MainApplication(QQuickView *q_view);

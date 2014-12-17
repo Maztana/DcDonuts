@@ -3,9 +3,21 @@ import Sailfish.Silica 1.0
 
 Page{
     onStatusChanged: addItems()
+
     SilicaListView {
+        property bool canLaunch : true
+
+        id: flashcardsList
         anchors.fill: parent
         model: listModel
+
+        header: PageHeader { title: qsTr("Flashcard") }
+
+        ViewPlaceholder {
+            enabled: flashcardsList.count == 0
+            text: qsTr("No existing flashcard base")
+            hintText: qsTr("Pull down to import")
+        }
 
         PullDownMenu {
             MenuItem {
@@ -14,19 +26,11 @@ Page{
             }
         }
 
-        header: PageHeader { title: qsTr("Flashcard") }
-
         VerticalScrollDecorator {}
 
         delegate: ListItem {
             id: flashcardListItem
             menu:flashcardOptionsMenu
-            Label
-            {
-                id: nameFlashcard
-                text: model.name
-                anchors.verticalCenter: parent.verticalCenter
-            }
 
             anchors
             {
@@ -36,11 +40,38 @@ Page{
             }
 
             onClicked: {
-                //Init name of BDD
-                gameType.initDB(url, name)
-                gameType.launchGame()
+                if(flashcardsList.canLaunch)
+                {
+                    //Init name of BDD
+                    gameType.initDB(url, name)
+                    gameType.launchGame()
 
-                pageStack.replace(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
+                    pageStack.replace(Qt.resolvedUrl("../pages/GameQuizPage.qml"))
+                }
+            }
+
+            function reset() {
+                remorseAction(qsTr("Reinitialization"), function()
+                {
+                    application.resetStatsFlashcardProfile(nameFlashcard.text, currentProfile.id)
+                })
+            }
+
+            function remove() {
+                flashcardsList.canLaunch = false
+                remorseAction(qsTr("Deleting"), function()
+                {
+                    application.deleteFlashcardFile(index)
+                    listModel.remove(index)
+                    flashcardsList.canLaunch = true
+                })
+            }
+
+            Label
+            {
+                id: nameFlashcard
+                text: model.name
+                anchors.verticalCenter: parent.verticalCenter
             }
 
             Component {
@@ -49,14 +80,13 @@ Page{
                     MenuItem {
                         text: qsTr("Reinitialize")
                         onClicked: {
-                            application.resetStatsFlashcardProfile(nameFlashcard.text, currentProfile.id)
+                            reset()
                         }
                     }
                     MenuItem {
                         text: qsTr("Delete")
                         onClicked: {
-                                application.deleteFlashcardFile(index)
-                                listModel.remove(index)
+                            remove()
                         }
                     }
                 }
@@ -82,4 +112,3 @@ Page{
         }
     }
 }
-

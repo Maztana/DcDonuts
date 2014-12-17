@@ -38,7 +38,7 @@ Page {
                 color:Theme.primaryColor
                 wrapMode: TextEdit.WordWrap
                 width: parent.width - 2 * Theme.paddingLarge
-                text: qsTr("htpExpDifficultiesText")
+                text: "*" + qsTr("htpExpDifficultiesText")
                 readOnly: true
             }
 
