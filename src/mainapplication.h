@@ -24,6 +24,16 @@ class MainApplication : public QObject
     /** Sound state */
     bool m_soundState;
 
+
+    /** View of the application */
+    static QQuickView *s_view;
+    /** Default profile application */
+    static Profile* s_defaultProfile;
+    /** List of all registered languages */
+    QList<QObject*> m_languagesModel;
+    /** List of all registered flaschards databases */
+    QList<QObject*> m_flashcardsModel;
+
 public:
     explicit MainApplication(QQuickView *q_view);
     ~MainApplication();
@@ -33,15 +43,12 @@ public:
      * @return the profile score
      */
     inline int getScore(){return m_currentProfile->getScore();}
+    /** Getter of the view of application
+     * @brief getView
+     * @return the view
+     */
+    static inline const QQuickView& getView(){return *s_view;}
 
-    /** View of the application */
-    static QQuickView *s_view;
-    /** Default profile application */
-    static Profile* s_defaultProfile;
-    /** List of all registered languages */
-    QList<QObject*> m_languagesModel;
-    /** List of all registered flaschards databases */
-    QStringList m_flashcardsModel;
 
     const QList<int> getAllId() const;
 
@@ -73,6 +80,8 @@ public slots:
 
     inline bool isSoundActive(){return m_soundState;}
     inline void setSoundState(const bool &state){m_soundState = state;}
+
+    void resetStatsFlashcardProfile(QString fileName, int idProfile);
 };
 
 #endif // MAINAPPLICATION_H

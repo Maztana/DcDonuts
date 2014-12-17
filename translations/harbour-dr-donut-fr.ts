@@ -35,42 +35,25 @@
     </message>
 </context>
 <context>
-    <name>AddFlashcardPage</name>
-    <message>
-        <location filename="../qml/pages/AddFlashcardPage.qml" line="7"/>
-        <source>Add flashcard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/AddFlashcardPage.qml" line="17"/>
-        <source>txtAddFlashcard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/AddFlashcardPage.qml" line="28"/>
-        <source>Add</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>ChoiceFlashcardPage</name>
     <message>
-        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="11"/>
-        <source>Add flashcard</source>
-        <translation type="unfinished"></translation>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="12"/>
+        <source>Import flashcards</source>
+        <translation>Importer des flashcards</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="16"/>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="17"/>
         <source>Flashcard</source>
         <translation>Flashcard</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="50"/>
+        <source>Reinitialize</source>
+        <translation>Réinitialiser</translation>
     </message>
 </context>
 <context>
     <name>ChoiceGameModePage</name>
-    <message>
-        <source>Flashcards</source>
-        <translation type="obsolete">Flashcards</translation>
-    </message>
     <message>
         <location filename="../qml/pages/ChoiceGameModePage.qml" line="17"/>
         <source>Level</source>
@@ -271,6 +254,24 @@
     </message>
 </context>
 <context>
+    <name>ImportFlashcardPage</name>
+    <message>
+        <location filename="../qml/pages/ImportFlashcardPage.qml" line="7"/>
+        <source>Import flashcards</source>
+        <translation>Importer des flashcards</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ImportFlashcardPage.qml" line="15"/>
+        <source>importFlashExp</source>
+        <translation>Pour importer de nouveaux jeux de flashcards, il faut simplement les rechercher sur internet et les déposer dans le répertoire &apos;Downloads&apos; du téléphone. L&apos;application ne supporte que des noms de jeux finissant par &quot;.db&quot;.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ImportFlashcardPage.qml" line="27"/>
+        <source>importFlashTxtLinks</source>
+        <translation>Voici un exemple de site proposant des jeux de flashcards :</translation>
+    </message>
+</context>
+<context>
     <name>Level</name>
     <message>
         <location filename="../src/level.cpp" line="48"/>
@@ -287,15 +288,11 @@
         <source>Hard</source>
         <translation>Difficile</translation>
     </message>
-    <message>
-        <source>Auto</source>
-        <translation type="obsolete">Auto</translation>
-    </message>
 </context>
 <context>
     <name>MainApplication</name>
     <message>
-        <location filename="../src/mainapplication.cpp" line="264"/>
+        <location filename="../src/mainapplication.cpp" line="278"/>
         <source>Default language</source>
         <translation>Langue par défaut</translation>
     </message>

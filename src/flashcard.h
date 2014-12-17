@@ -2,6 +2,7 @@
 #define FLASHCARD_H
 
 #include "educationalquiz.h"
+#include "urlitemmodel.h"
 
 class Flashcard : public EducationalQuiz
 {
@@ -32,12 +33,12 @@ public:
      */
     virtual inline const QString makeTextQuestion(QList<QString>)const{return "";}
 
+protected:
+    virtual void setNumberPropositions(){m_numberPropositions = 1; emit numberPropositionsChanged();}
+
 private:
     virtual inline void setLevelsSelectable(){}
-    virtual void setNumberPropositions(){m_numberPropositions = 1; emit numberPropositionsChanged();}
     virtual void treatmentAnswer(const int);
-
-signals:
 
 public slots:
     /** Getter result of question
@@ -46,7 +47,7 @@ public slots:
      */
     virtual inline const QString getResult()const{return m_currentQuestion->getValues().first();}
     virtual inline bool isFlashcard(){return true;}
-    virtual void initDB(QString nameDataBase);
+    virtual void initDB(UrlItemModel* path);
 
 };
 

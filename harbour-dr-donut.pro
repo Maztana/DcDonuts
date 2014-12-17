@@ -42,7 +42,8 @@ SOURCES += \
     src/flashcard.cpp \
     src/flashcardfactory.cpp \
     src/countingmode.cpp \
-    src/countinggamefactory.cpp
+    src/countinggamefactory.cpp \
+    src/urlitemmodel.cpp
 
 OTHER_FILES += \
     translations/*.ts \
@@ -77,7 +78,7 @@ OTHER_FILES += \
     qml/pages/ChoiceFlashcardPage.qml \
     qml/pages/FormDisplay.qml \
     qml/*.js \
-    qml/pages/AddFlashcardPage.qml
+    qml/pages/ImportFlashcardPage.qml
 
 # to disable building translations every time, comment out the
 # following CONFIG line
@@ -112,7 +113,8 @@ HEADERS += \
     src/flashcard.h \
     src/flashcardfactory.h \
     src/countingmode.h \
-    src/countinggamefactory.h
+    src/countinggamefactory.h \
+    src/urlitemmodel.h
 
 RESOURCES += \
     resources.qrc

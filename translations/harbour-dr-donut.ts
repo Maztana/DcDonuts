@@ -35,42 +35,25 @@
     </message>
 </context>
 <context>
-    <name>AddFlashcardPage</name>
-    <message>
-        <location filename="../qml/pages/AddFlashcardPage.qml" line="7"/>
-        <source>Add flashcard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/AddFlashcardPage.qml" line="17"/>
-        <source>txtAddFlashcard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/AddFlashcardPage.qml" line="28"/>
-        <source>Add</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>ChoiceFlashcardPage</name>
     <message>
-        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="11"/>
-        <source>Add flashcard</source>
-        <translation type="unfinished"></translation>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="12"/>
+        <source>Import flashcards</source>
+        <translation>Import flashcards</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="16"/>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="17"/>
         <source>Flashcard</source>
         <translation>Flashcard</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="50"/>
+        <source>Reinitialize</source>
+        <translation>Reinitialize</translation>
     </message>
 </context>
 <context>
     <name>ChoiceGameModePage</name>
-    <message>
-        <source>Flashcards</source>
-        <translation type="obsolete">Flashcards</translation>
-    </message>
     <message>
         <location filename="../qml/pages/ChoiceGameModePage.qml" line="17"/>
         <source>Level</source>
@@ -227,7 +210,7 @@
     <message>
         <location filename="../qml/pages/HowToPlay.qml" line="41"/>
         <source>htpExpDifficultiesText</source>
-        <translation>* Difficulty : 4 difficulties are availables : Easy, Medium, Hard and Automatic. Automatic is adjusts according to the results of the player to be the most adapted to his level.</translation>
+        <translation>* Difficulty : 4 difficulties are available : Easy, Medium, Hard and Automatic. Automatic is adjusts according to the results of the player to be the most adapted to his level.</translation>
     </message>
     <message>
         <location filename="../qml/pages/HowToPlay.qml" line="47"/>
@@ -271,6 +254,24 @@
     </message>
 </context>
 <context>
+    <name>ImportFlashcardPage</name>
+    <message>
+        <location filename="../qml/pages/ImportFlashcardPage.qml" line="7"/>
+        <source>Import flashcards</source>
+        <translation>Import flashcards</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ImportFlashcardPage.qml" line="15"/>
+        <source>importFlashExp</source>
+        <translation>To import new flashcards, you have to search them on the internet and put it in the &apos;Downloads&apos; directory of the phone. The application only supports games names ending with &quot;.db&quot;.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ImportFlashcardPage.qml" line="27"/>
+        <source>importFlashTxtLinks</source>
+        <translation>Here is an example of  website that offers flashcards :</translation>
+    </message>
+</context>
+<context>
     <name>Level</name>
     <message>
         <location filename="../src/level.cpp" line="48"/>
@@ -291,7 +292,7 @@
 <context>
     <name>MainApplication</name>
     <message>
-        <location filename="../src/mainapplication.cpp" line="264"/>
+        <location filename="../src/mainapplication.cpp" line="278"/>
         <source>Default language</source>
         <translation>Default language</translation>
     </message>

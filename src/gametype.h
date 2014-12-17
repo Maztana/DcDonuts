@@ -1,7 +1,6 @@
 #ifndef GAMETYPE_H
 #define GAMETYPE_H
 
-#include <QObject>
 #include "level.h"
 #include "ressources.h"
 
@@ -62,7 +61,7 @@ public slots:
     virtual void launchGame() = 0;
     void initLevelsSelectable();
     virtual void initLevelGame(int indexLevel);
-    virtual void initDB(QString){}
+    virtual inline void initDB(QString){}
 
 };
 

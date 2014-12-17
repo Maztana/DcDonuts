@@ -1,5 +1,6 @@
 #include "flashcard.h"
 #include "managerbdd.h"
+#include "game.h"
 
 int Flashcard::s_cpt = 1;
 
@@ -29,25 +30,24 @@ Question* Flashcard::buildQuestion()
     QList<Question*> cards;
     int randomIndex;
 
-    if(s_cpt != 5){
-
-        cards = ManagerBdd::getInstance().getFirstCards();
+    if(s_cpt != 5)
+	{
+        cards = ManagerBdd::getInstance().getFirstCards(Game::getIdCurrentProfile());
 
         randomIndex = rollDice(0, cards.size()-1);
         m_idQuestion = cards.at(randomIndex)->getId();
 
         s_cpt++;
-
-    } else{
-
-        cards = ManagerBdd::getInstance().getOldCards();
+    } 
+	else
+	{
+        cards = ManagerBdd::getInstance().getOldCards(Game::getIdCurrentProfile());
 
         randomIndex = rollDice(0, cards.size()-1);
         m_idQuestion = cards.at(randomIndex)->getId();
 
         s_cpt = 1;
     }
-
     return cards.at(randomIndex);
 }
 
@@ -59,7 +59,7 @@ void Flashcard::treatmentAnswer(const int answer)
 {
     emit answerGiven();
 
-    ManagerBdd::getInstance().saveResultFlashcard(m_idQuestion, answer);
+    ManagerBdd::getInstance().saveResultFlashcard(m_idQuestion, answer, Game::getIdCurrentProfile());
     launchQuestion();
 }
 
@@ -67,9 +67,9 @@ void Flashcard::treatmentAnswer(const int answer)
  * @brief Flashcard::initDB
  * @param nameDataBase name of data base
  */
-void Flashcard::initDB(QString nameDataBase)
+void Flashcard::initDB(UrlItemModel* path)
 {
-    m_levelGame = new Level(nameDataBase);
-    ManagerBdd::getInstance().openDBFlashcard(nameDataBase);
-    ManagerBdd::getInstance().initLearnTable();
+    m_levelGame = new Level(path->getName());
+    ManagerBdd::getInstance().openDBFlashcard(path->getUrl());
+    ManagerBdd::getInstance().initLearnTable(Game::getIdCurrentProfile());
 }

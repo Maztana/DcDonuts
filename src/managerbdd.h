@@ -36,12 +36,15 @@ public:
     QList<Profile*> selectAllProfiles();
 
 
-    bool openDBFlashcard(QString fileName);
+    bool openDBFlashcard(QString path);
     void closeDBFlashcard();
-    void saveResultFlashcard(int id, int answer);
-    void initLearnTable();
-    QList<Question*> getFirstCards();
-    QList<Question*> getOldCards();
+    void saveResultFlashcard(int id, int answer,int idProfile);
+    void initLearnTable(int idProfile);
+    QList<Question*> getFirstCards(int idProfile);
+    QList<Question*> getOldCards(int idProfile);
+
+    void deleteStatsFlashcardByProfile(int idProfile, QString fileName);
+    void resetStatsFlashcardByProfile(int idProfile, QString fileName);
 
 };
 

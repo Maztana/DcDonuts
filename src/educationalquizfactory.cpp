@@ -52,7 +52,7 @@ EducationalQuiz* EducationalQuizFactory::makeGameType(int identifiantGameType)
 {
     EducationalQuiz* educationalQuiz = nullptr;
 
-    switch (identifiantGameType) {
+    switch (identifiantGameType){
     case ADDITION_MODE:
         educationalQuiz = AdditionGameFactory::makeSpecificGameType();
         break;
@@ -65,7 +65,7 @@ EducationalQuiz* EducationalQuizFactory::makeGameType(int identifiantGameType)
     case DIVISION_MODE:
         educationalQuiz = DivisionGameFactory::makeSpecificGameType();
         break;
-      case COUNTING_MODE:
+    case COUNTING_MODE:
         educationalQuiz = CountingGameFactory::makeSpecificGameType();
         break;
         ////////////////////////////////////////////////////////////

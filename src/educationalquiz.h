@@ -29,7 +29,7 @@ public:
     virtual Question* buildQuestion() = 0;
 
     virtual const QString getProposition()const = 0;
-    virtual const QString getTextQuestion(){return m_currentQuestion->getTextQuestion();}
+    virtual inline const QString getTextQuestion(){return m_currentQuestion->getTextQuestion();}
     virtual const QString makeTextQuestion(QList<QString> values)const = 0;
 
 protected:
