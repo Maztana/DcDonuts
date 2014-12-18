@@ -60,7 +60,7 @@ Page{
             }
 
             /* Desactive Transition */
-            function desactiveTransition() {
+            function deactiveTransition() {
                 pageChoiceFlashcard.backNavigation = false
                 pageChoiceFlashcard.canNavigateForward = false
                 flashcardsList.canLaunch = false
@@ -68,27 +68,27 @@ Page{
 
             /* Reset an BDD */
             function reset() {
-                desactiveTransition()
-
-                remorseAction(qsTr("Reinitialization"), function()
+                remorse.execute(flashcardListItem, qsTr("Reinitialization"), function()
                 {
                     application.resetStatsFlashcardProfile(flashcardListItem.text, currentProfile.id)
-
                     activeTransition()
                 })
             }
 
             /* Remove an item */
             function remove() {
-                desactiveTransition()
-
-                remorseAction(qsTr("Deleting"), function()
+                remorse.execute(flashcardListItem, qsTr("Deleting"), function()
                 {
                     application.deleteFlashcardFile(index)
                     listModel.remove(index)
-
                     activeTransition()
                 })
+            }
+
+            RemorseItem{
+                id:remorse
+
+                onCanceled: activeTransition()
             }
 
             Label
@@ -104,6 +104,7 @@ Page{
                     MenuItem {
                         text: qsTr("Reinitialize")
                         onClicked: {
+                            deactiveTransition()
                             reset()
                         }
                     }
@@ -121,6 +122,7 @@ Page{
                             }
                         }
                         onClicked: {
+                            deactiveTransition()
                             remove()
                         }
                     }

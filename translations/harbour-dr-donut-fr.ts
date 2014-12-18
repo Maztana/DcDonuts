@@ -62,17 +62,17 @@
         <translation>Réinitialiser</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="73"/>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="71"/>
         <source>Reinitialization</source>
         <translation type="unfinished">Réinitialisation</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="111"/>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="112"/>
         <source>Delete</source>
         <translation>Supprimer</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="85"/>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="80"/>
         <source>Deleting</source>
         <translation>Suppression</translation>
     </message>
