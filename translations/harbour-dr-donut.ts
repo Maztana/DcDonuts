@@ -37,42 +37,42 @@
 <context>
     <name>ChoiceFlashcardPage</name>
     <message>
-        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="24"/>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="26"/>
         <source>Import flashcards</source>
         <translation>Import flashcards</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="14"/>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="16"/>
         <source>Flashcard</source>
         <translation>Flashcard</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="18"/>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="20"/>
         <source>No existing flashcard base</source>
         <translation>No existing flashcard base</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="19"/>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="21"/>
         <source>Pull down to import</source>
         <translation>Pull down to import</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="81"/>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="105"/>
         <source>Reinitialize</source>
         <translation>Reinitialize</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="54"/>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="73"/>
         <source>Reinitialization</source>
         <translation type="unfinished">Reinitialization</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="87"/>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="111"/>
         <source>Delete</source>
         <translation>Delete</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="62"/>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="85"/>
         <source>Deleting</source>
         <translation>Deleting</translation>
     </message>
@@ -288,7 +288,7 @@
     <message>
         <location filename="../qml/pages/ImportFlashcardPage.qml" line="15"/>
         <source>importFlashExp</source>
-        <translation>To import new flashcards, you have to search them on the internet and put it in the &apos;Downloads&apos; directory of the phone. The application only supports games names ending with &quot;.db&quot;.</translation>
+        <translation>To import new flashcards, you have to search them on the internet and put it in the &apos;Downloads&apos; directory of the phone. The application only supports games names ending with &quot;.db&quot;. A restart of the application will be necessary after every download.</translation>
     </message>
     <message>
         <location filename="../qml/pages/ImportFlashcardPage.qml" line="27"/>

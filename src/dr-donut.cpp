@@ -28,6 +28,14 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+/*
+ *Summary: Doctor Donut, game application for children.
+ *@authors:
+ *          BEUVELET Quentin            -> qbeuvelet@gmail.com
+ *          MACAISNE Melanie            -> melanie-macaisne@orange.fr
+ *          MIZOULE-THABOURIN Etienne   -> etienne.mizoule@gmail.com
+*/
+
 #ifdef QT_QML_DEBUG
 #include <QtQuick>
 #endif

@@ -12,12 +12,12 @@ Name:       harbour-dr-donut
 %{!?qtc_qmake5:%define qtc_qmake5 %qmake5}
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
-Summary:    My SailfishOS Application
+Summary:    Dr Donut is an educative game for childrens. The purpose is to make them progress in common domains, with fun !
 Version:    1.0
 Release:    1
 Group:      Qt/Qt
 License:    LICENSE
-URL:        http://example.org/
+URL:        http://iutweb.u-clermont1.fr/
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-dr-donut.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
@@ -28,7 +28,7 @@ BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
 
 %description
-Short description of my SailfishOS Application
+Doctor donut is the learning game developed during a student project in FRANCE. The purpose is to make children progress in common domains, with fun!
 
 
 %prep
@@ -53,6 +53,7 @@ rm -rf %{buildroot}
 # >> install pre
 # << install pre
 %qmake5_install
+
 # >> install post
 # << install post
 
@@ -66,8 +67,5 @@ desktop-file-install --delete-original       \
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/86x86/apps/%{name}.png
-# install bdd packages
-%defattr(-,nemo,nemo,-)
-/home/nemo/.local/share/%{name}/
 # >> files
 # << files

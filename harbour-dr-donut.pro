@@ -108,7 +108,7 @@ RESOURCES += \
 
 QT += sql
 
-db_flashcard.path = /home/nemo/.local/share/harbour-dr-donut
+db_flashcard.path = /usr/share/${TARGET}/db
 db_flashcard.files = db/*.db
 
 INSTALLS += db_flashcard

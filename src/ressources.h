@@ -10,7 +10,7 @@ const QString NAME_DATA_BASE = "drdonut.db.sqlite";
 const QString CONNECTION_NAME_PROFILES = "profiles";
 const QString CONNECTION_NAME_FLASHCARDS = "flashcards";
 const QString PATH_CONFIG = QDir::home().path() + "/.config/harbour-dr-donut";
-const QString PATH_LOCAL = QDir::home().path() + "/.local/share/harbour-dr-donut";
+const QString PATH_LOCAL = "/usr/share/harbour-dr-donut/db";
 const QString PATH_DOWNLOAD = QDir::home().path() + "/Downloads";
 
 // Config

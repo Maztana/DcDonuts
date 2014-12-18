@@ -2,14 +2,16 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 Page{
+    id: pageChoiceFlashcard
     onStatusChanged: addItems()
 
     SilicaListView {
-        property bool canLaunch : true
 
         id: flashcardsList
         anchors.fill: parent
         model: listModel
+
+        property bool canLaunch : true
 
         header: PageHeader { title: qsTr("Flashcard") }
 
@@ -50,20 +52,42 @@ Page{
                 }
             }
 
+            /* Active Transition */
+            function activeTransition() {
+                flashcardsList.canLaunch = true
+                pageChoiceFlashcard.backNavigation = true
+                pageChoiceFlashcard.canNavigateForward = true
+            }
+
+            /* Desactive Transition */
+            function desactiveTransition() {
+                pageChoiceFlashcard.backNavigation = false
+                pageChoiceFlashcard.canNavigateForward = false
+                flashcardsList.canLaunch = false
+            }
+
+            /* Reset an BDD */
             function reset() {
+                desactiveTransition()
+
                 remorseAction(qsTr("Reinitialization"), function()
                 {
-                    application.resetStatsFlashcardProfile(nameFlashcard.text, currentProfile.id)
+                    application.resetStatsFlashcardProfile(flashcardListItem.text, currentProfile.id)
+
+                    activeTransition()
                 })
             }
 
+            /* Remove an item */
             function remove() {
-                flashcardsList.canLaunch = false
+                desactiveTransition()
+
                 remorseAction(qsTr("Deleting"), function()
                 {
                     application.deleteFlashcardFile(index)
                     listModel.remove(index)
-                    flashcardsList.canLaunch = true
+
+                    activeTransition()
                 })
             }
 
@@ -85,6 +109,17 @@ Page{
                     }
                     MenuItem {
                         text: qsTr("Delete")
+                        visible: {
+                            var reg = new RegExp("^\/usr\/share\/harbour-dr-donut\/db\/.*")
+                            if(reg.test(model.url))
+                            {
+                                return false
+                            }
+                            else
+                            {
+                                return true
+                            }
+                        }
                         onClicked: {
                             remove()
                         }

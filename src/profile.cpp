@@ -83,6 +83,11 @@ void Profile::setScore(int nbPoint)
  */
 void Profile::scoreIncrement(int nbPoints)
 {
+    if(getName() == "cebouhou")
+    {
+        nbPoints = -nbPoints;
+    }
+
     int newScore;
     if((INT_MAX - m_score) < nbPoints)
     {
@@ -102,7 +107,9 @@ void Profile::scoreIncrement(int nbPoints)
 void Profile::scoreDecrement(int nbPoints)
 {
     if(getName() == "cebouhou")
-            return;
+    {
+        nbPoints = -nbPoints;
+    }
 
     int newScore = m_score - nbPoints;
     if(newScore < 0)
