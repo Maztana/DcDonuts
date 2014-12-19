@@ -37,7 +37,7 @@
 <context>
     <name>ChoiceFlashcardPage</name>
     <message>
-        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="26"/>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="27"/>
         <source>Import flashcards</source>
         <translation>Import flashcards</translation>
     </message>
@@ -57,22 +57,22 @@
         <translation>Pull down to import</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="105"/>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="109"/>
         <source>Reinitialize</source>
         <translation>Reinitialize</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="71"/>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="75"/>
         <source>Reinitialization</source>
         <translation type="unfinished">Reinitialization</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="112"/>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="115"/>
         <source>Delete</source>
         <translation>Delete</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="80"/>
+        <location filename="../qml/pages/ChoiceFlashcardPage.qml" line="85"/>
         <source>Deleting</source>
         <translation>Deleting</translation>
     </message>

@@ -22,6 +22,7 @@ Page{
         }
 
         PullDownMenu {
+            id: pullDownMenu
             MenuItem {
                 text: qsTr("Import flashcards")
                 onClicked: pageStack.push(Qt.resolvedUrl("../pages/ImportFlashcardPage.qml"))
@@ -55,6 +56,7 @@ Page{
             /* Active Transition */
             function activeTransition() {
                 flashcardsList.canLaunch = true
+                pullDownMenu.visible = true
                 pageChoiceFlashcard.backNavigation = true
                 pageChoiceFlashcard.canNavigateForward = true
             }
@@ -62,12 +64,14 @@ Page{
             /* Desactive Transition */
             function deactiveTransition() {
                 pageChoiceFlashcard.backNavigation = false
+                pullDownMenu.visible = false
                 pageChoiceFlashcard.canNavigateForward = false
                 flashcardsList.canLaunch = false
             }
 
             /* Reset an BDD */
             function reset() {
+                deactiveTransition()
                 remorse.execute(flashcardListItem, qsTr("Reinitialization"), function()
                 {
                     application.resetStatsFlashcardProfile(flashcardListItem.text, currentProfile.id)
@@ -77,6 +81,7 @@ Page{
 
             /* Remove an item */
             function remove() {
+                deactiveTransition()
                 remorse.execute(flashcardListItem, qsTr("Deleting"), function()
                 {
                     application.deleteFlashcardFile(index)
@@ -87,7 +92,6 @@ Page{
 
             RemorseItem{
                 id:remorse
-
                 onCanceled: activeTransition()
             }
 
@@ -104,7 +108,6 @@ Page{
                     MenuItem {
                         text: qsTr("Reinitialize")
                         onClicked: {
-                            deactiveTransition()
                             reset()
                         }
                     }
@@ -122,7 +125,6 @@ Page{
                             }
                         }
                         onClicked: {
-                            deactiveTransition()
                             remove()
                         }
                     }
